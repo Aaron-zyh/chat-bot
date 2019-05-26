@@ -66,4 +66,4 @@ start an container
 sudo docker run -it -p 3000:3000 -p 7001:7001 -p 5055:5055 --name <container_name> base bash
 
 ```
-Then just following the instruction below. Program is in /chat-bot
+Then just following the instruction below. Program is in chat-bot
