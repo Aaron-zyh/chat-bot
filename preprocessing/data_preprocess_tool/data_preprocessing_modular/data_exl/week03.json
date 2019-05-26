@@ -1,0 +1,356 @@
+[
+ {
+  "question": "May i have example query ?",
+  "answer": "Example: simple scan of a table ...\n select name from Employee implemented as:\n DB db = openDatabase(\"myDB\"); Rel r = openRel(db,\"Employee\"); Scan s = start_scan(r); Tuple t;  // current tuple while ((t = next_tuple(s)) != NULL) {    char *name = getStrField(t,2);    printf(\"%s\\n\", name); }",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "query"
+  ]
+ },
+ {
+  "question": "List some example query ?",
+  "answer": "Example: simple scan of a table ...\n select name from Employee implemented as:\n DB db = openDatabase(\"myDB\"); Rel r = openRel(db,\"Employee\"); Scan s = start_scan(r); Tuple t;  // current tuple while ((t = next_tuple(s)) != NULL) {    char *name = getStrField(t,2);    printf(\"%s\\n\", name); }",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "query"
+  ]
+ },
+ {
+  "question": "example query",
+  "answer": "Example: simple scan of a table ...\n select name from Employee implemented as:\n DB db = openDatabase(\"myDB\"); Rel r = openRel(db,\"Employee\"); Scan s = start_scan(r); Tuple t;  // current tuple while ((t = next_tuple(s)) != NULL) {    char *name = getStrField(t,2);    printf(\"%s\\n\", name); }",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "query"
+  ]
+ },
+ {
+  "question": "Give me some example query ?",
+  "answer": "Example: simple scan of a table ...\n select name from Employee implemented as:\n DB db = openDatabase(\"myDB\"); Rel r = openRel(db,\"Employee\"); Scan s = start_scan(r); Tuple t;  // current tuple while ((t = next_tuple(s)) != NULL) {    char *name = getStrField(t,2);    printf(\"%s\\n\", name); }",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "query"
+  ]
+ },
+ {
+  "question": "Do you have some example query ?",
+  "answer": "Example: simple scan of a table ...\n select name from Employee implemented as:\n DB db = openDatabase(\"myDB\"); Rel r = openRel(db,\"Employee\"); Scan s = start_scan(r); Tuple t;  // current tuple while ((t = next_tuple(s)) != NULL) {    char *name = getStrField(t,2);    printf(\"%s\\n\", name); }",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "query"
+  ]
+ },
+ {
+  "question": "Can i have some example query ?",
+  "answer": "Example: simple scan of a table ...\n select name from Employee implemented as:\n DB db = openDatabase(\"myDB\"); Rel r = openRel(db,\"Employee\"); Scan s = start_scan(r); Tuple t;  // current tuple while ((t = next_tuple(s)) != NULL) {    char *name = getStrField(t,2);    printf(\"%s\\n\", name); }",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "query"
+  ]
+ },
+ {
+  "question": "May i have example file structure ?",
+  "answer": "When describing file structures\n use a large box to represent a page\n use either a small box or tupi (or reci) to represent a tuple\n sometimes refer to tuples via their key\n mostly, key corresponds to the notion of \"primary key\"\n sometimes, key means \"search key\" in selection condition\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "file",
+   "structure"
+  ]
+ },
+ {
+  "question": "List some example file structure ?",
+  "answer": "When describing file structures\n use a large box to represent a page\n use either a small box or tupi (or reci) to represent a tuple\n sometimes refer to tuples via their key\n mostly, key corresponds to the notion of \"primary key\"\n sometimes, key means \"search key\" in selection condition\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "file",
+   "structure"
+  ]
+ },
+ {
+  "question": "example file structure",
+  "answer": "When describing file structures\n use a large box to represent a page\n use either a small box or tupi (or reci) to represent a tuple\n sometimes refer to tuples via their key\n mostly, key corresponds to the notion of \"primary key\"\n sometimes, key means \"search key\" in selection condition\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "file",
+   "structure"
+  ]
+ },
+ {
+  "question": "Give me some example file structure ?",
+  "answer": "When describing file structures\n use a large box to represent a page\n use either a small box or tupi (or reci) to represent a tuple\n sometimes refer to tuples via their key\n mostly, key corresponds to the notion of \"primary key\"\n sometimes, key means \"search key\" in selection condition\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "file",
+   "structure"
+  ]
+ },
+ {
+  "question": "Do you have some example file structure ?",
+  "answer": "When describing file structures\n use a large box to represent a page\n use either a small box or tupi (or reci) to represent a tuple\n sometimes refer to tuples via their key\n mostly, key corresponds to the notion of \"primary key\"\n sometimes, key means \"search key\" in selection condition\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "file",
+   "structure"
+  ]
+ },
+ {
+  "question": "Can i have some example file structure ?",
+  "answer": "When describing file structures\n use a large box to represent a page\n use either a small box or tupi (or reci) to represent a tuple\n sometimes refer to tuples via their key\n mostly, key corresponds to the notion of \"primary key\"\n sometimes, key means \"search key\" in selection condition\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "file",
+   "structure"
+  ]
+ },
+ {
+  "question": "May i have example file structure ?",
+  "answer": "Consider three simple file structures:\n heap file ... tuples added to any page which has space\n sorted file ... tuples arranged in file in key order\n hash file ... tuples placed in pages using hash function\n All files are composed of b primary blocks/pages\n Some records in each page may be marked as \"deleted\".\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "file",
+   "structure"
+  ]
+ },
+ {
+  "question": "List some example file structure ?",
+  "answer": "Consider three simple file structures:\n heap file ... tuples added to any page which has space\n sorted file ... tuples arranged in file in key order\n hash file ... tuples placed in pages using hash function\n All files are composed of b primary blocks/pages\n Some records in each page may be marked as \"deleted\".\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "file",
+   "structure"
+  ]
+ },
+ {
+  "question": "example file structure",
+  "answer": "Consider three simple file structures:\n heap file ... tuples added to any page which has space\n sorted file ... tuples arranged in file in key order\n hash file ... tuples placed in pages using hash function\n All files are composed of b primary blocks/pages\n Some records in each page may be marked as \"deleted\".\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "file",
+   "structure"
+  ]
+ },
+ {
+  "question": "Give me some example file structure ?",
+  "answer": "Consider three simple file structures:\n heap file ... tuples added to any page which has space\n sorted file ... tuples arranged in file in key order\n hash file ... tuples placed in pages using hash function\n All files are composed of b primary blocks/pages\n Some records in each page may be marked as \"deleted\".\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "file",
+   "structure"
+  ]
+ },
+ {
+  "question": "Do you have some example file structure ?",
+  "answer": "Consider three simple file structures:\n heap file ... tuples added to any page which has space\n sorted file ... tuples arranged in file in key order\n hash file ... tuples placed in pages using hash function\n All files are composed of b primary blocks/pages\n Some records in each page may be marked as \"deleted\".\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "file",
+   "structure"
+  ]
+ },
+ {
+  "question": "Can i have some example file structure ?",
+  "answer": "Consider three simple file structures:\n heap file ... tuples added to any page which has space\n sorted file ... tuples arranged in file in key order\n hash file ... tuples placed in pages using hash function\n All files are composed of b primary blocks/pages\n Some records in each page may be marked as \"deleted\".\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "file",
+   "structure"
+  ]
+ },
+ {
+  "question": "May i have operation cost example ?",
+  "answer": "Heap file with b = 4, c = 4:\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "List some operation cost example ?",
+  "answer": "Heap file with b = 4, c = 4:\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "operation cost example",
+  "answer": "Heap file with b = 4, c = 4:\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some operation cost example ?",
+  "answer": "Heap file with b = 4, c = 4:\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some operation cost example ?",
+  "answer": "Heap file with b = 4, c = 4:\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some operation cost example ?",
+  "answer": "Heap file with b = 4, c = 4:\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "May i have operation cost example ?",
+  "answer": "Sorted file with b = 4, c = 4:\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "List some operation cost example ?",
+  "answer": "Sorted file with b = 4, c = 4:\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "operation cost example",
+  "answer": "Sorted file with b = 4, c = 4:\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some operation cost example ?",
+  "answer": "Sorted file with b = 4, c = 4:\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some operation cost example ?",
+  "answer": "Sorted file with b = 4, c = 4:\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some operation cost example ?",
+  "answer": "Sorted file with b = 4, c = 4:\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "May i have operation cost example ?",
+  "answer": "Hashed file with b = 3, c = 4, h(k) = k%3\n Scanning\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "List some operation cost example ?",
+  "answer": "Hashed file with b = 3, c = 4, h(k) = k%3\n Scanning\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "operation cost example",
+  "answer": "Hashed file with b = 3, c = 4, h(k) = k%3\n Scanning\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some operation cost example ?",
+  "answer": "Hashed file with b = 3, c = 4, h(k) = k%3\n Scanning\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some operation cost example ?",
+  "answer": "Hashed file with b = 3, c = 4, h(k) = k%3\n Scanning\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some operation cost example ?",
+  "answer": "Hashed file with b = 3, c = 4, h(k) = k%3\n Scanning\n",
+  "intent": "example",
+  "key_words": [
+   "operation",
+   "cost",
+   "example"
+  ]
+ }
+]

@@ -1,0 +1,31 @@
+
+body {
+  height: 100%;
+  background-color: #333;
+  background: linear-gradient(to left, #ffffff , #ffffff);
+}
+
+.App {
+  color: rgb(255, 255, 255);
+
+}
+
+.cover-title {
+  color: rgb(40, 173, 122);
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.514);
+}
+
+.cover-entry:focus {
+  color: rgb(170, 64, 64);
+  text-shadow: none;
+  background-color: rgb(39, 170, 98);
+  border: 1px solid rgb(152, 47, 184);
+}
+
+.btn-primary {
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: #357ebd;
+  text-align: center;
+}

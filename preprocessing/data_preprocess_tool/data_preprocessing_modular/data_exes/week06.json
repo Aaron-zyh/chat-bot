@@ -1,0 +1,57 @@
+[
+ {
+  "question": "Give me some exercises about multi-attribute hashing ?",
+  "answer": "Compute the hash value for the tuple\n ('John Smith','BSc(CompSci)',1990,99.5)\n where d=6,   d1=3,   d2=2,   d3=1, and\n cv = <(1,0), (1,1), (2,0), (3,0), (1,2), (2,1), (3,1), (1,3), ...>\n hash1('John Smith') = ...0101010110110100\n hash2('BSc(CompSci)') = ...1011111101101111\n hash3(1990) = ...0001001011000000\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "multi-attribute",
+   "hashing"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about multi-attribute hashing ?",
+  "answer": "Compute the hash value for the tuple\n ('John Smith','BSc(CompSci)',1990,99.5)\n where d=6,   d1=3,   d2=2,   d3=1, and\n cv = <(1,0), (1,1), (2,0), (3,0), (1,2), (2,1), (3,1), (1,3), ...>\n hash1('John Smith') = ...0101010110110100\n hash2('BSc(CompSci)') = ...1011111101101111\n hash3(1990) = ...0001001011000000\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "multi-attribute",
+   "hashing"
+  ]
+ },
+ {
+  "question": "exercises for multi-attribute hashing",
+  "answer": "Compute the hash value for the tuple\n ('John Smith','BSc(CompSci)',1990,99.5)\n where d=6,   d1=3,   d2=2,   d3=1, and\n cv = <(1,0), (1,1), (2,0), (3,0), (1,2), (2,1), (3,1), (1,3), ...>\n hash1('John Smith') = ...0101010110110100\n hash2('BSc(CompSci)') = ...1011111101101111\n hash3(1990) = ...0001001011000000\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "multi-attribute",
+   "hashing"
+  ]
+ },
+ {
+  "question": "week 6 exercises multi-attribute hashing",
+  "answer": "Compute the hash value for the tuple\n ('John Smith','BSc(CompSci)',1990,99.5)\n where d=6,   d1=3,   d2=2,   d3=1, and\n cv = <(1,0), (1,1), (2,0), (3,0), (1,2), (2,1), (3,1), (1,3), ...>\n hash1('John Smith') = ...0101010110110100\n hash2('BSc(CompSci)') = ...1011111101101111\n hash3(1990) = ...0001001011000000\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "multi-attribute",
+   "hashing"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 6",
+  "answer": "Compute the hash value for the tuple\n ('John Smith','BSc(CompSci)',1990,99.5)\n where d=6,   d1=3,   d2=2,   d3=1, and\n cv = <(1,0), (1,1), (2,0), (3,0), (1,2), (2,1), (3,1), (1,3), ...>\n hash1('John Smith') = ...0101010110110100\n hash2('BSc(CompSci)') = ...1011111101101111\n hash3(1990) = ...0001001011000000\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "multi-attribute",
+   "hashing"
+  ]
+ }
+]

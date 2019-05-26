@@ -1,0 +1,728 @@
+[
+ {
+  "question": "May i have simc example ?",
+  "answer": "Consider the following tuple (from bank deposit database)\n Branch AcctNo Name Amount\n Perryridge 102 Hayes 400\n It has the following codewords/descriptor (for m = 12, \u00a0 k = 2 )\n Ai cw(Ai)\n Perryridge 010000000001\n 102 000000000011\n Hayes 000001000100\n 400 000010000100\n desc(r) 010011000111\n",
+  "intent": "example",
+  "key_words": [
+   "simc",
+   "example"
+  ]
+ },
+ {
+  "question": "List some simc example ?",
+  "answer": "Consider the following tuple (from bank deposit database)\n Branch AcctNo Name Amount\n Perryridge 102 Hayes 400\n It has the following codewords/descriptor (for m = 12, \u00a0 k = 2 )\n Ai cw(Ai)\n Perryridge 010000000001\n 102 000000000011\n Hayes 000001000100\n 400 000010000100\n desc(r) 010011000111\n",
+  "intent": "example",
+  "key_words": [
+   "simc",
+   "example"
+  ]
+ },
+ {
+  "question": "simc example",
+  "answer": "Consider the following tuple (from bank deposit database)\n Branch AcctNo Name Amount\n Perryridge 102 Hayes 400\n It has the following codewords/descriptor (for m = 12, \u00a0 k = 2 )\n Ai cw(Ai)\n Perryridge 010000000001\n 102 000000000011\n Hayes 000001000100\n 400 000010000100\n desc(r) 010011000111\n",
+  "intent": "example",
+  "key_words": [
+   "simc",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some simc example ?",
+  "answer": "Consider the following tuple (from bank deposit database)\n Branch AcctNo Name Amount\n Perryridge 102 Hayes 400\n It has the following codewords/descriptor (for m = 12, \u00a0 k = 2 )\n Ai cw(Ai)\n Perryridge 010000000001\n 102 000000000011\n Hayes 000001000100\n 400 000010000100\n desc(r) 010011000111\n",
+  "intent": "example",
+  "key_words": [
+   "simc",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some simc example ?",
+  "answer": "Consider the following tuple (from bank deposit database)\n Branch AcctNo Name Amount\n Perryridge 102 Hayes 400\n It has the following codewords/descriptor (for m = 12, \u00a0 k = 2 )\n Ai cw(Ai)\n Perryridge 010000000001\n 102 000000000011\n Hayes 000001000100\n 400 000010000100\n desc(r) 010011000111\n",
+  "intent": "example",
+  "key_words": [
+   "simc",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some simc example ?",
+  "answer": "Consider the following tuple (from bank deposit database)\n Branch AcctNo Name Amount\n Perryridge 102 Hayes 400\n It has the following codewords/descriptor (for m = 12, \u00a0 k = 2 )\n Ai cw(Ai)\n Perryridge 010000000001\n 102 000000000011\n Hayes 000001000100\n 400 000010000100\n desc(r) 010011000111\n",
+  "intent": "example",
+  "key_words": [
+   "simc",
+   "example"
+  ]
+ },
+ {
+  "question": "May i have example simc query ?",
+  "answer": "Consider the query and the example database:\n Signature Deposit Record\n 010000000001 (Perryridge,?,?,?)\n 100101001001 (Brighton,217,Green,750)\n 010011000111 (Perryridge,102,Hayes,400)\n 101001001001 (Downtown,101,Johnshon,512)\n 101100000011 (Mianus,215,Smith,700)\n 010101010101 (Clearview,117,Throggs,295)\n 100101010011 (Redwood,222,Lindsay,695)\n Gives two matches: \u00a0one true match, \u00a0one false match.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "simc",
+   "query"
+  ]
+ },
+ {
+  "question": "List some example simc query ?",
+  "answer": "Consider the query and the example database:\n Signature Deposit Record\n 010000000001 (Perryridge,?,?,?)\n 100101001001 (Brighton,217,Green,750)\n 010011000111 (Perryridge,102,Hayes,400)\n 101001001001 (Downtown,101,Johnshon,512)\n 101100000011 (Mianus,215,Smith,700)\n 010101010101 (Clearview,117,Throggs,295)\n 100101010011 (Redwood,222,Lindsay,695)\n Gives two matches: \u00a0one true match, \u00a0one false match.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "simc",
+   "query"
+  ]
+ },
+ {
+  "question": "example simc query",
+  "answer": "Consider the query and the example database:\n Signature Deposit Record\n 010000000001 (Perryridge,?,?,?)\n 100101001001 (Brighton,217,Green,750)\n 010011000111 (Perryridge,102,Hayes,400)\n 101001001001 (Downtown,101,Johnshon,512)\n 101100000011 (Mianus,215,Smith,700)\n 010101010101 (Clearview,117,Throggs,295)\n 100101010011 (Redwood,222,Lindsay,695)\n Gives two matches: \u00a0one true match, \u00a0one false match.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "simc",
+   "query"
+  ]
+ },
+ {
+  "question": "Give me some example simc query ?",
+  "answer": "Consider the query and the example database:\n Signature Deposit Record\n 010000000001 (Perryridge,?,?,?)\n 100101001001 (Brighton,217,Green,750)\n 010011000111 (Perryridge,102,Hayes,400)\n 101001001001 (Downtown,101,Johnshon,512)\n 101100000011 (Mianus,215,Smith,700)\n 010101010101 (Clearview,117,Throggs,295)\n 100101010011 (Redwood,222,Lindsay,695)\n Gives two matches: \u00a0one true match, \u00a0one false match.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "simc",
+   "query"
+  ]
+ },
+ {
+  "question": "Do you have some example simc query ?",
+  "answer": "Consider the query and the example database:\n Signature Deposit Record\n 010000000001 (Perryridge,?,?,?)\n 100101001001 (Brighton,217,Green,750)\n 010011000111 (Perryridge,102,Hayes,400)\n 101001001001 (Downtown,101,Johnshon,512)\n 101100000011 (Mianus,215,Smith,700)\n 010101010101 (Clearview,117,Throggs,295)\n 100101010011 (Redwood,222,Lindsay,695)\n Gives two matches: \u00a0one true match, \u00a0one false match.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "simc",
+   "query"
+  ]
+ },
+ {
+  "question": "Can i have some example simc query ?",
+  "answer": "Consider the query and the example database:\n Signature Deposit Record\n 010000000001 (Perryridge,?,?,?)\n 100101001001 (Brighton,217,Green,750)\n 010011000111 (Perryridge,102,Hayes,400)\n 101001001001 (Downtown,101,Johnshon,512)\n 101100000011 (Mianus,215,Smith,700)\n 010101010101 (Clearview,117,Throggs,295)\n 100101010011 (Redwood,222,Lindsay,695)\n Gives two matches: \u00a0one true match, \u00a0one false match.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "simc",
+   "query"
+  ]
+ },
+ {
+  "question": "May i have example content-based image retrieval ?",
+  "answer": "User supplies a description or sample of desired image (features).\n System returns a ranked list of \"matching\" images from database.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "List some example content-based image retrieval ?",
+  "answer": "User supplies a description or sample of desired image (features).\n System returns a ranked list of \"matching\" images from database.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "example content-based image retrieval",
+  "answer": "User supplies a description or sample of desired image (features).\n System returns a ranked list of \"matching\" images from database.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "Give me some example content-based image retrieval ?",
+  "answer": "User supplies a description or sample of desired image (features).\n System returns a ranked list of \"matching\" images from database.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "Do you have some example content-based image retrieval ?",
+  "answer": "User supplies a description or sample of desired image (features).\n System returns a ranked list of \"matching\" images from database.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "Can i have some example content-based image retrieval ?",
+  "answer": "User supplies a description or sample of desired image (features).\n System returns a ranked list of \"matching\" images from database.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "May i have example content-based image retrieval ?",
+  "answer": "At the SQL level, this might appear as ...\n // relational matching create view Sunset as select image from MyPhotos where  title = 'Pittwater Sunset'        and taken = '2012-01-01'; // similarity matching with threshold create view SimilarSunsets as select title, image from   MyPhotos where  (image ~~ (select * from Sunset)) < 0.05 order  by (image ~~ (select * from Sunset)); where the (imaginary) ~~ operator measures distance between images.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "List some example content-based image retrieval ?",
+  "answer": "At the SQL level, this might appear as ...\n // relational matching create view Sunset as select image from MyPhotos where  title = 'Pittwater Sunset'        and taken = '2012-01-01'; // similarity matching with threshold create view SimilarSunsets as select title, image from   MyPhotos where  (image ~~ (select * from Sunset)) < 0.05 order  by (image ~~ (select * from Sunset)); where the (imaginary) ~~ operator measures distance between images.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "example content-based image retrieval",
+  "answer": "At the SQL level, this might appear as ...\n // relational matching create view Sunset as select image from MyPhotos where  title = 'Pittwater Sunset'        and taken = '2012-01-01'; // similarity matching with threshold create view SimilarSunsets as select title, image from   MyPhotos where  (image ~~ (select * from Sunset)) < 0.05 order  by (image ~~ (select * from Sunset)); where the (imaginary) ~~ operator measures distance between images.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "Give me some example content-based image retrieval ?",
+  "answer": "At the SQL level, this might appear as ...\n // relational matching create view Sunset as select image from MyPhotos where  title = 'Pittwater Sunset'        and taken = '2012-01-01'; // similarity matching with threshold create view SimilarSunsets as select title, image from   MyPhotos where  (image ~~ (select * from Sunset)) < 0.05 order  by (image ~~ (select * from Sunset)); where the (imaginary) ~~ operator measures distance between images.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "Do you have some example content-based image retrieval ?",
+  "answer": "At the SQL level, this might appear as ...\n // relational matching create view Sunset as select image from MyPhotos where  title = 'Pittwater Sunset'        and taken = '2012-01-01'; // similarity matching with threshold create view SimilarSunsets as select title, image from   MyPhotos where  (image ~~ (select * from Sunset)) < 0.05 order  by (image ~~ (select * from Sunset)); where the (imaginary) ~~ operator measures distance between images.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "Can i have some example content-based image retrieval ?",
+  "answer": "At the SQL level, this might appear as ...\n // relational matching create view Sunset as select image from MyPhotos where  title = 'Pittwater Sunset'        and taken = '2012-01-01'; // similarity matching with threshold create view SimilarSunsets as select title, image from   MyPhotos where  (image ~~ (select * from Sunset)) < 0.05 order  by (image ~~ (select * from Sunset)); where the (imaginary) ~~ operator measures distance between images.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "May i have example content-based image retrieval ?",
+  "answer": "Implementing content-based retrieval requires ...\n a collection of \"pertinent\" image features\n e.g. colour, texture, shape, keywords, ...\n some way of describing/representing image features\n typically via a vector of numeric values\n a distance/similarity measure based on features\n e.g. Euclidean distance between two vectors\n \u00a0 dist(x,y) = \u221a( (x1-y1)2 + (x2-y2)2 + ... (xn-yn)2 )\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "List some example content-based image retrieval ?",
+  "answer": "Implementing content-based retrieval requires ...\n a collection of \"pertinent\" image features\n e.g. colour, texture, shape, keywords, ...\n some way of describing/representing image features\n typically via a vector of numeric values\n a distance/similarity measure based on features\n e.g. Euclidean distance between two vectors\n \u00a0 dist(x,y) = \u221a( (x1-y1)2 + (x2-y2)2 + ... (xn-yn)2 )\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "example content-based image retrieval",
+  "answer": "Implementing content-based retrieval requires ...\n a collection of \"pertinent\" image features\n e.g. colour, texture, shape, keywords, ...\n some way of describing/representing image features\n typically via a vector of numeric values\n a distance/similarity measure based on features\n e.g. Euclidean distance between two vectors\n \u00a0 dist(x,y) = \u221a( (x1-y1)2 + (x2-y2)2 + ... (xn-yn)2 )\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "Give me some example content-based image retrieval ?",
+  "answer": "Implementing content-based retrieval requires ...\n a collection of \"pertinent\" image features\n e.g. colour, texture, shape, keywords, ...\n some way of describing/representing image features\n typically via a vector of numeric values\n a distance/similarity measure based on features\n e.g. Euclidean distance between two vectors\n \u00a0 dist(x,y) = \u221a( (x1-y1)2 + (x2-y2)2 + ... (xn-yn)2 )\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "Do you have some example content-based image retrieval ?",
+  "answer": "Implementing content-based retrieval requires ...\n a collection of \"pertinent\" image features\n e.g. colour, texture, shape, keywords, ...\n some way of describing/representing image features\n typically via a vector of numeric values\n a distance/similarity measure based on features\n e.g. Euclidean distance between two vectors\n \u00a0 dist(x,y) = \u221a( (x1-y1)2 + (x2-y2)2 + ... (xn-yn)2 )\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "Can i have some example content-based image retrieval ?",
+  "answer": "Implementing content-based retrieval requires ...\n a collection of \"pertinent\" image features\n e.g. colour, texture, shape, keywords, ...\n some way of describing/representing image features\n typically via a vector of numeric values\n a distance/similarity measure based on features\n e.g. Euclidean distance between two vectors\n \u00a0 dist(x,y) = \u221a( (x1-y1)2 + (x2-y2)2 + ... (xn-yn)2 )\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "May i have example content-based image retrieval ?",
+  "answer": "Inputs to content-based similarity-retrieval:\n a database of r objects \u00a0 (obj1,\u00a0obj2,\u00a0...,\u00a0objr) \u00a0 plus associated ...\n r \u00d7 n-dimensional feature vectors \u00a0 (vobj1,\u00a0vobj2,\u00a0...,\u00a0vobjr)\n a query image q with associated n-dimensional vector (vq)\n a distance measure \u00a0 D(vi,vj) : [0..1) \u00a0\u00a0 (D=0 \u2192 vi=vj)\n Outputs from content-based similarity-retrieval:\n a list of the k nearest objects in the database \u00a0 [a1, \u00a0 a2, \u00a0 ... \u00a0 ak]\n ordered by distance \u00a0 D(va1,vq) \u00a0\u2264\u00a0 D(va2,vq) \u00a0\u2264\u00a0 ... \u00a0\u2264\u00a0 D(vak,vq)\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "List some example content-based image retrieval ?",
+  "answer": "Inputs to content-based similarity-retrieval:\n a database of r objects \u00a0 (obj1,\u00a0obj2,\u00a0...,\u00a0objr) \u00a0 plus associated ...\n r \u00d7 n-dimensional feature vectors \u00a0 (vobj1,\u00a0vobj2,\u00a0...,\u00a0vobjr)\n a query image q with associated n-dimensional vector (vq)\n a distance measure \u00a0 D(vi,vj) : [0..1) \u00a0\u00a0 (D=0 \u2192 vi=vj)\n Outputs from content-based similarity-retrieval:\n a list of the k nearest objects in the database \u00a0 [a1, \u00a0 a2, \u00a0 ... \u00a0 ak]\n ordered by distance \u00a0 D(va1,vq) \u00a0\u2264\u00a0 D(va2,vq) \u00a0\u2264\u00a0 ... \u00a0\u2264\u00a0 D(vak,vq)\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "example content-based image retrieval",
+  "answer": "Inputs to content-based similarity-retrieval:\n a database of r objects \u00a0 (obj1,\u00a0obj2,\u00a0...,\u00a0objr) \u00a0 plus associated ...\n r \u00d7 n-dimensional feature vectors \u00a0 (vobj1,\u00a0vobj2,\u00a0...,\u00a0vobjr)\n a query image q with associated n-dimensional vector (vq)\n a distance measure \u00a0 D(vi,vj) : [0..1) \u00a0\u00a0 (D=0 \u2192 vi=vj)\n Outputs from content-based similarity-retrieval:\n a list of the k nearest objects in the database \u00a0 [a1, \u00a0 a2, \u00a0 ... \u00a0 ak]\n ordered by distance \u00a0 D(va1,vq) \u00a0\u2264\u00a0 D(va2,vq) \u00a0\u2264\u00a0 ... \u00a0\u2264\u00a0 D(vak,vq)\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "Give me some example content-based image retrieval ?",
+  "answer": "Inputs to content-based similarity-retrieval:\n a database of r objects \u00a0 (obj1,\u00a0obj2,\u00a0...,\u00a0objr) \u00a0 plus associated ...\n r \u00d7 n-dimensional feature vectors \u00a0 (vobj1,\u00a0vobj2,\u00a0...,\u00a0vobjr)\n a query image q with associated n-dimensional vector (vq)\n a distance measure \u00a0 D(vi,vj) : [0..1) \u00a0\u00a0 (D=0 \u2192 vi=vj)\n Outputs from content-based similarity-retrieval:\n a list of the k nearest objects in the database \u00a0 [a1, \u00a0 a2, \u00a0 ... \u00a0 ak]\n ordered by distance \u00a0 D(va1,vq) \u00a0\u2264\u00a0 D(va2,vq) \u00a0\u2264\u00a0 ... \u00a0\u2264\u00a0 D(vak,vq)\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "Do you have some example content-based image retrieval ?",
+  "answer": "Inputs to content-based similarity-retrieval:\n a database of r objects \u00a0 (obj1,\u00a0obj2,\u00a0...,\u00a0objr) \u00a0 plus associated ...\n r \u00d7 n-dimensional feature vectors \u00a0 (vobj1,\u00a0vobj2,\u00a0...,\u00a0vobjr)\n a query image q with associated n-dimensional vector (vq)\n a distance measure \u00a0 D(vi,vj) : [0..1) \u00a0\u00a0 (D=0 \u2192 vi=vj)\n Outputs from content-based similarity-retrieval:\n a list of the k nearest objects in the database \u00a0 [a1, \u00a0 a2, \u00a0 ... \u00a0 ak]\n ordered by distance \u00a0 D(va1,vq) \u00a0\u2264\u00a0 D(va2,vq) \u00a0\u2264\u00a0 ... \u00a0\u2264\u00a0 D(vak,vq)\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "Can i have some example content-based image retrieval ?",
+  "answer": "Inputs to content-based similarity-retrieval:\n a database of r objects \u00a0 (obj1,\u00a0obj2,\u00a0...,\u00a0objr) \u00a0 plus associated ...\n r \u00d7 n-dimensional feature vectors \u00a0 (vobj1,\u00a0vobj2,\u00a0...,\u00a0vobjr)\n a query image q with associated n-dimensional vector (vq)\n a distance measure \u00a0 D(vi,vj) : [0..1) \u00a0\u00a0 (D=0 \u2192 vi=vj)\n Outputs from content-based similarity-retrieval:\n a list of the k nearest objects in the database \u00a0 [a1, \u00a0 a2, \u00a0 ... \u00a0 ak]\n ordered by distance \u00a0 D(va1,vq) \u00a0\u2264\u00a0 D(va2,vq) \u00a0\u2264\u00a0 ... \u00a0\u2264\u00a0 D(vak,vq)\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "content-based",
+   "image",
+   "retrieval"
+  ]
+ },
+ {
+  "question": "May i have join example ?",
+  "answer": "Consider a university database with the schema:\n create table Student(    id     integer primary key,    name   text,  ... ); create table Enrolled(    stude  integer references Student(id),    subj   text references Subject(code),  ... ); create table Subject(    code   text primary key,    title  text,  ... );",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "List some join example ?",
+  "answer": "Consider a university database with the schema:\n create table Student(    id     integer primary key,    name   text,  ... ); create table Enrolled(    stude  integer references Student(id),    subj   text references Subject(code),  ... ); create table Subject(    code   text primary key,    title  text,  ... );",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "join example",
+  "answer": "Consider a university database with the schema:\n create table Student(    id     integer primary key,    name   text,  ... ); create table Enrolled(    stude  integer references Student(id),    subj   text references Subject(code),  ... ); create table Subject(    code   text primary key,    title  text,  ... );",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some join example ?",
+  "answer": "Consider a university database with the schema:\n create table Student(    id     integer primary key,    name   text,  ... ); create table Enrolled(    stude  integer references Student(id),    subj   text references Subject(code),  ... ); create table Subject(    code   text primary key,    title  text,  ... );",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some join example ?",
+  "answer": "Consider a university database with the schema:\n create table Student(    id     integer primary key,    name   text,  ... ); create table Enrolled(    stude  integer references Student(id),    subj   text references Subject(code),  ... ); create table Subject(    code   text primary key,    title  text,  ... );",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some join example ?",
+  "answer": "Consider a university database with the schema:\n create table Student(    id     integer primary key,    name   text,  ... ); create table Enrolled(    stude  integer references Student(id),    subj   text references Subject(code),  ... ); create table Subject(    code   text primary key,    title  text,  ... );",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "May i have join example ?",
+  "answer": "List names of students in all subjects, arranged by subject.\n SQL query to provide this information:\n select E.subj, S.name from   Student S, Enrolled E where  S.id = E.stude order  by E.subj, S.name; And its relational algebra equivalent:\n Sort[subj] ( Project[subj,name] ( Join[id=stude](Student,Enrolled) ) )\n   To simplify formulae, we denote Student by S and Enrolled by E\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "List some join example ?",
+  "answer": "List names of students in all subjects, arranged by subject.\n SQL query to provide this information:\n select E.subj, S.name from   Student S, Enrolled E where  S.id = E.stude order  by E.subj, S.name; And its relational algebra equivalent:\n Sort[subj] ( Project[subj,name] ( Join[id=stude](Student,Enrolled) ) )\n   To simplify formulae, we denote Student by S and Enrolled by E\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "join example",
+  "answer": "List names of students in all subjects, arranged by subject.\n SQL query to provide this information:\n select E.subj, S.name from   Student S, Enrolled E where  S.id = E.stude order  by E.subj, S.name; And its relational algebra equivalent:\n Sort[subj] ( Project[subj,name] ( Join[id=stude](Student,Enrolled) ) )\n   To simplify formulae, we denote Student by S and Enrolled by E\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some join example ?",
+  "answer": "List names of students in all subjects, arranged by subject.\n SQL query to provide this information:\n select E.subj, S.name from   Student S, Enrolled E where  S.id = E.stude order  by E.subj, S.name; And its relational algebra equivalent:\n Sort[subj] ( Project[subj,name] ( Join[id=stude](Student,Enrolled) ) )\n   To simplify formulae, we denote Student by S and Enrolled by E\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some join example ?",
+  "answer": "List names of students in all subjects, arranged by subject.\n SQL query to provide this information:\n select E.subj, S.name from   Student S, Enrolled E where  S.id = E.stude order  by E.subj, S.name; And its relational algebra equivalent:\n Sort[subj] ( Project[subj,name] ( Join[id=stude](Student,Enrolled) ) )\n   To simplify formulae, we denote Student by S and Enrolled by E\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some join example ?",
+  "answer": "List names of students in all subjects, arranged by subject.\n SQL query to provide this information:\n select E.subj, S.name from   Student S, Enrolled E where  S.id = E.stude order  by E.subj, S.name; And its relational algebra equivalent:\n Sort[subj] ( Project[subj,name] ( Join[id=stude](Student,Enrolled) ) )\n   To simplify formulae, we denote Student by S and Enrolled by E\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "May i have join example ?",
+  "answer": "Some database statistics:\n Sym Meaning Value\n rS # student records 20,000\n rE # enrollment records 80,000\n cS Student records/page 20\n cE Enrolled records/page 40\n bS # data pages in Student 1,000\n bE # data pages in Enrolled 2,000\n Also, in cost analyses below, N = number of memory buffers.\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "List some join example ?",
+  "answer": "Some database statistics:\n Sym Meaning Value\n rS # student records 20,000\n rE # enrollment records 80,000\n cS Student records/page 20\n cE Enrolled records/page 40\n bS # data pages in Student 1,000\n bE # data pages in Enrolled 2,000\n Also, in cost analyses below, N = number of memory buffers.\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "join example",
+  "answer": "Some database statistics:\n Sym Meaning Value\n rS # student records 20,000\n rE # enrollment records 80,000\n cS Student records/page 20\n cE Enrolled records/page 40\n bS # data pages in Student 1,000\n bE # data pages in Enrolled 2,000\n Also, in cost analyses below, N = number of memory buffers.\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some join example ?",
+  "answer": "Some database statistics:\n Sym Meaning Value\n rS # student records 20,000\n rE # enrollment records 80,000\n cS Student records/page 20\n cE Enrolled records/page 40\n bS # data pages in Student 1,000\n bE # data pages in Enrolled 2,000\n Also, in cost analyses below, N = number of memory buffers.\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some join example ?",
+  "answer": "Some database statistics:\n Sym Meaning Value\n rS # student records 20,000\n rE # enrollment records 80,000\n cS Student records/page 20\n cE Enrolled records/page 40\n bS # data pages in Student 1,000\n bE # data pages in Enrolled 2,000\n Also, in cost analyses below, N = number of memory buffers.\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some join example ?",
+  "answer": "Some database statistics:\n Sym Meaning Value\n rS # student records 20,000\n rE # enrollment records 80,000\n cS Student records/page 20\n cE Enrolled records/page 40\n bS # data pages in Student 1,000\n bE # data pages in Enrolled 2,000\n Also, in cost analyses below, N = number of memory buffers.\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "May i have join example ?",
+  "answer": "Out = Student \u22c8 Enrolled relation statistics:\n Sym Meaning Value\n rOut # tuples in result 80,000\n COut result records/page 80\n bOut # data pages in result 1,000\n Notes:\n rOut ... one result tuple for each Enrolled tuple\n COut ... result tuples have only subj and name\n in analyses, ignore cost of writing result ... same in all methods\n Nested Loop Join\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "List some join example ?",
+  "answer": "Out = Student \u22c8 Enrolled relation statistics:\n Sym Meaning Value\n rOut # tuples in result 80,000\n COut result records/page 80\n bOut # data pages in result 1,000\n Notes:\n rOut ... one result tuple for each Enrolled tuple\n COut ... result tuples have only subj and name\n in analyses, ignore cost of writing result ... same in all methods\n Nested Loop Join\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "join example",
+  "answer": "Out = Student \u22c8 Enrolled relation statistics:\n Sym Meaning Value\n rOut # tuples in result 80,000\n COut result records/page 80\n bOut # data pages in result 1,000\n Notes:\n rOut ... one result tuple for each Enrolled tuple\n COut ... result tuples have only subj and name\n in analyses, ignore cost of writing result ... same in all methods\n Nested Loop Join\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some join example ?",
+  "answer": "Out = Student \u22c8 Enrolled relation statistics:\n Sym Meaning Value\n rOut # tuples in result 80,000\n COut result records/page 80\n bOut # data pages in result 1,000\n Notes:\n rOut ... one result tuple for each Enrolled tuple\n COut ... result tuples have only subj and name\n in analyses, ignore cost of writing result ... same in all methods\n Nested Loop Join\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some join example ?",
+  "answer": "Out = Student \u22c8 Enrolled relation statistics:\n Sym Meaning Value\n rOut # tuples in result 80,000\n COut result records/page 80\n bOut # data pages in result 1,000\n Notes:\n rOut ... one result tuple for each Enrolled tuple\n COut ... result tuples have only subj and name\n in analyses, ignore cost of writing result ... same in all methods\n Nested Loop Join\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some join example ?",
+  "answer": "Out = Student \u22c8 Enrolled relation statistics:\n Sym Meaning Value\n rOut # tuples in result 80,000\n COut result records/page 80\n bOut # data pages in result 1,000\n Notes:\n rOut ... one result tuple for each Enrolled tuple\n COut ... result tuples have only subj and name\n in analyses, ignore cost of writing result ... same in all methods\n Nested Loop Join\n",
+  "intent": "example",
+  "key_words": [
+   "join",
+   "example"
+  ]
+ },
+ {
+  "question": "May i have sort-merge join on example ?",
+  "answer": "Case 1: \u00a0 Join[id=stude](Student,Enrolled)\n relations are not sorted on id#\n memory buffers N=32; all runs are of length < 30\n \u00a0\n  Cost = sort(S) + sort(E) + bS + bE\n = 2bS(1+log31(bS/32)) + 2bE(1+log31(bE/32)) + bS + bE\n = 2\u00d71000\u00d7(1+2) + 2\u00d72000\u00d7(1+2) + 1000 + 2000\n = 6000 + 12000 + 1000 + 2000\n = 21,000\n",
+  "intent": "example",
+  "key_words": [
+   "sort-merge",
+   "join",
+   "on",
+   "example"
+  ]
+ },
+ {
+  "question": "List some sort-merge join on example ?",
+  "answer": "Case 1: \u00a0 Join[id=stude](Student,Enrolled)\n relations are not sorted on id#\n memory buffers N=32; all runs are of length < 30\n \u00a0\n  Cost = sort(S) + sort(E) + bS + bE\n = 2bS(1+log31(bS/32)) + 2bE(1+log31(bE/32)) + bS + bE\n = 2\u00d71000\u00d7(1+2) + 2\u00d72000\u00d7(1+2) + 1000 + 2000\n = 6000 + 12000 + 1000 + 2000\n = 21,000\n",
+  "intent": "example",
+  "key_words": [
+   "sort-merge",
+   "join",
+   "on",
+   "example"
+  ]
+ },
+ {
+  "question": "sort-merge join on example",
+  "answer": "Case 1: \u00a0 Join[id=stude](Student,Enrolled)\n relations are not sorted on id#\n memory buffers N=32; all runs are of length < 30\n \u00a0\n  Cost = sort(S) + sort(E) + bS + bE\n = 2bS(1+log31(bS/32)) + 2bE(1+log31(bE/32)) + bS + bE\n = 2\u00d71000\u00d7(1+2) + 2\u00d72000\u00d7(1+2) + 1000 + 2000\n = 6000 + 12000 + 1000 + 2000\n = 21,000\n",
+  "intent": "example",
+  "key_words": [
+   "sort-merge",
+   "join",
+   "on",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some sort-merge join on example ?",
+  "answer": "Case 1: \u00a0 Join[id=stude](Student,Enrolled)\n relations are not sorted on id#\n memory buffers N=32; all runs are of length < 30\n \u00a0\n  Cost = sort(S) + sort(E) + bS + bE\n = 2bS(1+log31(bS/32)) + 2bE(1+log31(bE/32)) + bS + bE\n = 2\u00d71000\u00d7(1+2) + 2\u00d72000\u00d7(1+2) + 1000 + 2000\n = 6000 + 12000 + 1000 + 2000\n = 21,000\n",
+  "intent": "example",
+  "key_words": [
+   "sort-merge",
+   "join",
+   "on",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some sort-merge join on example ?",
+  "answer": "Case 1: \u00a0 Join[id=stude](Student,Enrolled)\n relations are not sorted on id#\n memory buffers N=32; all runs are of length < 30\n \u00a0\n  Cost = sort(S) + sort(E) + bS + bE\n = 2bS(1+log31(bS/32)) + 2bE(1+log31(bE/32)) + bS + bE\n = 2\u00d71000\u00d7(1+2) + 2\u00d72000\u00d7(1+2) + 1000 + 2000\n = 6000 + 12000 + 1000 + 2000\n = 21,000\n",
+  "intent": "example",
+  "key_words": [
+   "sort-merge",
+   "join",
+   "on",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some sort-merge join on example ?",
+  "answer": "Case 1: \u00a0 Join[id=stude](Student,Enrolled)\n relations are not sorted on id#\n memory buffers N=32; all runs are of length < 30\n \u00a0\n  Cost = sort(S) + sort(E) + bS + bE\n = 2bS(1+log31(bS/32)) + 2bE(1+log31(bE/32)) + bS + bE\n = 2\u00d71000\u00d7(1+2) + 2\u00d72000\u00d7(1+2) + 1000 + 2000\n = 6000 + 12000 + 1000 + 2000\n = 21,000\n",
+  "intent": "example",
+  "key_words": [
+   "sort-merge",
+   "join",
+   "on",
+   "example"
+  ]
+ },
+ {
+  "question": "May i have sort-merge join on example ?",
+  "answer": "Case 2: \u00a0 Join[id=stude](Student,Enrolled)\n Student and Enrolled already sorted on id#\n memory buffers N=4 (S input, 2 \u00d7 E input, output)\n 5% of the \"runs\" in E span two pages\n there are no \"runs\" in S, since id# is a primary key\n For the above, no re-scans of E runs are ever needed\n Cost \u00a0=\u00a0 2,000 + 1,000 \u00a0=\u00a0 3,000 \u00a0 (regardless of which relation is outer)\n",
+  "intent": "example",
+  "key_words": [
+   "sort-merge",
+   "join",
+   "on",
+   "example"
+  ]
+ },
+ {
+  "question": "List some sort-merge join on example ?",
+  "answer": "Case 2: \u00a0 Join[id=stude](Student,Enrolled)\n Student and Enrolled already sorted on id#\n memory buffers N=4 (S input, 2 \u00d7 E input, output)\n 5% of the \"runs\" in E span two pages\n there are no \"runs\" in S, since id# is a primary key\n For the above, no re-scans of E runs are ever needed\n Cost \u00a0=\u00a0 2,000 + 1,000 \u00a0=\u00a0 3,000 \u00a0 (regardless of which relation is outer)\n",
+  "intent": "example",
+  "key_words": [
+   "sort-merge",
+   "join",
+   "on",
+   "example"
+  ]
+ },
+ {
+  "question": "sort-merge join on example",
+  "answer": "Case 2: \u00a0 Join[id=stude](Student,Enrolled)\n Student and Enrolled already sorted on id#\n memory buffers N=4 (S input, 2 \u00d7 E input, output)\n 5% of the \"runs\" in E span two pages\n there are no \"runs\" in S, since id# is a primary key\n For the above, no re-scans of E runs are ever needed\n Cost \u00a0=\u00a0 2,000 + 1,000 \u00a0=\u00a0 3,000 \u00a0 (regardless of which relation is outer)\n",
+  "intent": "example",
+  "key_words": [
+   "sort-merge",
+   "join",
+   "on",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some sort-merge join on example ?",
+  "answer": "Case 2: \u00a0 Join[id=stude](Student,Enrolled)\n Student and Enrolled already sorted on id#\n memory buffers N=4 (S input, 2 \u00d7 E input, output)\n 5% of the \"runs\" in E span two pages\n there are no \"runs\" in S, since id# is a primary key\n For the above, no re-scans of E runs are ever needed\n Cost \u00a0=\u00a0 2,000 + 1,000 \u00a0=\u00a0 3,000 \u00a0 (regardless of which relation is outer)\n",
+  "intent": "example",
+  "key_words": [
+   "sort-merge",
+   "join",
+   "on",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some sort-merge join on example ?",
+  "answer": "Case 2: \u00a0 Join[id=stude](Student,Enrolled)\n Student and Enrolled already sorted on id#\n memory buffers N=4 (S input, 2 \u00d7 E input, output)\n 5% of the \"runs\" in E span two pages\n there are no \"runs\" in S, since id# is a primary key\n For the above, no re-scans of E runs are ever needed\n Cost \u00a0=\u00a0 2,000 + 1,000 \u00a0=\u00a0 3,000 \u00a0 (regardless of which relation is outer)\n",
+  "intent": "example",
+  "key_words": [
+   "sort-merge",
+   "join",
+   "on",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some sort-merge join on example ?",
+  "answer": "Case 2: \u00a0 Join[id=stude](Student,Enrolled)\n Student and Enrolled already sorted on id#\n memory buffers N=4 (S input, 2 \u00d7 E input, output)\n 5% of the \"runs\" in E span two pages\n there are no \"runs\" in S, since id# is a primary key\n For the above, no re-scans of E runs are ever needed\n Cost \u00a0=\u00a0 2,000 + 1,000 \u00a0=\u00a0 3,000 \u00a0 (regardless of which relation is outer)\n",
+  "intent": "example",
+  "key_words": [
+   "sort-merge",
+   "join",
+   "on",
+   "example"
+  ]
+ }
+]

@@ -1,0 +1,407 @@
+[
+ {
+  "question": "Give me some exercises about alternative join plan ?",
+  "answer": "Consider the schema\n Students(id,name,....)   Enrol(student,course,mark)\n Staff(id,name,...)    Courses(id,code,term,lic,...)\n the following query on this schema\n select c.code, s.id, s.name\n from   Students s, Enrol e, Courses c, Staff f\n where  s.id=e.student and e.course=c.id\n        and c.lic=f.id and c.term='11s2'\n        and f.name='John Shepherd'\n Show some possible evaluation orders for this query.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "alternative",
+   "join",
+   "plan"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about alternative join plan ?",
+  "answer": "Consider the schema\n Students(id,name,....)   Enrol(student,course,mark)\n Staff(id,name,...)    Courses(id,code,term,lic,...)\n the following query on this schema\n select c.code, s.id, s.name\n from   Students s, Enrol e, Courses c, Staff f\n where  s.id=e.student and e.course=c.id\n        and c.lic=f.id and c.term='11s2'\n        and f.name='John Shepherd'\n Show some possible evaluation orders for this query.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "alternative",
+   "join",
+   "plan"
+  ]
+ },
+ {
+  "question": "exercises for alternative join plan",
+  "answer": "Consider the schema\n Students(id,name,....)   Enrol(student,course,mark)\n Staff(id,name,...)    Courses(id,code,term,lic,...)\n the following query on this schema\n select c.code, s.id, s.name\n from   Students s, Enrol e, Courses c, Staff f\n where  s.id=e.student and e.course=c.id\n        and c.lic=f.id and c.term='11s2'\n        and f.name='John Shepherd'\n Show some possible evaluation orders for this query.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "alternative",
+   "join",
+   "plan"
+  ]
+ },
+ {
+  "question": "week 8 exercises alternative join plan",
+  "answer": "Consider the schema\n Students(id,name,....)   Enrol(student,course,mark)\n Staff(id,name,...)    Courses(id,code,term,lic,...)\n the following query on this schema\n select c.code, s.id, s.name\n from   Students s, Enrol e, Courses c, Staff f\n where  s.id=e.student and e.course=c.id\n        and c.lic=f.id and c.term='11s2'\n        and f.name='John Shepherd'\n Show some possible evaluation orders for this query.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "alternative",
+   "join",
+   "plan"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 8",
+  "answer": "Consider the schema\n Students(id,name,....)   Enrol(student,course,mark)\n Staff(id,name,...)    Courses(id,code,term,lic,...)\n the following query on this schema\n select c.code, s.id, s.name\n from   Students s, Enrol e, Courses c, Staff f\n where  s.id=e.student and e.course=c.id\n        and c.lic=f.id and c.term='11s2'\n        and f.name='John Shepherd'\n Show some possible evaluation orders for this query.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "alternative",
+   "join",
+   "plan"
+  ]
+ },
+ {
+  "question": "Give me some exercises about selection size estimation ?",
+  "answer": "Assuming that\n all attributes have uniform distribution of data values\n attributes are independent of each other\n Give formulae for the number of expected results for\n 1. select * from R where not A=k\n 2. select * from R where A=k and B=j\n 3. select * from R where A in (k,l,m,n)\n where j, k, l, m, n are constants.\n Assume: V(A,R) = 10  and V(B,R)=100  and r=1000\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "selection",
+   "size",
+   "estimation"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about selection size estimation ?",
+  "answer": "Assuming that\n all attributes have uniform distribution of data values\n attributes are independent of each other\n Give formulae for the number of expected results for\n 1. select * from R where not A=k\n 2. select * from R where A=k and B=j\n 3. select * from R where A in (k,l,m,n)\n where j, k, l, m, n are constants.\n Assume: V(A,R) = 10  and V(B,R)=100  and r=1000\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "selection",
+   "size",
+   "estimation"
+  ]
+ },
+ {
+  "question": "exercises for selection size estimation",
+  "answer": "Assuming that\n all attributes have uniform distribution of data values\n attributes are independent of each other\n Give formulae for the number of expected results for\n 1. select * from R where not A=k\n 2. select * from R where A=k and B=j\n 3. select * from R where A in (k,l,m,n)\n where j, k, l, m, n are constants.\n Assume: V(A,R) = 10  and V(B,R)=100  and r=1000\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "selection",
+   "size",
+   "estimation"
+  ]
+ },
+ {
+  "question": "week 8 exercises selection size estimation",
+  "answer": "Assuming that\n all attributes have uniform distribution of data values\n attributes are independent of each other\n Give formulae for the number of expected results for\n 1. select * from R where not A=k\n 2. select * from R where A=k and B=j\n 3. select * from R where A in (k,l,m,n)\n where j, k, l, m, n are constants.\n Assume: V(A,R) = 10  and V(B,R)=100  and r=1000\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "selection",
+   "size",
+   "estimation"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 8",
+  "answer": "Assuming that\n all attributes have uniform distribution of data values\n attributes are independent of each other\n Give formulae for the number of expected results for\n 1. select * from R where not A=k\n 2. select * from R where A=k and B=j\n 3. select * from R where A in (k,l,m,n)\n where j, k, l, m, n are constants.\n Assume: V(A,R) = 10  and V(B,R)=100  and r=1000\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "selection",
+   "size",
+   "estimation"
+  ]
+ },
+ {
+  "question": "Give me some exercises about join size estimation ?",
+  "answer": " 1. select * from R, S where R.s = S.id where S.id is a primary key and R.s is a foreign key referencing S.id\n 2. select * from R, S where R.s <> S.id where S.id is a primary key and R.s is a foreign key referencing S.id\n 3. select * from R, S where R.x = S.y where R.x and S.y have no connection except that dom(R.x)=dom(S.y)\n Under what conditions will the first query have maximum size?\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "join",
+   "size",
+   "estimation"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about join size estimation ?",
+  "answer": " 1. select * from R, S where R.s = S.id where S.id is a primary key and R.s is a foreign key referencing S.id\n 2. select * from R, S where R.s <> S.id where S.id is a primary key and R.s is a foreign key referencing S.id\n 3. select * from R, S where R.x = S.y where R.x and S.y have no connection except that dom(R.x)=dom(S.y)\n Under what conditions will the first query have maximum size?\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "join",
+   "size",
+   "estimation"
+  ]
+ },
+ {
+  "question": "exercises for join size estimation",
+  "answer": " 1. select * from R, S where R.s = S.id where S.id is a primary key and R.s is a foreign key referencing S.id\n 2. select * from R, S where R.s <> S.id where S.id is a primary key and R.s is a foreign key referencing S.id\n 3. select * from R, S where R.x = S.y where R.x and S.y have no connection except that dom(R.x)=dom(S.y)\n Under what conditions will the first query have maximum size?\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "join",
+   "size",
+   "estimation"
+  ]
+ },
+ {
+  "question": "week 8 exercises join size estimation",
+  "answer": " 1. select * from R, S where R.s = S.id where S.id is a primary key and R.s is a foreign key referencing S.id\n 2. select * from R, S where R.s <> S.id where S.id is a primary key and R.s is a foreign key referencing S.id\n 3. select * from R, S where R.x = S.y where R.x and S.y have no connection except that dom(R.x)=dom(S.y)\n Under what conditions will the first query have maximum size?\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "join",
+   "size",
+   "estimation"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 8",
+  "answer": " 1. select * from R, S where R.s = S.id where S.id is a primary key and R.s is a foreign key referencing S.id\n 2. select * from R, S where R.s <> S.id where S.id is a primary key and R.s is a foreign key referencing S.id\n 3. select * from R, S where R.x = S.y where R.x and S.y have no connection except that dom(R.x)=dom(S.y)\n Under what conditions will the first query have maximum size?\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "join",
+   "size",
+   "estimation"
+  ]
+ },
+ {
+  "question": "Give me some exercises about explain example ?",
+  "answer": "Using the database described earlier ...\n Course_enrolments(student, course, mark, grade, ...)\n Courses(id, subject, semester, homepage)\n People(id, family, given, title, name, ..., birthday)\n Program_enrolments(id, student, semester, program, wam, ...)\n Students(id, stype)\n Subjects(id, code, name, longname, uoc, offeredby, ...)\n create view EnrolmentCounts as\n  select s.code, c.semester, count(e.student) as nstudes\n    from Courses c join Subjects s on c.subject=s.id\n         join Course_enrolments e on e.course = c.id\n   group by s.code, c.semester;\n predict how each of the following queries will be executed ...\n Check your prediction using the EXPLAIN ANALYZE command.\n 1. select max(birthday) from People\n 2. select max(id) from People\n 3. select family from People order by family\n 4. select distinct p.id, pname from People s, CourseEnrolments e where s.id=e.student and e.grade='FL'\n 5. select * from EnrolmentCounts where code='COMP9315';\n Examine the effect of adding ORDER BY and DISTINCT.\n Add indexes to improve the speed of slow queries.\n Transaction Processing\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "explain",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about explain example ?",
+  "answer": "Using the database described earlier ...\n Course_enrolments(student, course, mark, grade, ...)\n Courses(id, subject, semester, homepage)\n People(id, family, given, title, name, ..., birthday)\n Program_enrolments(id, student, semester, program, wam, ...)\n Students(id, stype)\n Subjects(id, code, name, longname, uoc, offeredby, ...)\n create view EnrolmentCounts as\n  select s.code, c.semester, count(e.student) as nstudes\n    from Courses c join Subjects s on c.subject=s.id\n         join Course_enrolments e on e.course = c.id\n   group by s.code, c.semester;\n predict how each of the following queries will be executed ...\n Check your prediction using the EXPLAIN ANALYZE command.\n 1. select max(birthday) from People\n 2. select max(id) from People\n 3. select family from People order by family\n 4. select distinct p.id, pname from People s, CourseEnrolments e where s.id=e.student and e.grade='FL'\n 5. select * from EnrolmentCounts where code='COMP9315';\n Examine the effect of adding ORDER BY and DISTINCT.\n Add indexes to improve the speed of slow queries.\n Transaction Processing\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "explain",
+   "example"
+  ]
+ },
+ {
+  "question": "exercises for explain example",
+  "answer": "Using the database described earlier ...\n Course_enrolments(student, course, mark, grade, ...)\n Courses(id, subject, semester, homepage)\n People(id, family, given, title, name, ..., birthday)\n Program_enrolments(id, student, semester, program, wam, ...)\n Students(id, stype)\n Subjects(id, code, name, longname, uoc, offeredby, ...)\n create view EnrolmentCounts as\n  select s.code, c.semester, count(e.student) as nstudes\n    from Courses c join Subjects s on c.subject=s.id\n         join Course_enrolments e on e.course = c.id\n   group by s.code, c.semester;\n predict how each of the following queries will be executed ...\n Check your prediction using the EXPLAIN ANALYZE command.\n 1. select max(birthday) from People\n 2. select max(id) from People\n 3. select family from People order by family\n 4. select distinct p.id, pname from People s, CourseEnrolments e where s.id=e.student and e.grade='FL'\n 5. select * from EnrolmentCounts where code='COMP9315';\n Examine the effect of adding ORDER BY and DISTINCT.\n Add indexes to improve the speed of slow queries.\n Transaction Processing\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "explain",
+   "example"
+  ]
+ },
+ {
+  "question": "week 8 exercises explain example",
+  "answer": "Using the database described earlier ...\n Course_enrolments(student, course, mark, grade, ...)\n Courses(id, subject, semester, homepage)\n People(id, family, given, title, name, ..., birthday)\n Program_enrolments(id, student, semester, program, wam, ...)\n Students(id, stype)\n Subjects(id, code, name, longname, uoc, offeredby, ...)\n create view EnrolmentCounts as\n  select s.code, c.semester, count(e.student) as nstudes\n    from Courses c join Subjects s on c.subject=s.id\n         join Course_enrolments e on e.course = c.id\n   group by s.code, c.semester;\n predict how each of the following queries will be executed ...\n Check your prediction using the EXPLAIN ANALYZE command.\n 1. select max(birthday) from People\n 2. select max(id) from People\n 3. select family from People order by family\n 4. select distinct p.id, pname from People s, CourseEnrolments e where s.id=e.student and e.grade='FL'\n 5. select * from EnrolmentCounts where code='COMP9315';\n Examine the effect of adding ORDER BY and DISTINCT.\n Add indexes to improve the speed of slow queries.\n Transaction Processing\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "explain",
+   "example"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 8",
+  "answer": "Using the database described earlier ...\n Course_enrolments(student, course, mark, grade, ...)\n Courses(id, subject, semester, homepage)\n People(id, family, given, title, name, ..., birthday)\n Program_enrolments(id, student, semester, program, wam, ...)\n Students(id, stype)\n Subjects(id, code, name, longname, uoc, offeredby, ...)\n create view EnrolmentCounts as\n  select s.code, c.semester, count(e.student) as nstudes\n    from Courses c join Subjects s on c.subject=s.id\n         join Course_enrolments e on e.course = c.id\n   group by s.code, c.semester;\n predict how each of the following queries will be executed ...\n Check your prediction using the EXPLAIN ANALYZE command.\n 1. select max(birthday) from People\n 2. select max(id) from People\n 3. select family from People order by family\n 4. select distinct p.id, pname from People s, CourseEnrolments e where s.id=e.student and e.grade='FL'\n 5. select * from EnrolmentCounts where code='COMP9315';\n Examine the effect of adding ORDER BY and DISTINCT.\n Add indexes to improve the speed of slow queries.\n Transaction Processing\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "explain",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some exercises about serializability checking ?",
+  "answer": "Is the following schedule view/conflict serializable?\n T1:        W(B)  W(A)\n T2:  R(B)                    W(A)\n T3:                    R(A)        W(A)\n Is the following schedule view/conflict serializable?\n T1:        W(B)  W(A)\n T2:  R(B)              W(A)\n T3:                          R(A)  W(A)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "serializability",
+   "checking"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about serializability checking ?",
+  "answer": "Is the following schedule view/conflict serializable?\n T1:        W(B)  W(A)\n T2:  R(B)                    W(A)\n T3:                    R(A)        W(A)\n Is the following schedule view/conflict serializable?\n T1:        W(B)  W(A)\n T2:  R(B)              W(A)\n T3:                          R(A)  W(A)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "serializability",
+   "checking"
+  ]
+ },
+ {
+  "question": "exercises for serializability checking",
+  "answer": "Is the following schedule view/conflict serializable?\n T1:        W(B)  W(A)\n T2:  R(B)                    W(A)\n T3:                    R(A)        W(A)\n Is the following schedule view/conflict serializable?\n T1:        W(B)  W(A)\n T2:  R(B)              W(A)\n T3:                          R(A)  W(A)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "serializability",
+   "checking"
+  ]
+ },
+ {
+  "question": "week 8 exercises serializability checking",
+  "answer": "Is the following schedule view/conflict serializable?\n T1:        W(B)  W(A)\n T2:  R(B)                    W(A)\n T3:                    R(A)        W(A)\n Is the following schedule view/conflict serializable?\n T1:        W(B)  W(A)\n T2:  R(B)              W(A)\n T3:                          R(A)  W(A)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "serializability",
+   "checking"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 8",
+  "answer": "Is the following schedule view/conflict serializable?\n T1:        W(B)  W(A)\n T2:  R(B)                    W(A)\n T3:                    R(A)        W(A)\n Is the following schedule view/conflict serializable?\n T1:        W(B)  W(A)\n T2:  R(B)              W(A)\n T3:                          R(A)  W(A)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "serializability",
+   "checking"
+  ]
+ },
+ {
+  "question": "Give me some exercises about deadlock handling ?",
+  "answer": "Consider the following schedule on four transactions:\n T1:  R(A)        W(C)                                W(D)\n T2:        R(B)                          W(C)\n T3:                    R(D)        W(B)\n T4:                          R(E)              W(A)\n Assume that: each R acquires a shared lock; each W uses an exclusive lock; two-phase locking is used.\n Show how the wait-for graph for the locks evolves.\n Show how any deadlocks might be resolved via this graph.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "deadlock",
+   "handling"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about deadlock handling ?",
+  "answer": "Consider the following schedule on four transactions:\n T1:  R(A)        W(C)                                W(D)\n T2:        R(B)                          W(C)\n T3:                    R(D)        W(B)\n T4:                          R(E)              W(A)\n Assume that: each R acquires a shared lock; each W uses an exclusive lock; two-phase locking is used.\n Show how the wait-for graph for the locks evolves.\n Show how any deadlocks might be resolved via this graph.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "deadlock",
+   "handling"
+  ]
+ },
+ {
+  "question": "exercises for deadlock handling",
+  "answer": "Consider the following schedule on four transactions:\n T1:  R(A)        W(C)                                W(D)\n T2:        R(B)                          W(C)\n T3:                    R(D)        W(B)\n T4:                          R(E)              W(A)\n Assume that: each R acquires a shared lock; each W uses an exclusive lock; two-phase locking is used.\n Show how the wait-for graph for the locks evolves.\n Show how any deadlocks might be resolved via this graph.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "deadlock",
+   "handling"
+  ]
+ },
+ {
+  "question": "week 8 exercises deadlock handling",
+  "answer": "Consider the following schedule on four transactions:\n T1:  R(A)        W(C)                                W(D)\n T2:        R(B)                          W(C)\n T3:                    R(D)        W(B)\n T4:                          R(E)              W(A)\n Assume that: each R acquires a shared lock; each W uses an exclusive lock; two-phase locking is used.\n Show how the wait-for graph for the locks evolves.\n Show how any deadlocks might be resolved via this graph.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "deadlock",
+   "handling"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 8",
+  "answer": "Consider the following schedule on four transactions:\n T1:  R(A)        W(C)                                W(D)\n T2:        R(B)                          W(C)\n T3:                    R(D)        W(B)\n T4:                          R(E)              W(A)\n Assume that: each R acquires a shared lock; each W uses an exclusive lock; two-phase locking is used.\n Show how the wait-for graph for the locks evolves.\n Show how any deadlocks might be resolved via this graph.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "deadlock",
+   "handling"
+  ]
+ },
+ {
+  "question": "Give me some exercises about locking in postgresql ?",
+  "answer": " create or replace function\n     allocSeat(paxID int, fltID int, seat text)\n     returns boolean\n as $$\n declare\n     pid int;\n begin\n     select paxID into pid from SeatingAlloc\n     where  flightID = fltID and seatNum = seat;\n     if (pid is not null) then\n         return false;  -- someone else already has seat\n     else\n         update SeatingAlloc set pax = paxID\n         where  flightID = fltID and seatNum = seat;\n         commit;\n         return true;\n     end if;\n end;\n $$ langauge plpgsql;\n Produced: 13 Sep 2018\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "7",
+   "locking",
+   "in",
+   "postgresql"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about locking in postgresql ?",
+  "answer": " create or replace function\n     allocSeat(paxID int, fltID int, seat text)\n     returns boolean\n as $$\n declare\n     pid int;\n begin\n     select paxID into pid from SeatingAlloc\n     where  flightID = fltID and seatNum = seat;\n     if (pid is not null) then\n         return false;  -- someone else already has seat\n     else\n         update SeatingAlloc set pax = paxID\n         where  flightID = fltID and seatNum = seat;\n         commit;\n         return true;\n     end if;\n end;\n $$ langauge plpgsql;\n Produced: 13 Sep 2018\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "7",
+   "locking",
+   "in",
+   "postgresql"
+  ]
+ },
+ {
+  "question": "exercises for locking in postgresql",
+  "answer": " create or replace function\n     allocSeat(paxID int, fltID int, seat text)\n     returns boolean\n as $$\n declare\n     pid int;\n begin\n     select paxID into pid from SeatingAlloc\n     where  flightID = fltID and seatNum = seat;\n     if (pid is not null) then\n         return false;  -- someone else already has seat\n     else\n         update SeatingAlloc set pax = paxID\n         where  flightID = fltID and seatNum = seat;\n         commit;\n         return true;\n     end if;\n end;\n $$ langauge plpgsql;\n Produced: 13 Sep 2018\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "7",
+   "locking",
+   "in",
+   "postgresql"
+  ]
+ },
+ {
+  "question": "week 8 exercises locking in postgresql",
+  "answer": " create or replace function\n     allocSeat(paxID int, fltID int, seat text)\n     returns boolean\n as $$\n declare\n     pid int;\n begin\n     select paxID into pid from SeatingAlloc\n     where  flightID = fltID and seatNum = seat;\n     if (pid is not null) then\n         return false;  -- someone else already has seat\n     else\n         update SeatingAlloc set pax = paxID\n         where  flightID = fltID and seatNum = seat;\n         commit;\n         return true;\n     end if;\n end;\n $$ langauge plpgsql;\n Produced: 13 Sep 2018\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "7",
+   "locking",
+   "in",
+   "postgresql"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 8",
+  "answer": " create or replace function\n     allocSeat(paxID int, fltID int, seat text)\n     returns boolean\n as $$\n declare\n     pid int;\n begin\n     select paxID into pid from SeatingAlloc\n     where  flightID = fltID and seatNum = seat;\n     if (pid is not null) then\n         return false;  -- someone else already has seat\n     else\n         update SeatingAlloc set pax = paxID\n         where  flightID = fltID and seatNum = seat;\n         commit;\n         return true;\n     end if;\n end;\n $$ langauge plpgsql;\n Produced: 13 Sep 2018\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "7",
+   "locking",
+   "in",
+   "postgresql"
+  ]
+ }
+]

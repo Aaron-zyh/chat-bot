@@ -1,0 +1,887 @@
+[
+ {
+  "question": "Give me some exercises about simc query cost ?",
+  "answer": "Consider a SIMC-indexed database with the following properties\n all pages are B = 8192 bytes\n tuple descriptors have m = 64 bits ( = 8 bytes)\n total records r = 102,400, \u00a0 records/page c = 100\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "simc",
+   "query",
+   "cost"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about simc query cost ?",
+  "answer": "Consider a SIMC-indexed database with the following properties\n all pages are B = 8192 bytes\n tuple descriptors have m = 64 bits ( = 8 bytes)\n total records r = 102,400, \u00a0 records/page c = 100\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "simc",
+   "query",
+   "cost"
+  ]
+ },
+ {
+  "question": "exercises for simc query cost",
+  "answer": "Consider a SIMC-indexed database with the following properties\n all pages are B = 8192 bytes\n tuple descriptors have m = 64 bits ( = 8 bytes)\n total records r = 102,400, \u00a0 records/page c = 100\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "simc",
+   "query",
+   "cost"
+  ]
+ },
+ {
+  "question": "week 7 exercises simc query cost",
+  "answer": "Consider a SIMC-indexed database with the following properties\n all pages are B = 8192 bytes\n tuple descriptors have m = 64 bits ( = 8 bytes)\n total records r = 102,400, \u00a0 records/page c = 100\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "simc",
+   "query",
+   "cost"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 7",
+  "answer": "Consider a SIMC-indexed database with the following properties\n all pages are B = 8192 bytes\n tuple descriptors have m = 64 bits ( = 8 bytes)\n total records r = 102,400, \u00a0 records/page c = 100\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "simc",
+   "query",
+   "cost"
+  ]
+ },
+ {
+  "question": "Give me some exercises about page-level simc query cost ?",
+  "answer": "Consider a SIMC-indexed database with the following properties\n all pages are B = 8192 bytes\n page descriptors have m = 4096 bits ( = 512 bytes)\n total records r = 102,400, \u00a0 records/page c = 100\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "page-level",
+   "simc",
+   "query",
+   "cost"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about page-level simc query cost ?",
+  "answer": "Consider a SIMC-indexed database with the following properties\n all pages are B = 8192 bytes\n page descriptors have m = 4096 bits ( = 512 bytes)\n total records r = 102,400, \u00a0 records/page c = 100\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "page-level",
+   "simc",
+   "query",
+   "cost"
+  ]
+ },
+ {
+  "question": "exercises for page-level simc query cost",
+  "answer": "Consider a SIMC-indexed database with the following properties\n all pages are B = 8192 bytes\n page descriptors have m = 4096 bits ( = 512 bytes)\n total records r = 102,400, \u00a0 records/page c = 100\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "page-level",
+   "simc",
+   "query",
+   "cost"
+  ]
+ },
+ {
+  "question": "week 7 exercises page-level simc query cost",
+  "answer": "Consider a SIMC-indexed database with the following properties\n all pages are B = 8192 bytes\n page descriptors have m = 4096 bits ( = 512 bytes)\n total records r = 102,400, \u00a0 records/page c = 100\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "page-level",
+   "simc",
+   "query",
+   "cost"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 7",
+  "answer": "Consider a SIMC-indexed database with the following properties\n all pages are B = 8192 bytes\n page descriptors have m = 4096 bits ( = 512 bytes)\n total records r = 102,400, \u00a0 records/page c = 100\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "page-level",
+   "simc",
+   "query",
+   "cost"
+  ]
+ },
+ {
+  "question": "Give me some exercises about bit-sliced simc query cost ?",
+  "answer": "Consider a SIMC-indexed database with the following properties\n all pages are B = 8192 bytes\n r = 102,400, \u00a0 c = 100, \u00a0 b = 1024\n page descriptors have m = 4096 bits ( = 512 bytes)\n bit-slices have b = 1024 bits ( = 128 bytes)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "bit-sliced",
+   "simc",
+   "query",
+   "cost"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about bit-sliced simc query cost ?",
+  "answer": "Consider a SIMC-indexed database with the following properties\n all pages are B = 8192 bytes\n r = 102,400, \u00a0 c = 100, \u00a0 b = 1024\n page descriptors have m = 4096 bits ( = 512 bytes)\n bit-slices have b = 1024 bits ( = 128 bytes)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "bit-sliced",
+   "simc",
+   "query",
+   "cost"
+  ]
+ },
+ {
+  "question": "exercises for bit-sliced simc query cost",
+  "answer": "Consider a SIMC-indexed database with the following properties\n all pages are B = 8192 bytes\n r = 102,400, \u00a0 c = 100, \u00a0 b = 1024\n page descriptors have m = 4096 bits ( = 512 bytes)\n bit-slices have b = 1024 bits ( = 128 bytes)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "bit-sliced",
+   "simc",
+   "query",
+   "cost"
+  ]
+ },
+ {
+  "question": "week 7 exercises bit-sliced simc query cost",
+  "answer": "Consider a SIMC-indexed database with the following properties\n all pages are B = 8192 bytes\n r = 102,400, \u00a0 c = 100, \u00a0 b = 1024\n page descriptors have m = 4096 bits ( = 512 bytes)\n bit-slices have b = 1024 bits ( = 128 bytes)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "bit-sliced",
+   "simc",
+   "query",
+   "cost"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 7",
+  "answer": "Consider a SIMC-indexed database with the following properties\n all pages are B = 8192 bytes\n r = 102,400, \u00a0 c = 100, \u00a0 b = 1024\n page descriptors have m = 4096 bits ( = 512 bytes)\n bit-slices have b = 1024 bits ( = 128 bytes)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "bit-sliced",
+   "simc",
+   "query",
+   "cost"
+  ]
+ },
+ {
+  "question": "Give me some exercises about nested loop join cost ?",
+  "answer": "Compute the cost (# pages fetched) of (S \u22c8 E)\n Sym Meaning Value\n rS # student records 20,000\n rE # enrollment records 80,000\n cS Student records/page 20\n cE Enrolled records/page 40\n bS # data pages in Student 1,000\n bE # data pages in Enrolled 2,000\n for N = 22, 202, 2002 and different inner/outer combinations\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "nested",
+   "loop",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about nested loop join cost ?",
+  "answer": "Compute the cost (# pages fetched) of (S \u22c8 E)\n Sym Meaning Value\n rS # student records 20,000\n rE # enrollment records 80,000\n cS Student records/page 20\n cE Enrolled records/page 40\n bS # data pages in Student 1,000\n bE # data pages in Enrolled 2,000\n for N = 22, 202, 2002 and different inner/outer combinations\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "nested",
+   "loop",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "exercises for nested loop join cost",
+  "answer": "Compute the cost (# pages fetched) of (S \u22c8 E)\n Sym Meaning Value\n rS # student records 20,000\n rE # enrollment records 80,000\n cS Student records/page 20\n cE Enrolled records/page 40\n bS # data pages in Student 1,000\n bE # data pages in Enrolled 2,000\n for N = 22, 202, 2002 and different inner/outer combinations\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "nested",
+   "loop",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "week 7 exercises nested loop join cost",
+  "answer": "Compute the cost (# pages fetched) of (S \u22c8 E)\n Sym Meaning Value\n rS # student records 20,000\n rE # enrollment records 80,000\n cS Student records/page 20\n cE Enrolled records/page 40\n bS # data pages in Student 1,000\n bE # data pages in Enrolled 2,000\n for N = 22, 202, 2002 and different inner/outer combinations\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "nested",
+   "loop",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 7",
+  "answer": "Compute the cost (# pages fetched) of (S \u22c8 E)\n Sym Meaning Value\n rS # student records 20,000\n rE # enrollment records 80,000\n cS Student records/page 20\n cE Enrolled records/page 40\n bS # data pages in Student 1,000\n bE # data pages in Enrolled 2,000\n for N = 22, 202, 2002 and different inner/outer combinations\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "nested",
+   "loop",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "Give me some exercises about nested loop join cost (cont) ?",
+  "answer": "If the query in the above example was:\n select j.code, j.title, s.name from   Student s        join Enrolled e on (s.id=e.student)        join Subject j on (e.subj=j.code) how would this change the previous analysis?\n What join combinations are there?\n Assume 2000 subjects, with cJ = 10\n How large would the intermediate tuples be? What assumptions?\n Compute the cost (# pages fetched, # pages written) for N = 22\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "nested",
+   "loop",
+   "join",
+   "cost",
+   "(cont)"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about nested loop join cost (cont) ?",
+  "answer": "If the query in the above example was:\n select j.code, j.title, s.name from   Student s        join Enrolled e on (s.id=e.student)        join Subject j on (e.subj=j.code) how would this change the previous analysis?\n What join combinations are there?\n Assume 2000 subjects, with cJ = 10\n How large would the intermediate tuples be? What assumptions?\n Compute the cost (# pages fetched, # pages written) for N = 22\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "nested",
+   "loop",
+   "join",
+   "cost",
+   "(cont)"
+  ]
+ },
+ {
+  "question": "exercises for nested loop join cost (cont)",
+  "answer": "If the query in the above example was:\n select j.code, j.title, s.name from   Student s        join Enrolled e on (s.id=e.student)        join Subject j on (e.subj=j.code) how would this change the previous analysis?\n What join combinations are there?\n Assume 2000 subjects, with cJ = 10\n How large would the intermediate tuples be? What assumptions?\n Compute the cost (# pages fetched, # pages written) for N = 22\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "nested",
+   "loop",
+   "join",
+   "cost",
+   "(cont)"
+  ]
+ },
+ {
+  "question": "week 7 exercises nested loop join cost (cont)",
+  "answer": "If the query in the above example was:\n select j.code, j.title, s.name from   Student s        join Enrolled e on (s.id=e.student)        join Subject j on (e.subj=j.code) how would this change the previous analysis?\n What join combinations are there?\n Assume 2000 subjects, with cJ = 10\n How large would the intermediate tuples be? What assumptions?\n Compute the cost (# pages fetched, # pages written) for N = 22\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "nested",
+   "loop",
+   "join",
+   "cost",
+   "(cont)"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 7",
+  "answer": "If the query in the above example was:\n select j.code, j.title, s.name from   Student s        join Enrolled e on (s.id=e.student)        join Subject j on (e.subj=j.code) how would this change the previous analysis?\n What join combinations are there?\n Assume 2000 subjects, with cJ = 10\n How large would the intermediate tuples be? What assumptions?\n Compute the cost (# pages fetched, # pages written) for N = 22\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "nested",
+   "loop",
+   "join",
+   "cost",
+   "(cont)"
+  ]
+ },
+ {
+  "question": "Give me some exercises about index nested loop join cost ?",
+  "answer": "Consider executing Join[i=j](S,T) with the following parameters:\n rS = 1000,\u00a0 bS = 50,\u00a0 rT = 3000,\u00a0 bT = 600\n S.i is primary key, and T has index on T.j\n T is sorted on T.j, each S tuple joins with 2 T tuples\n DBMS has N = 12 buffers available for the join\n Calculate the costs for evaluating the above join\n using block nested loop join\n using index nested loop join\n Costr = # pages read \u00a0 and \u00a0 Costj = # join-condition checks\n Sort-Merge Join\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "index",
+   "nested",
+   "loop",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about index nested loop join cost ?",
+  "answer": "Consider executing Join[i=j](S,T) with the following parameters:\n rS = 1000,\u00a0 bS = 50,\u00a0 rT = 3000,\u00a0 bT = 600\n S.i is primary key, and T has index on T.j\n T is sorted on T.j, each S tuple joins with 2 T tuples\n DBMS has N = 12 buffers available for the join\n Calculate the costs for evaluating the above join\n using block nested loop join\n using index nested loop join\n Costr = # pages read \u00a0 and \u00a0 Costj = # join-condition checks\n Sort-Merge Join\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "index",
+   "nested",
+   "loop",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "exercises for index nested loop join cost",
+  "answer": "Consider executing Join[i=j](S,T) with the following parameters:\n rS = 1000,\u00a0 bS = 50,\u00a0 rT = 3000,\u00a0 bT = 600\n S.i is primary key, and T has index on T.j\n T is sorted on T.j, each S tuple joins with 2 T tuples\n DBMS has N = 12 buffers available for the join\n Calculate the costs for evaluating the above join\n using block nested loop join\n using index nested loop join\n Costr = # pages read \u00a0 and \u00a0 Costj = # join-condition checks\n Sort-Merge Join\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "index",
+   "nested",
+   "loop",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "week 7 exercises index nested loop join cost",
+  "answer": "Consider executing Join[i=j](S,T) with the following parameters:\n rS = 1000,\u00a0 bS = 50,\u00a0 rT = 3000,\u00a0 bT = 600\n S.i is primary key, and T has index on T.j\n T is sorted on T.j, each S tuple joins with 2 T tuples\n DBMS has N = 12 buffers available for the join\n Calculate the costs for evaluating the above join\n using block nested loop join\n using index nested loop join\n Costr = # pages read \u00a0 and \u00a0 Costj = # join-condition checks\n Sort-Merge Join\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "index",
+   "nested",
+   "loop",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 7",
+  "answer": "Consider executing Join[i=j](S,T) with the following parameters:\n rS = 1000,\u00a0 bS = 50,\u00a0 rT = 3000,\u00a0 bT = 600\n S.i is primary key, and T has index on T.j\n T is sorted on T.j, each S tuple joins with 2 T tuples\n DBMS has N = 12 buffers available for the join\n Calculate the costs for evaluating the above join\n using block nested loop join\n using index nested loop join\n Costr = # pages read \u00a0 and \u00a0 Costj = # join-condition checks\n Sort-Merge Join\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "index",
+   "nested",
+   "loop",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "Give me some exercises about sort-merge join cost ?",
+  "answer": "Consider executing Join[i=j](S,T) with the following parameters:\n rS = 1000,\u00a0 bS = 50,\u00a0 rT = 3000,\u00a0 bT = 150\n S.i is primary key, and T has index on T.j\n T is sorted on T.j, each S tuple joins with 2 T tuples\n DBMS has N = 42 buffers available for the join\n Calculate the cost for evaluating the above join\n using sort-merge join\n compute #pages read/written\n compute #join-condition checks performed\n Hash Join\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "7",
+   "sort-merge",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about sort-merge join cost ?",
+  "answer": "Consider executing Join[i=j](S,T) with the following parameters:\n rS = 1000,\u00a0 bS = 50,\u00a0 rT = 3000,\u00a0 bT = 150\n S.i is primary key, and T has index on T.j\n T is sorted on T.j, each S tuple joins with 2 T tuples\n DBMS has N = 42 buffers available for the join\n Calculate the cost for evaluating the above join\n using sort-merge join\n compute #pages read/written\n compute #join-condition checks performed\n Hash Join\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "7",
+   "sort-merge",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "exercises for sort-merge join cost",
+  "answer": "Consider executing Join[i=j](S,T) with the following parameters:\n rS = 1000,\u00a0 bS = 50,\u00a0 rT = 3000,\u00a0 bT = 150\n S.i is primary key, and T has index on T.j\n T is sorted on T.j, each S tuple joins with 2 T tuples\n DBMS has N = 42 buffers available for the join\n Calculate the cost for evaluating the above join\n using sort-merge join\n compute #pages read/written\n compute #join-condition checks performed\n Hash Join\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "7",
+   "sort-merge",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "week 7 exercises sort-merge join cost",
+  "answer": "Consider executing Join[i=j](S,T) with the following parameters:\n rS = 1000,\u00a0 bS = 50,\u00a0 rT = 3000,\u00a0 bT = 150\n S.i is primary key, and T has index on T.j\n T is sorted on T.j, each S tuple joins with 2 T tuples\n DBMS has N = 42 buffers available for the join\n Calculate the cost for evaluating the above join\n using sort-merge join\n compute #pages read/written\n compute #join-condition checks performed\n Hash Join\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "7",
+   "sort-merge",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 7",
+  "answer": "Consider executing Join[i=j](S,T) with the following parameters:\n rS = 1000,\u00a0 bS = 50,\u00a0 rT = 3000,\u00a0 bT = 150\n S.i is primary key, and T has index on T.j\n T is sorted on T.j, each S tuple joins with 2 T tuples\n DBMS has N = 42 buffers available for the join\n Calculate the cost for evaluating the above join\n using sort-merge join\n compute #pages read/written\n compute #join-condition checks performed\n Hash Join\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "7",
+   "sort-merge",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "Give me some exercises about simple hash join cost ?",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 42 buffers available for the join\n data + hash have uniform distribution\n Calculate the cost for evaluating the above join\n using simple hash join\n compute #pages read/written\n compute #join-condition checks performed\n assume that hash table has L=0.75 for each partition\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "8",
+   "simple",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about simple hash join cost ?",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 42 buffers available for the join\n data + hash have uniform distribution\n Calculate the cost for evaluating the above join\n using simple hash join\n compute #pages read/written\n compute #join-condition checks performed\n assume that hash table has L=0.75 for each partition\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "8",
+   "simple",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "exercises for simple hash join cost",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 42 buffers available for the join\n data + hash have uniform distribution\n Calculate the cost for evaluating the above join\n using simple hash join\n compute #pages read/written\n compute #join-condition checks performed\n assume that hash table has L=0.75 for each partition\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "8",
+   "simple",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "week 7 exercises simple hash join cost",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 42 buffers available for the join\n data + hash have uniform distribution\n Calculate the cost for evaluating the above join\n using simple hash join\n compute #pages read/written\n compute #join-condition checks performed\n assume that hash table has L=0.75 for each partition\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "8",
+   "simple",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 7",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 42 buffers available for the join\n data + hash have uniform distribution\n Calculate the cost for evaluating the above join\n using simple hash join\n compute #pages read/written\n compute #join-condition checks performed\n assume that hash table has L=0.75 for each partition\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "8",
+   "simple",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "Give me some exercises about grace hash join cost ?",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 43 buffers available for the join\n data + hash have reasonably uniform distribution\n Calculate the cost for evaluating the above join\n using Grace hash join\n compute #pages read/written\n compute #join-condition checks performed\n assume that no R partition is larger than 40 pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "9",
+   "grace",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about grace hash join cost ?",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 43 buffers available for the join\n data + hash have reasonably uniform distribution\n Calculate the cost for evaluating the above join\n using Grace hash join\n compute #pages read/written\n compute #join-condition checks performed\n assume that no R partition is larger than 40 pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "9",
+   "grace",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "exercises for grace hash join cost",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 43 buffers available for the join\n data + hash have reasonably uniform distribution\n Calculate the cost for evaluating the above join\n using Grace hash join\n compute #pages read/written\n compute #join-condition checks performed\n assume that no R partition is larger than 40 pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "9",
+   "grace",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "week 7 exercises grace hash join cost",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 43 buffers available for the join\n data + hash have reasonably uniform distribution\n Calculate the cost for evaluating the above join\n using Grace hash join\n compute #pages read/written\n compute #join-condition checks performed\n assume that no R partition is larger than 40 pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "9",
+   "grace",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 7",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 43 buffers available for the join\n data + hash have reasonably uniform distribution\n Calculate the cost for evaluating the above join\n using Grace hash join\n compute #pages read/written\n compute #join-condition checks performed\n assume that no R partition is larger than 40 pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "9",
+   "grace",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "Give me some exercises about grace hash join cost ?",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 42 buffers available for the join\n data + hash have reasonably uniform distribution\n Calculate the cost for evaluating the above join\n using Grace hash join\n compute #pages read/written\n compute #join-condition checks performed\n assume that one R partition has 50 pages, others < 40 pages\n assume that the corresponding S partition has 30 pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "10",
+   "grace",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about grace hash join cost ?",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 42 buffers available for the join\n data + hash have reasonably uniform distribution\n Calculate the cost for evaluating the above join\n using Grace hash join\n compute #pages read/written\n compute #join-condition checks performed\n assume that one R partition has 50 pages, others < 40 pages\n assume that the corresponding S partition has 30 pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "10",
+   "grace",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "exercises for grace hash join cost",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 42 buffers available for the join\n data + hash have reasonably uniform distribution\n Calculate the cost for evaluating the above join\n using Grace hash join\n compute #pages read/written\n compute #join-condition checks performed\n assume that one R partition has 50 pages, others < 40 pages\n assume that the corresponding S partition has 30 pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "10",
+   "grace",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "week 7 exercises grace hash join cost",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 42 buffers available for the join\n data + hash have reasonably uniform distribution\n Calculate the cost for evaluating the above join\n using Grace hash join\n compute #pages read/written\n compute #join-condition checks performed\n assume that one R partition has 50 pages, others < 40 pages\n assume that the corresponding S partition has 30 pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "10",
+   "grace",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 7",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 42 buffers available for the join\n data + hash have reasonably uniform distribution\n Calculate the cost for evaluating the above join\n using Grace hash join\n compute #pages read/written\n compute #join-condition checks performed\n assume that one R partition has 50 pages, others < 40 pages\n assume that the corresponding S partition has 30 pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "10",
+   "grace",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "Give me some exercises about hybrid hash join cost ?",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 42 buffers available for the join\n data + hash have reasonably uniform distribution\n Calculate the cost for evaluating the above join\n using hybrid hash join with m=1, p=40\n compute #pages read/written\n compute #join-condition checks performed\n assume that no R partition is larger than 40 pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "11",
+   "hybrid",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about hybrid hash join cost ?",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 42 buffers available for the join\n data + hash have reasonably uniform distribution\n Calculate the cost for evaluating the above join\n using hybrid hash join with m=1, p=40\n compute #pages read/written\n compute #join-condition checks performed\n assume that no R partition is larger than 40 pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "11",
+   "hybrid",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "exercises for hybrid hash join cost",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 42 buffers available for the join\n data + hash have reasonably uniform distribution\n Calculate the cost for evaluating the above join\n using hybrid hash join with m=1, p=40\n compute #pages read/written\n compute #join-condition checks performed\n assume that no R partition is larger than 40 pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "11",
+   "hybrid",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "week 7 exercises hybrid hash join cost",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 42 buffers available for the join\n data + hash have reasonably uniform distribution\n Calculate the cost for evaluating the above join\n using hybrid hash join with m=1, p=40\n compute #pages read/written\n compute #join-condition checks performed\n assume that no R partition is larger than 40 pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "11",
+   "hybrid",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 7",
+  "answer": "Consider executing Join[i=j](R,S) with the following parameters:\n rR = 1000,\u00a0 bR = 50,\u00a0 rS = 3000,\u00a0 bS = 150, \u00a0cRes = 30\n R.i\u00a0 is primary key, each R tuple joins with 2 S tuples\n DBMS has N = 42 buffers available for the join\n data + hash have reasonably uniform distribution\n Calculate the cost for evaluating the above join\n using hybrid hash join with m=1, p=40\n compute #pages read/written\n compute #join-condition checks performed\n assume that no R partition is larger than 40 pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "11",
+   "hybrid",
+   "hash",
+   "join",
+   "cost"
+  ]
+ },
+ {
+  "question": "Give me some exercises about outer join? ?",
+  "answer": "Above discussion was all in terms of theta inner-join.\n How would the algorithms above adapt to outer join?\n Consider the following ...\n select * from   R left outer join S on (R.i = S.j)  select * from   R right outer join S on (R.i = S.j)  select * from   R full outer join S on (R.i = S.j) Query Evaluation\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "12",
+   "outer",
+   "join?"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about outer join? ?",
+  "answer": "Above discussion was all in terms of theta inner-join.\n How would the algorithms above adapt to outer join?\n Consider the following ...\n select * from   R left outer join S on (R.i = S.j)  select * from   R right outer join S on (R.i = S.j)  select * from   R full outer join S on (R.i = S.j) Query Evaluation\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "12",
+   "outer",
+   "join?"
+  ]
+ },
+ {
+  "question": "exercises for outer join?",
+  "answer": "Above discussion was all in terms of theta inner-join.\n How would the algorithms above adapt to outer join?\n Consider the following ...\n select * from   R left outer join S on (R.i = S.j)  select * from   R right outer join S on (R.i = S.j)  select * from   R full outer join S on (R.i = S.j) Query Evaluation\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "12",
+   "outer",
+   "join?"
+  ]
+ },
+ {
+  "question": "week 7 exercises outer join?",
+  "answer": "Above discussion was all in terms of theta inner-join.\n How would the algorithms above adapt to outer join?\n Consider the following ...\n select * from   R left outer join S on (R.i = S.j)  select * from   R right outer join S on (R.i = S.j)  select * from   R full outer join S on (R.i = S.j) Query Evaluation\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "12",
+   "outer",
+   "join?"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 7",
+  "answer": "Above discussion was all in terms of theta inner-join.\n How would the algorithms above adapt to outer join?\n Consider the following ...\n select * from   R left outer join S on (R.i = S.j)  select * from   R right outer join S on (R.i = S.j)  select * from   R full outer join S on (R.i = S.j) Query Evaluation\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "12",
+   "outer",
+   "join?"
+  ]
+ },
+ {
+  "question": "Give me some exercises about mapping or expression ?",
+  "answer": "Possible mappings for WHERE expressions with AND are\n SELECT \u00a0 ... \u00a0 FROM \u00a0 ... R ... \u00a0 WHERE \u00a0... X AND Y ...\n \u21d2 \u00a0\u00a0 Select[X & Y](R) \u00a0\u00a0 or \u00a0\u00a0 Select[X](Select[Y](R))\n What are possible mappings for\n SELECT \u00a0 ... \u00a0 FROM \u00a0 ... R ... \u00a0 WHERE \u00a0... X OR Y ...\n Use these to translate:\n select * from R where (a=1 or a=3) and b < c",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "13",
+   "mapping",
+   "or",
+   "expression"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about mapping or expression ?",
+  "answer": "Possible mappings for WHERE expressions with AND are\n SELECT \u00a0 ... \u00a0 FROM \u00a0 ... R ... \u00a0 WHERE \u00a0... X AND Y ...\n \u21d2 \u00a0\u00a0 Select[X & Y](R) \u00a0\u00a0 or \u00a0\u00a0 Select[X](Select[Y](R))\n What are possible mappings for\n SELECT \u00a0 ... \u00a0 FROM \u00a0 ... R ... \u00a0 WHERE \u00a0... X OR Y ...\n Use these to translate:\n select * from R where (a=1 or a=3) and b < c",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "13",
+   "mapping",
+   "or",
+   "expression"
+  ]
+ },
+ {
+  "question": "exercises for mapping or expression",
+  "answer": "Possible mappings for WHERE expressions with AND are\n SELECT \u00a0 ... \u00a0 FROM \u00a0 ... R ... \u00a0 WHERE \u00a0... X AND Y ...\n \u21d2 \u00a0\u00a0 Select[X & Y](R) \u00a0\u00a0 or \u00a0\u00a0 Select[X](Select[Y](R))\n What are possible mappings for\n SELECT \u00a0 ... \u00a0 FROM \u00a0 ... R ... \u00a0 WHERE \u00a0... X OR Y ...\n Use these to translate:\n select * from R where (a=1 or a=3) and b < c",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "13",
+   "mapping",
+   "or",
+   "expression"
+  ]
+ },
+ {
+  "question": "week 7 exercises mapping or expression",
+  "answer": "Possible mappings for WHERE expressions with AND are\n SELECT \u00a0 ... \u00a0 FROM \u00a0 ... R ... \u00a0 WHERE \u00a0... X AND Y ...\n \u21d2 \u00a0\u00a0 Select[X & Y](R) \u00a0\u00a0 or \u00a0\u00a0 Select[X](Select[Y](R))\n What are possible mappings for\n SELECT \u00a0 ... \u00a0 FROM \u00a0 ... R ... \u00a0 WHERE \u00a0... X OR Y ...\n Use these to translate:\n select * from R where (a=1 or a=3) and b < c",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "13",
+   "mapping",
+   "or",
+   "expression"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 7",
+  "answer": "Possible mappings for WHERE expressions with AND are\n SELECT \u00a0 ... \u00a0 FROM \u00a0 ... R ... \u00a0 WHERE \u00a0... X AND Y ...\n \u21d2 \u00a0\u00a0 Select[X & Y](R) \u00a0\u00a0 or \u00a0\u00a0 Select[X](Select[Y](R))\n What are possible mappings for\n SELECT \u00a0 ... \u00a0 FROM \u00a0 ... R ... \u00a0 WHERE \u00a0... X OR Y ...\n Use these to translate:\n select * from R where (a=1 or a=3) and b < c",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "13",
+   "mapping",
+   "or",
+   "expression"
+  ]
+ },
+ {
+  "question": "Give me some exercises about mapping view ?",
+  "answer": "Given the following definitions:\n create table R(a integer, b integer, c integer);  create view RR(f,g,h) as select * from R where a > 5 and b = c; Show how the following might be mapped to RA:\n select * from RR where f > 10; Produced: 6 Sep 2018\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "14",
+   "mapping",
+   "view"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about mapping view ?",
+  "answer": "Given the following definitions:\n create table R(a integer, b integer, c integer);  create view RR(f,g,h) as select * from R where a > 5 and b = c; Show how the following might be mapped to RA:\n select * from RR where f > 10; Produced: 6 Sep 2018\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "14",
+   "mapping",
+   "view"
+  ]
+ },
+ {
+  "question": "exercises for mapping view",
+  "answer": "Given the following definitions:\n create table R(a integer, b integer, c integer);  create view RR(f,g,h) as select * from R where a > 5 and b = c; Show how the following might be mapped to RA:\n select * from RR where f > 10; Produced: 6 Sep 2018\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "14",
+   "mapping",
+   "view"
+  ]
+ },
+ {
+  "question": "week 7 exercises mapping view",
+  "answer": "Given the following definitions:\n create table R(a integer, b integer, c integer);  create view RR(f,g,h) as select * from R where a > 5 and b = c; Show how the following might be mapped to RA:\n select * from RR where f > 10; Produced: 6 Sep 2018\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "14",
+   "mapping",
+   "view"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 7",
+  "answer": "Given the following definitions:\n create table R(a integer, b integer, c integer);  create view RR(f,g,h) as select * from R where a > 5 and b = c; Show how the following might be mapped to RA:\n select * from RR where f > 10; Produced: 6 Sep 2018\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "14",
+   "mapping",
+   "view"
+  ]
+ }
+]

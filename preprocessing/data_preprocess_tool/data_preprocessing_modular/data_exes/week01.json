@@ -1,0 +1,357 @@
+[
+ {
+  "question": "Give me some exercises about sql (revision) ?",
+  "answer": "Given the following schema:\n Students(sid, name, degree, ...) e.g. Students(3322111, 'John Smith', 'MEngSc', ...) Courses(cid, code, term, title, ...) e.g. Courses(1732, 'COMP9311', '12s1', 'Databases', ...) Enrolments(sid, cid, mark, grade) e.g. Enrolments(3322111, 1732, 50, 'PS') Write an SQL query to solve the problem\n find all students who passed COMP9315 in 18s2\n for each student, give (student ID, name, mark)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "sql",
+   "(revision)"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about sql (revision) ?",
+  "answer": "Given the following schema:\n Students(sid, name, degree, ...) e.g. Students(3322111, 'John Smith', 'MEngSc', ...) Courses(cid, code, term, title, ...) e.g. Courses(1732, 'COMP9311', '12s1', 'Databases', ...) Enrolments(sid, cid, mark, grade) e.g. Enrolments(3322111, 1732, 50, 'PS') Write an SQL query to solve the problem\n find all students who passed COMP9315 in 18s2\n for each student, give (student ID, name, mark)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "sql",
+   "(revision)"
+  ]
+ },
+ {
+  "question": "exercises for sql (revision)",
+  "answer": "Given the following schema:\n Students(sid, name, degree, ...) e.g. Students(3322111, 'John Smith', 'MEngSc', ...) Courses(cid, code, term, title, ...) e.g. Courses(1732, 'COMP9311', '12s1', 'Databases', ...) Enrolments(sid, cid, mark, grade) e.g. Enrolments(3322111, 1732, 50, 'PS') Write an SQL query to solve the problem\n find all students who passed COMP9315 in 18s2\n for each student, give (student ID, name, mark)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "sql",
+   "(revision)"
+  ]
+ },
+ {
+  "question": "week 1 exercises sql (revision)",
+  "answer": "Given the following schema:\n Students(sid, name, degree, ...) e.g. Students(3322111, 'John Smith', 'MEngSc', ...) Courses(cid, code, term, title, ...) e.g. Courses(1732, 'COMP9311', '12s1', 'Databases', ...) Enrolments(sid, cid, mark, grade) e.g. Enrolments(3322111, 1732, 50, 'PS') Write an SQL query to solve the problem\n find all students who passed COMP9315 in 18s2\n for each student, give (student ID, name, mark)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "sql",
+   "(revision)"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 1",
+  "answer": "Given the following schema:\n Students(sid, name, degree, ...) e.g. Students(3322111, 'John Smith', 'MEngSc', ...) Courses(cid, code, term, title, ...) e.g. Courses(1732, 'COMP9311', '12s1', 'Databases', ...) Enrolments(sid, cid, mark, grade) e.g. Enrolments(3322111, 1732, 50, 'PS') Write an SQL query to solve the problem\n find all students who passed COMP9315 in 18s2\n for each student, give (student ID, name, mark)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "sql",
+   "(revision)"
+  ]
+ },
+ {
+  "question": "Give me some exercises about unix file i o (revision) ?",
+  "answer": "Write a C program that reads a file, block-by-block.\n Command-line parameters:\n block size in bytes\n name of input file\n Use low-level C operations: open, read.\n Count and display how many blocks/bytes read.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "unix",
+   "file",
+   "i",
+   "o",
+   "(revision)"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about unix file i o (revision) ?",
+  "answer": "Write a C program that reads a file, block-by-block.\n Command-line parameters:\n block size in bytes\n name of input file\n Use low-level C operations: open, read.\n Count and display how many blocks/bytes read.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "unix",
+   "file",
+   "i",
+   "o",
+   "(revision)"
+  ]
+ },
+ {
+  "question": "exercises for unix file i o (revision)",
+  "answer": "Write a C program that reads a file, block-by-block.\n Command-line parameters:\n block size in bytes\n name of input file\n Use low-level C operations: open, read.\n Count and display how many blocks/bytes read.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "unix",
+   "file",
+   "i",
+   "o",
+   "(revision)"
+  ]
+ },
+ {
+  "question": "week 1 exercises unix file i o (revision)",
+  "answer": "Write a C program that reads a file, block-by-block.\n Command-line parameters:\n block size in bytes\n name of input file\n Use low-level C operations: open, read.\n Count and display how many blocks/bytes read.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "unix",
+   "file",
+   "i",
+   "o",
+   "(revision)"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 1",
+  "answer": "Write a C program that reads a file, block-by-block.\n Command-line parameters:\n block size in bytes\n name of input file\n Use low-level C operations: open, read.\n Count and display how many blocks/bytes read.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "unix",
+   "file",
+   "i",
+   "o",
+   "(revision)"
+  ]
+ },
+ {
+  "question": "Give me some exercises about relational algebra ?",
+  "answer": "Using the same student/course/enrolment schema as above:\n Students(sid, name, degree, ...) Courses(cid, code, term, title, ...) Enrolments(sid, cid, mark, grade) Write relational algebra expressions to solve the problem\n find all students who passed COMP9315 in 18s2\n for each student, give (student ID, name, mark)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "relational",
+   "algebra"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about relational algebra ?",
+  "answer": "Using the same student/course/enrolment schema as above:\n Students(sid, name, degree, ...) Courses(cid, code, term, title, ...) Enrolments(sid, cid, mark, grade) Write relational algebra expressions to solve the problem\n find all students who passed COMP9315 in 18s2\n for each student, give (student ID, name, mark)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "relational",
+   "algebra"
+  ]
+ },
+ {
+  "question": "exercises for relational algebra",
+  "answer": "Using the same student/course/enrolment schema as above:\n Students(sid, name, degree, ...) Courses(cid, code, term, title, ...) Enrolments(sid, cid, mark, grade) Write relational algebra expressions to solve the problem\n find all students who passed COMP9315 in 18s2\n for each student, give (student ID, name, mark)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "relational",
+   "algebra"
+  ]
+ },
+ {
+  "question": "week 1 exercises relational algebra",
+  "answer": "Using the same student/course/enrolment schema as above:\n Students(sid, name, degree, ...) Courses(cid, code, term, title, ...) Enrolments(sid, cid, mark, grade) Write relational algebra expressions to solve the problem\n find all students who passed COMP9315 in 18s2\n for each student, give (student ID, name, mark)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "relational",
+   "algebra"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 1",
+  "answer": "Using the same student/course/enrolment schema as above:\n Students(sid, name, degree, ...) Courses(cid, code, term, title, ...) Enrolments(sid, cid, mark, grade) Write relational algebra expressions to solve the problem\n find all students who passed COMP9315 in 18s2\n for each student, give (student ID, name, mark)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "relational",
+   "algebra"
+  ]
+ },
+ {
+  "question": "Give me some exercises about postgresql data file ?",
+  "answer": "PostgreSQL uses OIDs as\n the name of the directory for each database\n the name of the files for each table\n Using the pg_catalog tables, find ..\n the directory for the pizza database\n the data files for the Pizzas and People tables\n Relevant catalog info ...\n pg_database(oid,datname,...) pg_class(oid,relname,...)",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "postgresql",
+   "data",
+   "file"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about postgresql data file ?",
+  "answer": "PostgreSQL uses OIDs as\n the name of the directory for each database\n the name of the files for each table\n Using the pg_catalog tables, find ..\n the directory for the pizza database\n the data files for the Pizzas and People tables\n Relevant catalog info ...\n pg_database(oid,datname,...) pg_class(oid,relname,...)",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "postgresql",
+   "data",
+   "file"
+  ]
+ },
+ {
+  "question": "exercises for postgresql data file",
+  "answer": "PostgreSQL uses OIDs as\n the name of the directory for each database\n the name of the files for each table\n Using the pg_catalog tables, find ..\n the directory for the pizza database\n the data files for the Pizzas and People tables\n Relevant catalog info ...\n pg_database(oid,datname,...) pg_class(oid,relname,...)",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "postgresql",
+   "data",
+   "file"
+  ]
+ },
+ {
+  "question": "week 1 exercises postgresql data file",
+  "answer": "PostgreSQL uses OIDs as\n the name of the directory for each database\n the name of the files for each table\n Using the pg_catalog tables, find ..\n the directory for the pizza database\n the data files for the Pizzas and People tables\n Relevant catalog info ...\n pg_database(oid,datname,...) pg_class(oid,relname,...)",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "postgresql",
+   "data",
+   "file"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 1",
+  "answer": "PostgreSQL uses OIDs as\n the name of the directory for each database\n the name of the files for each table\n Using the pg_catalog tables, find ..\n the directory for the pizza database\n the data files for the Pizzas and People tables\n Relevant catalog info ...\n pg_database(oid,datname,...) pg_class(oid,relname,...)",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "postgresql",
+   "data",
+   "file"
+  ]
+ },
+ {
+  "question": "Give me some exercises about table statistic ?",
+  "answer": "Using the PostgreSQL catalog, write a PLpgSQL function\n to return table name and #tuples in table\n for all tables in the public schema\n create type TableInfo as (table text, ntuples int); create function pop() returns setof TableInfo ... Hint: you will need to use dynamically-generated queries.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "table",
+   "statistic"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about table statistic ?",
+  "answer": "Using the PostgreSQL catalog, write a PLpgSQL function\n to return table name and #tuples in table\n for all tables in the public schema\n create type TableInfo as (table text, ntuples int); create function pop() returns setof TableInfo ... Hint: you will need to use dynamically-generated queries.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "table",
+   "statistic"
+  ]
+ },
+ {
+  "question": "exercises for table statistic",
+  "answer": "Using the PostgreSQL catalog, write a PLpgSQL function\n to return table name and #tuples in table\n for all tables in the public schema\n create type TableInfo as (table text, ntuples int); create function pop() returns setof TableInfo ... Hint: you will need to use dynamically-generated queries.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "table",
+   "statistic"
+  ]
+ },
+ {
+  "question": "week 1 exercises table statistic",
+  "answer": "Using the PostgreSQL catalog, write a PLpgSQL function\n to return table name and #tuples in table\n for all tables in the public schema\n create type TableInfo as (table text, ntuples int); create function pop() returns setof TableInfo ... Hint: you will need to use dynamically-generated queries.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "table",
+   "statistic"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 1",
+  "answer": "Using the PostgreSQL catalog, write a PLpgSQL function\n to return table name and #tuples in table\n for all tables in the public schema\n create type TableInfo as (table text, ntuples int); create function pop() returns setof TableInfo ... Hint: you will need to use dynamically-generated queries.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "table",
+   "statistic"
+  ]
+ },
+ {
+  "question": "Give me some exercises about extracting a schema ?",
+  "answer": "Write a PLpgSQL function:\n function schema() returns setof text\n giving a list of table schemas in the public schema\n It should behave as follows:\n db=# select * from schema();             tables ---------------------------  table1(x, y, z)  table2(a, b)  table3(id, name, address) ... Produced: 26 Jul 2018\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "extracting",
+   "a",
+   "schema"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about extracting a schema ?",
+  "answer": "Write a PLpgSQL function:\n function schema() returns setof text\n giving a list of table schemas in the public schema\n It should behave as follows:\n db=# select * from schema();             tables ---------------------------  table1(x, y, z)  table2(a, b)  table3(id, name, address) ... Produced: 26 Jul 2018\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "extracting",
+   "a",
+   "schema"
+  ]
+ },
+ {
+  "question": "exercises for extracting a schema",
+  "answer": "Write a PLpgSQL function:\n function schema() returns setof text\n giving a list of table schemas in the public schema\n It should behave as follows:\n db=# select * from schema();             tables ---------------------------  table1(x, y, z)  table2(a, b)  table3(id, name, address) ... Produced: 26 Jul 2018\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "extracting",
+   "a",
+   "schema"
+  ]
+ },
+ {
+  "question": "week 1 exercises extracting a schema",
+  "answer": "Write a PLpgSQL function:\n function schema() returns setof text\n giving a list of table schemas in the public schema\n It should behave as follows:\n db=# select * from schema();             tables ---------------------------  table1(x, y, z)  table2(a, b)  table3(id, name, address) ... Produced: 26 Jul 2018\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "extracting",
+   "a",
+   "schema"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 1",
+  "answer": "Write a PLpgSQL function:\n function schema() returns setof text\n giving a list of table schemas in the public schema\n It should behave as follows:\n db=# select * from schema();             tables ---------------------------  table1(x, y, z)  table2(a, b)  table3(id, name, address) ... Produced: 26 Jul 2018\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "extracting",
+   "a",
+   "schema"
+  ]
+ }
+]

@@ -1,0 +1,607 @@
+[
+ {
+  "question": "Give me some exercises about postgresql buffer pool ?",
+  "answer": "Consider an initally empty buffer pool with only 3 slots.\n Show the state of the pool after each of the following:\n Req R0, Req S0, Rel S0, Req S1, Rel S1, Req S2, Rel S2, Rel R0, Req R1, Req S0, Rel S0, Req S1, Rel S1, Req S2, Rel S2, Rel R1, Req R2, Req S0, Rel S0, Req S1, Rel S1, Req S2, Rel S2, Rel R2 Treat BufferDesc entries as\n (tag, usage_count, refcount, freeNext) Assume freeList and nextVictim global variables.\n Pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "postgresql",
+   "buffer",
+   "pool"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about postgresql buffer pool ?",
+  "answer": "Consider an initally empty buffer pool with only 3 slots.\n Show the state of the pool after each of the following:\n Req R0, Req S0, Rel S0, Req S1, Rel S1, Req S2, Rel S2, Rel R0, Req R1, Req S0, Rel S0, Req S1, Rel S1, Req S2, Rel S2, Rel R1, Req R2, Req S0, Rel S0, Req S1, Rel S1, Req S2, Rel S2, Rel R2 Treat BufferDesc entries as\n (tag, usage_count, refcount, freeNext) Assume freeList and nextVictim global variables.\n Pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "postgresql",
+   "buffer",
+   "pool"
+  ]
+ },
+ {
+  "question": "exercises for postgresql buffer pool",
+  "answer": "Consider an initally empty buffer pool with only 3 slots.\n Show the state of the pool after each of the following:\n Req R0, Req S0, Rel S0, Req S1, Rel S1, Req S2, Rel S2, Rel R0, Req R1, Req S0, Rel S0, Req S1, Rel S1, Req S2, Rel S2, Rel R1, Req R2, Req S0, Rel S0, Req S1, Rel S1, Req S2, Rel S2, Rel R2 Treat BufferDesc entries as\n (tag, usage_count, refcount, freeNext) Assume freeList and nextVictim global variables.\n Pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "postgresql",
+   "buffer",
+   "pool"
+  ]
+ },
+ {
+  "question": "week 3 exercises postgresql buffer pool",
+  "answer": "Consider an initally empty buffer pool with only 3 slots.\n Show the state of the pool after each of the following:\n Req R0, Req S0, Rel S0, Req S1, Rel S1, Req S2, Rel S2, Rel R0, Req R1, Req S0, Rel S0, Req S1, Rel S1, Req S2, Rel S2, Rel R1, Req R2, Req S0, Rel S0, Req S1, Rel S1, Req S2, Rel S2, Rel R2 Treat BufferDesc entries as\n (tag, usage_count, refcount, freeNext) Assume freeList and nextVictim global variables.\n Pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "postgresql",
+   "buffer",
+   "pool"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 3",
+  "answer": "Consider an initally empty buffer pool with only 3 slots.\n Show the state of the pool after each of the following:\n Req R0, Req S0, Rel S0, Req S1, Rel S1, Req S2, Rel S2, Rel R0, Req R1, Req S0, Rel S0, Req S1, Rel S1, Req S2, Rel S2, Rel R1, Req R2, Req S0, Rel S0, Req S1, Rel S1, Req S2, Rel S2, Rel R2 Treat BufferDesc entries as\n (tag, usage_count, refcount, freeNext) Assume freeList and nextVictim global variables.\n Pages\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "postgresql",
+   "buffer",
+   "pool"
+  ]
+ },
+ {
+  "question": "Give me some exercises about fixed-length record ?",
+  "answer": "Give examples of table definitions\n which result in fixed-length records\n which result in variable-length records\n create table R ( ...); What are the common features of each type of table?\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "fixed-length",
+   "record"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about fixed-length record ?",
+  "answer": "Give examples of table definitions\n which result in fixed-length records\n which result in variable-length records\n create table R ( ...); What are the common features of each type of table?\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "fixed-length",
+   "record"
+  ]
+ },
+ {
+  "question": "exercises for fixed-length record",
+  "answer": "Give examples of table definitions\n which result in fixed-length records\n which result in variable-length records\n create table R ( ...); What are the common features of each type of table?\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "fixed-length",
+   "record"
+  ]
+ },
+ {
+  "question": "week 3 exercises fixed-length record",
+  "answer": "Give examples of table definitions\n which result in fixed-length records\n which result in variable-length records\n create table R ( ...); What are the common features of each type of table?\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "fixed-length",
+   "record"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 3",
+  "answer": "Give examples of table definitions\n which result in fixed-length records\n which result in variable-length records\n create table R ( ...); What are the common features of each type of table?\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "fixed-length",
+   "record"
+  ]
+ },
+ {
+  "question": "Give me some exercises about inserting deleting fixed-length record ?",
+  "answer": "For each of the following Page formats:\n compacted/packed free space\n unpacked free space (with bitmap)\n Implement\n a suitable data structure to represent a Page\n a function to insert a new record\n a function to delete a record\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "inserting",
+   "deleting",
+   "fixed-length",
+   "record"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about inserting deleting fixed-length record ?",
+  "answer": "For each of the following Page formats:\n compacted/packed free space\n unpacked free space (with bitmap)\n Implement\n a suitable data structure to represent a Page\n a function to insert a new record\n a function to delete a record\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "inserting",
+   "deleting",
+   "fixed-length",
+   "record"
+  ]
+ },
+ {
+  "question": "exercises for inserting deleting fixed-length record",
+  "answer": "For each of the following Page formats:\n compacted/packed free space\n unpacked free space (with bitmap)\n Implement\n a suitable data structure to represent a Page\n a function to insert a new record\n a function to delete a record\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "inserting",
+   "deleting",
+   "fixed-length",
+   "record"
+  ]
+ },
+ {
+  "question": "week 3 exercises inserting deleting fixed-length record",
+  "answer": "For each of the following Page formats:\n compacted/packed free space\n unpacked free space (with bitmap)\n Implement\n a suitable data structure to represent a Page\n a function to insert a new record\n a function to delete a record\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "inserting",
+   "deleting",
+   "fixed-length",
+   "record"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 3",
+  "answer": "For each of the following Page formats:\n compacted/packed free space\n unpacked free space (with bitmap)\n Implement\n a suitable data structure to represent a Page\n a function to insert a new record\n a function to delete a record\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "inserting",
+   "deleting",
+   "fixed-length",
+   "record"
+  ]
+ },
+ {
+  "question": "Give me some exercises about inserting variable-length record ?",
+  "answer": "For both of the following page formats\n 1. variable-length records, with compacted free space\n 2. variable-length records, with fragmented free space\n implement the insert() function.\n Use the above page format, but also assume:\n page size is 1024 bytes\n tuples start on 4-byte boundaries\n references into page are all 8-bits (1 byte) long\n a function recSize(r) gives size in bytes\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "inserting",
+   "variable-length",
+   "record"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about inserting variable-length record ?",
+  "answer": "For both of the following page formats\n 1. variable-length records, with compacted free space\n 2. variable-length records, with fragmented free space\n implement the insert() function.\n Use the above page format, but also assume:\n page size is 1024 bytes\n tuples start on 4-byte boundaries\n references into page are all 8-bits (1 byte) long\n a function recSize(r) gives size in bytes\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "inserting",
+   "variable-length",
+   "record"
+  ]
+ },
+ {
+  "question": "exercises for inserting variable-length record",
+  "answer": "For both of the following page formats\n 1. variable-length records, with compacted free space\n 2. variable-length records, with fragmented free space\n implement the insert() function.\n Use the above page format, but also assume:\n page size is 1024 bytes\n tuples start on 4-byte boundaries\n references into page are all 8-bits (1 byte) long\n a function recSize(r) gives size in bytes\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "inserting",
+   "variable-length",
+   "record"
+  ]
+ },
+ {
+  "question": "week 3 exercises inserting variable-length record",
+  "answer": "For both of the following page formats\n 1. variable-length records, with compacted free space\n 2. variable-length records, with fragmented free space\n implement the insert() function.\n Use the above page format, but also assume:\n page size is 1024 bytes\n tuples start on 4-byte boundaries\n references into page are all 8-bits (1 byte) long\n a function recSize(r) gives size in bytes\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "inserting",
+   "variable-length",
+   "record"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 3",
+  "answer": "For both of the following page formats\n 1. variable-length records, with compacted free space\n 2. variable-length records, with fragmented free space\n implement the insert() function.\n Use the above page format, but also assume:\n page size is 1024 bytes\n tuples start on 4-byte boundaries\n references into page are all 8-bits (1 byte) long\n a function recSize(r) gives size in bytes\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "inserting",
+   "variable-length",
+   "record"
+  ]
+ },
+ {
+  "question": "Give me some exercises about space utilisation ?",
+  "answer": "Consider the following page/record information:\n page size = 1KB = 1024 bytes = 210 bytes\n records: (a:int,b:varchar(20),c:char(10),d:int)\n records are all aligned on 4-byte boundaries\n c field padded to ensure d starts on 4-byte boundary\n each records has 4 field-offsets at start of record (each 1 byte)\n char(10) field rounded up to 12-bytes to preserve alignment\n maximum size of b values = 20 bytes; average size = 16 bytes\n page has 32-bytes of header information, starting at byte 0\n only insertions, no deletions or updates\n Calculate C = average number of records per page.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "space",
+   "utilisation"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about space utilisation ?",
+  "answer": "Consider the following page/record information:\n page size = 1KB = 1024 bytes = 210 bytes\n records: (a:int,b:varchar(20),c:char(10),d:int)\n records are all aligned on 4-byte boundaries\n c field padded to ensure d starts on 4-byte boundary\n each records has 4 field-offsets at start of record (each 1 byte)\n char(10) field rounded up to 12-bytes to preserve alignment\n maximum size of b values = 20 bytes; average size = 16 bytes\n page has 32-bytes of header information, starting at byte 0\n only insertions, no deletions or updates\n Calculate C = average number of records per page.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "space",
+   "utilisation"
+  ]
+ },
+ {
+  "question": "exercises for space utilisation",
+  "answer": "Consider the following page/record information:\n page size = 1KB = 1024 bytes = 210 bytes\n records: (a:int,b:varchar(20),c:char(10),d:int)\n records are all aligned on 4-byte boundaries\n c field padded to ensure d starts on 4-byte boundary\n each records has 4 field-offsets at start of record (each 1 byte)\n char(10) field rounded up to 12-bytes to preserve alignment\n maximum size of b values = 20 bytes; average size = 16 bytes\n page has 32-bytes of header information, starting at byte 0\n only insertions, no deletions or updates\n Calculate C = average number of records per page.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "space",
+   "utilisation"
+  ]
+ },
+ {
+  "question": "week 3 exercises space utilisation",
+  "answer": "Consider the following page/record information:\n page size = 1KB = 1024 bytes = 210 bytes\n records: (a:int,b:varchar(20),c:char(10),d:int)\n records are all aligned on 4-byte boundaries\n c field padded to ensure d starts on 4-byte boundary\n each records has 4 field-offsets at start of record (each 1 byte)\n char(10) field rounded up to 12-bytes to preserve alignment\n maximum size of b values = 20 bytes; average size = 16 bytes\n page has 32-bytes of header information, starting at byte 0\n only insertions, no deletions or updates\n Calculate C = average number of records per page.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "space",
+   "utilisation"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 3",
+  "answer": "Consider the following page/record information:\n page size = 1KB = 1024 bytes = 210 bytes\n records: (a:int,b:varchar(20),c:char(10),d:int)\n records are all aligned on 4-byte boundaries\n c field padded to ensure d starts on 4-byte boundary\n each records has 4 field-offsets at start of record (each 1 byte)\n char(10) field rounded up to 12-bytes to preserve alignment\n maximum size of b values = 20 bytes; average size = 16 bytes\n page has 32-bytes of header information, starting at byte 0\n only insertions, no deletions or updates\n Calculate C = average number of records per page.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "space",
+   "utilisation"
+  ]
+ },
+ {
+  "question": "Give me some exercises about postgresql page ?",
+  "answer": "Draw diagrams of a PostgreSQL heap page\n when it is initially empty\n after three tuples have been inserted  \u00a0\u00a0\u00a0 with lengths of 60, 80, and 70 bytes\n after the 80 byte tuple is deleted (but before vacuuming)\n after a new 50 byte tuple is added\n Show the values in the tuple header.\n Assume that there is no special space in the page.\n Tuples\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "postgresql",
+   "page"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about postgresql page ?",
+  "answer": "Draw diagrams of a PostgreSQL heap page\n when it is initially empty\n after three tuples have been inserted  \u00a0\u00a0\u00a0 with lengths of 60, 80, and 70 bytes\n after the 80 byte tuple is deleted (but before vacuuming)\n after a new 50 byte tuple is added\n Show the values in the tuple header.\n Assume that there is no special space in the page.\n Tuples\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "postgresql",
+   "page"
+  ]
+ },
+ {
+  "question": "exercises for postgresql page",
+  "answer": "Draw diagrams of a PostgreSQL heap page\n when it is initially empty\n after three tuples have been inserted  \u00a0\u00a0\u00a0 with lengths of 60, 80, and 70 bytes\n after the 80 byte tuple is deleted (but before vacuuming)\n after a new 50 byte tuple is added\n Show the values in the tuple header.\n Assume that there is no special space in the page.\n Tuples\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "postgresql",
+   "page"
+  ]
+ },
+ {
+  "question": "week 3 exercises postgresql page",
+  "answer": "Draw diagrams of a PostgreSQL heap page\n when it is initially empty\n after three tuples have been inserted  \u00a0\u00a0\u00a0 with lengths of 60, 80, and 70 bytes\n after the 80 byte tuple is deleted (but before vacuuming)\n after a new 50 byte tuple is added\n Show the values in the tuple header.\n Assume that there is no special space in the page.\n Tuples\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "postgresql",
+   "page"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 3",
+  "answer": "Draw diagrams of a PostgreSQL heap page\n when it is initially empty\n after three tuples have been inserted  \u00a0\u00a0\u00a0 with lengths of 60, 80, and 70 bytes\n after the 80 byte tuple is deleted (but before vacuuming)\n after a new 50 byte tuple is added\n Show the values in the tuple header.\n Assume that there is no special space in the page.\n Tuples\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "postgresql",
+   "page"
+  ]
+ },
+ {
+  "question": "Give me some exercises about operation cost ?",
+  "answer": "For each of the following file structures\n determine #page-reads + #page-writes for each operation\n You can assume the existence of a file header containing\n values for r, R, b, B, c\n index of first page with free space (and a free list)\n Assume also\n each page contains a header and directory as well as tuples\n no buffering \u00a0 (worst case scenario)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "7",
+   "operation",
+   "cost"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about operation cost ?",
+  "answer": "For each of the following file structures\n determine #page-reads + #page-writes for each operation\n You can assume the existence of a file header containing\n values for r, R, b, B, c\n index of first page with free space (and a free list)\n Assume also\n each page contains a header and directory as well as tuples\n no buffering \u00a0 (worst case scenario)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "7",
+   "operation",
+   "cost"
+  ]
+ },
+ {
+  "question": "exercises for operation cost",
+  "answer": "For each of the following file structures\n determine #page-reads + #page-writes for each operation\n You can assume the existence of a file header containing\n values for r, R, b, B, c\n index of first page with free space (and a free list)\n Assume also\n each page contains a header and directory as well as tuples\n no buffering \u00a0 (worst case scenario)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "7",
+   "operation",
+   "cost"
+  ]
+ },
+ {
+  "question": "week 3 exercises operation cost",
+  "answer": "For each of the following file structures\n determine #page-reads + #page-writes for each operation\n You can assume the existence of a file header containing\n values for r, R, b, B, c\n index of first page with free space (and a free list)\n Assume also\n each page contains a header and directory as well as tuples\n no buffering \u00a0 (worst case scenario)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "7",
+   "operation",
+   "cost"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 3",
+  "answer": "For each of the following file structures\n determine #page-reads + #page-writes for each operation\n You can assume the existence of a file header containing\n values for r, R, b, B, c\n index of first page with free space (and a free list)\n Assume also\n each page contains a header and directory as well as tuples\n no buffering \u00a0 (worst case scenario)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "7",
+   "operation",
+   "cost"
+  ]
+ },
+ {
+  "question": "Give me some exercises about cost of search in hashed file ?",
+  "answer": "Consider the hashed file structure b = 10, c = 4, h(k) = k%10\n Describe how the following queries\n select * from R where k = 51; select * from R where k > 50; might be solved in a file structure like the above (h(k) = k%b).\n Estimate the minimum and maximum cost (as #pages read)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "8",
+   "cost",
+   "of",
+   "search",
+   "in",
+   "hashed",
+   "file"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about cost of search in hashed file ?",
+  "answer": "Consider the hashed file structure b = 10, c = 4, h(k) = k%10\n Describe how the following queries\n select * from R where k = 51; select * from R where k > 50; might be solved in a file structure like the above (h(k) = k%b).\n Estimate the minimum and maximum cost (as #pages read)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "8",
+   "cost",
+   "of",
+   "search",
+   "in",
+   "hashed",
+   "file"
+  ]
+ },
+ {
+  "question": "exercises for cost of search in hashed file",
+  "answer": "Consider the hashed file structure b = 10, c = 4, h(k) = k%10\n Describe how the following queries\n select * from R where k = 51; select * from R where k > 50; might be solved in a file structure like the above (h(k) = k%b).\n Estimate the minimum and maximum cost (as #pages read)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "8",
+   "cost",
+   "of",
+   "search",
+   "in",
+   "hashed",
+   "file"
+  ]
+ },
+ {
+  "question": "week 3 exercises cost of search in hashed file",
+  "answer": "Consider the hashed file structure b = 10, c = 4, h(k) = k%10\n Describe how the following queries\n select * from R where k = 51; select * from R where k > 50; might be solved in a file structure like the above (h(k) = k%b).\n Estimate the minimum and maximum cost (as #pages read)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "8",
+   "cost",
+   "of",
+   "search",
+   "in",
+   "hashed",
+   "file"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 3",
+  "answer": "Consider the hashed file structure b = 10, c = 4, h(k) = k%10\n Describe how the following queries\n select * from R where k = 51; select * from R where k > 50; might be solved in a file structure like the above (h(k) = k%b).\n Estimate the minimum and maximum cost (as #pages read)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "8",
+   "cost",
+   "of",
+   "search",
+   "in",
+   "hashed",
+   "file"
+  ]
+ },
+ {
+  "question": "Give me some exercises about cost of relation copy ?",
+  "answer": "Analyse cost for relation copying:\n 1. if both input and output are heap files\n 2. if input is sorted and output is heap file\n 3. if input is heap file and output is sorted\n Assume bin = number of pages in input file\n Give cost in terms of #pages read + #pages written\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "9",
+   "cost",
+   "of",
+   "relation",
+   "copy"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about cost of relation copy ?",
+  "answer": "Analyse cost for relation copying:\n 1. if both input and output are heap files\n 2. if input is sorted and output is heap file\n 3. if input is heap file and output is sorted\n Assume bin = number of pages in input file\n Give cost in terms of #pages read + #pages written\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "9",
+   "cost",
+   "of",
+   "relation",
+   "copy"
+  ]
+ },
+ {
+  "question": "exercises for cost of relation copy",
+  "answer": "Analyse cost for relation copying:\n 1. if both input and output are heap files\n 2. if input is sorted and output is heap file\n 3. if input is heap file and output is sorted\n Assume bin = number of pages in input file\n Give cost in terms of #pages read + #pages written\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "9",
+   "cost",
+   "of",
+   "relation",
+   "copy"
+  ]
+ },
+ {
+  "question": "week 3 exercises cost of relation copy",
+  "answer": "Analyse cost for relation copying:\n 1. if both input and output are heap files\n 2. if input is sorted and output is heap file\n 3. if input is heap file and output is sorted\n Assume bin = number of pages in input file\n Give cost in terms of #pages read + #pages written\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "9",
+   "cost",
+   "of",
+   "relation",
+   "copy"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 3",
+  "answer": "Analyse cost for relation copying:\n 1. if both input and output are heap files\n 2. if input is sorted and output is heap file\n 3. if input is heap file and output is sorted\n Assume bin = number of pages in input file\n Give cost in terms of #pages read + #pages written\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "9",
+   "cost",
+   "of",
+   "relation",
+   "copy"
+  ]
+ },
+ {
+  "question": "Give me some exercises about postgresql tuple visibility ?",
+  "answer": "Due to MVCC, PostgreSQL's getTuple(b,i) is not so simple\n ith tuple in buffer b may be \"live\" or \"dead\" or ... ?\n How does PostgreSQL recognise \"dead\" tuples?\n What possible states might tuples have?\n Assume: multiple concurrent transactions on tables.\n Hint: tuple = (oid,xmin,xmax,...rest of data...)\n Hint: include/access/htup.h\n Hint: backend/utils/time/tqual.c\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "10",
+   "postgresql",
+   "tuple",
+   "visibility"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about postgresql tuple visibility ?",
+  "answer": "Due to MVCC, PostgreSQL's getTuple(b,i) is not so simple\n ith tuple in buffer b may be \"live\" or \"dead\" or ... ?\n How does PostgreSQL recognise \"dead\" tuples?\n What possible states might tuples have?\n Assume: multiple concurrent transactions on tables.\n Hint: tuple = (oid,xmin,xmax,...rest of data...)\n Hint: include/access/htup.h\n Hint: backend/utils/time/tqual.c\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "10",
+   "postgresql",
+   "tuple",
+   "visibility"
+  ]
+ },
+ {
+  "question": "exercises for postgresql tuple visibility",
+  "answer": "Due to MVCC, PostgreSQL's getTuple(b,i) is not so simple\n ith tuple in buffer b may be \"live\" or \"dead\" or ... ?\n How does PostgreSQL recognise \"dead\" tuples?\n What possible states might tuples have?\n Assume: multiple concurrent transactions on tables.\n Hint: tuple = (oid,xmin,xmax,...rest of data...)\n Hint: include/access/htup.h\n Hint: backend/utils/time/tqual.c\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "10",
+   "postgresql",
+   "tuple",
+   "visibility"
+  ]
+ },
+ {
+  "question": "week 3 exercises postgresql tuple visibility",
+  "answer": "Due to MVCC, PostgreSQL's getTuple(b,i) is not so simple\n ith tuple in buffer b may be \"live\" or \"dead\" or ... ?\n How does PostgreSQL recognise \"dead\" tuples?\n What possible states might tuples have?\n Assume: multiple concurrent transactions on tables.\n Hint: tuple = (oid,xmin,xmax,...rest of data...)\n Hint: include/access/htup.h\n Hint: backend/utils/time/tqual.c\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "10",
+   "postgresql",
+   "tuple",
+   "visibility"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 3",
+  "answer": "Due to MVCC, PostgreSQL's getTuple(b,i) is not so simple\n ith tuple in buffer b may be \"live\" or \"dead\" or ... ?\n How does PostgreSQL recognise \"dead\" tuples?\n What possible states might tuples have?\n Assume: multiple concurrent transactions on tables.\n Hint: tuple = (oid,xmin,xmax,...rest of data...)\n Hint: include/access/htup.h\n Hint: backend/utils/time/tqual.c\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "10",
+   "postgresql",
+   "tuple",
+   "visibility"
+  ]
+ }
+]

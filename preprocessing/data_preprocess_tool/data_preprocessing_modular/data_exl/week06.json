@@ -1,0 +1,404 @@
+[
+ {
+  "question": "May i have example b-tree insertion ?",
+  "answer": "https://www.youtube.com/watch?v=KdbFmwRvkvg\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "b-tree",
+   "insertion"
+  ]
+ },
+ {
+  "question": "List some example b-tree insertion ?",
+  "answer": "https://www.youtube.com/watch?v=KdbFmwRvkvg\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "b-tree",
+   "insertion"
+  ]
+ },
+ {
+  "question": "example b-tree insertion",
+  "answer": "https://www.youtube.com/watch?v=KdbFmwRvkvg\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "b-tree",
+   "insertion"
+  ]
+ },
+ {
+  "question": "Give me some example b-tree insertion ?",
+  "answer": "https://www.youtube.com/watch?v=KdbFmwRvkvg\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "b-tree",
+   "insertion"
+  ]
+ },
+ {
+  "question": "Do you have some example b-tree insertion ?",
+  "answer": "https://www.youtube.com/watch?v=KdbFmwRvkvg\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "b-tree",
+   "insertion"
+  ]
+ },
+ {
+  "question": "Can i have some example b-tree insertion ?",
+  "answer": "https://www.youtube.com/watch?v=KdbFmwRvkvg\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "b-tree",
+   "insertion"
+  ]
+ },
+ {
+  "question": "May i have ma.hashing example ?",
+  "answer": "Consider relation Deposit(branch,acctNo,name,amount)\n Assume a small data file with 8 main data pages (plus overflows).\n Hash parameters:    d=3     d1=1    d2=1    d3=1    d4=0\n Note that we ignore the amount attribute (d4=0)\n Assumes that nobody will want to ask queries like\n select * from Deposit where amount=533\n Choice vector is designed taking expected queries into account.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "List some ma.hashing example ?",
+  "answer": "Consider relation Deposit(branch,acctNo,name,amount)\n Assume a small data file with 8 main data pages (plus overflows).\n Hash parameters:    d=3     d1=1    d2=1    d3=1    d4=0\n Note that we ignore the amount attribute (d4=0)\n Assumes that nobody will want to ask queries like\n select * from Deposit where amount=533\n Choice vector is designed taking expected queries into account.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "ma.hashing example",
+  "answer": "Consider relation Deposit(branch,acctNo,name,amount)\n Assume a small data file with 8 main data pages (plus overflows).\n Hash parameters:    d=3     d1=1    d2=1    d3=1    d4=0\n Note that we ignore the amount attribute (d4=0)\n Assumes that nobody will want to ask queries like\n select * from Deposit where amount=533\n Choice vector is designed taking expected queries into account.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some ma.hashing example ?",
+  "answer": "Consider relation Deposit(branch,acctNo,name,amount)\n Assume a small data file with 8 main data pages (plus overflows).\n Hash parameters:    d=3     d1=1    d2=1    d3=1    d4=0\n Note that we ignore the amount attribute (d4=0)\n Assumes that nobody will want to ask queries like\n select * from Deposit where amount=533\n Choice vector is designed taking expected queries into account.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some ma.hashing example ?",
+  "answer": "Consider relation Deposit(branch,acctNo,name,amount)\n Assume a small data file with 8 main data pages (plus overflows).\n Hash parameters:    d=3     d1=1    d2=1    d3=1    d4=0\n Note that we ignore the amount attribute (d4=0)\n Assumes that nobody will want to ask queries like\n select * from Deposit where amount=533\n Choice vector is designed taking expected queries into account.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some ma.hashing example ?",
+  "answer": "Consider relation Deposit(branch,acctNo,name,amount)\n Assume a small data file with 8 main data pages (plus overflows).\n Hash parameters:    d=3     d1=1    d2=1    d3=1    d4=0\n Note that we ignore the amount attribute (d4=0)\n Assumes that nobody will want to ask queries like\n select * from Deposit where amount=533\n Choice vector is designed taking expected queries into account.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "May i have ma.hashing example ?",
+  "answer": "Choice vector:\n This choice vector tells us:\n bit 0 in hash comes from bit 0 of hash1(a1)   ( b1,0 )\n bit 1 in hash comes from bit 0 of hash2(a2)   ( b2,0 )\n bit 2 in hash comes from bit 0 of hash3(a3)   ( b3,0 )\n bit 3 in hash comes from bit 1 of hash1(a1)   ( b1,1 )\n etc. etc. etc.   (up to as many bits of hashing as required, e.g. 32)\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "List some ma.hashing example ?",
+  "answer": "Choice vector:\n This choice vector tells us:\n bit 0 in hash comes from bit 0 of hash1(a1)   ( b1,0 )\n bit 1 in hash comes from bit 0 of hash2(a2)   ( b2,0 )\n bit 2 in hash comes from bit 0 of hash3(a3)   ( b3,0 )\n bit 3 in hash comes from bit 1 of hash1(a1)   ( b1,1 )\n etc. etc. etc.   (up to as many bits of hashing as required, e.g. 32)\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "ma.hashing example",
+  "answer": "Choice vector:\n This choice vector tells us:\n bit 0 in hash comes from bit 0 of hash1(a1)   ( b1,0 )\n bit 1 in hash comes from bit 0 of hash2(a2)   ( b2,0 )\n bit 2 in hash comes from bit 0 of hash3(a3)   ( b3,0 )\n bit 3 in hash comes from bit 1 of hash1(a1)   ( b1,1 )\n etc. etc. etc.   (up to as many bits of hashing as required, e.g. 32)\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some ma.hashing example ?",
+  "answer": "Choice vector:\n This choice vector tells us:\n bit 0 in hash comes from bit 0 of hash1(a1)   ( b1,0 )\n bit 1 in hash comes from bit 0 of hash2(a2)   ( b2,0 )\n bit 2 in hash comes from bit 0 of hash3(a3)   ( b3,0 )\n bit 3 in hash comes from bit 1 of hash1(a1)   ( b1,1 )\n etc. etc. etc.   (up to as many bits of hashing as required, e.g. 32)\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some ma.hashing example ?",
+  "answer": "Choice vector:\n This choice vector tells us:\n bit 0 in hash comes from bit 0 of hash1(a1)   ( b1,0 )\n bit 1 in hash comes from bit 0 of hash2(a2)   ( b2,0 )\n bit 2 in hash comes from bit 0 of hash3(a3)   ( b3,0 )\n bit 3 in hash comes from bit 1 of hash1(a1)   ( b1,1 )\n etc. etc. etc.   (up to as many bits of hashing as required, e.g. 32)\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some ma.hashing example ?",
+  "answer": "Choice vector:\n This choice vector tells us:\n bit 0 in hash comes from bit 0 of hash1(a1)   ( b1,0 )\n bit 1 in hash comes from bit 0 of hash2(a2)   ( b2,0 )\n bit 2 in hash comes from bit 0 of hash3(a3)   ( b3,0 )\n bit 3 in hash comes from bit 1 of hash1(a1)   ( b1,1 )\n etc. etc. etc.   (up to as many bits of hashing as required, e.g. 32)\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "May i have ma.hashing example ?",
+  "answer": "Consider the tuple:\n branch acctNo name amount\n Downtown 101 Johnston 512\n Hash value (page address) is computed by:\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "List some ma.hashing example ?",
+  "answer": "Consider the tuple:\n branch acctNo name amount\n Downtown 101 Johnston 512\n Hash value (page address) is computed by:\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "ma.hashing example",
+  "answer": "Consider the tuple:\n branch acctNo name amount\n Downtown 101 Johnston 512\n Hash value (page address) is computed by:\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some ma.hashing example ?",
+  "answer": "Consider the tuple:\n branch acctNo name amount\n Downtown 101 Johnston 512\n Hash value (page address) is computed by:\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some ma.hashing example ?",
+  "answer": "Consider the tuple:\n branch acctNo name amount\n Downtown 101 Johnston 512\n Hash value (page address) is computed by:\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some ma.hashing example ?",
+  "answer": "Consider the tuple:\n branch acctNo name amount\n Downtown 101 Johnston 512\n Hash value (page address) is computed by:\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "example"
+  ]
+ },
+ {
+  "question": "May i have ma.hashing cost example ?",
+  "answer": "Consider a table with four attributes:\n (branch, account, name, amount)   (abbreviated to (br,ac,nm,amt) )\n Possible query types, and likelhood of each:\n Query type Cost pQ\n (?, ?, ?, ?) 8 0\n (br, ?, ?, ?) 4 0.25\n (?, ac, ?, ?) 4 0\n (br, ac, ?, ?) 2 0\n (?, ?, nm, ?) 4 0\n (br, ?, nm, ?) 2 0\n (?, ac, nm, ?) 2 0.25\n (br, ac, nm, ?) 1 0\n (?, ?, ?, amt) 8 0\n (br, ?, ?, amt) 4 0\n (?, ac, ?, amt) 4 0\n (br, ac, ?, amt) 2 0\n (?, ?, nm, amt) 4 0\n (br, ?, nm, amt) 2 0.5\n (?, ac, nm, amt) 2 0\n (br, ac, nm, amt) 1 0\n Cost values are based on choice vector   (dbr = dac = dnm = 1) pQ values can be determined by observation of DB use.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "List some ma.hashing cost example ?",
+  "answer": "Consider a table with four attributes:\n (branch, account, name, amount)   (abbreviated to (br,ac,nm,amt) )\n Possible query types, and likelhood of each:\n Query type Cost pQ\n (?, ?, ?, ?) 8 0\n (br, ?, ?, ?) 4 0.25\n (?, ac, ?, ?) 4 0\n (br, ac, ?, ?) 2 0\n (?, ?, nm, ?) 4 0\n (br, ?, nm, ?) 2 0\n (?, ac, nm, ?) 2 0.25\n (br, ac, nm, ?) 1 0\n (?, ?, ?, amt) 8 0\n (br, ?, ?, amt) 4 0\n (?, ac, ?, amt) 4 0\n (br, ac, ?, amt) 2 0\n (?, ?, nm, amt) 4 0\n (br, ?, nm, amt) 2 0.5\n (?, ac, nm, amt) 2 0\n (br, ac, nm, amt) 1 0\n Cost values are based on choice vector   (dbr = dac = dnm = 1) pQ values can be determined by observation of DB use.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "ma.hashing cost example",
+  "answer": "Consider a table with four attributes:\n (branch, account, name, amount)   (abbreviated to (br,ac,nm,amt) )\n Possible query types, and likelhood of each:\n Query type Cost pQ\n (?, ?, ?, ?) 8 0\n (br, ?, ?, ?) 4 0.25\n (?, ac, ?, ?) 4 0\n (br, ac, ?, ?) 2 0\n (?, ?, nm, ?) 4 0\n (br, ?, nm, ?) 2 0\n (?, ac, nm, ?) 2 0.25\n (br, ac, nm, ?) 1 0\n (?, ?, ?, amt) 8 0\n (br, ?, ?, amt) 4 0\n (?, ac, ?, amt) 4 0\n (br, ac, ?, amt) 2 0\n (?, ?, nm, amt) 4 0\n (br, ?, nm, amt) 2 0.5\n (?, ac, nm, amt) 2 0\n (br, ac, nm, amt) 1 0\n Cost values are based on choice vector   (dbr = dac = dnm = 1) pQ values can be determined by observation of DB use.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some ma.hashing cost example ?",
+  "answer": "Consider a table with four attributes:\n (branch, account, name, amount)   (abbreviated to (br,ac,nm,amt) )\n Possible query types, and likelhood of each:\n Query type Cost pQ\n (?, ?, ?, ?) 8 0\n (br, ?, ?, ?) 4 0.25\n (?, ac, ?, ?) 4 0\n (br, ac, ?, ?) 2 0\n (?, ?, nm, ?) 4 0\n (br, ?, nm, ?) 2 0\n (?, ac, nm, ?) 2 0.25\n (br, ac, nm, ?) 1 0\n (?, ?, ?, amt) 8 0\n (br, ?, ?, amt) 4 0\n (?, ac, ?, amt) 4 0\n (br, ac, ?, amt) 2 0\n (?, ?, nm, amt) 4 0\n (br, ?, nm, amt) 2 0.5\n (?, ac, nm, amt) 2 0\n (br, ac, nm, amt) 1 0\n Cost values are based on choice vector   (dbr = dac = dnm = 1) pQ values can be determined by observation of DB use.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some ma.hashing cost example ?",
+  "answer": "Consider a table with four attributes:\n (branch, account, name, amount)   (abbreviated to (br,ac,nm,amt) )\n Possible query types, and likelhood of each:\n Query type Cost pQ\n (?, ?, ?, ?) 8 0\n (br, ?, ?, ?) 4 0.25\n (?, ac, ?, ?) 4 0\n (br, ac, ?, ?) 2 0\n (?, ?, nm, ?) 4 0\n (br, ?, nm, ?) 2 0\n (?, ac, nm, ?) 2 0.25\n (br, ac, nm, ?) 1 0\n (?, ?, ?, amt) 8 0\n (br, ?, ?, amt) 4 0\n (?, ac, ?, amt) 4 0\n (br, ac, ?, amt) 2 0\n (?, ?, nm, amt) 4 0\n (br, ?, nm, amt) 2 0.5\n (?, ac, nm, amt) 2 0\n (br, ac, nm, amt) 1 0\n Cost values are based on choice vector   (dbr = dac = dnm = 1) pQ values can be determined by observation of DB use.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some ma.hashing cost example ?",
+  "answer": "Consider a table with four attributes:\n (branch, account, name, amount)   (abbreviated to (br,ac,nm,amt) )\n Possible query types, and likelhood of each:\n Query type Cost pQ\n (?, ?, ?, ?) 8 0\n (br, ?, ?, ?) 4 0.25\n (?, ac, ?, ?) 4 0\n (br, ac, ?, ?) 2 0\n (?, ?, nm, ?) 4 0\n (br, ?, nm, ?) 2 0\n (?, ac, nm, ?) 2 0.25\n (br, ac, nm, ?) 1 0\n (?, ?, ?, amt) 8 0\n (br, ?, ?, amt) 4 0\n (?, ac, ?, amt) 4 0\n (br, ac, ?, amt) 2 0\n (?, ?, nm, amt) 4 0\n (br, ?, nm, amt) 2 0.5\n (?, ac, nm, amt) 2 0\n (br, ac, nm, amt) 1 0\n Cost values are based on choice vector   (dbr = dac = dnm = 1) pQ values can be determined by observation of DB use.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "May i have ma.hashing cost example ?",
+  "answer": "Consider r=106, Nr=100, b=104, d=14.\n Attribute br occurs in 0.5+0.25 used query types \u21d2 allocate many bits to it e.g. d1=6.\n Attribute nm occurs in 0.5+0.25 of queries \u21d2 allocate many bits to it e.g. d3=4.\n Attribute amt occurs in 0.5 of queries \u21d2 allocate less bits to it e.g. d4=2.\n Attribute ac occurs in 0.25 of queries \u21d2 allocate least bits to it e.g. d2=2.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "List some ma.hashing cost example ?",
+  "answer": "Consider r=106, Nr=100, b=104, d=14.\n Attribute br occurs in 0.5+0.25 used query types \u21d2 allocate many bits to it e.g. d1=6.\n Attribute nm occurs in 0.5+0.25 of queries \u21d2 allocate many bits to it e.g. d3=4.\n Attribute amt occurs in 0.5 of queries \u21d2 allocate less bits to it e.g. d4=2.\n Attribute ac occurs in 0.25 of queries \u21d2 allocate least bits to it e.g. d2=2.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "ma.hashing cost example",
+  "answer": "Consider r=106, Nr=100, b=104, d=14.\n Attribute br occurs in 0.5+0.25 used query types \u21d2 allocate many bits to it e.g. d1=6.\n Attribute nm occurs in 0.5+0.25 of queries \u21d2 allocate many bits to it e.g. d3=4.\n Attribute amt occurs in 0.5 of queries \u21d2 allocate less bits to it e.g. d4=2.\n Attribute ac occurs in 0.25 of queries \u21d2 allocate least bits to it e.g. d2=2.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some ma.hashing cost example ?",
+  "answer": "Consider r=106, Nr=100, b=104, d=14.\n Attribute br occurs in 0.5+0.25 used query types \u21d2 allocate many bits to it e.g. d1=6.\n Attribute nm occurs in 0.5+0.25 of queries \u21d2 allocate many bits to it e.g. d3=4.\n Attribute amt occurs in 0.5 of queries \u21d2 allocate less bits to it e.g. d4=2.\n Attribute ac occurs in 0.25 of queries \u21d2 allocate least bits to it e.g. d2=2.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some ma.hashing cost example ?",
+  "answer": "Consider r=106, Nr=100, b=104, d=14.\n Attribute br occurs in 0.5+0.25 used query types \u21d2 allocate many bits to it e.g. d1=6.\n Attribute nm occurs in 0.5+0.25 of queries \u21d2 allocate many bits to it e.g. d3=4.\n Attribute amt occurs in 0.5 of queries \u21d2 allocate less bits to it e.g. d4=2.\n Attribute ac occurs in 0.25 of queries \u21d2 allocate least bits to it e.g. d2=2.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some ma.hashing cost example ?",
+  "answer": "Consider r=106, Nr=100, b=104, d=14.\n Attribute br occurs in 0.5+0.25 used query types \u21d2 allocate many bits to it e.g. d1=6.\n Attribute nm occurs in 0.5+0.25 of queries \u21d2 allocate many bits to it e.g. d3=4.\n Attribute amt occurs in 0.5 of queries \u21d2 allocate less bits to it e.g. d4=2.\n Attribute ac occurs in 0.25 of queries \u21d2 allocate least bits to it e.g. d2=2.\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "May i have ma.hashing cost example ?",
+  "answer": "With bits distributed as: d1=6, d2=2, d3=4, d4=2\n Query type Cost pQ\n (br, ?, ?, ?) 28 = 256 0.25\n (?, ac, nm, ?) 28 = 256 0.25\n (br, ?, nm, amt) 22 = 4 0.5\n Cost  =  0.5 \u00d7 22 + 0.25 \u00d7 28 + 0.25 \u00d7 28  =  130\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "List some ma.hashing cost example ?",
+  "answer": "With bits distributed as: d1=6, d2=2, d3=4, d4=2\n Query type Cost pQ\n (br, ?, ?, ?) 28 = 256 0.25\n (?, ac, nm, ?) 28 = 256 0.25\n (br, ?, nm, amt) 22 = 4 0.5\n Cost  =  0.5 \u00d7 22 + 0.25 \u00d7 28 + 0.25 \u00d7 28  =  130\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "ma.hashing cost example",
+  "answer": "With bits distributed as: d1=6, d2=2, d3=4, d4=2\n Query type Cost pQ\n (br, ?, ?, ?) 28 = 256 0.25\n (?, ac, nm, ?) 28 = 256 0.25\n (br, ?, nm, amt) 22 = 4 0.5\n Cost  =  0.5 \u00d7 22 + 0.25 \u00d7 28 + 0.25 \u00d7 28  =  130\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some ma.hashing cost example ?",
+  "answer": "With bits distributed as: d1=6, d2=2, d3=4, d4=2\n Query type Cost pQ\n (br, ?, ?, ?) 28 = 256 0.25\n (?, ac, nm, ?) 28 = 256 0.25\n (br, ?, nm, amt) 22 = 4 0.5\n Cost  =  0.5 \u00d7 22 + 0.25 \u00d7 28 + 0.25 \u00d7 28  =  130\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some ma.hashing cost example ?",
+  "answer": "With bits distributed as: d1=6, d2=2, d3=4, d4=2\n Query type Cost pQ\n (br, ?, ?, ?) 28 = 256 0.25\n (?, ac, nm, ?) 28 = 256 0.25\n (br, ?, nm, amt) 22 = 4 0.5\n Cost  =  0.5 \u00d7 22 + 0.25 \u00d7 28 + 0.25 \u00d7 28  =  130\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some ma.hashing cost example ?",
+  "answer": "With bits distributed as: d1=6, d2=2, d3=4, d4=2\n Query type Cost pQ\n (br, ?, ?, ?) 28 = 256 0.25\n (?, ac, nm, ?) 28 = 256 0.25\n (br, ?, nm, amt) 22 = 4 0.5\n Cost  =  0.5 \u00d7 22 + 0.25 \u00d7 28 + 0.25 \u00d7 28  =  130\n",
+  "intent": "example",
+  "key_words": [
+   "ma.hashing",
+   "cost",
+   "example"
+  ]
+ }
+]

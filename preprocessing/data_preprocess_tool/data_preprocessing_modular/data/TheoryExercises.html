@@ -1,0 +1,5182 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'> <title>C:\Users\admin\Desktop\新建文件夹 (3)\TheoryExercises(1).html</title> </head><body><div><h3 >字段1</h3><p>COMP9315 18s2
+
+
+  Exercises 01Database Management Systems, PostgreSQL
+
+
+  DBMS Implementation
+
+
+[Show with no answers]   [Show with all answers]
+
+
+Some of these questions require you to look beyond the Week 01 lecture
+material for answers. Some of the questions preempt material that we'll
+be looking at over the next few weeks. To answer some questions, you may
+need to look at the PostgreSQL documentation or at the texts for the
+course ... or, of course, you could simply reveal the answers, but
+where's the fun in that?
+
+
+
+
+
+
+List some of the major issues that a relational database management system
+needs to concern itself with.
+
+[show answer]
+
+
+ persistent storage of data and meta-data
+ executing SQL queries on stored data
+ maintenance of constraints on stored data
+ extensibility via views, triggers, procedures
+ query processing (optimisation and efficient execution)
+ transaction processing semantics
+ control of concurrent access by multiple users
+ recovery from failures (rollback, system failure)
+
+
+
+
+
+Give an overview of the major stages in answering an SQL query in a relational
+database management system. For each step, describe its inputs and outputs
+and give a brief description of what it does.
+
+[show answer]
+
+
+ start with the text string of an SQL query
+
+ e.g.   select e.name,d.name from Employee e, Dept d where e.id=d.manager;
+
+ parsing and translation
+
+ converts an SQL query into a relational algebra expression
+ input: text string of an SQL query
+ output: expression tree for a relational algebra expression
+
+ optimisation
+
+ converts RA expression into query plan
+ input: relational algebra expression tree
+ output: sequence of DBMS-specific relational operations
+
+ execution
+
+ performs relational operations, via chained intermediate results
+ input: query plan (sequence of DBMS-specific relational operations)
+ output: set of result tuples, stored either in memory or on disk
+
+ output
+
+ convert the result tuples into a format useful for the client
+ input: tuple data in memory buffers (and possibly on disk as well)
+ output: stream of formatted tuples (format defined by library e.g. PostgreSQL's libpq)
+
+
+
+
+
+
+PostgreSQL is an object-relational database management system.
+What are the differences between PostgreSQL and a conventional
+relational database management system (such as Oracle)?
+
+[show answer]
+
+
+ every database tuple has an associated object identifier
+ tables can be defined as specialisations of other tables (inheritance)
+ can define new data types and operations on those types
+
+
+
+
+
+A PostgreSQL installation includes a number of different scopes:
+databases (or catalogs), schemas (or namespaces),
+and tablespaces.
+The scopes correspond to notions from the SQL standard.
+Explain the difference between these and give examples of each.
+
+[show answer]
+
+
+
+database (or catalog) ... a logical scope that collects
+together a number of schemas; an example is template1, a special
+database that is cloned whenever a user creates a new database; details of
+databases are held in the pg_database catalog table
+
+
+schema (or namespace) ... a logical scope used as a namespace;
+contains a collection of database objects (tables, views, functions, indexes,
+triggers, ...); an example is the public schema available as a
+default in all databases; details of schemas are held in the
+pg_namespace catalog table
+
+
+tablespace ... a physical scope identifying a region of the
+host filesystem where PostgreSQL data files are stored; an example is the
+pg_default tablespace, which corresponds to the PG_DATA
+directory where most PostgreSQL data files are typically stored;
+details of tablespaces are held in the pg_tablespace catalog table
+
+
+
+
+
+
+For each of the following command-line arguments to the psql
+command, explain what it does, when it might be useful, and how you might
+achieve the same effect from within psql:
+
+
+ -l
+ -f
+ -a
+ -E
+
+[show answer]
+
+
+ psql -l 
+	
+	Generates a list of all databases in your cluster; would be
+	useful if you couldn't remember the exact  name of one of your
+	databases.
+	
+	
+	You can achieve the same effect from within psql
+        via the command \list or simply \l
+	
+ psql db -f file 
+	
+	Connects to the database db and reads
+	commands from the file called file to
+	act on that database; useful for invoking scripts that
+	build databases or that run specific queries on them; only
+	displays the output from the commands in file.
+	
+	
+	You can achieve the same effect from within psql
+        via the command \i file
+	
+ psql -a db -f file 
+	
+	Causes all input to psql to be echoed to the
+	standard output; useful for running a script on the database
+	and being able to see error messages in the context of the
+	command that caused the error.
+	
+	
+	You can achieve the same effect from within psql
+	via the command \set ECHO all
+	
+ psql -E db
+	
+	Connect to the database db as usual;
+	for all of the psql catalog commands (such as
+	\d, \df, etc.), show the
+	SQL query that's being executed to produce it; useful if you
+	want to learn how to use the catalog tables.
+	
+	
+	You can achieve the same effect from within psql
+	via the command \set ECHO_HIDDEN on
+	
+
+
+
+
+
+PostgreSQL has two main mechanisms for adding data into a database:
+the SQL standard INSERT statement and the PostgreSQL-specific
+COPY statement.
+Describe the differences in how these two statement operate.
+Use the following examples, which insert the same set of tuples,
+to motivate your explanation:`
+
+insert into Enrolment(course,student,mark,grade)
+	values ('COMP9315', 3312345, 75, 'DN');
+insert into Enrolment(course,student,mark,grade)
+	values ('COMP9322', 3312345, 80, 'DN');
+insert into Enrolment(course,student,mark,grade)
+	values ('COMP9315', 3354321, 55, 'PS');
+
+copy Enrolment(course,student,mark,grade) from stdin;
+COMP9315	3312345	75	DN
+COMP9322	3312345	80	DN
+COMP9315	3354321	55	PS
+\.
+
+[show answer]
+
+
+Each insert statement is a transaction in its own right.
+It attempts to add a single tuple to the database, checking all of the
+relevant constraints. If any of the constraints fails, that particular
+ insertion operation is aborted and the tuple is not inserted. However,
+any or all of the other insert statements may still succeed.
+
+
+A copy statement attempts to insert all of the tuples
+into the database, checking constraints as it goes. If any constraint
+fails, the copy operation is halted, and none of the
+tuples are added to the table†.
+
+
+For the above example, the insert statements may result
+in either zero or 1 or 2 or 3 tuples being inserted, depending on
+whether how many values are valid.
+For the copy statement, either zero or 3 tuples will
+be added to the table, depending on whether any tuple is invalid
+or not.
+
+
+† A fine detail: under the copy statement,
+tuples are "temporarily" added to the table as the statement
+progresses. In the event of an error, the tuples are all marked
+as invalid and are not visible to any query (i.e. they are
+effectively not added to the table). However, they still
+occupy space in the table. If a very large copy loads
+e.g. 9999 or 10000 tuples and the last tuple is incorrect, space
+has still been allocated for the most of the tuples. The
+vacuum function can be used to clean out the invalid
+tuples.
+
+
+
+
+
+
+In psql, the \timing command turns on a timer
+that indicates how long each SQL command takes to execute. Consider the
+following trace of a session asking the several different queries
+multiple times:
+
+\timing
+Timing is on.
+select max(id) from students;
+   max   
+---------
+ 9904944
+Time: 112.173 ms
+select max(id) from students;
+   max   
+---------
+ 9904944
+Time: 0.533 ms
+select max(id) from students;
+   max   
+---------
+ 9904944
+Time: 0.484 ms
+select count(*) from courses;
+ count 
+-------
+ 80319
+Time: 132.416 ms
+select count(*) from courses;
+ count 
+-------
+ 80319
+Time: 30.438 ms
+select count(*) from courses;
+ count 
+-------
+ 80319
+Time: 34.034 ms
+select max(id) from students;
+   max   
+---------
+ 9904944
+Time: 0.765 ms
+select count(*) from enrolments;
+  count  
+---------
+ 2816649
+Time: 2006.707 ms
+select count(*) from enrolments;
+  count  
+---------
+ 2816649
+Time: 1099.993 ms
+select count(*) from enrolments;
+  count  
+---------
+ 2816649
+Time: 1109.552 ms
+
+
+Based on the above, suggest answers to the following:
+
+
+ Why is there such variation in timing between different executions
+	of the same command?
+ What timing value should we ascribe to each of the above commands?
+ How could we generate reliable timing values?
+ What is the accuracy of timing results that we can extract like this?
+
+[show answer]
+
+
+ Variation:
+
+There's a clear pattern in the variations: the first time a query is
+executed it takes significantly longer than the second time
+its executed (e.g. the first query drops from over 100ms to less than
+1ms). This is due to caching effects. PostgreSQL has a large
+in-memory buffer-pool. The first time a query is executed, the relevant
+pages will need to be read into memory buffers from disk. The second
+and subsequent times, the pages are already in the memory buffers.
+
+ Times:
+
+Given the significantly different contexts, it's not really plausible
+to assign a specific time to a query. Assigning a range of values,
+from "cold" execution (when none of the data for the query is
+buffered) to "hot" execution (when as much as possible of the needed
+data is buffered), might be more reasonable. Even then, you would
+need to measure the hot and cold execution several times and take an
+average.
+
+
+How to achieve "cold" execution multiple times? It's difficult.
+Even if you stop the PostgreSQL server, then restart it, effectively
+flushing the buffer pool, there is still some residual buffering in
+the Unix file buffers. You would need to read lots of other files to
+flush the Unix buffers.
+
+ Reliability:
+
+This is partially answered in the previous question. If you can
+ensure that the context (hot or cold) is the same at the start of
+each timing, the results will be plausibly close. Obviously, you
+should run each test on the same lightly-loaded machine (to
+minimise differences caused by Unix buffering). You should also
+ensure that you are the only user of the database server. If
+multiple users are competing for the buffer pool, the times
+could variably substantially and randomly up or down between
+subsequent runs, depending on how much of your buffered data
+had been swapped out to service queries from other users.
+
+ Accuracy:
+
+For comparable executions of the query (either buffers empty or
+buffers fully-loaded), it looks like it's no more accurate than
++/- 10ms. It might even be better to forget about precise time
+measures, and simply fit queries into "ball-park" categories, e.g.
+
+
+ Very fast ... 0 ≤ t < 100ms
+ Fast ... 100 ≤ t < 500ms
+ Acceptable ... 500 ≤ t < 2000ms
+ Slow ... 2000 ≤ t < 10000ms
+ Too Slow ... t > 10000ms
+
+
+
+Note that the above queries where run on a PostgreSQL 8.3.5 server.
+More recent servers seem to be somewhat more consistent in the value
+returned for "hot" executions, although there is may still be a
+substantial difference between the first "cold" execution of a query
+and subsequent "hot" executions of the same query.</p><h3 >字段2</h3><p>COMP9315 18s2
+
+
+  Exercises 02Storage Management and Catalogs
+
+
+  DBMS Implementation
+
+
+[Show with no answers]   [Show with all answers]
+
+
+For any questions that require you to use the PostgreSQL catalog,
+you should try to solve them by referring to the 
+catalog section
+in the PostgreSQL documentation before looking at the solutions.
+An important aim of these exercises is for you to become familiar
+with the catalog.
+
+
+
+
+
+
+What is the purpose of the storage management subsystem of a DBMS?
+
+[show answer]
+
+
+The primary purpose of the storage manager is to organise the
+persistent storage of the DBMS's data and meta-data, typically
+on a disk device.
+The storage manager contains a mapping from user-level database objects
+(such as tables and tuples) to files and disk blocks.
+Its primary functions are performing the mapping from objects to files
+and transferring data between memory and disk.
+
+
+
+
+
+
+Describe some of the typical functions provided by the storage management subsystem.
+
+[show answer]
+
+
+Note that these functions are merely suggestive of the kinds of functions that
+might appear in a storage manager. They bear no relation to any real DBMS (and
+they are not drawn from the PostgreSQL storage manager, although similar kinds
+of functions will be found there).
+The function descriptions could have been less detailed, but I thought it was
+worth mentioning some typical data types as well.
+
+
+Some typical storage management functions ...
+
+
+ RelnDescriptor *openRelation(char *relnName)
+ 
+  initiates access to a named table/relation
+  determines which files correspond to the named table
+  sets up a data structure (RelnDescriptor) to manage access to those files
+  the data structure would typically contain file descriptors and a buffer
+ 
+
+ DataBlock getPage(TableDescriptor *table, PageId pid)
+ 
+  fetch the content of the pidth data page from the open table
+  DataBlock is a reference to a memory buffer containing the data
+ 
+
+ Tuple getTuple(TableDescriptor *table, TupleID tid)
+ 
+  fetch the content of the pidth tuple from the open table
+  Tuple is an in-memory data structure containing the values from the tuple
+  this function would typically determine which page contained the tuple, then
+	call getPage() to retrieve the page, and finally extract the data
+	values from the page buffer; it may also need to open other files and read
+	e.g. large data values from them
+ 
+
+
+
+Other functions might include putPage, putTuple, closeTable,
+etc.
+
+
+
+
+
+
+Both the pg_catalog schema and the information_schema schema
+contain meta-data describing the content of a database.
+Why do we need two schemas to do essentially the same task, and how are they
+related?
+
+[show answer]
+
+
+We don't actually need two schemas; we have two schemas
+as a result of history. The information_schema schema is an SQL
+standard that was developed as part of the SQL-92 standard. Most DBMSs
+existed before that standard and had already developed their own catalog
+tables, which they retained as they were often integral to the functioning
+of the DBMS engine. In most DBMSs the information_schema is
+implemented as a collection of views on the native catalog schema.
+
+
+If you want to take a look at the definitions of the information_schema
+views in PostgreSQL, log in to any database and try the following:
+
+set schema 'information_schema';
+SET
+\dS
+... list of views and tables ...
+\d+ views
+... schema and definition for "information_schema.views" ...
+... which contains meta-data about views in the database ...
+
+
+
+
+
+
+Cross-table references (foreign keys) in the pg_catalog tables
+are defined in terms of oid attributes. However, examination of
+the the catalog table definitions (either via \d in psql
+or via the PostgreSQL documentation) doesn't show an oid in any
+of the lists of table attributes. To see this, try the following commands:
+
+psql mydb
+...
+\d pg_database
+...
+\d pg_authid
+
+
+Where does the oid attribute come from?
+
+[show answer]
+
+
+Every tuple in PostgreSQL contains some "hidden" attributes, as well as the
+data attributes that were defined in the table's schema (i.e. its CREATE
+TABLE statement). The tuple header containing these attributes is
+described in section
+54.5 Database Page Layout
+of the PostgreSQL documentation.
+All tuples have attributes called xmin and xmax, used in
+the implementation of multi-version concurrency control. In fact the oid
+attribute is optional, but all of the pg_catalog tables have it.
+You can see the values of the hidden attributes by explicitly naming the
+attributes in a query on the table, e.g.
+
+select oid,xmin,xmax,* from pg_namespace;
+
+
+In other words, the "hidden" attributes are not part of the SQL *
+which matches all attributes in the table.
+
+
+
+
+
+
+Write an SQL view to give a list of table names and table oid's
+from the public namespace in a PostgreSQL database.
+
+[show answer]
+
+create or replace view Tables
+as
+select r.oid, r.relname as tablename
+from   pg_class r join pg_namespace n on (r.relnamespace = n.oid)
+where  n.nspname = 'public' and r.relkind = 'r'
+;
+
+
+
+
+
+
+Using the tables in the pg_catalog schema,
+write a function to determine the location of a table in the filesystem.
+In other words, provide your own implementation of the built-in function:
+pg_relation_filepath(TableName).
+The function should be defined and behave as follows:
+
+create function tablePath(tableName text) returns text
+as $$ ... $$ language plpgsql;
+
+select tablePath('myTable');
+          tablepath
+-----------------------------
+ PGDATA/base/2895497/2895518
+select tablePath('ImaginaryTable');
+            tablepath
+-------------------------------
+ No such table: imaginarytable
+
+
+Start the path string with PGDATA/base if the pg_class.reltablespace
+value is 0, otherwise use the value of  pg_tablespace.spclocation in
+the corresponding pg_tablespace tuple.
+
+[show answer]
+
+create or replace function tablePath(tableName text) returns text
+as $$
+declare
+	_nloc text;
+	_dbid integer;
+	_tbid integer;
+	_tsid integer;
+begin
+	select r.oid, r.reltablespace into _tbid, _tsid
+	from   pg_class r
+		join pg_namespace n on (r.relnamespace = n.oid)
+	where  r.relname = tableName and r.relkind = 'r'
+		and n.nspname = 'public';
+	if (_tbid is null) then
+		return 'No such table: '||tableName;
+	else
+		select d.oid into _dbid
+		from   pg_database d
+		where  d.datname = current_database();
+		if (_tsid = 0) then
+			_nloc := 'PGDATA/data';
+		else
+			select spcname into _nloc
+			from   pg_tablespace
+			where  oid = _tsid;
+			if (_nloc is null) then
+				_nloc := '???';
+			end if;
+		end if;
+		return _nloc||'/'||_dbid::text||'/'||_tbid::text;
+	end if;
+end;
+$$ language plpgsql;
+
+
+
+
+
+
+Write a PL/pgSQL function to give a list of table schemas for all of
+the tables in the public namespace of a PostgreSQL database.
+Each table schema is a text string giving the table name and the name
+of all attributes, in their definition order (given by pg_attribute.attnum).
+You can ignore system attributes (those with attnum < 0).
+Tables should appear in alphabetical order.
+
+
+The function should have following header:
+
+create or replace function tableSchemas() returns setof text ...
+
+
+and is used as follows:
+
+select * from tableschemas();
+                                 tableschemas                                  
+---------------------------------------------------------------------------------
+ assessments(item, student, mark)
+ courses(id, code, title, uoc, convenor)
+ enrolments(course, student, mark, grade)
+ items(id, course, name, maxmark)
+ people(id, ptype, title, family, given, street, suburb, pcode, gender, birthday, country)
+(5 rows)
+
+[show answer]
+
+
+This function makes use of the tables view defined in Q6.
+
+create or replace function tableSchemas() returns setof text
+as $$
+declare
+	tab record; att record; ts text;
+begin
+	for tab in
+		select * from tables order by tablename
+	loop
+		ts := '';
+		for att in
+			select * from pg_attribute
+			where  attrelid = tab.oid and attnum > 0
+			order  by attnum
+		loop
+			if (ts <> '') then ts := ts||', '; end if;
+			ts := ts||att.attname;
+		end loop;
+		ts := tab.tablename||'('||ts||')';
+		return next ts;
+	end loop;
+	return;
+end;
+$$ language plpgsql;
+
+
+And, just for fun, a version that uses the information_schema views,
+and, in theory, should be portable to other DBMSs that implement these views.
+
+create or replace function tableSchemas2() returns setof text
+as $$
+declare
+	tab record; att record; ts text;
+begin
+	for tab in
+		select table_catalog,table_schema,table_name
+		from   information_schema.tables
+		where  table_schema='public' and table_type='BASE TABLE'
+		order  by table_name
+	loop
+		ts := '';
+		for att in
+			select c.column_name
+			from   information_schema.columns c
+			where  c.table_catalog = tab.table_catalog
+				and c.table_schema = tab.table_schema
+				and c.table_name = tab.table_name
+			order  by c.ordinal_position
+		loop
+			if (ts <> '') then ts := ts||', '; end if;
+			ts := ts||att.column_name;
+		end loop;
+		ts := tab.table_name||'('||ts||')';
+		return next ts;
+	end loop;
+	return;
+end;
+$$ language plpgsql;
+
+
+
+
+
+
+Extend the function from the previous question so that attaches a type name
+to each attribute name. Use the following function to produce the string for
+each attribute's type:
+
+create or replace function typeString(typid oid, typmod integer) returns text
+as $$
+declare
+	typ text;
+begin
+	typ := pg_catalog.format_type(typid,typmod);
+	if (substr(typ,1,17) = 'character varying')
+	then
+		typ := replace(typ, 'character varying', 'varchar');
+	elsif (substr(typ,1,9) = 'character')
+	then
+		typ := replace(typ, 'character', 'char');
+	end if;
+	return typ;
+end;
+$$ language plpgsql;
+
+
+The first argument to this function is a pg_attribute.atttypid
+value; the second argument is a pg_attribute.atttypmod value.
+(Look up what these actually represent in the PostgreSQL documentation).
+
+
+Use the same function header as above, but this time the output should
+look like (for the first three tables at least):
+
+ assessments(item:integer, student:integer, mark:integer)
+ courses(id:integer, code:char(8), title:varchar(50), uoc:integer, convenor:integer)
+ enrolments(course:integer, student:integer, mark:integer, grade:char(2))
+
+[show answer]
+
+create or replace function tableSchemas() returns setof text
+as $$
+declare
+	t record; a record; ts text;
+begin
+	for t in
+		select * from tables order by tablename
+	loop
+		ts := '';
+		for a in
+			select * from pg_attribute
+			where  attrelid = t.oid and attnum > 0
+			order  by attnum
+		loop
+			if (ts <> '') then ts := ts||', '; end if;
+			ts := ts||a.attname||':'||typeString(a.atttypid,a.atttypmod);
+		end loop;
+		ts := t.tablename||'('||ts||')';
+		return next ts;
+	end loop;
+	return;
+end;
+$$ language plpgsql;
+
+create or replace function typeString(typid oid, typmod integer) returns text
+as $$
+declare
+	tname text;
+begin
+	tname := format_type(typid,typmod);
+	tname := replace(tname, 'character varying', 'varchar');
+	tname := replace(tname, 'character', 'char');
+	return tname;
+end;
+$$ language plpgsql;
+
+
+Note that format_type() is a built-in function defined
+in the PostgreSQL documentation in section
+9.23. System Information Functions
+
+
+
+
+
+The following SQL syntax can be used to modify the length of a
+varchar attribute.
+
+alter table TableName alter column ColumnName set data type varchar(N);
+
+
+where N is the new length.
+
+
+If PostgreSQL did not support the above syntax, suggest how you
+might be able to achieve the same effect by manipulating the
+catalog data.
+
+[show answer]
+
+
+One possible approach would be:
+
+update pg_attribute set atttypmod = N
+where  attrelid = (select oid from pg_class where relname = 'TableName')
+       and attname = 'ColumnName';
+
+
+This is somewhat like what PostgreSQL does when you use the above
+ALTER TABLE statement.
+
+
+Making the length longer causes no problems. What do you suppose
+might happen if you try to make the length shorter than the longest
+string value already stored in that column?
+
+
+The ALTER TABLE statement rejects the update because some
+tuples have values that are too long for the new length.
+However, if you use the UPDATE statement, it changes the
+length, but the over-length tuples remain.</p><h3 >字段3</h3><p>COMP9315 18s2
+
+
+  Exercises 03Disks, Files, Pages, Tuples
+
+
+  DBMS Implementation
+
+
+[Show with no answers]   [Show with all answers]
+
+
+
+
+
+[Based on Garcia-Molina/Ullman/Widom 13.6.1] 
+Consider a disk with the following characteristics:
+
+
+ 8 platters, 16 read/write surfaces
+ 16,384 (214) tracks per surface
+ On average, 128 sectors/blocks per track (min: 96, max: 160)
+ 4096 (212) bytes per sector/block
+
+
+If we represent record addresses on such a disk by allocating
+a separate byte (or bytes) to address the surface, the track,
+the sector/block, and the byte-offset within the block,
+how many bytes do we need?
+
+How would the answer differ if we used bit-fields, used the
+minimum number of bits for each address component, and packed
+the components as tightly as possible?
+
+[show answer]
+
+
+Number of bytes required to address the disk if all address components
+are multiples of whole bytes:
+
+
+ 16 surfaces requires 4 bits or 1 byte
+ 16,384 tracks requires 14 bits or 2 bytes
+ need to use max sectors/track, so 160 sectors requires 8 bits or 1 byte
+ 4,096 bytes per sector/block requires 12 bits or 2 bytes
+
+
+Thus, the total number of bytes required is 1+2+1+2 = 6 bytes.
+
+
+If we use minimum bits, we require 4+14+8+12 = 38 bits = 5 bytes
+
+
+
+
+
+
+The raw disk addresses in the first question are very low level.
+DBMSs normally deal with higher-level objects than raw disk blocks,
+and thus use different kinds of addresses, such as PageIds
+and TupleIds.
+
+
+Consider a DBMS where TupleIDs are defined as 32-bit quantities
+consisting the following:
+
+
+
+Write C functions to extract the various components from a TupleId
+value:
+
+typedef unsigned int BitString;
+typedef BitString TupleId;
+
+BitString relNum(Tuple id) { ... }
+BitString pageNumFrom(Tuple id) { ... }
+BitString recNumFrom(Tuple id) { ... }
+
+[show answer]
+
+
+Requires the use of C's bit operators, and use a mask to extract just the
+relevant bits and a shift to ensure that the relevant bits are in the
+low-order position:
+
+#define relNumMask 0x000003ff  /* 10 bits */
+#define relNumMask 0x00003fff  /* 14 bits */
+#define recNumMask 0x000000ff  /*  8 bits */
+
+BitString relNum(TupleId id) { return ((id >> 22) & relNumMask); }
+
+BitString pageNumFrom(TupleId id) { return ((id >> 8) & pageNumMask); }
+
+BitString recNumFrom(TupleId id) { return (id & recNumMask); }
+
+
+These are probably better done as #define macros.
+
+
+
+
+
+
+Assume that a data file is composed of 4KB pages, where each page
+is structured as follows:
+
+
+
+The start of the page contains a tuple directory which is a sequence
+of three-byte values, where the first 12 bits contain the offset
+into the page of the tuple and the second 12 bits contain the
+tuple length.
+
+
+Write a C function that takes three parameters: an open file descriptor,
+a page number and a record number and reads the data for the corresponding
+record. Do not read the whole page; read just enough of the data
+to solve the problem. Dynamically allocate a memory buffer large enough to
+hold the tuple data when read in. The function should return a pointer to
+the start of the tuple memory buffer.
+
+
+The function should do appropriate error-checking and return NULL
+in the case that any operation cannot be completed.
+Use the following function template:
+
+char *getTuple(int inFile, int pageNumber, int recNumber) { ... }
+
+
+Hint: when a directory value is read into memory, the high-order bits contain
+the offset and the low-order bits contain the length.
+
+
+Use only the low-level i/o operators (system calls)
+such as open(), read(), write(),
+lseek(), etc.
+
+[show answer]
+
+
+We assume that all of the relevant .h files have been included.
+
+#define PAGE_SIZE 4096
+
+char *getTuple(int inFile, int pageNumber, int recNumber)
+{
+	// position file at start of page
+
+	off_t pageAddr = pageNumber * PAGE_SIZE;
+	if (lseek(inFile, pageAddr, SEEK_SET) < 0)
+		return NULL;
+
+	// re-position the file to the start of the tuple directory entry
+
+	off_t dirOffset = recNumber * 3; // 3 bytes per directory entry
+	if (lseek(inFile, dirOffset, SEEK_CUR) < 0)
+		return NULL;
+
+	// read 3-byte directory entry for this tuple
+
+	unsigned int dirEntry;
+	if (read(inFile, &dirEntry, 3) != 3)
+		return NULL;
+
+	// extract tuple offset and length from directory entry
+
+	unsigned int tupOffset, tupLength;
+	unsigned int lengthMask = 0x00000fff; // low-order 12 bits
+	unsigned int offsetMask = 0x00fff000; // high-order 12 bits
+
+	tupOffset = (dirEntry & offsetMask) >> 12;
+	tupLength = dirEntry & lengthMask;
+
+	// allocate memory buffer to hold tuple data
+
+	char *tupBuf;
+	if ((tupBuf = malloc(tupLength)) == NULL)
+		return NULL;
+
+	// position file at tuple location
+
+	off_t tupAddr = pageAddr + tupOffset;
+	if (lseek(inFile, tupAddr, SEEK_SET) < 0)
+		return NULL;
+
+	// read tuple data into buffer
+
+	if (read(inFile, tupBuf, tupLength) != tupLength)
+		return NULL;
+
+	return tupBuf;
+}
+
+
+
+
+
+
+Consider a data file containing tuples with a page structure similar
+to that in the previous question.
+Pages are 4KB in size, and each page contains a tuple directory
+with 100 entries in it, where each entry is 3-bytes long.
+Assuming that the (minimum,average,maximum) tuple lengths are (32,64,256) bytes
+and that the file has 100 pages, determine the following:
+
+
+The minimum number of tuples that the file can hold
+The maximum number of tuples that the file can hold
+
+[show answer]
+
+
+ The minimum number of tuples is zero (trick question)
+
+Maximum occurs when all tuples are minimum size (or close to it).
+Each page uses 300 bytes for the tuple directory, leaving 4096-300=3796 bytes
+of space for tuples. In theory, this amount of space could hold floor(3796/32)
+= 118 tuples; however, the page directory only has space for 100 tuples,
+so 100 tuples is the maximum number of tuples per page.
+Since we have 100 pages, the file can hold 100*100=10000 tuples.
+
+
+
+
+
+
+Consider a variation on the above scenario. Rather than pages having a fixed size
+tuple directory, the tuple directory can grow and shrink depending on the number
+of tuples in the page. For this to work, the tuple directory starts at the bottom
+of the page (address 0) and grows up, while tuples are added from the top of the
+page (address 4095) and grow down.
+If all other factors are the same (total 100 pages, (min,avg,max) tuple lengths
+(32,64,128)), what is the maximum number of tuples that the file can hold?
+You may assume that tuples can begin at any address (i.e. they do not have to
+start at a 4-byte address).
+
+[show answer]
+
+
+The maximum number of tuples still occurs when all tuples are minimum size.
+However, in this case we need to balance the tuple space against the directory
+space. For example, if we have 100 tuples, then the top 3200 bytes of the
+page are occupied by tuple data, leaving 896 (4096-3200) bytes for the slot
+directory. We can clearly add more tuples, since we have space for them and
+space to hold their directory entries. Eventually, though, there will be
+enough tuples that there is no more room to add directory entries for them
+and the page is full. Since each tuple requires space for its data (32 bytes)
+plus 3 bytes for a directory entry, we can compute the maximum tuples that
+will fit in a page by finding the maximum N such that (3*N + 32*N) < 4096.
+In this case, N=117 and so this the file can hold at most 11700 tuples.
+
+
+This scenario is not totally implausible since some common tables have
+fixed-size tuples (consider a "link" table with just two foreign keys).
+Of course, in such a case, we wouldn't need the tuple directory either,
+since we could simply compute the tuple offset based on its number in the
+page.
+
+
+
+
+
+
+[Based on Garcia-Molina/Ullman/Widom 13.7.1] 
+Consider the following relational table:
+create table Patient (
+   id       integer primary key,
+   ssn      char(20), 
+   name     varchar(30),
+   addr     varchar(60),
+   history  varchar(200),
+   born     date
+);
+
+Consider how records of this type might be represented when stored
+in disk blocks.
+If a pointer within a record requires 4 bytes and the record length
+is also stored as a 4-byte quantity, how many bytes would be needed
+for each Patient record, excluding of the space required to
+store the variable-length fields?
+
+For variable-length records (varchar), assume that we don't
+need a terminating char (e.g. '\0') but we do need to allocate
+a multiple of 4 bytes to the field to ensure alignment of possible
+following integer fields.
+(These additional bytes would not be necessary if the fixed-length fields
+were all stored at the front of the record.)
+
+
+How many bytes would be required for the following instances of
+Patient records:
+
+insert into Patient values (
+   12345678, '222-444-555-7777',
+   'John Smith', (10)
+   '50 Smith  St, Smithton, 2345', (28)
+   'Previously diagnosed with URTI, also weak ankles', (48)
+   '1966-12-2'
+);
+insert into Patient values (
+   87654321, '123-456-654-4321',
+   'Jane Brown', (10)
+   '15 Brown  St, Brownsville, 2427', (31)
+   'Prior history of urinary tract infections', (41)
+   '1966-12-2'
+);
+
+
+(Note that the (string lengths) given after
+each string are not part of the insert statement).
+
+[show answer]
+
+
+Assume that the record has the following structure:
+
+The fixed storage cost includes:
+
+
+ the record length (4 bytes)
+ offsets for each of the fields (4 bytes times 6)
+ fixed-length fields id (4 bytes), ssn (20 bytes), born (4 bytes for date)
+
+
+This gives a total fixed storage cost of 4+24+4+20+4 = 56 bytes
+
+
+For the John Smith record, add additional bytes for
+
+
+ name (12 bytes ... 10 bytes rounded up for alignment)
+ addr (28 bytes ... no rounding up needed)
+ name (48 bytes ... no rounding up needed)
+
+
+giving a total of 56+12+28+48 = 144 bytes
+
+
+For the Jane Brown record, add additional bytes for
+
+
+ name (12 bytes ... 10 bytes, rounded up for alignment)
+ addr (32 bytes ... 31 bytes, rounded up)
+ name (44 bytes ... 41 bytes, rounded up)
+
+giving a total of 56+12+32+44 = 144 bytes
+
+It is a coincidence that both records come out with the same length.
+
+
+
+
+
+
+PostgreSQL tuples have an array of flags to indicate where NULL values
+occur in tuples. Two of the critical functions for manipulating tuples
+in PostgreSQL (heap_form_tuple() and heap_modify_tuple())
+accept a parameter which is an an array of flags for NULLs, as well as
+accepting an array of Datum values.
+This array contains only the non-NULL attribute values.
+
+
+For example, a tuple like R(42,null,'abc',-5) would be
+represented by the two arrays: flags=(0,1,0,0) and values=(42,'abc',-5).
+
+Why doesn't PostgreSQL simply include the NULL values in the array
+of Datum values?
+
+[show answer]
+
+
+Every possible collection of bits/bytes represents a valid
+Datum value (e.g. you can't simply user zero to represent
+NULL, because zero is a perfectly useful integer value).
+Since there is no way to represent NULL as a Datum, we
+clearly can't include NULL values in the Datum array.
+This means that we need a separate representation for NULLs; it
+makes sense to simply use a bit-string, with one bit for each
+attribute, where a value of 1 means "this attribute is NULL", and
+a value of 0 means "this attribute has a value; look for it in the
+Datum array".
+
+
+
+
+
+
+Consider a Students relation defined as:
+
+CREATE TABLE Students (
+   id#    integer,      name  varchar(30),
+   gender varchar(1),   birth date,
+   degree varchar(10),  score real
+);
+
+
+Assume that:
+
+
+ There are 20,000 student records
+ The relation is stored in one file
+ The file is composed of 1024-byte blocks
+ Average block-fetch time (Tr) is 10ms
+ A date is represented by an 8-byte long value
+ All numeric values must be stored on 4-byte address boundaries
+ Average length of name value is 15 chars
+ Average length of degree value is 5 chars
+
+
+Consider two possible storage structures:
+
+
+ fixed-length records with a presence bit-vector
+ variable-length records with a fixed-size directory
+	containing one-byte offset values
+
+
+For each of these structures:
+
+
+ Show the internal record structure and compute the (average)
+	size of a record
+ Compute how many blocks are needed to store the whole relation
+ Compute how long it takes to answer a query on id# if
+	the file is sorted on this field (worst case value)
+
+
+[show answer]
+
+
+
+ fixed-length records with a presence bit-vector ... 
+
+
+
+Show the internal record structure and compute the (average)
+size of a record ...
+
+
+Each record has something like the following structure, where fields
+are arranged to ensure that no numeric field begins on a non-aligned
+address boundary.
+
+While character fields don't need to be aligned on 4-byte addresses,
+they do need to be as large as the maximum number of characters that
+might be stored in them (e.g. varchar(10) always occupies
+10-bytes, regardless of the actual size of the string).
+
+The size of each record is thus:
+
+ 4 bytes for the id# field
+ 8 bytes for the birth field
+ 8 bytes for the score field
+ 1 bytes for the gender field
+ 30 bytes for the name field
+ 10 bytes for the degree field
+
+
+giving a total of 4 + 8 + 8 + 1 + 30 + 10 = 61 bytes.
+
+
+This will need to be padded to 64 bytes to ensure that the next record
+in the page also begins on a 4-byte address.
+
+
+Solution: R = 64
+
+
+ Compute how many blocks are needed to store the whole relation 
+
+If each record is 52 bytes long, and there are 1024 bytes in a block,
+then we could potentially store Nr = floor(1024/64) = 16
+records in a block.
+However, we also need to store the presence vector to indicate which
+record slots are actually filled.
+This requires at last Nr bits, thus reducing the
+effective number of records per block to 15.
+The block contains 15*64-byte records along with a 15-bit (= 2-byte)
+presence vector.
+This "wastes" 62 bytes in each block, which is unfortunate but unavoidable.
+Thus, Nr = 15
+
+If there are 15 records in each block, then we need 
+b = ceil(20,000/15) = 1334 blocks to store all of the records.  
+
+Solution: b = 1334
+
+
+ Compute how long it takes to answer a query on id# if
+	the file is sorted on this field (worst case value) 
+
+Performing a binary search requires us to examine at most
+ceil(log2b) = ceil(log21334) = 11 blocks.
+Since the cost of reading each block is Tr=10ms,
+then the total i/o cost is 110 ms
+
+Solution: TBinarySearch = 110ms
+
+
+
+ Variable-length records with a fixed-size directory ... 
+
+ Show the internal record structure and compute the (average)
+	size of a record 
+
+Each record has something like the following structure, where fields
+are arranged to ensure that no numeric field begins on a non-aligned
+address boundary.
+
+
+
+In this case, one byte of storage is required for each field to hold
+the offset of the field. Since there are 6 fields, this will require
+6 bytes, which then needs to be padded to 8 bytes to ensure that the
+first numeric field starts on a 4-byte address boundary.
+
+
+The offset block will be followed by four fixed-size fields:
+
+ 4 bytes for the id# field
+ 8 bytes for the birth field
+ 8 bytes for the score field
+ 1 bytes for the gender field
+ 
+These will be followed by the variable-length fields:
+
+ name, with an average of 15 characters (15 bytes)
+ degree, with an average of 5 characters (5 bytes)
+
+On average, this gives a total record size of
+8 + 4 + 8 + 8 + 1 + 15 + 5 = 49 bytes.
+This will need to be padded to a multiple of 4 bytes, and so we
+would expect an effective average record size of 52 bytes.
+
+Solution: R = 52
+
+
+ Compute how many blocks are needed to store the whole relation 
+
+If each record is 64 bytes long, and there are 1024 bytes in a block,
+then we could potentially store Nr = floor(1024/52) = 19
+records in a block.
+However, we also need to store a directory to indicate where each
+record is located.
+This requires at least Nr bytes.
+If the block contains 19*52-byte records, then the amount of space
+available for dictionary is 1024-19*52 = 36 bytes, so there is room
+for both the dictionary and all Nr records.
+presence vector.
+This "wastes" 17 bytes in each block (on average), which is unfortunate
+but unavoidable.
+Thus, Nr = 19
+
+
+If there are 19 records in each block, then we need
+b = ceil(20,000/19) = 1053 blocks to store all of the records.
+
+
+Solution: b = 1053
+
+
+ Compute how long it takes to answer a query on id# if
+the file is sorted on this field (worst case value) 
+
+Performing a binary search requires us to examine at most
+ceil(log2b) = ceil(log21053) = 11 blocks.
+Since the cost of reading each block is Tr=10ms,
+then the total i/o cost is 110 ms
+
+
+Solution: TBinarySearch = 110ms</p><h3 >字段4</h3><p>COMP9315 18s2
+
+
+  Exercises 04Relational Operations and Buffer Pool
+
+
+  DBMS Implementation
+
+
+[Show with no answers]   [Show with all answers]
+
+
+
+
+
+Consider executing a nested-loop join on two small tables
+(R, with bR=4,
+ and S, with bS=3)
+and using a small buffer pool (with 3 initially unused buffers).
+The pattern of access to pages is determined by the following algorithm:
+
+for (i = 0; i < bR; i++) {
+	rpage = request(R,i);
+	for (j = 0; j < bS; j++) {
+		spage = request(S,j);
+		process join using tuples in rpage and spage ...
+		release(S,j);
+	}
+	release(R,i);
+}
+
+
+Show the state of the buffer pool and any auxiliary data structures
+after the completion of each call to the request or
+release functions. For each buffer slot, show the page
+that it currently holds and its pin count, using the notation e.g.
+R0(1) to indicate that page 0 from table R
+is held in that buffer slot and has a pin count of 1.
+Assume that free slots are always used in preference to slots that
+already contain data, even if the slot with data has a pin count of
+zero.
+
+
+In the traces below, we have not explicitly showed the initial
+free-list of buffers. We assume that Buf[0] is at the
+start of the list, then Buf[1], then Buf[2].
+The allocation method works as follows, for all replacement strategies:
+
+
+ if the free-list has any buffers, use the first one on the list
+ if the free-list is empty, apply the replacement strategy
+
+
+The trace below shows the first part of the buffer usage for the
+above join, using PostgreSQL's clock-sweep replacement strategy.
+Indicate each read-from-disk operation by a * in the R
+column.
+Complete this example, and then repeat this exercise for the LRU
+and MRU buffer replacement strategies.
+
+Operation     Buf[0]   Buf[1]   Buf[2]   R   Strategy data   Notes
+-----------   ------   ------   ------   -   -------------   -----
+initially     free     free     free         NextVictim=0
+request(R0)   R0(1)    free     free     *   NextVictim=0    use first available free buffer
+request(S0)   R0(1)    S0(1)    free     *   NextVictim=0    use first available free buffer
+release(S0)   R0(1)    S0(0)    free         NextVictim=0
+request(S1)   R0(1)    S0(0)    S1(1)    *   NextVictim=0    use first available free buffer
+release(S1)   R0(1)    S0(0)    S1(0)        NextVictim=0
+request(S2)   R0(1)    S2(1)    S1(0)    *   NextVictim=2    skip pinned Buf[0], use NextVictim=1, replace Buf[1]
+release(S2)   R0(1)    S2(0)    S1(0)        NextVictim=2
+release(R0)   R0(0)    S2(0)    S1(0)        NextVictim=2
+request(R1)   R0(0)    S2(0)    R1(1)    *   NextVictim=0    use NextVictim=2, replace Buf[2], wrap NextVictim
+request(S0)   ...
+etc. etc. etc.
+release(S2)   ...
+release(R3)   ...
+
+[show answer]
+
+(i)
+Buffer usage trace for R join S using Clock-sweep replacement strategy.
+Note that the buffer gives us absolutely no benefit in terms of
+reducing the number of reads required. It would have been the same
+if we'd had just a single input buffer for each table.
+Operation     Buf[0]   Buf[1]   Buf[2]   R   Strategy data   Notes
+-----------   ------   ------   ------   -   -------------   -----
+initially     free     free     free         NextVictim=0
+request(R0)   R0(1)    free     free     *   NextVictim=0    use first available free buffer
+request(S0)   R0(1)    S0(1)    free     *   NextVictim=0    use first available free buffer
+release(S0)   R0(1)    S0(0)    free         NextVictim=0
+request(S1)   R0(1)    S0(0)    S1(1)    *   NextVictim=0    use first available free buffer
+release(S1)   R0(1)    S0(0)    S1(0)        NextVictim=0
+request(S2)   R0(1)    S2(1)    S1(0)    *   NextVictim=2    skip pinned Buf[0], use NextVictim=1, replace Buf[1]
+release(S2)   R0(1)    S2(0)    S1(0)        NextVictim=2
+release(R0)   R0(0)    S2(0)    S1(0)        NextVictim=2
+request(R1)   R0(0)    S2(0)    R1(1)    *   NextVictim=0    use NextVictim=2, replace Buf[2], wrap NextVictim
+request(S0)   S0(1)    S2(0)    R1(1)    *   NextVictim=1    use NextVictim=0, replace Buf[0]
+release(S0)   S0(0)    S2(0)    R1(1)        NextVictim=1
+request(S1)   S0(0)    S1(1)    R1(1)    *   NextVictim=2    use NextVictim=1, replace Buf[1]
+release(S1)   S0(0)    S1(0)    R1(1)        NextVictim=2
+request(S2)   S2(1)    S1(0)    R1(1)    *   NextVictim=1    skip pinned Buf[2], use NextVictim=0, replace Buf[0]
+release(S2)   S2(0)    S1(0)    R1(1)        NextVictim=1
+release(R1)   S2(0)    S1(0)    R1(0)        NextVictim=1
+request(R2)   S2(0)    R2(1)    R1(0)    *   NextVictim=2    use NextVictim=1, replace Buf[1]
+request(S0)   S2(0)    R2(1)    S0(1)    *   NextVictim=0    use NextVictim=2, replace Buf[2], wrap NextVictim
+release(S0)   S2(0)    R2(1)    S0(0)        NextVictim=0
+request(S1)   S1(1)    R2(1)    S0(0)    *   NextVictim=1    use NextVictim=1, replace Buf[1]
+release(S1)   S1(0)    R2(1)    S0(0)        NextVictim=1
+request(S2)   S1(0)    R2(1)    S2(1)    *   NextVictim=0    skip pinned Buf[1], use NextVictim=2, replace Buf[2]
+release(S2)   S1(0)    R2(1)    S2(0)        NextVictim=0
+release(R2)   S1(0)    R2(0)    S2(0)        NextVictim=0
+request(R3)   R3(1)    R2(0)    S2(0)    *   NextVictim=1    use NextVictim=0, replace Buf[0]
+request(S0)   R3(1)    S0(1)    S2(0)    *   NextVictim=2    use NextVictim=1, replace Buf[1]
+release(S0)   R3(1)    S0(0)    S2(0)        NextVictim=2
+request(S1)   R3(1)    S0(0)    S1(1)    *   NextVictim=0    use NextVictim=2, replace Buf[2], wrap NextVictim
+release(S1)   R3(1)    S0(0)    S1(0)        NextVictim=0
+request(S2)   R3(1)    S2(1)    S1(0)    *   NextVictim=2    skip pinned Buf[0], use NextVictim=1, replace Buf[1]
+release(S2)   R3(1)    S2(0)    S1(0)        NextVictim=2
+release(R3)   R3(0)    S2(0)    S1(0)        NextVictim=2
+
+(ii)
+Buffer usage trace for R join S using LRU replacement strategy.
+Note that the least recently used buffer is always at the front of the LRU list.
+As in the clock=sweep case, the replacement strategy gives no re-use of
+loaded pages; the number of reads is the same as if we had one input buffer
+for each relation.
+Operation     Buf[0]   Buf[1]   Buf[2]   R   Strategy data
+-----------   ------   ------   ------   -   -------------
+initially     free     free     free         LRU: empty
+request(R0)   R0(1)    free     free     *   LRU: empty
+request(S0)   R0(1)    S0(1)    free     *   LRU: empty
+release(S0)   R0(1)    S0(0)    free         LRU: Buf[1]
+request(S1)   R0(1)    S0(0)    S1(1)    *   LRU: Buf[1]
+release(S1)   R0(1)    S0(0)    S1(0)        LRU: Buf[1] Buf[2]
+request(S2)   R0(1)    S2(1)    S1(0)    *   LRU: Buf[2]
+release(S2)   R0(1)    S2(0)    S1(0)        LRU: Buf[2] Buf[1]
+release(R0)   R0(0)    S2(0)    S1(0)        LRU: Buf[2] Buf[1] Buf[0]
+request(R1)   R0(0)    S2(0)    R1(1)    *   LRU: Buf[1] Buf[0]
+request(S0)   R0(0)    S0(1)    R1(1)    *   LRU: Buf[0]
+release(S0)   R0(0)    S0(0)    R1(1)        LRU: Buf[0] Buf[1]
+request(S1)   S1(1)    S0(0)    R1(1)    *   LRU: Buf[1]
+release(S1)   S1(0)    S0(0)    R1(1)        LRU: Buf[1] Buf[0]
+request(S2)   S1(0)    S2(1)    R1(1)    *   LRU: Buf[0]
+release(S2)   S1(0)    S2(0)    R1(1)        LRU: Buf[0] Buf[1]
+release(R1)   S1(0)    S2(0)    R1(0)        LRU: Buf[0] Buf[1] Buf[2]
+request(R2)   R2(1)    S2(0)    R1(0)    *   LRU: Buf[1] Buf[2]
+request(S0)   R2(1)    S0(1)    R1(0)    *   LRU: Buf[2]
+release(S0)   R2(1)    S0(0)    R1(0)        LRU: Buf[2] Buf[1]
+request(S1)   R2(1)    S0(0)    S1(1)    *   LRU: Buf[1]
+release(S1)   R2(1)    S0(0)    S1(0)        LRU: Buf[1] Buf[2]
+request(S2)   R2(1)    S2(1)    S1(0)    *   LRU: Buf[2]
+release(S2)   R2(1)    S2(0)    S1(0)        LRU: Buf[2] Buf[1]
+release(R2)   R2(0)    S2(0)    S1(0)        LRU: Buf[2] Buf[1] Buf[0]
+request(R3)   R2(0)    S2(0)    R3(1)    *   LRU: Buf[1] Buf[0]
+request(S0)   R2(0)    S0(1)    R3(1)    *   LRU: Buf[0]
+release(S0)   R2(0)    S0(0)    R3(1)        LRU: Buf[0] Buf[1]
+request(S1)   S1(1)    S0(0)    R3(1)    *   LRU: Buf[1]
+release(S1)   S1(0)    S0(0)    R3(1)        LRU: Buf[1] Buf[0]
+request(S2)   S1(0)    S2(1)    R3(1)    *   LRU: Buf[0]
+release(S2)   S1(0)    S2(0)    R3(1)        LRU: Buf[0] Buf[1]
+release(R3)   S1(0)    S2(0)    R3(0)        LRU: Buf[0] Buf[1] Buf[2]
+
+(iii)
+Buffer usage trace for R join S using MRU replacement strategy.
+Note that the most recently used buffer is always at the front of the MRU list. A buffer is removed from the MRU list when it is use, either because of
+a "hit" or because of it being re-allocated to a different page.
+In this case, the buffering does actually bring some benefits.
+Some reads are avoided by "hits" on the buffer.
+
+Operation     Buf[0]   Buf[1]   Buf[2]   R   Strategy data
+-----------   ------   ------   ------   -   -------------
+initially     free     free     free         MRU: empty
+request(R0)   R0(1)    free     free     *   MRU: empty
+request(S0)   R0(1)    S0(1)    free     *   MRU: empty
+release(S0)   R0(1)    S0(0)    free         MRU: Buf[1]
+request(S1)   R0(1)    S0(0)    S1(1)    *   MRU: Buf[1]
+release(S1)   R0(1)    S0(0)    S1(0)        MRU: Buf[2] Buf[1]
+request(S2)   R0(1)    S0(0)    S2(1)    *   MRU: Buf[1]
+release(S2)   R0(1)    S0(0)    S2(0)        MRU: Buf[2] Buf[1]
+release(R0)   R0(0)    S0(0)    S2(0)        MRU: Buf[0] Buf[2] Buf[1]
+request(R1)   R1(1)    S0(0)    S2(0)    *   MRU: Buf[2] Buf[1]
+request(S0)   R1(1)    S0(1)    S2(0)        MRU: Buf[2]                Hit!
+release(S0)   R1(1)    S0(0)    S2(0)        MRU: Buf[1] Buf[2]
+request(S1)   R1(1)    S1(1)    S2(0)    *   MRU: Buf[2]
+release(S1)   R1(1)    S1(0)    S2(0)        MRU: Buf[1] Buf[2]
+request(S2)   R1(1)    S1(0)    S2(1)        MRU: Buf[1]                Hit!
+release(S2)   R1(1)    S1(0)    S2(0)        MRU: Buf[2] Buf[1]
+release(R1)   R1(0)    S1(0)    S2(0)        MRU: Buf[0] Buf[2] Buf[1]
+request(R2)   R2(1)    S1(0)    S2(0)    *   MRU: Buf[2] Buf[1]
+request(S0)   R2(1)    S1(0)    S0(1)    *   MRU: Buf[1]
+release(S0)   R2(1)    S1(0)    S0(0)        MRU: Buf[2] Buf[1]
+request(S1)   R2(1)    S1(1)    S0(0)        MRU: Buf[2]                Hit!
+release(S1)   R2(1)    S1(0)    S0(0)        MRU: Buf[1] Buf[2]
+request(S2)   R2(1)    S2(1)    S0(0)    *   MRU: Buf[2]
+release(S2)   R2(1)    S2(0)    S0(0)        MRU: Buf[1] Buf[2]
+release(R2)   R2(0)    S2(0)    S0(0)        MRU: Buf[0] Buf[1] Buf[2]
+request(R3)   R3(1)    S2(0)    S0(0)    *   MRU: Buf[1] Buf[2]
+request(S0)   R3(1)    S2(0)    S0(1)        MRU: Buf[1]                Hit!
+release(S0)   R3(1)    S2(0)    S0(0)        MRU: Buf[2] Buf[1]
+request(S1)   R3(1)    S2(0)    S1(1)    *   MRU: Buf[1]
+release(S1)   R3(1)    S2(0)    S1(0)        MRU: Buf[2] Buf[1]
+request(S2)   R3(1)    S2(1)    S1(0)        MRU: Buf[2]                Hit!
+release(S2)   R3(1)    S2(0)    S1(0)        MRU: Buf[1] Buf[2]
+release(R3)   R3(1)    S2(0)    S1(0)        MRU: Buf[0] Buf[1] Buf[2]
+
+
+It would be interesting to repeat the above exercises with a larger
+buffer pool.
+I would not recommend trying this manually. It would be quicker to
+write a program to show buffer traces for the different strategies,
+and the program could also (a) let you work with larger tables, and
+(b) accumulate statistics on buffer usage.
+
+
+
+
+
+
+
+[Based on GUW Ex.15.7.1] 
+Consider executing a join operation on two tables R and S.
+A pool of N buffers is available to assist with the execution of
+the join.
+In terms of N, bR and bS, give
+the conditions under which we can guarantee that the tables can be
+joined in a single pass (i.e. each page of each table is read exactly
+once).
+[show answer]
+
+
+For a one-pass join, one of the relations must fit entirely in the buffer
+pool.
+We also need room to read one page (at a time) from the other relation
+and another buffer to hold output tuples.
+In other words, we need min(bR,bS) <= N-2
+
+
+
+
+
+
+Consider the execution of a binary search on the sort key in a file
+where b=100.
+Assume that the key being sought has a value in the middle of the
+range of values in the data page with index 52.
+Assume also that we have a buffer pool containing only 2 pages
+both of which are initially unused.
+Show the sequence of reads and replacements in the buffer pool
+during the search, for each of the following page replacement
+strategies:
+
+
+ first-in-first-out
+ most-recently-used
+
+
+Use the following notation for describing the sequence of buffer
+pool operations, e.g.
+
+request for page 3
+placed in buffer 0
+request for page 9
+placed in buffer 1
+request for page 14
+placed in buffer 0 (page 3 replaced)
+request for page 19
+placed in buffer 1 (page 9 replaced)
+etc. etc. etc.
+
+
+
+Assuming that this is the only process active in the system,
+does the buffering achieve any disk i/o savings in either case?
+
+[show answer]
+
+
+The first thing to determine is the sequence of page accesses
+that will occur. This is simple enough, given what we know about
+binary search and the location of the matching tuple:
+
+iter     lo       hi        mid
+.        0        99        .
+1        0        99        49
+2        50       99        74
+3        50       73        61
+4        50       60        55
+5        50       54        52
+
+
+Read the binary search algorithm in the lecture notes if you don't
+understand how the sequence of pages was generated.
+The only pages actually read (and checked for min/max key values)
+are those determined as the mid page on each iteration, i.e.
+
+49   74   61   55   52
+
+
+ first-in-first-out
+request for page 49
+placed in buffer 0
+request for page 74
+placed in buffer 1
+request for page 61
+placed in buffer 0 (page 49 replaced)
+request for page 55
+placed in buffer 1 (page 74 replaced)
+request for page 52
+placed in buffer 0 (page 69 replaced)
+
+ most-recently-used
+request for page 49
+placed in buffer 0
+request for page 74
+placed in buffer 1
+request for page 61
+placed in buffer 1 (page 74 replaced)
+request for page 55
+placed in buffer 1 (page 61 replaced)
+request for page 52
+placed in buffer 1 (page 55 replaced)
+
+
+
+The buffering achieves no savings in disk i/o (since no pages are revisited).
+You could have worked this out without needing to run the traces;
+each page is accessed once,
+and buffering will only be effective if a given page is accessed
+multiple times.
+
+
+
+
+
+
+A commonly used buffer replacement policy in DBMSs is LRU
+(least recently used). However, this strategy is not optimal for
+some kinds of database operations. One proposal to improve the
+performance of LRU was LRU/k, which involved using the
+kth most recent access time as the basis for
+determining which page to replace. This approach had its own
+problems, in that it was more complex to manage the buffer
+queue (logN time, rather than constant time). The effect
+of the most popular variant of LRU/k, LRU/2, is to
+better estimate how hot is a page (based on more than
+just its most recent, and possibly only, access); pages which
+are accessed only once recently are more likely to be removed
+than pages that have been accessed several times, but perhaps
+not as recently.
+
+
+PostgreSQL 8.0 and 8.1 used a buffer replacement strategy based
+on a different approach, called 2Q.
+The approach uses two queues of buffer pages: A1 and Am.
+When a page is first accessed, it is placed in the A1 queue.
+If it is subsequently accessed, it is moved to the Am queue.
+The A1 queue is organised as a FIFO list, so that pages that
+are accessed only once are eventually removed. The Am queue
+is managed as an LRU list. A simple algorithm for 2Q is given
+below:
+
+Request for page p:
+
+if (page p is in the Am queue) {
+	move p to the front (LRU) position in the Am queue
+}
+else if (page p is in the A1 queue) {
+	move p to the front (LRU) position in the Am queue
+}
+else {
+	if (there are available free buffers) {
+		B = select a free buffer
+	}
+	else if (size of A1 > 2) {
+		B = buffer at head of A1
+		remove B from A1
+	}
+	else {
+		B = LRU buffer in Am
+		remove B from Am
+	}
+	allocate p to buffer B 
+	move p to the tail of the A1 queue (FIFO)
+}
+
+
+Using the above algorithm, show the state of the two queues
+after each of the following page references:
+
+1  2  1  3  1  2  1  4  2  5  6  4  3  5
+
+To get you started, after the first four references above,
+the queues will contain:
+A1:  2  3           Am:  1            2 free buffers
+
+
+Assume that the buffer pool contains 5 buffers,
+and that it is initially empty.
+Note that the page nearest to A1 is the head of the FIFO queue
+(i.e. the next one to be removed according to FIFO), and the
+page nearest to Am is the least recently used page in that queue.
+
+[show answer]
+
+
+State of buffer pools and A1/Am queues during sequence of page accesses:
+
+Request      State after request satisfied         #Free buffers
+
+initial      A1: <empty>        Am: <empty>        5
+
+1            A1: 1              Am: <empty>        4
+
+2            A1: 1 2            Am: <empty>        3
+
+1            A1: 2              Am: 1              3
+
+3            A1: 2 3            Am: 1              2
+
+1            A1: 2 3            Am: 1              2
+
+2            A1: 3              Am: 1 2            2
+
+1            A1: 3              Am: 2 1            2
+
+4            A1: 3 4            Am: 2 1            1
+
+2            A1: 3 4            Am: 1 2            1
+
+5            A1: 3 4 5          Am: 1 2            0
+
+6            A1: 4 5 6          Am: 1 2            0
+
+4            A1: 5 6            Am: 1 2 4          0
+
+3            A1: 5 6 3          Am: 2 4            0
+
+5            A1: 6 3            Am: 2 4 5          0
+
+
+
+
+
+Challenge Problem: (no solution provided)
+
+Write a program that simulates the behaviour of a buffer pool.
+It should take as command-line arguments:
+
+
+ the number of buffers (an integer value, larger than 2)
+ the replacement strategy (one of clock, lru, mru)
+
+
+It should then read from standard input a sequence of page
+references, one per line, in the form:
+
+
+ req T n
+ rel T n
+
+
+where T is a table name and n is a page number
+
+
+The output of the program should be a trace of buffer states
+in a format similar to that used in Question1.
+Also, collect statistics on numbers of requests, releases,
+reads and writes and display these at the end of the trace.
+
+
+Since generating long and meaningful sequences of requests and releases
+is tedious, you should also write programs to do this. The pseudo-code
+in Question1 gives an idea of what the core of such a program would look
+like for a join on two tables.</p><h3 >字段5</h3><p>COMP9315 18s2
+
+
+  Exercises 05Implementing Sorting and Projection
+
+
+  DBMS Implementation
+
+
+[Show with no answers]   [Show with all answers]
+
+
+
+
+
+You have an unsorted heap file containing 4500 records and
+a select query is asked that requires the file to be sorted.
+The DBMS uses an external merge-sort that makes efficient
+use of the available buffer space.
+
+
+Assume that: records are 48-bytes long (including a 4-byte sort
+key); the page size is 512-bytes; each page has 12 bytes of
+control information in it; 4 buffer pages are available.
+
+
+
+
+How many sorted subfiles will there be after the initial pass
+of the sort algorithm? How long will each subfile be?
+
+[show answer]
+
+
+We need to first of all work out the blocking factor and then the
+number of data blocks. The available space for storing records in each
+page is 512-12=500 bytes, so each page can store up to 10 48-byte records.
+This means that 450 pages are needed to store the 4500 records.
+
+
+In the first pass, we read as many pages as we can into the available
+buffers, sort these page in memory, and then write them out.
+Given that 4 buffer pages are available, there will be ceil(450/4)=113
+sorted runs (sub-files) of 4 pages each, except the last run which is only
+2 pages long.
+
+
+
+
+How many passes (including the initial pass considered above)
+will be required to sort this file?
+
+[show answer]
+
+
+After pass 0, we have N=ceil(b/B) sorted runs, each of length B.
+Subsequent merging passes will increase the length of the sorted runs
+by B-1 times on each pass.
+The number of merging passes until the whole file is sorted is
+ceil(logB-1N).
+
+
+For this scenario, b=450, B=4, N=113 so #passes = 1 + ceil(log4-1113) = 6.
+
+
+
+
+What will be the total I/O cost for sorting this file?
+
+[show answer]
+
+
+Each pass requires us to read and write every page in the file.
+The total number of I/O operations is thus 2*b*#passes.
+The total cost for sorting this file is 2 * 450 * 6 = 5,400 I/Os.
+
+
+
+
+What is the largest file, in terms of the number of records,
+that you can sort with just 4 buffer pages in 2 passes?
+How would your answer change if you had 257 buffer pages?
+
+[show answer]
+
+
+We first need to work out the answer in terms of number of pages
+(b), and then convert to number of records.
+
+
+In pass 0, ceil(b/B) runs are produced. In pass 1, we must have enough
+buffers to enable us to merge this many runs, so B-1 must be larger or
+equal to ceil(b/B). Given B, we can determine b by "solving"
+(B-1) ≥ ceil(b/B). Re-arranging the formula (with a few simplifying
+assumptions) gives b = B*(B-1).
+
+
+When B is given to be 4, b = 4*(4-1) = 12. The maximum number
+of records on 12 pages is 12*10=120.
+
+
+When B is given as 257, b= 257*256 = 65792, with 65792*10=657920 records.
+
+
+
+
+
+
+
+For each of these scenarios:
+
+
+ a file with 10,000 pages and 3 available buffer pages.
+ a file with 20,000 pages and 5 available buffer pages.
+ a file with 2,000,000 pages and 17 available buffer pages.
+
+
+answer the following questions assuming that external merge-sort is used
+to sort each of the files:
+
+
+ How many runs will you produce on the first pass?
+[show answer]
+
+
+In the first pass (Pass 0), N=ceil(b/B) sorted runs,
+each B pages long, are produced
+(b is the number of file pages and
+B is the number of available buffer pages).
+
+
+ ceil(10,000/3) = 3334 sorted runs
+ ceil(20,000/5) = 4000 sorted runs
+ ceil(2,000,000/17) = 117648 sorted runs
+
+
+ How many passes will it take to sort the file completely?
+[show answer]
+
+
+The number of passes required to sort the file completely, including
+the initial sorting pass, is 1+ceil(logB-1N), where N=ceil(b/B)
+is the number of runs produced from pass 0:
+
+
+ 1+ceil(log3-1(3334))  = 13 passes
+ 1+ceil(log5-1(4000)) = 7 passes
+ 1+ceil(log17-1(117648)) = 6 passes
+
+
+ What is the total I/O cost for sorting the file? (measured in #pages read/written)
+[show answer]
+
+
+Since each page is read and written once per pass, the total number
+of pages I/Os for sorting the file is 2 * b * #passes:
+
+
+ 2 * 10,000 * 13 = 26 * 104
+ 2 * 20,000 * 7 = 28 * 104
+ 2 * 2,000,000 * 6 = 24 * 106
+
+
+
+
+
+
+
+Consider processing the following SQL projection query:
+
+	select distinct course from Students;
+
+
+where there are only 10 distinct values (0..9) for Student.course,
+and student enrolments are distributed over the courses as follows:
+
+
+
+cid course #students
+cid course #students
+
+0 BSc 5,000
+1 BA 4,000
+
+
+2 BE 5,000
+3 BCom 3,000
+
+
+4 BAppSc 2,000
+5 LLB 1,000
+
+
+6 MA 1,000
+7 MSc 1,000
+
+
+8 MEng 2,000
+9 PhD 1,000
+
+
+
+
+Show the flow of records among the pages (buffers and files)
+when a hash-based implementation of projection is used
+to eliminate duplicates in this relation.
+
+Assume that:
+
+ each page (data file page or in-memory buffer) can hold 1000 records
+ the partitioning phase uses 1 input buffer, 3 output buffers and
+	the hash function (x mod 3)
+ the duplicate elimination phase uses 1 input buffer, 4 output buffers
+	and the hash function (x mod 4)
+
+
+[show answer]
+
+
+In the partition phase, there are 3 partitions produced (because of
+the mod 3 hash function). The first contains records with course
+from the set 0,3,6,9; the second contains records with course
+from 1,4,7; the third partition contains records with course 2,5,8.
+The following diagram shows the partitioning phase:
+
+
+
+
+
+From the record counts, we can compute that the first partition contains
+5,000+3,000+1,000+1,000 = 10,000 records. Given that that there are 1000
+records per page, this makes 10 pages. The second partition contains
+4,000+2,000+1,000 records, giving 7 pages. The third partition contains
+5,000+1,000+2,000 records, giving 8 pages.
+
+
+In the elimination phase, there are three stages, one to deal with each
+of the partitions.
+
+
+In the first stage, we read back all of the 0,3,6,9 records and apply
+the mod 4 hash function. The first record with key=0 goes into buffer 0,
+and all other key=0 records are eliminated when they see the first one.
+The first record with key=3 goes into buffer 3, and all other key=3 records
+are eliminated when they see the first one. The first record with key=6
+goes into buffer 2, and all other key=6 records are eliminated when they
+see the first one. The first record with key=9 goes into buffer 1, and
+all other key=9 records are eliminated when they see the first one. At
+the end of this stage, we can scan through the buffers and extract four
+distinct output records.
+
+
+The following diagram shows the elimination phase for this first partition:
+
+
+
+
+
+The second stage proceeds similarly, with key=1 records hashing to buffer
+1, key=4 records hashing to buffer 0 and key=7 records hashing to buffer
+3. Buffer 2 is unused.
+
+
+The third stage proceeds similarly, with key=2 records hashing to buffer
+2, key=5 records hashing to buffer 1 and key=8 records hashing to buffer
+0. Buffer 3 is unused.
+
+
+
+
+
+
+Consider processing the following SQL projection query:
+
+select distinct title,name from Staff;
+
+
+You are given the following information:
+
+
+
+the relation Staff has attributes
+id, name, title, dept, address
+
+except for id, all are string fields of the same length
+
+the id attribute is the primary key
+
+the relation contains 10,000 pages
+
+there are 10 records per page
+
+there are 10 memory buffer pages available for sorting
+
+
+Consider an optimised version of the sorting-based projection algorithm:
+The initial sorting pass reads the input and creates sorted runs of tuples
+containing only the attributes name and title.
+Subsequent merging passes eliminate duplicates while merging the initial
+runs to obtain a single sorted result (as opposed to doing a separate
+pass to eliminate duplicates from a sorted result).
+
+
+
+
+How many sorted runs are produced on the first pass?  What is the average
+length of these runs?
+
+[show answer]
+
+
+In the first pass, two things happen: the two relevant fields are
+projected out of each record, and the resulting records are sorted in groups
+and written to an output file. Since all fields are the same size, extracting
+two fields gives records that are half as big as the original records.
+This means that the result file will have half as many pages as the original
+file (i.e. 5,000 pages). Since there are B=10 memory buffers, these 5,000
+pages can be sorted into groups of 10-pages each. The first pass thus produces
+N=ceil(b/B)=500 runs of 10 pages each.
+
+
+
+
+How many additional passes will be required to compute the final result
+of the projection query? What is the I/O cost of these additional passes?
+
+[show answer]
+
+
+After the first pass produces sorted groups of 10-pages in length,
+the remaining passes sort the file and then do a scan to remove duplicates.
+The number of passes for the sorting is ceil(logB-1N)=3, and
+on each of these passes the complete file (5,000 pages) is read and written
+(i.e. 2*5000=10,000 page I/Os). Since duplicates can be easily eliminated
+in the final merging phase of the sort, we do not require an additional
+duplicate-elimination pass (as described in the lecture notes).
+Thus, the process requires a total of 3*2*5000=30,000 I/Os.
+
+
+
+
+Suppose that a clustered B+ tree index on title is available.
+Is this index likely to offer a cheaper alternative to sorting?
+Would your answer change if the index were unclustered?
+
+[show answer]
+
+
+With a clustered B+ tree index, on title, we know that
+the file is (almost) sorted on title already. However, this won't
+help us much since there will be many occurrences of a given title value
+(e.g. Dr. Mr. Ms.) and the names associated with that title may be spread
+over many pages and completely unsorted. If the index were unclustered,
+we would get absolutely no help at all from it.
+
+
+
+
+Suppose that a clustered B+ tree index on name is available.
+Is this index likely to offer a cheaper alternative to sorting?
+Would your answer change if the index were unclustered?
+
+[show answer]
+
+
+Having a clustered index on name means that the file is sorted
+by name, and thus multiple occurrences of a name are likely to occur in
+the same data block (or, at worst, adjacent data blocks). A scan of the
+B+ tree would allow us to establish this and complete the projection with
+just one pass over the data file. If the index were unclustered, we would
+get no help from it.
+
+
+
+
+Suppose that a clustered B+ tree index on (name,title) is available.
+Is this index likely to offer a cheaper alternative to sorting?
+Would your answer change if the index were unclustered?
+
+[show answer]
+
+
+Using a clustered B+ tree index on (name,title) would also
+be more cost-effective than sorting. In this case, even an unclustered
+B+ tree would be helpful, because we could use an index-only scan to extract
+the required information from the (already sorted how we want) index file.</p><h3 >字段6</h3><p>COMP9315 18s2
+
+
+  Exercises 06Implementing Selection on One Attribute (1-d)
+
+
+  DBMS Implementation
+
+
+[Show with no answers]   [Show with all answers]
+
+
+
+
+
+Consider the relations:
+
+Student(id#, name, age, course)
+Subject(code, title, description)
+
+
+Make the following assumptions:
+
+
+ rStudent = 50,000,   rSubject = 5,000
+ the data file for Student is sorted on id#,
+	the data file for Subject is sorted on code
+ simple one-level indexes are used
+	(e.g. because the files are reasonably static)
+ record IDs (RIDs) are 4-bytes long
+ all data pages and index pages are 4KB long
+
+
+Based on these assumptions, answer the following:
+
+
+ You can build a dense index on any field. Why?
+[show answer]
+
+A dense index has one index entry for each data record.
+It is required that the entries in the index are sorted (to make
+searching the index efficient). However, there are no specific
+requirements on where the records are located within the data file.
+Thus, you can build a dense index on any or all fields.
+
+ On which field(s) could you build a non-dense index?
+[show answer]
+
+
+A non-dense index has one entry per block, and assumes that all
+records in that block have key values less than
+all key values in the next block.
+Thus, you can only build non-dense indexes on a field (key) on
+which the relation is sorted.
+
+
+
+If the student id# is a 4-byte quantity, how large would a dense
+index on Student.id# be?
+
+[show answer]
+
+
+A dense index has one entry per data record, so we have 50,000 entries.
+Each index entry contains a copy of the key value and the address of
+the page where the record containing that key is stored.
+Index entries will thus have 4-bytes for the id# and 4-bytes for the
+page address, so we can fit floor(4096/8) = 512 index entries
+per page. The number of index pages required is then
+ceil(50000/512) = 98.
+
+
+
+If the subject code is an 8-byte quantity, how large
+would a dense index on Subject.code be?
+
+[show answer]
+
+
+Same reasoning as for previous question. 5,000 index entries. Each
+index entry contains 8-bytes (for subject code) + 4 bytes for page
+address. Each index page contains floor(4096/12) = 341 index
+entries. And so the number of index pages is
+ceil(5000/341) = 15.
+
+
+
+If the cStudent = 100 and 
+cSubject = 20, and other values are
+as above, how large would non-dense indexes on
+Student.id# and Subject.code be?
+
+[show answer]
+
+
+For a non-dense index, we need only one index entry per block of
+the data file. Assuming that the files are fully compacted, the Student
+file has ceil(50000/100) = 500 blocks, and the Subject
+file has ceil(5000/20) = 250 blocks. The analysis then proceeds
+as for the previous question, except with one index entry per block.
+
+
+Thus #index blocks for Student = ceil(500/512) = 1,
+and #index blocks for Subject = ceil(250/341) = 1
+
+
+
+If you had just dense indexes on Student.id#
+and Subject.code, briefly describe efficient
+processing strategies for the following queries:
+
+
+ select name from Student where id=2233445
+ select title from Subject
+		where code >= 'COMP1000' and code < 'COMP2000'
+ select id#,name from Student where age=18
+ select code,title from Subject where title like '%Comput%'
+
+[show answer]
+
+
+
+select name from Student where id=2233445
+
+Do a binary search through the index (max log298=7
+page reads) to find the entry for 2233445 and then fetch the data block
+containing that record (if it exists).
+
+
+select title from Subject where code >= 'COMP1000' and code < 'COMP2000'
+
+Do a binary search through the index (max log215=4
+page reads) to find the page for COMP1000 (or nearest similar subject),
+and then do a scan through the data file to grab all the COMP1xxx records,
+which will appear consecutively.
+
+
+select id#,name from Student where age=18
+
+Since the index provides no assistance, the simplest solution is
+probably just to scan the entire file and select the 18-year-olds as you
+go. Sorting the file doesn't help here.
+
+
+select code,title from Subject where title like '%Comput%'
+
+Once again, the index doesn't help, so a linear scan is the only
+option.
+
+
+
+
+What techniques could you use to improve the performance of
+each of the above queries? And how would it impact the other
+queries?
+
+[show answer]
+
+
+
+
+You could do better than the above by using either hashing (which would
+require only one page access) or a balanced tree index (e.g. B-tree), which
+would require at most three. Hashing would not be an option if there was
+some reason why the file had to be maintained in order on the student id.
+
+
+
+A balanced tree index like a B-tree on the code field would also
+help here.
+
+
+
+If this was a common kind of query (lookup by specific age), and if there
+was no requirement to keep the file in any particular order, you could
+hash the file on age to improve performance. A more likely scenario
+would be to add a dense index on the age field.
+
+
+
+You can't use an index to assist with this query, because it doesn't use
+a notion of "matching" that involves the natural ordering on the field
+values. The query could match "Intro to Computing" or "Computing 1A" or
+"Mathematical Computation" etc.
+
+
+
+
+
+
+
+
+Consider a relation R(a,b,c,d,e) containing 5,000,000 records,
+where each data page of the relation holds 10 records.
+R is organized as a sorted file with the search key R.a.
+Assume that R.a is a candidate key of R, with values lying
+in the range 0 to 4,999,999.
+
+
+Determine which of the following approaches to evaluating
+the relational algebra expression
+πa,b(σa>50000(R))
+is likely to be the cheapest (minimum disk I/O):
+
+
+ Use a clustered B+ tree index on attribute R.a.
+ Use a linear hashed index on attribute R.a.
+ Use a clustered B+ tree index on attributes (R.a,R.b).
+ Use a linear hashed index on attributes (R.a,R.b).
+ Use an unclustered B+ tree index on attribute R.b.
+ Access the sorted file for R directly.
+
+
+[show answer]
+
+The clustered B+ tree on (R.a, R.b) gives the cheapest cost because
+it is an index-only plan, and therefore answers the query without
+accessing the data records.
+
+
+
+
+
+Consider the following example file organisation using extendible hashing.
+Records are inserted into the file based on single letter keys (only the keys
+are shown in the diagram).
+
+
+
+The dictionary contains a "global depth" value (gd), which
+indicates how
+many hash bits are being considered in locating data pages via the
+dictionary. In this example, the depth gd=3 and so the dictionary
+is size 2gd=2d=8.
+
+
+Each data page is marked with a "local depth" value (ld), which
+indicates the effective number of bits that have been used to place
+records in that page. The first data page, for example, has ld=2,
+which tells us that only the first two bits of the hash value were used
+to place records there (and these two bits were 00).
+The third data page, on the other hand, has ld=3, so we know that
+all records in that page have their first three hash bits as 100.
+
+
+Using the above example to clarify, answer the following questions
+about extendible hashing:
+
+
+
+
+Under what circumstances must we double the size of the
+directory, when we add a new data page?
+
+[show answer]
+
+
+
+The directory has to be doubled whenever we split a page that has only
+one dictionary entry pointing to it. We can detect this condition via
+the test gd = ld.
+
+
+
+Under what circumstances can we add a new data page without
+doubling the size of the directory?
+
+[show answer]
+
+
+We don't need to double the directory if the page to be split has
+multiple pointers leading to it. We simply make half of those pointers
+point to the old page, while the other half point to the new page.
+We can detect this condition via the test ld < gd.
+
+
+
+After an insertion that causes the directory size to double,
+how many data pages have exactly one directory entry pointing to them?
+
+[show answer]
+
+
+Two. The old page that filled up and the new page that was just
+created.
+Since we just doubled the number of pointers in the dictionary
+and added only one new page, all other data pages now have two
+pointers leading to them.
+
+
+
+Under what circumstances would we need overflow pages in an
+extendible hashing file?
+
+[show answer]
+
+
+If we had more than Cr records with the same key
+value. These keys would all have exactly the same hash value, no
+matter how many bits we take into account, so if we kept doubling
+the dictionary in the hope of eventually distinguishing them by using
+more and more bits, then the dictionary would grow without bound.
+
+
+
+What are the best-case and worst-case scenarios for space
+utilisation in the dictionary and the data pages (assuming that
+there are no overflow pages)? Under what circumstances do these 
+scenarios occur?
+
+[show answer]
+
+
+The best case scenario is when the hash function spreads the
+records uniformly among the pages and all pages are full.
+We then have 100% space utilisation in the data pages.
+Under the best-case scenario, each data page would have
+exactly one dictionary entry referring to it
+(i.e. gd == ld for every page).
+
+
+The worst case scenario is when we have an extremely skew
+hash function (e.g. the hash function maps every
+key value to the same page address ... at least in the
+first few hash bits).
+Let's assume that we fill up the first page and then add one
+more record.
+If we needed to consider all 32 bits of the hash before we
+could find one record that mapped to a different page (e.g.
+all records have hash value 0000...0000 except
+for one record that has hash value 0000...0001,
+then we would have a dictionary with 232
+entries (which is extremely large).
+At this point, the data page space utilisation would be just
+over 50% (we have two pages, one of which is full and the
+other of which contains one record).
+It is unlikely that an extendible hashing scheme would
+allow the dictionary to grow this large before giving up
+on the idea of splitting and resorting to overflow pages
+instead.
+
+
+
+
+
+
+
+Consider the following example file organisation using linear hashing.
+Records are inserted into the file based on single letter keys (only the keys
+are shown in the diagram).
+
+
+
+Using the above example to clarify, answer the following questions
+about linear hashing:
+
+
+
+
+How is it that linear hashing provides an average case search cost
+of only slightly more than one page read, given that overflow pages
+are part of its data structure?
+
+[show answer]
+
+
+If we start from an file with 2d pages, by the time
+the file size has doubled to 2d+1 pages, we will
+have split every page in the first half of the file.
+Splitting a page generally has the effect of reducing the length of
+the overflow chain attached to that page.
+Thus, as the file size doubles, we will most likely have reduced the
+length of every overflow chain. In general, and assuming a reasonable
+hash function, this will keep the overflow chain lengths close to zero,
+which means that the average search cost will be determined by the fact
+that we normally read just a single data page from the main data file.
+
+
+
+
+Under what circumstances will the average overflow chain length
+(Ov) not be reduced during page splitting?
+
+[show answer]
+
+
+If all of the records in a particular page have the same hash values
+in their lower-order  d bits and lower-order d+1 bits,
+then splitting the page will leave them all where they were. It will
+also result in the newly-added page being empty.
+
+
+
+If a linear hashing file holds r records, with C
+records per page and with splitting after every k inserts, 
+what is the worst-case cost for an equality search, 
+and under what conditions does this occur?
+
+[show answer]
+
+
+The worst-case occurs when all of the keys map to the same page address.
+If this occurs, and the file contains r records, then they will
+all have been attached to e.g. the first page. This will mean that
+there's a primary data page plus overflow chain containing
+ceil(r/C) pages. This will be the cost of a search.
+If the file starts out with a single data page, then there will have
+been floor(r/k) new data pages added due to splitting after
+every k insertions.
+This means that the file contains floor(r/k)+1 data pages, and
+all but one of them is empty.
+
+
+
+
+
+
+
+Consider the following employee relation:
+
+Employee(id#:integer, name:string, dept:string, pay:real)
+
+
+and some records from this relation for a small company:
+
+(11, 'I. M. Rich', 'Admin',    99000.00)
+(12, 'John Smith', 'Sales',    55000.00)
+(15, 'John Brown', 'Accounts', 35000.00)
+(17, 'Jane Dawes', 'Sales',    50000.00)
+(22, 'James Gray', 'Sales',    65000.00)
+(23, 'Bill Gates', 'Sales',    35000.00)
+(25, 'Jim Morris', 'Admin',    35000.00)
+(33, 'A. D. Mine', 'Admin',    90000.00)
+(36, 'Peter Pipe', 'R+D',      30000.00)
+(44, 'Jane Brown', 'R+D',      30000.00)
+(48, 'Alex Brown', 'Plant',    40000.00)
+(55, 'Mario Reid', 'Accounts', 27000.00)
+(57, 'Jack Smith', 'Plant',    35000.00)
+(60, 'Jack Brown', 'Plant',    35000.00)
+(72, 'Mario Buzo', 'Accounts', 30000.00)
+(77, 'Bill Young', 'Accounts', 31000.00)
+(81, 'Jane Gates', 'R+D',      25000.00)
+(88, 'Tim Menzie', 'R+D',      45000.00)
+(97, 'Jane Brown', 'R+D',      30000.00)
+(98, 'Fred Brown', 'Admin',    60000.00)
+(99, 'Jane Smith', 'Accounts', 30000.00)
+
+
+Assume that we are using the following hash function:
+
+hash(11) = 01001010
+hash(12) = 10110101
+hash(15) = 11010111
+hash(17) = 00101000
+hash(22) = 10000001
+hash(23) = 01110111
+hash(25) = 10101001
+hash(33) = 11001100
+hash(36) = 01111000
+hash(44) = 10010001
+hash(48) = 00001111
+hash(55) = 10010001
+hash(57) = 11100011
+hash(60) = 11000101
+hash(72) = 10010010
+hash(77) = 01010000
+hash(81) = 00010111
+hash(88) = 10101011
+hash(97) = 00011100
+hash(98) = 01010111
+hash(99) = 11101011
+
+
+Assume also that we are dealing with a file organisation where we can insert
+four records on each page (data page or overflow page) and still have
+room for overflow pointers, intra-page directories, and so on.
+
+
+Show the insertion of these records in the order given above
+into an initially empty extendible hashing file.
+How many pages does the relation occupy (including the pages to
+hold the directory)?
+
+
+[show answer]
+
+Initial state:
+
+After inserting 11,12,15,17:
+
+After inserting 22:
+
+After inserting 23,25:
+
+After inserting 33:
+
+After inserting 36,44:
+
+After inserting 48:
+
+After inserting 55:
+
+After inserting 57,60,72,77,81,88,97:
+
+After inserting 98:
+
+After inserting 99:
+
+After inserting all records, there are 7 data pages plus one page for
+the directory.
+
+
+
+
+
+Using the same data as for the previous question,
+show the insertion of these records in the order given above
+into an initially empty linear hashed file.
+How many pages does the relation occupy (including any overflow
+pages)?
+
+[show answer]
+
+Initial state:
+
+After inserting 11,12,15,17:
+
+Inserting 22 causes a split:
+
+After inserting 23:
+
+Inserting 25 causes page 0 to split:
+
+After inserting 33,36:
+
+Inserting 44 causes page 1 to split:
+
+After inserting 48:
+
+Inserting 55 causes page 01 to split:
+
+After inserting 57,60:
+
+After inserting 72,77:
+
+After inserting 81:
+
+After inserting 88:
+
+After inserting 97:
+
+Inserting 98 causes page 000 to split:
+
+After inserting 99:
+
+After inserting all records, there are 9 data pages plus one overflow page.</p><h3 >字段7</h3><p>COMP9315 18s2
+
+
+  Exercises 07Implementing Selection on Multiple Attributes (N-d)
+
+
+  DBMS Implementation
+
+
+[Show with no answers]   [Show with all answers]
+
+
+
+
+
+Consider a file of n=50000 tuples allocated across b=1024 pages
+using a multi-attribute hash function giving d=10 hash bits.
+The tuples in this file have four fields R(w,x,y,z)
+and a choice vector that allocates hash bits to fields as follows:
+dw=5, dx=2, dy=3, dz=0.
+Assuming that there are no overflow pages, compute how many pages each
+of the following queries would need to access:
+
+
+ select * from R where w=5432 and x=3
+[show answer]
+
+
+The specified attributes (w,x) contribute 5+2 known bits, leaving
+3 bits unknown. We need to generate all possible values for these 3 bits,
+which means we need to examine 8 pages for possible matches.
+
+
+ select * from R where w=4523 and x=9 and y=12
+[show answer]
+
+
+The specified attributes (w,x,y) contribute 10 known bits, so the
+hash value for the query is fully known.
+This leads us to a single page which will contain any tuples that
+look like (4523,9,12,?).
+
+
+ select * from R where x=3
+[show answer]
+
+
+The specified attribute (x) contributes 2 known bits, leaving 8 bits
+unknown. We need to examine 28 = 256 pages for
+possible matches.
+
+
+ select * from R where z=3
+[show answer]
+
+
+Since the only specified attribute (z) contributes 0 bits to the
+hash, we have 10 unknown bits and thus need to examine the entire file.
+
+
+ select * from R where w=9876 and x>5
+[show answer]
+
+
+The query term x>5 is not useful for hashing, since hashing requires
+an exact value (equality predicate). Thus, the only attribute with a specified
+value useful for hashing is w,
+which contributes 5 known bits. This leaves 5 unknown bits and so we need
+to examine 25 = 32 pages which may contain
+matching tuples.
+
+
+If we happened to know more about the domain of the x attribute,
+we could potentially improve the search. For example, if we knew that
+x only had values in the range 0..7, then we could treat
+the query as:
+
+select * from R where w=9876 and (x=6 or x=7)
+...which could be rewritten as ...
+(select * from R where w=9876 and x=6)
+union
+(select * from R where w=9876 and x=7)
+
+
+Each of these queries only has 3 unknown bits, and so we would need
+to read only 8 pages for each query, giving a total of 16 pages.
+Of course, if there were more than four possible values for the x
+attribute, it would be more efficient to simply ignore x and
+use our original approach.
+
+
+
+
+
+
+Consider a file of r=819,200 Part records (C=100):
+
+CREATE TABLE Parts (
+       id#     number(10) primary key,
+       name    varchar(10),
+       colour  varchar(5) check value in ('red','blue','green'),
+       onhand  integer
+);
+
+
+Used only via the following kinds of pmr queries:
+
+
+
+
+Query Type pQ
+ < id#, ?, ?, ? > 0.25 
+ < ?, name, colour, ? > 0.50 
+ < ?, ?, colour, ? > 0.25 
+
+
+
+Give and justify values for d and the dis and
+suggest a suitable choice vector.
+
+[show answer]
+
+
+The value d is the depth of the file i.e. the number
+of bits required in the hash value to address all pages in the file.
+For example, a file with 8 pages can be addressed with a 3-bit hash
+value (i.e. the possible hash values are
+000, 001, 010, 011, 100, 101, 110, 111).
+Thus, the first step in determining the value for d is to
+work out how many pages are in the file.
+
+
+The number of pages b is determined as follows:
+
+
+
+  b = ceil(r/C) = ceil(819,200/100) = ceil(8192) = 8192
+
+
+
+What size of hash value does it take to address 8192 pages?
+If the file has 2n pages, then it requires
+an n-bit hash value.
+For this example:
+
+
+
+  d = ceil(log2b) = ceil(log28192) = ceil(13) = 13
+
+
+
+Thus we have a 13-bit hash value for each record that is produced
+via an interleaving of bits from the four attributes
+id#, name, colour, onhand.
+The next step is to determine how many bits di
+each attribute Ai contributes to this record
+hash value.
+
+
+We use the following kinds of information to decide this:
+
+
+  the likelihood of an attribute being used in a query 
+	Recall that the more bits that an attribute contributes,
+	then the more pages we need to search when the attribute
+	is not used in a query (i.e. we have more unknown
+	* bits).
+	Thus, in order to minimise query costs, we should allocate
+	more bits to attributes that are more likely to be used in
+	queries and less bits to attributes that are more likely to
+	be missing from queries.
+
+  the number of distinct values in the attribute domain 
+	If a domain has n distinct values, then a perfect
+	hash function can distinguish these values using
+	log2n bits.
+	If we allocate more bits to this attribute, they will
+	not be assisting with the primary function of hashing,
+	which is to partition distinct values into different
+	pages.
+
+  the discriminatory power of the attribute 
+	The discriminatory power of an attribute measures
+	the likely number of pages needed to be accessed in answering
+	a query involving that attribute.
+	For example, a query involving a primary key has a solution
+	set that consists of exactly one record, located on one page
+	of the data file; in the best case (e.g. hashing solely on
+	the primary key, we would access exactly one page of the
+	data file in answering such a query).
+	We would tend to allocate more bits to very discriminating
+	attributes because this reduces the number of pages that
+	need to be accessed in finding the small answer set in
+	queries involving such attributes.
+
+
+Let us consider each attribute in turn in terms of these characteristics:
+
+
+ id# number(10) primary key 
+	
+	 This attribute is used in only one query, which occurs
+		25% of the time, so its overall likelihood of use is 0.25.
+		This suggests that we should not allocate too many bits to it.
+	 Since each id# is a 10-digit number, there are
+		1010 possible part id's.
+		This is a very large domain, with around 234
+		distinct values.
+		Thus, the domain size puts no restriction on the number
+		of bits that we might allocate to this attribute.
+	 This attribute is very discriminatory. In fact, if it is used
+		in a query, then we know that there will be either 0 or 1
+		matching records. This suggests that we should allocate it
+		many bits, so as to avoid searching many unnecessary pages
+		when this attribute is used in a query.
+	
+ name   varchar(10) 
+	
+	 This attribute is used in only one query, which occurs
+		50% of the time. Its overall likelihood of use is thus 0.5.
+		This suggests that we should allocate a reasonable number
+		of hash bits to this attribute.
+	 The name attribute is an arbitrary string giving
+		a descriptive name for each part. Given the semantics of
+		the problem, there will be names such as "nut", "washer",
+		"bolt", "joint", and so on. There could quite conceivably
+		be up to 10000 different part names. In this case, 13 bits
+		(213=8192)
+		of information would be sufficient to give a different
+		hash value for each of these names. Thus, it would not be
+		worth allocating more than 10 bits to this attribute.
+	 If we assume that there are around 8000 part names, and
+		we know that there are 819,200 parts, then, assuming a
+		uniform distribution of part names, each name would occur
+		around 1000 times in the database. In other words, a
+		query based solely on the name attribute would
+		select around 1000 tuples. This attribute is moderately
+		discriminating, which suggests that we should not allocate
+		too many bits to it.
+	
+ colour varchar(5) in ('red','blue','green') 
+	
+	 This attribute is used in two queries, whose likelihoods
+		are 50% and 25% respectively. Overall, this attribute is
+		75% likely to occur in a query.
+		This suggests that we should allocate most bits to it.
+	 There are only three possible values for the colour
+		attribute. These values can be distinguished using only
+		2 bits of information, therefore there is no point in
+		allocating more than 2 bits to this attribute.
+	 If there are 3 colours and 819,200 records, then, assuming
+		a uniform distribution of colours, each colour value will
+		occur in around 27,000 different records. Thus, colour
+		is not a discriminating attribute and we are not required,
+		on the basis of this characteristic, to allocate it many bits.
+	
+ onhand integer 
+	
+	 This attribute is not used in any queries, and so there is
+		no point allocating it any bits. If we do, these bits will
+		always be unknown, and we a guaranteeing a fixed
+		unnecessary overhead in every query.
+	 There are a large number of possible values for this numeric
+		attribute, and so there is no upper bound on the number
+		of bits to allocate. Of course, the non-usage of this
+		attribute in queries suggests that we don't allocate it
+		any bits, so an upper-bound is not an issue.
+	 It is difficult to estimate the discriminatory power of
+		this attribute. For a given onhand quantity,
+		there may be a large number of parts with this quantity,
+		or there may be none.
+	
+
+
+The usage of an attribute is the most important property in determining
+how many bits to allocate to it. This should be modified by any upper
+bound suggested by the domain size. Finally, discriminatory power may
+suggest extra bits to be allocated to an attribute, but it more likely
+an indication that some other indexing scheme (than multi-attribute
+hashing) should be used. For example, if the most common kind of query
+was a selection based on the id#, then it would be sensible to
+use a primary key indexing scheme such as a B-tree in preference to
+multi-attribute hashing.
+
+
+The frequency of usage suggests that we allocate most bits to colour,
+less bits to name, less bits to id#, and no bits to
+onhand.
+However, the domain size of colour indicates that it should
+not be allocated more than 2 bits.
+This fixes the bit allocations for two attributes:
+dcolour = 2 and donhand = 0.
+This leaves 11 more bits from the original d = 13 to allocate.
+Usage frequency suggests that we allocate more to name,
+but discriminatory power suggests that we allocate as many bits as
+possible to id#.
+
+
+According to the optimisation criteria mentioned in lectures,
+the lowest average cost would likely be obtained if dname
+is the larger, so we could set dname = 6 and
+did# = 5.
+These allocations give the following average query cost:
+
+Cost = pq1Costq1 + pq2Costq2 + pq3Costq3
+     = 0.25 * 28 + 0.5 * 25 + 0.25 * 211
+     = 592 page accesses
+
+
+where there are
+5 known bits (6+2=8 unknown bits) for query type q1,
+6+2=8 known bits (5 unknown bits) for query type q2,
+and
+2 known bits (5+6=11 unknown bits) for query type q3.
+
+
+However, it turns out that an alternative bit-allocation has even better cost:
+dname = 5 and did# = 6.
+
+Cost = pq1Costq1 + pq2Costq2 + pq3Costq3
+     = 0.25 * 27 + 0.5 * 26 + 0.25 * 211
+     = 576 page accesses
+
+
+As far as the choice vector is concerned, there is no particular reason
+not to simply interleave the hash bits from each of attributes in forming
+the hash value for each record, thus giving:
+
+
+
+d = 13                   
+did# = 6      
+dname = 5     
+dcolour = 2   
+donhand = 0
+
+
+
+
+cv0 = bitid#,0       
+cv1 = bitname,0      
+cv2 = bitcolour#,0   
+cv3 = bitid#,1       
+cv4 = bitname,1      
+cv5 = bitcolour,1    
+cv6 = bitid#,2       
+etc.
+
+
+where bitA,n refers to the nth bit
+of the hash value h(A) for attribute A.
+
+
+
+
+
+ Consider the student relation: 
+Student(id:integer, name:string, address:string,
+        age:integer, course:string, gpa:real);
+
+
+with the following characteristics:
+r = 40,000,   B = 1024,   C = 20
+
+
+If the relation is accessed via a superimposed codeword
+signature file with false match probability
+pF=10-4,
+compute the costs of answering the query:
+
+select * from Student where course='BSc' and age=20;
+
+
+for the following file organisations:
+
+
+ record signatures
+ block signatures
+ bit-sliced block signatures
+
+
+Use the following to compute signature properties:
+
+
+
+      
+
+
+[show answer]
+
+
+Before we can answer the question we need to work out the
+characteristics of the signatures. This comes from the following:
+
+
+ n = 6 attributes
+ r = 40,000 records
+ B = 1024 bytes/block
+ C = 20 recs/block
+ pF = 10-4
+
+
+For record signatures, we use the formulae:
+
+
+  k = loge(1/pF) / (loge2) 
+  m = n * loge(1/pF) / ((loge2)2) 
+
+
+Putting the above values into these formulae gives:
+k = 13  (rounded) and m = 116.
+
+
+Now, 116 bits is 14 bytes, which doesn't divide nicely into the
+block size (1024 bytes), and neither is it a multiple of 4-bytes,
+so we may have to worry about alignment problems (ints
+not aligned on 4-byte address boundaries).
+In this case, it's better to simply increase the size of each
+signature to 16 bytes (i.e. set m = 128)
+
+
+For block (page) signatures, we use the formulae:
+
+
+  k = loge(1/pF) / (loge2) 
+  m = n * C * loge(1/pF) / ((loge2)2) 
+
+
+Putting the above values into these formulae gives:
+k = 13 and m = 2301.
+
+
+Now, 2301 bits is 288 bytes, which doesn't fit at all nicely into
+1024-byte pages. We could have only 3 signatures per page, with a
+lots of unused space. In such as case it might be better to reduce
+the size of block signatures to 256 bytes, so that 4 signatures
+fit nicely into a page.
+This effectively makes m = 2048.
+The effect of this is to increase the false match probability
+pF from 1*10-4 to 3*10-4.
+For the convenience of the signature size, this seems an
+acceptable trade-off (this is still a very small chance of
+getting a false match).
+
+
+
+ Record signatures
+
+The file structure for a record-based signature file with
+m=128 looks as follows:
+
+In the data file,
+there are 40,000 records in b = 40,000/20 = 2000 pages
+In the signature file,
+there are 40,000 * 128-bit (16-byte) signatures.
+We can fit 64 * 16-byte signatures in a 1024-byte page,
+so this means there are 625 pages of signatures.
+
+To answer the select query we need to do the following:
+
+ for a 16-byte query descriptor
+ read all of the record signatures, comparing against the query descriptor
+ read blocks containing candidate records
+
+Note that some of the candidates will be false matches.
+We can work out how many simply by noting that there are
+40,000 records and the likelihood of any one being a false match
+is 10-4.
+This leads to around 4 false matches per query.
+Let us assume that there are M genuine matching records,
+and make the worst-case assumption that every candidate record
+will come from a different block.
+The overall cost will thus be:
+
+Costselect  =  625 + M + 4  page reads
+
+
+ Block signatures
+
+The file structure for a block-based signature file with
+m=2048 looks as follows:
+
+The data file is as before.
+In the signature file,
+there are 2000 * 2048-bit (256-byte) block signatures.
+We can 4 signatures in 1 1024-byte page, so this means we
+need 500 pages of signatures.
+
+To answer the select query we need to do the following:
+
+ form a 256-byte query descriptor
+ read all of the block signatures, comparing against the query descriptor
+ read candidate blocks suggested by the signatures
+
+As above, some of these will be false matches.
+In this case pF = 3*10-4
+and there are 2000 signatures, so we'd expect only
+1 false match.
+As before, let us assume that there are M genuine matching
+blocks.
+The overall cost will thus be:
+
+Costselect  =  500 + M + 1  page reads
+
+
+ Bit-sliced block signatures
+
+For the  bit-sliced signature file, we take the 2000 * 2048-bit
+block signatures from the previous file organisation and "tip them
+on their side", giving us 2048 * 2000-bit signature slices.
+Now, dealing with a 2000-bit quantity is inconvenient; once again,
+it doesn't fit nicely into 1024-byte blocks and so a suitable
+modification would be to make the slices 2048-bits long.
+This means simply that we can handle more data pages should the
+need arise; it doesn't change the false match probabilities.
+This gives a file structure that looks like:
+
+The data file is unchanged from the previous two cases.
+
+To answer the select query we need to do the following:
+
+ form a 256-byte query descriptor
+ iterate through the query descriptor, bit-by-bit
+ for each 1 bit that we find, read the corresponding bit-slice
+ iterate through the result slice, fetching candidate pages
+
+
+The primary cost determinant in this case is how many slices
+we need to read.
+This will be determined by how many 1-bits are set in the query descriptor.
+Since each attribute sets k=13 bits, and we have two attributes
+contributing to the query descriptor, we can have at most 26 bits set
+in the query descriptor.
+This means we will need to read 26 descriptor slices to answer the query.
+As well as descriptors, we need to read M candidate blocks
+containing genuine matching records, along with
+1 false match candidate block.
+
+
+The overall cost will thus be:
+
+Costselect  =  26 + M + 1  page reads
+
+
+
+
+
+
+
+
+Consider a multi-attribute hashed relation with the following properties:
+
+
+ schema R(a,b,c), where all attributes are integers
+ a file with pages b=2, depth d=1, split pointer sp=0,
+	records/page C=2
+ a split occurs after every 3 insertions
+ an initially empty overflow file
+ choice vector = < (1,0), (2,0), (3,0), (1,1), (1,2), (2,1), (2,2), (3,1), ... >
+ the hash value for each attribute is simply the binary version of the value 
+	(e.g. hash(0) = ...0000, hash(1) = ...0001, hash(4) = ...0100, hash(11) = ...1011, etc.)
+
+
+Show the state of the data and overflow files after the insertion of the
+following tuples (in the order given):
+
+(3,4,5)   (2,4,6)   (2,3,4)   (3,5,6)   (4,3,2)   (2,6,5)   (4,5,6)   (1,2,3)
+
+[show answer]
+
+
+Start by computing some (partial) hash values (bottom 8 bits is (more than) enough):
+
+    Tuple       MA-hash Value
+    (1,2,3)     ...11000101
+    (1,2,4)     ...00100001
+    (1,3,5)     ...01000111
+    (2,3,4)     ...00101010
+    (2,4,6)     ...11001000
+    (2,6,5)     ...01101100
+    (3,4,5)     ...01001101
+    (3,5,6)     ...11001011
+    (4,3,2)     ...10110010
+    (4,5,6)     ...11010010
+
+
+Insert (3,4,5) ...
+use least-significant bit = 1 to select page; insert into page 1
+
+Page[0]: empty  <- SP
+Page[1]: (3,4,5)
+
+
+Insert (2,4,6) ...
+use least-sig bit = 0 to select page; insert into page 0
+
+Page[0]: (2,4,6)  <- SP
+Page[1]: (3,4,5)
+
+
+Insert (2,3,4) ...
+use least-sig bit = 0 to select page; insert into page 0
+
+Page[0]: (2,4,6) (2,3,4)  <- SP
+Page[1]: (3,4,5)
+
+
+Insert (3,5,6) ...
+3 insertions since last split => split page 0 between pages 0 and 2
+
+Page[0]: (2,4,6)
+Page[1]: (3,4,5)  <- SP
+Page[2]: (2,3,4)
+
+
+then use least-sig bit = 1 to select page; insert into page 1
+
+Page[0]: (2,4,6)
+Page[1]: (3,4,5) (3,5,6)  <- SP
+Page[2]: (2,3,4)
+
+
+Insert (4,3,2) ...
+use least sig-bit = 0, but <SP, so take 2 bits = 10 to select page
+
+Page[0]: (2,4,6)
+Page[1]: (3,4,5) (3,5,6)  <- SP
+Page[2]: (2,3,4) (4,3,2)
+
+
+Insert (2,6,5) ...
+use least sig-bit = 0, but <SP, so take 2 bits = 00 to select page
+
+Page[0]: (2,4,6) (2,6,5)
+Page[1]: (3,4,5) (3,5,6)  <- SP
+Page[2]: (2,3,4) (4,3,2)
+
+
+This make 3 insertions since the last split => split again 
+Add new page [3] and partition tuples between pages 1 and 3 
+Also, after splitting, the file size is a power of 2 ... 
+So we reset SP to 0 and increase depth to d=2
+
+Page[0]: (2,4,6) (2,6,5)  <- SP
+Page[1]: (3,4,5)
+Page[2]: (2,3,4) (4,3,2)
+Page[3]: (3,5,6)
+
+
+Insert (4,5,6) ...
+use 2 bits = 10 to select page 
+but page 2 already full => add overflow page
+
+Page[0]: (2,4,6) (2,6,5)  <- SP
+Page[1]: (3,4,5)
+Page[2]: (2,3,4) (4,3,2)  -> Ov[0]: (4,5,6)
+Page[3]: (3,5,6)
+
+
+Insert (1,2,3) ...
+use 2 bits = 01 to select page 1 
+
+Page[0]: (2,4,6) (2,6,5)  <- SP
+Page[1]: (3,4,5) (1,2,3)
+Page[2]: (2,3,4) (4,3,2)  -> Ov[0]: (4,5,6)
+Page[3]: (3,5,6)</p><h3 >字段8</h3><p>COMP9315 18s2
+
+
+  Exercises 08Implementing Join: Nested-loop, Sort-merge, Hash
+
+
+  DBMS Implementation
+
+
+[Show with no answers]   [Show with all answers]
+
+
+
+
+
+Does the buffer replacement policy matter for sort-merge join?
+Explain your answer.
+
+[show answer]
+
+
+The sort phase requires multiple scans of progressively more sorted versions
+of the input files.
+On each scan, we are reading a new version of the file, and so buffering
+provides no real benefit.
+This will be the same regardless of the contents of the files.
+So, for the sorting phase, no buffer replacement strategy performs better
+than any other.
+
+
+For the merge phase, however, the performance is affected by the contents
+of the join attributes. We assume in the comments below that we are
+joining on a single attribute from each table, but the discussion applies
+equally if the join involves multiple attributes.
+
+If the "inner" table (the one whose file is scanned in the inner loop
+of the merge) contains no duplicate values in the join attribute, then
+the merge will be performed using a single scan through both files.
+In this case, the buffer replacement strategy does not matter (same
+rationale as for the sorting phase).
+
+
+On the other hand, if we merge two tables containing duplicated
+values in the join columns, then the buffer replacement strategy can
+affect the performance.  In this case, we may need to visit pages
+of the inner relation several times if there are multiple occurrences
+of a given join value in the outer relation and if the matching tuples
+in the inner relation are held on separate pages. Under this scenario,
+we would not want to replace recently used pages, since they may need
+to be used again soon, and so an LRU replacement strategy would most
+likely perform better than an MRU replacement strategy.
+
+
+
+
+
+
+Suppose that the relation R (with 150 pages) consists of one
+attribute a and S (with 90 pages) also consists of one
+attribute a. Determine the optimal join method for processing
+the following query:
+
+select * from R, S where R.a > S.a
+
+
+Assume there are 10 buffer pages available to process the query and
+there are no indexes available. Assume also that the DBMS only has
+available the following join methods: nested-loop, block nested loop
+and sort-merge. Determine the number of page I/Os required by each
+method to work out which is the cheapest.
+
+[show answer]
+
+
+Simple Nested Loops:
+
+We use relation S as the outer loop. Total Cost = 90 + (90×150) = 13590
+
+Block Nested Loops:
+
+If R is outer: Total Cost = 150 + (90×ceil(150/(10-2))) = 1860
+If S is outer: Total Cost = 90 + (150×ceil(90/(10-2))) = 1890
+
+Sort-Merge:
+
+Denote B as the number of buffer pages, where B = 10;
+denote M as the number of pages in the larger relation, where M = 150.
+Since B < M , the cost on sort-merge is:
+
+
+ Sorting R: 2×150×(ceil(log10-1(150/10))+1) = 900
+ Sorting S: 2×90×(ceil(log10-1(90/10))+1) = 360
+ Merge: 150 + 90 = 240 
+	(This is the best case when only the maximum value in R.a
+	is greater than the minimum value in S.a, otherwise, the worst case
+	incurs 90*150 page I/Os)
+
+
+Total Cost (best case) = 900 + 360 + 240 = 1500    (very unlikely)
+Total Cost (worst case)  = 900 + 360 + 13500 = 14760
+
+
+
+Therefore, the optimal way to process the query is Block Nested Loop join.
+
+
+
+
+
+[Ramakrishnan, exercise 12.4]
+Consider the join Join[R.a=S.b](R,S)
+and the following information about the relations to be joined:
+
+ Relation R contains 10,000 tuples and has 10 tuples per page
+ Relation S contains 2,000 tuples and also has 10 tuples per page
+ Attribute b of relation S is the primary key for S
+ Both of the relations are stored as simple heap files
+ Neither relation has any indexes built on it
+ There are 52 buffer pages available
+
+Unless otherwise noted, compute all costs as number of page I/Os,
+except that the cost of writing out the result should be uniformly
+ignored (it's the same for all methods).
+
+
+
+
+What is the cost of joining R and S using page-oriented
+simple nested loops join?
+What is the minimum number of buffer pages required for this cost to
+remain unchanged?
+
+[show answer]
+
+
+The basic idea of nested-loop join is to do a page-by-page scan of the outer
+relation, and, for each outer page, do a page-by-page scan of the inner relation.
+
+
+The cost for joining R and S is minimised when
+the smaller relation S is used as the outer relation.
+
+
+Cost
+  =  
+bS + bS * bR
+  =  
+200 + 200 * 1000
+  =  
+200,200.
+
+
+In this algorithm, no use is made of multiple per-relation buffers,
+so the minimum requirement is one input buffer page for each relation
+and one output buffer page i.e. 3 buffer pages.
+
+
+
+
+What is the cost of joining R and S using block nested
+loops join?
+What is the minimum number of buffer pages required for this cost to
+remain unchanged?
+
+[show answer]
+
+
+The basic idea for block nested-loop join is to read the outer relation
+in blocks (groups of pages that will fit into whatever buffer pages
+are available),
+and, for each block, do a page-by-page scan of the inner relation.
+
+
+The outer relation is still scanned once, but the inner relation is
+scanned only once for each outer block.
+If we have B buffers, then the number of blocks is
+ceil(bouter / (B-2)).
+As above, the total cost will be minimised when the smaller relation
+is used as the outer relation.
+
+
+Cost
+  =  
+bS + ceil(bS/B-2) * bR
+  =  
+200 + ceil(200/50) * 1000
+  =  
+200 + 4 * 1000
+  =  
+4,200.
+
+
+If B is less than 52, then B-2 < 50 and the
+cost will increase (e.g. ceil(200/49)=5), so 52 is
+the minimum number of pages for this cost.
+
+
+
+
+What is the cost of joining R and S using sort-merge
+join?
+What is the minimum number of buffer pages required for this cost to
+remain unchanged?
+
+[show answer]
+
+The idea with sort-merge join is to sort both relations and then perform
+a single scan across each, merging into a single joined relation.
+
+
+Each relation has to first be sorted (assuming that it's not already sorted
+on the join attributes). This requires an initial pass, where chunks of the
+file of size B are read into memory and sorted. After this, a
+number of passes are done, where each pass does a (B-1)-way merge
+of the file. Each pass reads and writes the file, which requires 2b
+block reads/writes. The total number of passes is 1+ceil(logB-1ceil(b/B))).
+
+
+Once the relations are sorted, the merge phase requires one pass
+over each relation, assuming that there are enough buffers to hold
+the longest run in either relation
+
+ 
+Cost
+  =  
+2bS(1+ceil(logB-1ceil(bS/B))) +
+    2bR(1+ceil(logB-1ceil(bR/B))) +
+    bS + bR
+
+  =  
+2×200×(1+ceil(log51ceil(200/52))) +
+    2×1000×(1+ceil(log51ceil(1000/52))) +
+    200 + 1000
+
+  =  
+2.200.(1+ceil(log514)) + 2.1000.(1+ceil(log5120)) + 200 + 1000
+
+  =  
+2.200.2 + 2.1000.2 + 200 + 1000
+  =  
+800 + 4000 + 200 + 1000
+  =  
+6,000.
+
+
+The critical point comes when the value of
+logB-1ceil(bR/(B-1))
+exceeds 1.
+This occurs when B drops to 15 (and B-1 becomes 14).
+
+
+
+
+What is the cost of joining R and S using grace hash join?
+What is the minimum number of buffer pages required for this cost to
+remain unchanged?
+
+[show answer]
+
+
+The basic idea with grace hash join is that we partition each relation
+and then perform the join by "matching" elements from the partitions.
+We need to assume that we have at least sqrt(bR)
+buffers or sqrt(bS) buffers and that the hash
+function gives a uniform distribution.
+Given that both sqrt(200) and sqrt(1000) are less
+than the number of buffers, the first condition is definitely
+satisfied.
+
+ 
+Cost
+  =  
+3.(bS + bR)
+  =  
+3.(200 + 1000)
+  =  
+3,600.
+
+
+
+
+What would be the lowest possible I/O cost for joining R and
+S using any join algorithm?
+How much buffer space would be needed to achieve this cost?
+
+[show answer]
+
+
+The minimal cost would be when each relation is read exactly once.
+We can perform such a join by storing the entire smaller relation
+in memory, reading in the larger relation page-by-page, and searching
+in the memory buffers for matching tuples for each tuple in the larger
+relation.
+The buffer pool would need to hold at least the same number of pages
+as the pages in the smaller relation, plus one input and one output
+buffer for the larger relation, giving
+
+
+Pages
+  =  
+200 + 1 + 1
+  =  
+202.
+
+
+
+
+What is the maximum number of tuples that the join of R and
+S could produce, and how many pages would be required to store
+this result?
+
+[show answer]
+
+
+Any tuple in R can match at most one tuple in S because
+S.b is a primary key.
+So the maximum number of tuples in the result is equal to the number of
+tuples in R, which is 10,000.
+
+ 
+The size of a tuple in the result could be as large as the size of an
+R tuple plus the size of an S tuple (minus the size of
+one copy of the join attribute).
+This size allows only 5 tuples to be stored per page, which means that
+10,000/5   =   2,000 pages are required.
+
+
+
+
+How would your answers to the above questions change if you are told
+that R.a is a foreign key that refers to S.b?
+
+[show answer]
+
+
+The foreign key constraint tells us that for every R tuple
+there is exactly one matching S tuple.
+The sort-merge and hash joins would not be affected.
+
+
+At first glance, it might seem that we can improve the cost of the
+nested-loop joins.
+If we make R the outer relation, then for each tuple of R
+we know that we only have to scan S until the single matching
+record is found, which would require scanning only 50% of S
+on average.
+However, this is only true on a tuple-by-tuple basis. When we read
+in an entire block of R records and then look for matches
+for each of them, it's quite likely that we'll scan the entire S
+relation for every block of R, and thus would find no saving.
+
+
+
+
+
+
+[Ramakrishnan, exercise 12.5]
+Consider the join of R and S described in the previous
+question:
+
+
+With 52 buffer pages, if unclustered B+ tree indexes existed on
+R.a and S.b,
+would either provide a cheaper alternative for performing
+the join (e.g. using index nested loop join) than a block nested loops join?
+Explain.
+
+
+ Would your answer change if only 5 buffer pages were available?
+ Would your answer change if S contained only 10 tuples
+	instead of 2,000 tuples?
+
+[show answer]
+
+
+The idea is that we probe an index on the inner relation for each tuple
+from the outer relation.
+The cost of each probe is the cost of traversing the B-tree to a leaf
+node, plus the cost of retrieving any matching records.
+In the worst case for an unclustered index, the cost of reading data
+records could be one page read for each record.
+Assume that traversing the B-tree for the relation R
+takes 3 node accesses, while the cost for B-tree traversal for
+S is 2 node access.
+Since S.b is a primary key, assume that every tuple in S
+matches 5 tuples in R.
+
+
+If R is the outer relation, the cost will be the cost of
+reading R plus, for each tuple in R, the cost of
+retrieving the data
+
+
+Cost
+  =  
+bR + rR * (2 + 1)
+  =  
+1,000 + 10,000*3
+  =  
+31,000.
+
+
+If S is the outer relation, the cost will be the cost of
+reading S plus, for each tuple in S, the cost of
+retrieving the data
+
+
+Cost
+  =  
+bS + rS * (3 + 5)
+  =  
+200 + 2,000*8
+  =  
+16,200
+
+
+Neither of these is cheaper than the block nested-loops join
+which required 4,200 page I/Os.
+
+
+With 5 buffer pages, the cost of index nested-loops join remains
+the same, but the cost of the block nested-loops join increases.
+The new cost for block nested-loops join now becomes
+
+Cost
+  =  
+bS + bR * ceil(bS/B-2)
+  =  
+200 + 1000 * ceil(200/3)
+  =  
+200 + 1000 * 67
+  =  
+67,200.
+
+Now the cheapest solution is index nested-loops join.
+
+If S contains only 10 tuples, then we need to change some of
+our initial assumptions.
+All of the tuples of S now fit on a single page, and it requires
+only a single I/O to access the leaf node in the index.
+Also, each tuple in S matches 1,000 tuples in R.
+
+For block nested-loops join
+
+Cost
+  =  
+bS + bR * ceil(bS/B-2)
+  =  
+1 + 1000 * ceil(1/50)
+  =  
+1 + 1000 * 1
+  =  
+1,001.
+
+For index nested-loops join, with R as the outer relation
+
+Cost
+  =  
+bR + rR * (1 + 1)
+  =  
+1000 + 10000 * 2
+  =  
+21,000.
+
+For index nested-loops join, with S as the outer relation
+
+Cost
+  =  
+bS + rS * (3 + 100)
+  =  
+1 + 10 * (3 + 1000)
+  =  
+10,031.
+
+Block nested-loops is still the best solution.
+
+
+
+With 52 buffer pages, if clustered B+ tree indexes existed on
+R.a and S.b,
+would either provide a cheaper alternative for performing
+the join (e.g. using index nested loop join) than a block nested loops join?
+Explain.
+
+
+ Would your answer change if only 5 buffer pages were available?
+ Would your answer change if S contained only 10 tuples
+	instead of 2,000 tuples?
+
+[show answer]
+
+
+With a clustered index, the cost of accessing data records becomes
+one page I/O for every 10 records.
+Based on this, we assume that for each type of index nested-loop join,
+that the data retrieval cost for each index probe is 1 page read.
+
+
+Thus, with R as the outer relation
+
+
+Cost
+  =  
+bR + rR * (2 + 1)
+  =  
+1000 + 10000 * 3
+  =  
+31,000.
+
+
+With S as the outer relation
+
+
+Cost
+  =  
+bS + rS * (3 + 1)
+  =  
+200 + 2000 * 4
+  =  
+8,200.
+
+
+Neither of these solutions is cheaper than block nested-loop join.
+
+
+With 5 buffer pages, the cost of index nested-loops join remains
+the same, but the cost of the block nested-loops join increases.
+The new cost for block nested-loops join now becomes
+
+
+Cost
+  =  
+bS + bR * ceil(bS/B-2)
+  =  
+200 + 1000 * ceil(200/3)
+  =  
+200 + 1000 * 67
+  =  
+67,200.
+
+
+Now the cheapest solution is index nested-loops join.
+
+
+If S contains only 10 tuples, then we need to change some of
+our initial assumptions.
+All of the tuples of S now fit on a single page, and it requires
+only a single I/O to access the leaf node in the index.
+Also, each tuple in S matches 1,000 tuples in R.
+
+
+For block nested-loops join
+
+
+Cost
+  =  
+bS + bR * ceil(bS/B-2)
+  =  
+1 + 1000 * ceil(1/50)
+  =  
+1 + 1000 * 1
+  =  
+1,001.
+
+
+For index nested-loops join, with R as the outer relation
+
+
+Cost
+  =  
+bR + rR * (1 + 1)
+  =  
+1000 + 10000 * 2
+  =  
+21,000.
+
+
+For index nested-loops join, with S as the outer relation
+
+
+Cost
+  =  
+bS + rS * (3 + 100)
+  =  
+1 + 10 * (3 + 100)
+  =  
+1,031.
+
+
+Block nested-loops is still the best solution.
+
+
+
+If only 15 buffers were available, what would be the cost of sort-merge join?
+What would be the cost of hash join?
+
+[show answer]
+
+
+Sort-merge join:
+
+
+With 15 buffers, we can sort R in 3 passes and S in 2 passes.
+
+
+Cost
+  =  
+2.bR.3 + 2.bS.2 + bR + bS
+  =  
+2.1000.3 + 2.200.2 + 1000 + 200
+  =  
+8,000.
+
+
+Hash join:
+
+
+With 15 buffer pages the first scan of S (the smaller relation)
+splits it into 14 partitions, each containing (on average) 15 pages.
+Unfortunately, these partitions are too large to fit into the memory
+buffers for the second pass, and so we must apply hash join again to
+all of the partitions produced in the first partitioning phase.
+Then we can fit an entire partition of S in memory. The total
+cost is the cost of two partitioning phases plus the cost of one matching
+phase.
+
+
+Cost
+  =  
+2.(2.(bR + bS)) + (bR + bS)
+  =  
+2.(2.(200+1000)) + (200+1000)
+  =  
+6,000.
+
+
+
+
+If the size of S were increased to also be 10,000 tuples,
+but only 15 buffer pages were available,
+what would be the cost for sort-merge join?
+What would be the cost of hash join?
+
+[show answer]
+
+
+Sort-merge join:
+
+
+With 15 buffers, we can sort R in 3 passes and S in 3 passes.
+
+
+Cost
+  =  
+2.bR.3 + 2.bS.2 + bR + bS
+  =  
+2.1000.3 + 2.1000.3 + 1000 + 1000
+  =  
+14,000.
+
+
+Hash join:
+
+
+Now that both relations are the same size, we can treat either of them
+as the smaller relation. Let us choose S as before.
+With 15 buffer pages the first scan of S
+splits it into 14 partitions, each containing (on average) 72 pages.
+As above, these partitions are too large to fit into the memory
+buffers for the second pass, and so we must apply hash join again to
+all of the partitions produced in the first partitioning phase.
+Then we can fit an entire partition of S in memory. The total
+cost is the cost of two partitioning phases plus the cost of one matching
+phase.
+
+
+Cost
+  =  
+2.(2.(bR + bS)) + (bR + bS)
+  =  
+2.(2.(1000+1000)) + (1000+1000)
+  =  
+10,000.
+
+
+
+If the size of S were increased to also be 10,000 tuples,
+and 52 buffer pages were available,
+what would be the cost for sort-merge join?
+What would be the cost of hash join?
+
+[show answer]
+
+
+Sort-merge join:
+
+
+With 52 buffers, we can sort both R and S in 2 passes.
+
+
+Cost
+  =  
+2.bR.3 + 2.bS.2 + bR + bS
+  =  
+2.1000.2 + 2.1000.2 + 1000 + 1000
+  =  
+10,000.
+
+
+Hash join:
+
+
+Both relations are the same size, so we arbitrarily
+choose S as the "smaller" relation.
+With 52 buffer pages the first scan of S
+splits it into 51 partitions, each containing (on average) 14 pages.
+This time we do not have to deal with partition overflow, and so
+only one partitioning phase is required before the matching phase.
+
+
+Cost
+  =  
+2.(bR + bS) + (bR + bS)
+  =  
+2.(1000+1000) + (1000+1000)
+  =  
+6,000.
+
+
+
+
+
+
+Consider performing the join:
+select * from R, S where R.x = S.y
+
+where we have bR = 1000, bS = 5000
+and where R is used as the outer relation.
+
+
+Compute the page I/O cost of performing this join using hybrid hash join:
+
+
+ if we have N=100 memory buffers available
+[show answer]
+
+The first step with hybrid hash join is to determine how many partitions
+we are going to use. Recall that one partition of the outer relation
+will be memory-resident, while all other partitions will be written/read
+to/from disk. The aim is to minimise the number of partitions, so that
+we have as large a partition as possible resident in memory.
+
+
+To compute the number of partitions, choose the smallest number larger
+than bR/N which ensures that both the memory-resident
+partition and enough buffers for the other partitions can fit into
+memory. This means choosing a value for the number of partitions k
+that satisfies the following: k ≈ ceil(bR/N)
+and ceil(bR/k)+k ≤ N.
+
+
+For N=100 buffers, k≈ceil(bR/N)=10, but
+ceil(bR/k)+k=110, which is more than the number
+of available buffers. If we choose k=11, we then have
+ceil(bR/k)+k=91+11=102, which is still more than
+the number of available buffers. If we choose k=12, we then have
+ceil(bR/k)+k=84+12=96, which is satisfactory. (If we
+didn't want to waste any buffers, then we could allocate the extra 4
+to the in-memory partition, but we'll ignore that for this exercise)
+
+
+Once k is determined, the cost is easy to compute
+
+
+Cost
+  =  (3-2/k) × (bR+bS)
+  =  (3-2/12) × (1000+5000)
+  =  17,000
+
+
+ if we have N=512 memory buffers available
+[show answer]
+
+For N=512 buffers, k≈ceil(bR/N)=2, and
+ceil(bR/k)+k=502, which fits in the avaialable
+buffer space.
+
+
+Cost 
+  =  (3-2/k) × (bR+bS)
+  =  (3-2/2) × (1000+5000)
+  =  12,000
+
+
+ if we have N=1024 memory buffers available
+[show answer]
+
+
+With 1024 buffers, we can hold the whole of R in memory,
+so we can compute the minimum cost join using the simpler nested
+loop join method.
+In this case, the gain from using hybrid hash join is unclear.
+Nevertheless, we'll do the calculation anyway ...
+
+
+For N=1024 buffers, k≈ceil(bR/N)=1, and
+ceil(bR/k)+k=1001, which fits in the avaialable
+buffer space.
+
+
+Cost
+  =  (3-2/k) × (bR+bS)
+  =  (3-2/1) × (1000+5000)
+  =  6,000
+
+
+Happily, the computation confirms that hybrid hash join gives the
+minimum possible cost for this scenario.</p><h3 >字段9</h3><p>COMP9315 18s2
+
+
+  Exercises 09Query Optimisation and Execution
+
+
+  DBMS Implementation
+
+
+[Show with no answers]   [Show with all answers]
+
+
+
+
+
+Consider the following tables relating to trips on a suburban bus network
+
+Trip(fromPlace:integer, toPlace:integer, tripDate:date)
+Place(placeId:integer, address:string, suburb:string)
+
+
+
+
+Write an SQL query that returns all of the addresses in Randwick
+that are the destination of a trip on March 4, 2005.
+
+[show answer]
+
+select address
+from   Trip, Place
+where  tripDate='04-03-2005' and suburb='Randwick' and toPlace=placeId;
+
+
+
+
+Give a naive translation of the SQL query into a
+relational algebra expression.
+
+[show answer]
+
+Temp1  = Trip Join[toPlace=placeId] Place
+Temp2  = Sel[tripDate='04-03-2005' and suburb='Randwick'](Temp1)
+Result = Proj[address](Temp2)
+
+
+
+
+Translate the naive relational algebra expression into an equivalent
+expression using  pushing of selections and projections.
+
+[show answer]
+
+TT     = Proj[toPlace](Sel[tripDate='04-03-2005'](Trip))
+PP     = Proj[placeId,address](Sel[suburb='Randwick'](Place))
+Result = Proj[address](TT Join[toPlace=placeId] PP)
+
+
+
+
+Translate the optimized relational algebra expression into the
+most directly corresponding SQL query.
+
+[show answer]
+
+select address
+from   (select toPlace from Trip where [tripDate='04-03-2005') TT,
+       (select placeId,address from Place where suburb='Randwick') PP
+where  toPlace = placeId;
+
+
+
+
+
+
+
+
+What are the possible join trees (without cross-products)
+for each of the following queries:
+
+select * from R,S,T where R.a=S.b and S.c=T.d
+[show answer]
+
+
+((R join S) join T)   or   (R join (S join T))
+
+
+select * from R,S,T where R.a=S.b and T.c=R.d
+[show answer]
+
+
+((R join S) join T)   or   ((R join T) join S)
+
+
+select * from R,S,T where R.a=S.b and S.c=T.d and T.e=R.f
+[show answer]
+
+
+any of the above
+
+
+select * from R,S,T,U
+ where R.a=S.b and S.c=T.d and T.e=R.f and T.g=U.h and S.i=U.j
+[show answer]
+
+
+((R join S) join (T join U))   or   (((R join S) join T) join U)
+  or   (R join (S join (T join U))
+  or   ...
+
+
+(pretty much any order that does not involve a direct join of R and U)
+
+
+
+
+
+Do not include trees/sub-trees that are reflections of other
+tree/subtrees.
+
+
+
+
+
+Consider a table R(a,b,c) and assume that
+
+ all attributes have uniform distribution of data values
+ attributes are independent of each other
+ all attributes are NOT NULL
+ r = 1000,   V(a,R) = 10,   V(b,R) = 100
+
+
+Calculate the expected number of tuples in the result of each of the following
+queries:
+
+
+ select * from R where not a=k
+ select * from R where a=k and b=j
+ select * from R where a in (k,l,m,n)
+
+
+where j, k, l, m, n are constants.
+
+[show answer]
+
+ 
+
+select * from R where not a=k
+
+Since the set of values for each attribute is uniformly distributed,
+and since there are 10 possible values for the a attribute,
+we would expect that 1/10 of the tuples would satisfy a=k.
+This means that 90% of the tuples would not satisfy the
+condition. Since there are 1000 tuples, we would expect 900 of them to
+be in the result of the query.
+
+
+An alternative formulation of the above
+
+
+ Prob(a=k) = 0.1
+ Prob(a!=k) = 1 - Prob(a=k) = 0.9
+ #result tuples = r × Prob(a!=k)  = 1000 × 0.9 = 900
+
+
+select * from R where a=k and b=j
+
+If attributes are independent, then we'd expect that the chance
+of attribute R.a having a specific value was 1/10 and
+the chance of attribute R.b then have a particular value
+was 1/100 of that (i.e. the likelihoods multiply).
+
+
+Using the probability-based formulation:
+
+
+ Prob(a=k) = 0.1,   Prob(b=j) = 0.01
+ Prob(A=k and B=j) = Prob(A=k) × Prob(B=j) = 0.001
+ #result tuples = r × Prob(A=k and B=j) = 1000 × 0.001 = 1
+
+
+select * from R where a in (k,l,m,n)
+
+
+If we have alternatives for possible values for attribute R.a
+then we simply sum up the chances for any one of the values to occur.
+
+
+Using the probability-based formulation:
+
+
+ Prob(a=x) = 0.1, where x is any value in domain(a)
+ Prob(a∈{x,y,...}) = Prob(a=x) + Prob(a=y) + ...
+ Prob(a in (k,l,m,n)) = 4 × Prob(a=k) (assuming uniform distribution)
+ #result tuples = r × Prob(a in (k,l,m,n)) = 1000 × 0.4 = 400
+
+
+
+
+
+
+
+
+Consider the following tables relating to retail sales:
+
+create table Item (
+    iname       text,
+    category    text,
+    primary key (name)
+);
+create table Store (
+    sname       text,
+    city        text,
+    street      text,
+    primary key (city,street)
+);
+create table Transaction (
+    item        text references Item(iname),
+    store       text references Store(sname),
+    tdate       date,
+    primary key (item,store,tdate)
+);
+
+
+Consider the following query (expressed as SQL and relational algebra):
+
+select category,city
+from   Item, Store, Transaction
+where  iname=item and store=sname and
+       tdate='20-12-2004' and city='Sydney';
+
+JoinResult   = Item Join[iname=item] Transaction Join[store=sname] Store
+SelectResult = Sel[tdate='20-12-2004' and city='Sydney'](JoinResult)
+FinalResult  = Proj[category,city](SelectResult)
+
+
+Show the three most promising relational algebra expressions
+that the query optimizer is likely to consider; then find the most
+efficient query plan and estimate its cost.
+
+
+Assume 50 buffer pages and the following statistics and indices:
+
+
+
+Item: 50,000 tuples, 10 tuples/page. 
+Indexing: hashed on iname (assume no overflows).
+
+Store: 1,000 tuples, 5 tuples/page; 100 cities. 
+Index1: Unclustered hash index on sname.
+Index2: Clustered 2-level B+tree on city.
+
+Transaction: 500,000 tuples, 25 tuples/page; 10 items bought per store per day. 
+The relation stores transactions committed over a 50 day period. 
+Index: 2-level clustered B+tree on the pair of attributes store,ttime.
+
+
+[show answer]
+
+
+The three most promising relation algebra expressions:
+
+Exp1:
+    Temp1   = Sel[tdate='20-12-2004'](Transaction)
+    Temp2   = Sel[city='Sydney'](Store)
+    Temp3   = Temp1 Join[store=sname] Temp2
+    Temp4   = Item Join[iname=item] Temp3
+    Result  = Proj[category,city](Temp4)
+
+Exp2:
+    Temp1   = Sel[city='Sydney'](Store)
+    Temp2   = Transaction Join[store=sname] Temp1
+    Temp3   = Sel[tdate='20-12-2004'](Temp2)
+    Temp4   = Item Join[iname=item] Temp3
+    Result  = Proj[category,city](Temp4)
+
+Exp2:
+    Temp1   = Sel[tdate='20-12-2004'](Transaction)
+    Temp2   = Temp1 Join[store=sname] Store
+    Temp3   = Sel[city='Sydney'](Temp2)
+    Temp4   = Item Join[iname=item] Temp3
+    Result  = Proj[category,city](Temp4)
+
+
+The most efficient relational algebra expression is a  variation on Exp2:
+
+Best:
+    Temp1   = Sel[city='Sydney'](Store)
+    Temp2   = Temp1 Join[sname=store] Transaction
+    Temp3   = Sel[tdate='20-12-2004'](Temp2)
+    Temp4   = Temp3 Join[item=iname] Item
+    Result  = Proj[category,city](Temp4)
+
+
+Costs for the various operations (assuming pipelining, so no writes):
+
+
+
+
+Cost of Temp1: 2 + 2 = 4
+Assume 10 tuples/city (uniform distribution).
+Since there are 5 tuples/page and the file is sorted on city,
+these 10 Sydney tuples should appear in 2 pages (worst-case 3 pages).
+Cost of traversing B+tree to find the first matching tuple is 2
+(since tree has depth 2), plus cost of reading 2 data pages, gives
+a total of 4 page reads.
+
+
+
+Cost of Temp2+Temp3: 10 * 3 = 30
+Use indexed nested loop join and combine it with the selection on
+tdate as follows: the index on Transaction is on
+the pair of attributes (store,tdate); the join condition
+involves just store; however, the selection also gives
+us the tdate value; so, for each store, we can
+form an index key (store,tdate) and do an index lookup.
+Since there are 10 tuples in the result of Temp1, we will
+perform 10 index lookups on Transaction.
+Each index lookup will yield 10 results (we are given that 10 items
+are sold in each store on each day).
+Since the Transaction data file is sorted (clustered)
+by store (then tdate), and there are 25 tuples per page,
+all 10 tuples will likely be on a single page (worst case 2 pages).
+The B+tree index is depth 2, so there are 2 index page reads and 1
+data page read for each index lookup (i.e. 3 page reads).
+Since we perform 10 index lookups, this gives a total of 30 reads,
+which produces 100 tuples.
+
+
+
+Cost of Temp4: 100 * 1 = 100
+The join between Temp3 and Item can also use
+an index nested loop join, based on the fact that Item
+is hashed on the iname value, and each tuple from
+Temp3 gives us an item value to use as a hash key.
+For each of the 100 tuples from Temp3, we do a hash
+access to the page containing the matching tuple (there will be
+only 1 matching tuple, since iname is a key).
+This requires exactly 100 page reads.
+
+
+
+Total cost is the sum of these: 4 + 30 + 100 = 134 page reads.
+
+
+Note that we ignore the cost of the projection in the above calculation.
+We can do this because we generally ignore the cost of writing results
+(especially in the context of comparing relational algebra expressions
+for a given query, since all expressions produce the same result).
+Also, we don't need to worry about filtering duplicates in this case,
+since the query didn't ask for it (i.e. not select distinct).</p><h3 >字段10</h3><p>COMP9315 18s2
+
+
+  Exercises 10Transaction Processing: Concurrency, Recovery
+
+
+  DBMS Implementation
+
+
+[Show with no answers]   [Show with all answers]
+
+
+
+
+
+Consider the following transaction T1: R(X), R(X)
+
+
+
+
+Give an example of another transaction T2 that, if run concurrently
+to transaction T1 without some form of concurrency control, could
+interfere with T1 to produce unrepeatable reads. Show the sequence
+of operations which would cause the problem.
+
+[show answer]
+
+
+Even a transaction as simple as T2: W(X) is sufficient to
+cause unrepeatable reads. If T2 runs concurrently with T1
+and if the W(X) operation occurs between the two R(X)
+operations, then T1 sees a different value of X on each
+of the read operations. The following schedule shows the problem:
+
+T1:  R(X)        R(X)
+T2:        W(X)
+
+
+
+
+Explain how the application of strict two-phase locking would prevent the
+problem described in your previous answer.
+
+[show answer]
+
+
+In the case of two-phase locking the transactions would be re-written as:
+
+T1: ReadLock(X)  R(X)  R(X)  Unlock(X)
+
+T2: WriteLock(X)  W(X)  Unlock(X)
+
+
+If T1 starts first and acquires the ReadLock on X, then T2
+will be unable to proceed until T1 has completed its two reads (it
+cannot acquire the WriteLock while another transaction holds a ReadLock).
+If T2 starts first and acquires the WriteLock on X, then
+T1 will be unable to proceed until T2 has completed (it
+cannot acquire a ReadLock while another transaction holds a WriteLock).
+
+
+The following two schedules are the only possible ones that can occur
+(where "....." indicates a delay while waiting for a lock):
+
+Schedule 1:
+
+T1:  ReadLock(X)  R(X)  R(X)  Unlock(X)
+T2:             .......................  WriteLock(X)  W(X)  Unlock(X)
+
+Schedule 2:
+
+T1:             .................  ReadLock(X)  R(X)  R(X)  Unlock(X)
+T2: WriteLock(X)  W(X)  Unlock(X)
+
+
+
+
+
+
+SQL supports four isolation-levels and two access-modes, for a total of
+eight combinations of isolation-level and access-mode. Each combination
+implicitly defines a class of transactions; the following questions
+refer to these eight classes: 
+
+
+
+
+Describe which of the following phenomena can occur at each of the
+four SQL isolation levels: dirty read, unrepeatable read, phantom problem.
+
+[show answer]
+
+
+For Read Uncommitted, all three may occur.
+For Read Committed, only unrepeatable read and the phantom problem may occur.
+For Repeatable Read, only the phantom problem may occur.
+For Serializable, none of the problems can occur.
+
+
+
+Why does the access mode of a transaction matter?
+
+[show answer]
+
+If all transactions are READ-ONLY mode, then the isolation level
+doesn't matter, since none of the problems noted above can occur.
+As soon as even one transaction is READ/WRITE access mode, then
+the above problems may occur, and an appropriate
+isolation-level needs to be used to avoid any of the above
+problems that are undesirable.
+
+
+
+
+
+
+
+
+Draw the precedence graph for the following schedule:
+
+T1:      R(A) W(Z)                C
+T2:                R(B) W(Y)        C
+T3: W(A)                     W(B)     C
+
+
+[show answer]
+
+
+It has an edge from T3 to T1 (because of A) and an edge from
+T2 to T3 because of B.
+
+
+This gives: T2 --> T3 --> T1
+
+
+
+
+
+
+[Based on RG Ex.17.2]  
+Consider the following incomplete schedule S:
+
+T1: R(X) R(Y) W(X)           W(X)
+T2:                R(Y)           R(Y)
+T3:                     W(Y)
+
+
+
+
+Determine (by using a precedence graph) whether the schedule is serializable
+[show answer]
+
+
+The precedence graph has an edge, from T1 to T3,
+because of the conflict between T1:R(Y) and T3:W(Y).
+It also has an edge, from T2 to T3,
+because of the conflict between the first T2:R(Y) and
+T3:W(Y).
+It also has an edge, from T3 to T2,
+because of the conflict between T3:W(Y) and the
+second T2:R(Y).
+The edges between T2 and T3 form a cycle,
+so the schedule is not conflict-serializable.
+
+
+
+Modify S to create a complete schedule that is conflict-serializable
+[show answer]
+
+
+One possibility would be to move the W(Y) operation in T3
+to the end (i.e. make it the last operation).
+An alternative would be to move the second R(Y) in T2 to
+just before the W(Y) operation in T3.
+
+
+
+
+
+
+
+Is the following schedule conflict serializable? Show your working.
+
+T1:                R(X) W(X) W(Z)           R(Y) W(Y)
+T2: R(Y) W(Y) R(Y)                W(Y) R(X)           W(X) R(V) W(V)
+
+[show answer]
+
+
+As above, the working for this question involves constructing a
+precedence graph, based on conflicting operations, and looking
+for cycles.
+
+
+In this case there's a conflict between T1:R(X) and
+T2:W(X), giving a graph edge from T1 to T2.
+There's also a conflict between T2:R(Y) and T1:W(Y),
+giving a graph edge from T2 to T1.
+This means the graph has a cycle, so the schedule is not serializable.
+
+
+
+
+
+
+[Based on RG Ex.17.3]  
+For each of the following schedules, state whether it is
+conflict-serializable and/or view-serializable.
+If you cannot decide whether a schedule belongs to either
+class, explain briefly.
+The actions are listed in the order they are scheduled,
+and prefixed with the transaction name.
+
+
+ T1:R(X) T2:R(X) T1:W(X) T2:W(X)
+ T1:W(X) T2:R(Y) T1:R(Y) T2:R(X)
+ T1:R(X) T2:R(Y) T3:W(X) T2:R(X) T1:R(Y)
+ T1:R(X) T1:R(Y) T1:W(X) T2:R(Y) T3:W(Y) T1:W(X) T2:R(Y)
+ T1:R(X) T2:W(X) T1:W(X) T3:W(X)
+
+
+[show answer]
+
+
+The techniques used to determine these solutions:
+for conflict-serializablility, draw precedence graph and look for cycles;
+for view-serializablility, apply the definition from lecture notes.
+
+
+
+ not conflict-serializable, not view serializable
+ conflict-serializable, view serializable (view equivalent to T1,T2)
+ conflict-serializable, view serializable (view equivalent to T1,T3,T2)
+ not conflict-serializable, not view serializable
+ not conflict-serializable, view serializable (view equivalent to T1,T2,T3)
+
+
+
+
+
+
+
+Recoverability and serializability are both important properties of
+concurrent transaction schedules. They are also orthogonal.
+Serializability requires that the schedule be equivalent to some serial
+ordering of the transactions.
+Recoverability requires that each transaction commits only after all
+of the transactions from which is has read data have also committed.
+
+
+Using the following two transactions: 
+
+T1:  W(A)  W(B)  C         T2:  W(A)  R(B)  C
+
+
+give examples of schedules that are:
+
+
+ recoverable and serializable
+ recoverable and not serializable
+ not recoverable and serializable
+
+[show answer]
+
+
+ the following schedule is both recoverable and serializable
+T1:  W(A)  W(B)              C
+T2:              W(A)  R(B)     C
+
+
+The update operations of the schedules are serial, and therefore serializable.
+For recoverability, the only read is R(B) in T2, and T2 does not
+commit until after T1 has committed.
+
+ the following schedule is recoverable but not serializable
+T1:        W(A)  W(B)       C
+T2:  W(A)             R(B)     C
+
+
+There is a cycle in the dependency graph T2--A->T1 and T1--B->T2,
+so it's not serializable. However, T1 commits before T2, so it's
+recoverable for the same reasons as (a).
+
+ the following schedule is not recoverable but is serializable
+T1:  W(A)  W(B)                 C
+T2:              W(A)  R(B)  C
+
+
+It is clearly serializable for the same reason as (a).
+However, since T2 commits before T1 we could end up in the following
+scenario: T2 commits completely but the system crashes before T1 does.
+After recovery, T2 would remain committed, but T1 would be rolled back
+because it has no log entry. Since the result of T2 depends on T1's
+completion, we would have a contradiction; T2 should not be able to
+complete if T1 does not complete.
+
+
+
+
+
+
+
+ACR schedules avoid the potential cascading rollbacks that can make
+recoverable schedules less than desirable.
+Using the transactions from the previous question, give an example
+of an ACR schedule.
+
+[show answer]
+
+
+The following schedule is clearly serializable.
+However, since no reads are performed on data modified by
+uncommitted transactions, there is also no chance of
+cascading rollback.
+
+T1:  W(A)  W(B)        C
+T2:              W(A)     R(B)  C
+
+
+
+
+
+
+Consider the following two transactions:
+
+     T1               T2
+------------     ------------
+read(A)          read(B)
+A := 10*A+4      B := 2*B+3
+write(A)         write(B)
+read(B)          read(A)
+B := 3*B         A := 100-A
+write(B)         write(A)
+
+
+
+
+Write versions of the above two transactions that use two-phase locking.
+
+[show answer]
+
+
+The basic idea behind two-phase locking is that you take out all the locks
+you need, do the processing, and then release the locks. Thus two-phase
+implementations of T1 and T2 would be:
+
+     T1               T2
+------------     ------------
+write_lock(A)    write_lock(B)
+read(A)          read(B)
+A := 10*A+4      B := 2*B+3
+write(A)         write(B)
+write_lock(B)    write_lock(A)
+read(B)          read(A)
+B := 3*B         A := 100-A
+write(B)         write(A)
+unlock(A)        unlock(B)
+unlock(B)        unlock(A)
+
+
+
+
+Is there a non-serial schedule for T1 and T2 that is
+serializable? Why?
+
+[show answer]
+
+
+No. It's not possible. The last operation in T1 is write(B),
+and the last operation in T2 is write(A). T1
+starts with read(A) and T2 starts with read(B).
+Therefore, in any serializable schedule, we would require that either
+read(A) in T1 should  be after write(B) in
+T2 or read(B) in T2 should be after
+write(B) in T1.
+
+
+
+
+Can a schedule for T1 and T2 result in deadlock?
+If so, give an example schedule. If not, explain why not.
+
+[show answer]
+
+
+Yes. Consider the following schedule (where L(X) denotes
+taking an exclusive lock on object X):
+
+T1: L(A) R(A)      W(A) L(B) ...
+T2:           L(B)           R(B) W(B) L(A) ...
+
+
+
+
+
+
+
+What is the difference between quiescent and non-quiescent checkpointing?
+Why is quiescent checkpointing not used in practice?
+
+[show answer]
+
+
+In quiescent checkpointing, the system must wait until there are no
+active transactions, then flush the transaction log and write a
+checkpoint record. All transactions before the checkpoint are complete,
+and do not need to be considered further in any subsequent recovery.
+
+
+In non-quiescent checkpointing, the system marks a checkpoint period
+via a pair of start-checkpoint and end-checkpoint records.
+The checkpoint covers a period in time during which active transactions
+may have made changes to the database. Recovery to checkpoints
+is more complicated, and must take account of which transactions were
+active before and after the checkpoint started, and which ones
+completed during the checkpoint period.
+
+
+Because real database systems are heavily used and must have high
+availability. The first point (heavy use) means that there is never
+have any point in time when there are no transactions executing.
+The second point (high availability) means that we can't afford to
+block all new transactions while the system runs checkpointing.
+
+
+
+
+
+
+Consider the following sequence of undo/redo log records:
+
+<START T> ; <T,A,10,11> ; <T,B,20,21> ; <COMMIT T>
+
+
+Give all of the sequences of events that are legal according to the
+rules of undo/redo logging.
+An event consists of one of: writing to disk a block containing a
+given data item, and writing to disk an individual log record.
+
+[show answer]
+
+
+In this example, there are five events, which we shall denote:
+
+
+ A: database element A is written to disk.
+ B: database element B is written to disk.
+ LA: the log record for A is written to disk.
+ LB: the log record for B is written to disk.
+ C: the commit record is written to disk.
+
+
+The only constraints that undo/redo logging requires are that LA
+appears before A, and LB appears before B. Of course the log records
+must be written to disk in the order in which they appear in the log:
+LA,LB,C.
+The eight orders consistent with these constraints are:
+
+
+ LA,A,LB,B,C
+ LA,A,LB,C,B
+ LA,LB,A,B,C
+ LA,LB,A,C,B
+ LA,LB,B,A,C
+ LA,LB,C,A,B
+ LA,LB,B,C,A
+ LA,LB,C,B,A
+
+
+
+
+
+
+Consider the following sequence of undo/redo log records from two
+transactions T and U:
+
+    <START T> ; <T,A,10,11> ; <START U> ; <U,B,20,21> ;
+    <T,C,30,31> ; <U,D,40,41> ; <COMMIT U> ; <T,E,50,51>;
+    <COMMIT T>
+
+
+Describe the actions of the recovery manager, if there is a crash and the
+last log record to appear on disk is:
+
+
+  <START U> 
+  <COMMIT U> 
+  <T,E,50,51> 
+  <COMMIT T> 
+
+
+You may assume that there is an <END CKPT> record in the
+log immediately before the start of transaction T, so that we do not need
+to worry about the log any further back than the start of T.
+
+[show answer]
+
+
+Each recovery session these commences with a scan forward from the most recent
+checkpoint (just before start of T), to determine which transactions
+had started and which had committed since the checkpoint.
+
+
+
+
+Since neither T nor U is committed, we need to undo all of their actions.
+We move backwards through the log to the most recent checkpoint. Since U
+had only just started, we find no actions by it to undo. However, we do
+find an update record for T, so we reset the value of A to 10.
+
+
+
+Since U is committed, we redo its actions, setting B to 21 and D to 41.
+Then, since T is uncommitted, we undo its actions from the end moving
+backwards; we reset C to 30 and A to 10.
+
+
+
+This is similar to the previous part, except that we also reset E to 50.
+
+
+
+In this case, both transactions have finished, and so we need to redo all
+of their actions, setting A to 11, B to 21, C to 31, D to 41 and E to 51.
+There are no incomplete transactions, so there is no need for an undo
+pass.</p></div></body></html>

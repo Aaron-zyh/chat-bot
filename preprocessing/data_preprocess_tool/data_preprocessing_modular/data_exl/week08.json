@@ -1,0 +1,1334 @@
+[
+ {
+  "question": "May i have pipelining example ?",
+  "answer": "Consider the query:\n select s.id, e.course, e.mark\n from   Student s, Enrolment e\n where  e.student = s.id and\n        e.semester = '05s2' and s.name = 'John';\n which maps to the RA expression\n Proj[id,course,mark](Join[student=id](Sel[05s2](Enr),Sel[John](Stu)))\n which could represented by the RA expression tree\n",
+  "intent": "example",
+  "key_words": [
+   "pipelining",
+   "example"
+  ]
+ },
+ {
+  "question": "List some pipelining example ?",
+  "answer": "Consider the query:\n select s.id, e.course, e.mark\n from   Student s, Enrolment e\n where  e.student = s.id and\n        e.semester = '05s2' and s.name = 'John';\n which maps to the RA expression\n Proj[id,course,mark](Join[student=id](Sel[05s2](Enr),Sel[John](Stu)))\n which could represented by the RA expression tree\n",
+  "intent": "example",
+  "key_words": [
+   "pipelining",
+   "example"
+  ]
+ },
+ {
+  "question": "pipelining example",
+  "answer": "Consider the query:\n select s.id, e.course, e.mark\n from   Student s, Enrolment e\n where  e.student = s.id and\n        e.semester = '05s2' and s.name = 'John';\n which maps to the RA expression\n Proj[id,course,mark](Join[student=id](Sel[05s2](Enr),Sel[John](Stu)))\n which could represented by the RA expression tree\n",
+  "intent": "example",
+  "key_words": [
+   "pipelining",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some pipelining example ?",
+  "answer": "Consider the query:\n select s.id, e.course, e.mark\n from   Student s, Enrolment e\n where  e.student = s.id and\n        e.semester = '05s2' and s.name = 'John';\n which maps to the RA expression\n Proj[id,course,mark](Join[student=id](Sel[05s2](Enr),Sel[John](Stu)))\n which could represented by the RA expression tree\n",
+  "intent": "example",
+  "key_words": [
+   "pipelining",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some pipelining example ?",
+  "answer": "Consider the query:\n select s.id, e.course, e.mark\n from   Student s, Enrolment e\n where  e.student = s.id and\n        e.semester = '05s2' and s.name = 'John';\n which maps to the RA expression\n Proj[id,course,mark](Join[student=id](Sel[05s2](Enr),Sel[John](Stu)))\n which could represented by the RA expression tree\n",
+  "intent": "example",
+  "key_words": [
+   "pipelining",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some pipelining example ?",
+  "answer": "Consider the query:\n select s.id, e.course, e.mark\n from   Student s, Enrolment e\n where  e.student = s.id and\n        e.semester = '05s2' and s.name = 'John';\n which maps to the RA expression\n Proj[id,course,mark](Join[student=id](Sel[05s2](Enr),Sel[John](Stu)))\n which could represented by the RA expression tree\n",
+  "intent": "example",
+  "key_words": [
+   "pipelining",
+   "example"
+  ]
+ },
+ {
+  "question": "May i have pipelining example ?",
+  "answer": "Modelled as communication between RA tree nodes:\n Note: likely that projection is combined with join in real DBMSs.\n",
+  "intent": "example",
+  "key_words": [
+   "pipelining",
+   "example"
+  ]
+ },
+ {
+  "question": "List some pipelining example ?",
+  "answer": "Modelled as communication between RA tree nodes:\n Note: likely that projection is combined with join in real DBMSs.\n",
+  "intent": "example",
+  "key_words": [
+   "pipelining",
+   "example"
+  ]
+ },
+ {
+  "question": "pipelining example",
+  "answer": "Modelled as communication between RA tree nodes:\n Note: likely that projection is combined with join in real DBMSs.\n",
+  "intent": "example",
+  "key_words": [
+   "pipelining",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some pipelining example ?",
+  "answer": "Modelled as communication between RA tree nodes:\n Note: likely that projection is combined with join in real DBMSs.\n",
+  "intent": "example",
+  "key_words": [
+   "pipelining",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some pipelining example ?",
+  "answer": "Modelled as communication between RA tree nodes:\n Note: likely that projection is combined with join in real DBMSs.\n",
+  "intent": "example",
+  "key_words": [
+   "pipelining",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some pipelining example ?",
+  "answer": "Modelled as communication between RA tree nodes:\n Note: likely that projection is combined with join in real DBMSs.\n",
+  "intent": "example",
+  "key_words": [
+   "pipelining",
+   "example"
+  ]
+ },
+ {
+  "question": "May i have example postgresql execution ?",
+  "answer": "Consider the query:\n -- get manager's age and # employees in Shoe department\n select e.age, d.nemps\n from   Departments d, Employees e\n where  e.name = d.manager and d.name ='Shoe'\n and its execution plan tree\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "List some example postgresql execution ?",
+  "answer": "Consider the query:\n -- get manager's age and # employees in Shoe department\n select e.age, d.nemps\n from   Departments d, Employees e\n where  e.name = d.manager and d.name ='Shoe'\n and its execution plan tree\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "example postgresql execution",
+  "answer": "Consider the query:\n -- get manager's age and # employees in Shoe department\n select e.age, d.nemps\n from   Departments d, Employees e\n where  e.name = d.manager and d.name ='Shoe'\n and its execution plan tree\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "Give me some example postgresql execution ?",
+  "answer": "Consider the query:\n -- get manager's age and # employees in Shoe department\n select e.age, d.nemps\n from   Departments d, Employees e\n where  e.name = d.manager and d.name ='Shoe'\n and its execution plan tree\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "Do you have some example postgresql execution ?",
+  "answer": "Consider the query:\n -- get manager's age and # employees in Shoe department\n select e.age, d.nemps\n from   Departments d, Employees e\n where  e.name = d.manager and d.name ='Shoe'\n and its execution plan tree\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "Can i have some example postgresql execution ?",
+  "answer": "Consider the query:\n -- get manager's age and # employees in Shoe department\n select e.age, d.nemps\n from   Departments d, Employees e\n where  e.name = d.manager and d.name ='Shoe'\n and its execution plan tree\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "May i have example postgresql execution ?",
+  "answer": "The execution plan tree\n contains three nodes:\n NestedLoop with join condition (Outer.manager = Inner.name)\n IndexScan on Departments with selection (name = 'Shoe')\n SeqScan on Employees\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "List some example postgresql execution ?",
+  "answer": "The execution plan tree\n contains three nodes:\n NestedLoop with join condition (Outer.manager = Inner.name)\n IndexScan on Departments with selection (name = 'Shoe')\n SeqScan on Employees\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "example postgresql execution",
+  "answer": "The execution plan tree\n contains three nodes:\n NestedLoop with join condition (Outer.manager = Inner.name)\n IndexScan on Departments with selection (name = 'Shoe')\n SeqScan on Employees\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "Give me some example postgresql execution ?",
+  "answer": "The execution plan tree\n contains three nodes:\n NestedLoop with join condition (Outer.manager = Inner.name)\n IndexScan on Departments with selection (name = 'Shoe')\n SeqScan on Employees\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "Do you have some example postgresql execution ?",
+  "answer": "The execution plan tree\n contains three nodes:\n NestedLoop with join condition (Outer.manager = Inner.name)\n IndexScan on Departments with selection (name = 'Shoe')\n SeqScan on Employees\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "Can i have some example postgresql execution ?",
+  "answer": "The execution plan tree\n contains three nodes:\n NestedLoop with join condition (Outer.manager = Inner.name)\n IndexScan on Departments with selection (name = 'Shoe')\n SeqScan on Employees\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "May i have example postgresql execution ?",
+  "answer": "Initially InitPlan() invokes ExecInitNode() on plan tree root.\n ExecInitNode() sees a NestedLoop node ...    so dispatches to ExecInitNestLoop() to set up iterator\n    then invokes ExecInitNode() on left and right sub-plans\n        in left subPlan, ExecInitNode() sees an IndexScan node         so dispatches to ExecInitIndexScan() to set up iterator\n        in right sub-plan, ExecInitNode() sees a SeqScan node         so dispatches to ExecInitSeqScan() to set up iterator\n Result: a plan state tree with same structure as plan tree.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "List some example postgresql execution ?",
+  "answer": "Initially InitPlan() invokes ExecInitNode() on plan tree root.\n ExecInitNode() sees a NestedLoop node ...    so dispatches to ExecInitNestLoop() to set up iterator\n    then invokes ExecInitNode() on left and right sub-plans\n        in left subPlan, ExecInitNode() sees an IndexScan node         so dispatches to ExecInitIndexScan() to set up iterator\n        in right sub-plan, ExecInitNode() sees a SeqScan node         so dispatches to ExecInitSeqScan() to set up iterator\n Result: a plan state tree with same structure as plan tree.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "example postgresql execution",
+  "answer": "Initially InitPlan() invokes ExecInitNode() on plan tree root.\n ExecInitNode() sees a NestedLoop node ...    so dispatches to ExecInitNestLoop() to set up iterator\n    then invokes ExecInitNode() on left and right sub-plans\n        in left subPlan, ExecInitNode() sees an IndexScan node         so dispatches to ExecInitIndexScan() to set up iterator\n        in right sub-plan, ExecInitNode() sees a SeqScan node         so dispatches to ExecInitSeqScan() to set up iterator\n Result: a plan state tree with same structure as plan tree.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "Give me some example postgresql execution ?",
+  "answer": "Initially InitPlan() invokes ExecInitNode() on plan tree root.\n ExecInitNode() sees a NestedLoop node ...    so dispatches to ExecInitNestLoop() to set up iterator\n    then invokes ExecInitNode() on left and right sub-plans\n        in left subPlan, ExecInitNode() sees an IndexScan node         so dispatches to ExecInitIndexScan() to set up iterator\n        in right sub-plan, ExecInitNode() sees a SeqScan node         so dispatches to ExecInitSeqScan() to set up iterator\n Result: a plan state tree with same structure as plan tree.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "Do you have some example postgresql execution ?",
+  "answer": "Initially InitPlan() invokes ExecInitNode() on plan tree root.\n ExecInitNode() sees a NestedLoop node ...    so dispatches to ExecInitNestLoop() to set up iterator\n    then invokes ExecInitNode() on left and right sub-plans\n        in left subPlan, ExecInitNode() sees an IndexScan node         so dispatches to ExecInitIndexScan() to set up iterator\n        in right sub-plan, ExecInitNode() sees a SeqScan node         so dispatches to ExecInitSeqScan() to set up iterator\n Result: a plan state tree with same structure as plan tree.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "Can i have some example postgresql execution ?",
+  "answer": "Initially InitPlan() invokes ExecInitNode() on plan tree root.\n ExecInitNode() sees a NestedLoop node ...    so dispatches to ExecInitNestLoop() to set up iterator\n    then invokes ExecInitNode() on left and right sub-plans\n        in left subPlan, ExecInitNode() sees an IndexScan node         so dispatches to ExecInitIndexScan() to set up iterator\n        in right sub-plan, ExecInitNode() sees a SeqScan node         so dispatches to ExecInitSeqScan() to set up iterator\n Result: a plan state tree with same structure as plan tree.\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "May i have example postgresql execution ?",
+  "answer": "Execution: ExecutePlan() repeatedly invokes ExecProcNode().\n ExecProcNode() sees a NestedLoop node ...    so dispatches to ExecNestedLoop() to get next tuple    which invokes ExecProcNode() on its sub-plans        in left sub-plan, ExecProcNode() sees an IndexScan node             so dispatches to ExecIndexScan() to get next tuple             if no more tuples, return END             for this tuple, invoke ExecProcNode() on right sub-plan                 ExecProcNode() sees a SeqScan node                     so dispatches to ExecSeqScan() to get next tuple                     check for match and return joined tuples if found                     continue scan until end                 reset right sub-plan iterator Result: stream of result tuples returned via ExecutePlan()\n Query Performance\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "List some example postgresql execution ?",
+  "answer": "Execution: ExecutePlan() repeatedly invokes ExecProcNode().\n ExecProcNode() sees a NestedLoop node ...    so dispatches to ExecNestedLoop() to get next tuple    which invokes ExecProcNode() on its sub-plans        in left sub-plan, ExecProcNode() sees an IndexScan node             so dispatches to ExecIndexScan() to get next tuple             if no more tuples, return END             for this tuple, invoke ExecProcNode() on right sub-plan                 ExecProcNode() sees a SeqScan node                     so dispatches to ExecSeqScan() to get next tuple                     check for match and return joined tuples if found                     continue scan until end                 reset right sub-plan iterator Result: stream of result tuples returned via ExecutePlan()\n Query Performance\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "example postgresql execution",
+  "answer": "Execution: ExecutePlan() repeatedly invokes ExecProcNode().\n ExecProcNode() sees a NestedLoop node ...    so dispatches to ExecNestedLoop() to get next tuple    which invokes ExecProcNode() on its sub-plans        in left sub-plan, ExecProcNode() sees an IndexScan node             so dispatches to ExecIndexScan() to get next tuple             if no more tuples, return END             for this tuple, invoke ExecProcNode() on right sub-plan                 ExecProcNode() sees a SeqScan node                     so dispatches to ExecSeqScan() to get next tuple                     check for match and return joined tuples if found                     continue scan until end                 reset right sub-plan iterator Result: stream of result tuples returned via ExecutePlan()\n Query Performance\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "Give me some example postgresql execution ?",
+  "answer": "Execution: ExecutePlan() repeatedly invokes ExecProcNode().\n ExecProcNode() sees a NestedLoop node ...    so dispatches to ExecNestedLoop() to get next tuple    which invokes ExecProcNode() on its sub-plans        in left sub-plan, ExecProcNode() sees an IndexScan node             so dispatches to ExecIndexScan() to get next tuple             if no more tuples, return END             for this tuple, invoke ExecProcNode() on right sub-plan                 ExecProcNode() sees a SeqScan node                     so dispatches to ExecSeqScan() to get next tuple                     check for match and return joined tuples if found                     continue scan until end                 reset right sub-plan iterator Result: stream of result tuples returned via ExecutePlan()\n Query Performance\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "Do you have some example postgresql execution ?",
+  "answer": "Execution: ExecutePlan() repeatedly invokes ExecProcNode().\n ExecProcNode() sees a NestedLoop node ...    so dispatches to ExecNestedLoop() to get next tuple    which invokes ExecProcNode() on its sub-plans        in left sub-plan, ExecProcNode() sees an IndexScan node             so dispatches to ExecIndexScan() to get next tuple             if no more tuples, return END             for this tuple, invoke ExecProcNode() on right sub-plan                 ExecProcNode() sees a SeqScan node                     so dispatches to ExecSeqScan() to get next tuple                     check for match and return joined tuples if found                     continue scan until end                 reset right sub-plan iterator Result: stream of result tuples returned via ExecutePlan()\n Query Performance\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "Can i have some example postgresql execution ?",
+  "answer": "Execution: ExecutePlan() repeatedly invokes ExecProcNode().\n ExecProcNode() sees a NestedLoop node ...    so dispatches to ExecNestedLoop() to get next tuple    which invokes ExecProcNode() on its sub-plans        in left sub-plan, ExecProcNode() sees an IndexScan node             so dispatches to ExecIndexScan() to get next tuple             if no more tuples, return END             for this tuple, invoke ExecProcNode() on right sub-plan                 ExecProcNode() sees a SeqScan node                     so dispatches to ExecSeqScan() to get next tuple                     check for match and return joined tuples if found                     continue scan until end                 reset right sub-plan iterator Result: stream of result tuples returned via ExecutePlan()\n Query Performance\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "postgresql",
+   "execution"
+  ]
+ },
+ {
+  "question": "May i have explain example ?",
+  "answer": "Database\n course_enrolments(student, course, mark, grade, ...) courses(id, subject, semester, homepage) people(id, family, given, title, name, ..., birthday)\n program_enrolments(id, student, semester, program, wam, ...)\n students(id, stype)\n subjects(id, code, name, longname, uoc, offeredby, ...)\n where\n        table_name          | n_records ---------------------------+-----------\n  course_enrolments         |    525688\n  courses                   |     73220\n  people                    |     55767\n  program_enrolments        |    193456\n  students                  |     31361\n  subjects                  |     17779\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example"
+  ]
+ },
+ {
+  "question": "List some explain example ?",
+  "answer": "Database\n course_enrolments(student, course, mark, grade, ...) courses(id, subject, semester, homepage) people(id, family, given, title, name, ..., birthday)\n program_enrolments(id, student, semester, program, wam, ...)\n students(id, stype)\n subjects(id, code, name, longname, uoc, offeredby, ...)\n where\n        table_name          | n_records ---------------------------+-----------\n  course_enrolments         |    525688\n  courses                   |     73220\n  people                    |     55767\n  program_enrolments        |    193456\n  students                  |     31361\n  subjects                  |     17779\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example"
+  ]
+ },
+ {
+  "question": "explain example",
+  "answer": "Database\n course_enrolments(student, course, mark, grade, ...) courses(id, subject, semester, homepage) people(id, family, given, title, name, ..., birthday)\n program_enrolments(id, student, semester, program, wam, ...)\n students(id, stype)\n subjects(id, code, name, longname, uoc, offeredby, ...)\n where\n        table_name          | n_records ---------------------------+-----------\n  course_enrolments         |    525688\n  courses                   |     73220\n  people                    |     55767\n  program_enrolments        |    193456\n  students                  |     31361\n  subjects                  |     17779\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example"
+  ]
+ },
+ {
+  "question": "Give me some explain example ?",
+  "answer": "Database\n course_enrolments(student, course, mark, grade, ...) courses(id, subject, semester, homepage) people(id, family, given, title, name, ..., birthday)\n program_enrolments(id, student, semester, program, wam, ...)\n students(id, stype)\n subjects(id, code, name, longname, uoc, offeredby, ...)\n where\n        table_name          | n_records ---------------------------+-----------\n  course_enrolments         |    525688\n  courses                   |     73220\n  people                    |     55767\n  program_enrolments        |    193456\n  students                  |     31361\n  subjects                  |     17779\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example"
+  ]
+ },
+ {
+  "question": "Do you have some explain example ?",
+  "answer": "Database\n course_enrolments(student, course, mark, grade, ...) courses(id, subject, semester, homepage) people(id, family, given, title, name, ..., birthday)\n program_enrolments(id, student, semester, program, wam, ...)\n students(id, stype)\n subjects(id, code, name, longname, uoc, offeredby, ...)\n where\n        table_name          | n_records ---------------------------+-----------\n  course_enrolments         |    525688\n  courses                   |     73220\n  people                    |     55767\n  program_enrolments        |    193456\n  students                  |     31361\n  subjects                  |     17779\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example"
+  ]
+ },
+ {
+  "question": "Can i have some explain example ?",
+  "answer": "Database\n course_enrolments(student, course, mark, grade, ...) courses(id, subject, semester, homepage) people(id, family, given, title, name, ..., birthday)\n program_enrolments(id, student, semester, program, wam, ...)\n students(id, stype)\n subjects(id, code, name, longname, uoc, offeredby, ...)\n where\n        table_name          | n_records ---------------------------+-----------\n  course_enrolments         |    525688\n  courses                   |     73220\n  people                    |     55767\n  program_enrolments        |    193456\n  students                  |     31361\n  subjects                  |     17779\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example"
+  ]
+ },
+ {
+  "question": "May i have explain example selection on non-indexed attribute ?",
+  "answer": "Example: Select on non-indexed attribute\n uni=# explain\n uni=# select * from Students where stype='local';\n                      QUERY PLAN\n ----------------------------------------------------\n  Seq Scan on students\n              (cost=0.00..562.01 rows=23544 width=9)\n    Filter: ((stype)::text = 'local'::text)\n where\n Seq Scan = operation (plan node)\n cost=StartUpCost..TotalCost\n rows=NumberOfResultTuples\n width=SizeOfTuple (# bytes)\nMore notes on explain output:\n each major entry corresponds to a plan node\n e.g. Seq Scan,  Index Scan,  Hash Join,  Merge Join, ...\n some nodes include additional qualifying information\n e.g. Filter,  Index Cond,  Hash Cond,  Buckets, ...\n cost values in explain are estimates  (notional units)\n explain analyze also includes actual time costs (ms)\n costs of parent nodes include costs of all children\n estimates of #results based on sample of data\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "non-indexed",
+   "attribute"
+  ]
+ },
+ {
+  "question": "List some explain example selection on non-indexed attribute ?",
+  "answer": "Example: Select on non-indexed attribute\n uni=# explain\n uni=# select * from Students where stype='local';\n                      QUERY PLAN\n ----------------------------------------------------\n  Seq Scan on students\n              (cost=0.00..562.01 rows=23544 width=9)\n    Filter: ((stype)::text = 'local'::text)\n where\n Seq Scan = operation (plan node)\n cost=StartUpCost..TotalCost\n rows=NumberOfResultTuples\n width=SizeOfTuple (# bytes)\nMore notes on explain output:\n each major entry corresponds to a plan node\n e.g. Seq Scan,  Index Scan,  Hash Join,  Merge Join, ...\n some nodes include additional qualifying information\n e.g. Filter,  Index Cond,  Hash Cond,  Buckets, ...\n cost values in explain are estimates  (notional units)\n explain analyze also includes actual time costs (ms)\n costs of parent nodes include costs of all children\n estimates of #results based on sample of data\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "non-indexed",
+   "attribute"
+  ]
+ },
+ {
+  "question": "explain example selection on non-indexed attribute",
+  "answer": "Example: Select on non-indexed attribute\n uni=# explain\n uni=# select * from Students where stype='local';\n                      QUERY PLAN\n ----------------------------------------------------\n  Seq Scan on students\n              (cost=0.00..562.01 rows=23544 width=9)\n    Filter: ((stype)::text = 'local'::text)\n where\n Seq Scan = operation (plan node)\n cost=StartUpCost..TotalCost\n rows=NumberOfResultTuples\n width=SizeOfTuple (# bytes)\nMore notes on explain output:\n each major entry corresponds to a plan node\n e.g. Seq Scan,  Index Scan,  Hash Join,  Merge Join, ...\n some nodes include additional qualifying information\n e.g. Filter,  Index Cond,  Hash Cond,  Buckets, ...\n cost values in explain are estimates  (notional units)\n explain analyze also includes actual time costs (ms)\n costs of parent nodes include costs of all children\n estimates of #results based on sample of data\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "non-indexed",
+   "attribute"
+  ]
+ },
+ {
+  "question": "Give me some explain example selection on non-indexed attribute ?",
+  "answer": "Example: Select on non-indexed attribute\n uni=# explain\n uni=# select * from Students where stype='local';\n                      QUERY PLAN\n ----------------------------------------------------\n  Seq Scan on students\n              (cost=0.00..562.01 rows=23544 width=9)\n    Filter: ((stype)::text = 'local'::text)\n where\n Seq Scan = operation (plan node)\n cost=StartUpCost..TotalCost\n rows=NumberOfResultTuples\n width=SizeOfTuple (# bytes)\nMore notes on explain output:\n each major entry corresponds to a plan node\n e.g. Seq Scan,  Index Scan,  Hash Join,  Merge Join, ...\n some nodes include additional qualifying information\n e.g. Filter,  Index Cond,  Hash Cond,  Buckets, ...\n cost values in explain are estimates  (notional units)\n explain analyze also includes actual time costs (ms)\n costs of parent nodes include costs of all children\n estimates of #results based on sample of data\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "non-indexed",
+   "attribute"
+  ]
+ },
+ {
+  "question": "Do you have some explain example selection on non-indexed attribute ?",
+  "answer": "Example: Select on non-indexed attribute\n uni=# explain\n uni=# select * from Students where stype='local';\n                      QUERY PLAN\n ----------------------------------------------------\n  Seq Scan on students\n              (cost=0.00..562.01 rows=23544 width=9)\n    Filter: ((stype)::text = 'local'::text)\n where\n Seq Scan = operation (plan node)\n cost=StartUpCost..TotalCost\n rows=NumberOfResultTuples\n width=SizeOfTuple (# bytes)\nMore notes on explain output:\n each major entry corresponds to a plan node\n e.g. Seq Scan,  Index Scan,  Hash Join,  Merge Join, ...\n some nodes include additional qualifying information\n e.g. Filter,  Index Cond,  Hash Cond,  Buckets, ...\n cost values in explain are estimates  (notional units)\n explain analyze also includes actual time costs (ms)\n costs of parent nodes include costs of all children\n estimates of #results based on sample of data\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "non-indexed",
+   "attribute"
+  ]
+ },
+ {
+  "question": "Can i have some explain example selection on non-indexed attribute ?",
+  "answer": "Example: Select on non-indexed attribute\n uni=# explain\n uni=# select * from Students where stype='local';\n                      QUERY PLAN\n ----------------------------------------------------\n  Seq Scan on students\n              (cost=0.00..562.01 rows=23544 width=9)\n    Filter: ((stype)::text = 'local'::text)\n where\n Seq Scan = operation (plan node)\n cost=StartUpCost..TotalCost\n rows=NumberOfResultTuples\n width=SizeOfTuple (# bytes)\nMore notes on explain output:\n each major entry corresponds to a plan node\n e.g. Seq Scan,  Index Scan,  Hash Join,  Merge Join, ...\n some nodes include additional qualifying information\n e.g. Filter,  Index Cond,  Hash Cond,  Buckets, ...\n cost values in explain are estimates  (notional units)\n explain analyze also includes actual time costs (ms)\n costs of parent nodes include costs of all children\n estimates of #results based on sample of data\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "non-indexed",
+   "attribute"
+  ]
+ },
+ {
+  "question": "May i have explain example selection on non-indexed attribute with actual cost ?",
+  "answer": "Example: Select on non-indexed attribute with actual costs\n uni=# explain analyze\n uni=# select * from Students where stype='local';\n                        QUERY PLAN\n ----------------------------------------------------------\n  Seq Scan on students\n              (cost=0.00..562.01 rows=23544 width=9)\n              (actual time=0.052..5.792 rows=23551 loops=1)\n    Filter: ((stype)::text = 'local'::text)\n    Rows Removed by Filter: 7810\n  Planning time: 0.075 ms\n  Execution time: 6.978 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "non-indexed",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "List some explain example selection on non-indexed attribute with actual cost ?",
+  "answer": "Example: Select on non-indexed attribute with actual costs\n uni=# explain analyze\n uni=# select * from Students where stype='local';\n                        QUERY PLAN\n ----------------------------------------------------------\n  Seq Scan on students\n              (cost=0.00..562.01 rows=23544 width=9)\n              (actual time=0.052..5.792 rows=23551 loops=1)\n    Filter: ((stype)::text = 'local'::text)\n    Rows Removed by Filter: 7810\n  Planning time: 0.075 ms\n  Execution time: 6.978 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "non-indexed",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "explain example selection on non-indexed attribute with actual cost",
+  "answer": "Example: Select on non-indexed attribute with actual costs\n uni=# explain analyze\n uni=# select * from Students where stype='local';\n                        QUERY PLAN\n ----------------------------------------------------------\n  Seq Scan on students\n              (cost=0.00..562.01 rows=23544 width=9)\n              (actual time=0.052..5.792 rows=23551 loops=1)\n    Filter: ((stype)::text = 'local'::text)\n    Rows Removed by Filter: 7810\n  Planning time: 0.075 ms\n  Execution time: 6.978 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "non-indexed",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "Give me some explain example selection on non-indexed attribute with actual cost ?",
+  "answer": "Example: Select on non-indexed attribute with actual costs\n uni=# explain analyze\n uni=# select * from Students where stype='local';\n                        QUERY PLAN\n ----------------------------------------------------------\n  Seq Scan on students\n              (cost=0.00..562.01 rows=23544 width=9)\n              (actual time=0.052..5.792 rows=23551 loops=1)\n    Filter: ((stype)::text = 'local'::text)\n    Rows Removed by Filter: 7810\n  Planning time: 0.075 ms\n  Execution time: 6.978 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "non-indexed",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "Do you have some explain example selection on non-indexed attribute with actual cost ?",
+  "answer": "Example: Select on non-indexed attribute with actual costs\n uni=# explain analyze\n uni=# select * from Students where stype='local';\n                        QUERY PLAN\n ----------------------------------------------------------\n  Seq Scan on students\n              (cost=0.00..562.01 rows=23544 width=9)\n              (actual time=0.052..5.792 rows=23551 loops=1)\n    Filter: ((stype)::text = 'local'::text)\n    Rows Removed by Filter: 7810\n  Planning time: 0.075 ms\n  Execution time: 6.978 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "non-indexed",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "Can i have some explain example selection on non-indexed attribute with actual cost ?",
+  "answer": "Example: Select on non-indexed attribute with actual costs\n uni=# explain analyze\n uni=# select * from Students where stype='local';\n                        QUERY PLAN\n ----------------------------------------------------------\n  Seq Scan on students\n              (cost=0.00..562.01 rows=23544 width=9)\n              (actual time=0.052..5.792 rows=23551 loops=1)\n    Filter: ((stype)::text = 'local'::text)\n    Rows Removed by Filter: 7810\n  Planning time: 0.075 ms\n  Execution time: 6.978 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "non-indexed",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "May i have explain example selection on indexed unique attribute with actual cost ?",
+  "answer": "Example: Select on indexed, unique attribute\n uni=# explain analyze\n uni-# select * from Students where id=100250;\n                        QUERY PLAN\n -------------------------------------------------------\n  Index Scan using student_pkey on student\n             (cost=0.00..8.27 rows=1 width=9)\n             (actual time=0.049..0.049 rows=0 loops=1)\n    Index Cond: (id = 100250)\n  Total runtime: 0.1 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "indexed",
+   "unique",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "List some explain example selection on indexed unique attribute with actual cost ?",
+  "answer": "Example: Select on indexed, unique attribute\n uni=# explain analyze\n uni-# select * from Students where id=100250;\n                        QUERY PLAN\n -------------------------------------------------------\n  Index Scan using student_pkey on student\n             (cost=0.00..8.27 rows=1 width=9)\n             (actual time=0.049..0.049 rows=0 loops=1)\n    Index Cond: (id = 100250)\n  Total runtime: 0.1 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "indexed",
+   "unique",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "explain example selection on indexed unique attribute with actual cost",
+  "answer": "Example: Select on indexed, unique attribute\n uni=# explain analyze\n uni-# select * from Students where id=100250;\n                        QUERY PLAN\n -------------------------------------------------------\n  Index Scan using student_pkey on student\n             (cost=0.00..8.27 rows=1 width=9)\n             (actual time=0.049..0.049 rows=0 loops=1)\n    Index Cond: (id = 100250)\n  Total runtime: 0.1 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "indexed",
+   "unique",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "Give me some explain example selection on indexed unique attribute with actual cost ?",
+  "answer": "Example: Select on indexed, unique attribute\n uni=# explain analyze\n uni-# select * from Students where id=100250;\n                        QUERY PLAN\n -------------------------------------------------------\n  Index Scan using student_pkey on student\n             (cost=0.00..8.27 rows=1 width=9)\n             (actual time=0.049..0.049 rows=0 loops=1)\n    Index Cond: (id = 100250)\n  Total runtime: 0.1 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "indexed",
+   "unique",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "Do you have some explain example selection on indexed unique attribute with actual cost ?",
+  "answer": "Example: Select on indexed, unique attribute\n uni=# explain analyze\n uni-# select * from Students where id=100250;\n                        QUERY PLAN\n -------------------------------------------------------\n  Index Scan using student_pkey on student\n             (cost=0.00..8.27 rows=1 width=9)\n             (actual time=0.049..0.049 rows=0 loops=1)\n    Index Cond: (id = 100250)\n  Total runtime: 0.1 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "indexed",
+   "unique",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "Can i have some explain example selection on indexed unique attribute with actual cost ?",
+  "answer": "Example: Select on indexed, unique attribute\n uni=# explain analyze\n uni-# select * from Students where id=100250;\n                        QUERY PLAN\n -------------------------------------------------------\n  Index Scan using student_pkey on student\n             (cost=0.00..8.27 rows=1 width=9)\n             (actual time=0.049..0.049 rows=0 loops=1)\n    Index Cond: (id = 100250)\n  Total runtime: 0.1 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "indexed",
+   "unique",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "May i have explain example selection on indexed unique attribute with actual cost ?",
+  "answer": "Example: Select on indexed, unique attribute\n uni=# explain analyze\n uni-# select * from Students where id=1216988;\n                        QUERY PLAN\n -------------------------------------------------------\n  Index Scan using students_pkey on students\n                   (cost=0.29..8.30 rows=1 width=9)\n                   (actual time=0.011..0.012 rows=1 loops=1)\n    Index Cond: (id = 1216988)\n  Planning time: 0.066 ms\n  Execution time: 0.026 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "indexed",
+   "unique",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "List some explain example selection on indexed unique attribute with actual cost ?",
+  "answer": "Example: Select on indexed, unique attribute\n uni=# explain analyze\n uni-# select * from Students where id=1216988;\n                        QUERY PLAN\n -------------------------------------------------------\n  Index Scan using students_pkey on students\n                   (cost=0.29..8.30 rows=1 width=9)\n                   (actual time=0.011..0.012 rows=1 loops=1)\n    Index Cond: (id = 1216988)\n  Planning time: 0.066 ms\n  Execution time: 0.026 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "indexed",
+   "unique",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "explain example selection on indexed unique attribute with actual cost",
+  "answer": "Example: Select on indexed, unique attribute\n uni=# explain analyze\n uni-# select * from Students where id=1216988;\n                        QUERY PLAN\n -------------------------------------------------------\n  Index Scan using students_pkey on students\n                   (cost=0.29..8.30 rows=1 width=9)\n                   (actual time=0.011..0.012 rows=1 loops=1)\n    Index Cond: (id = 1216988)\n  Planning time: 0.066 ms\n  Execution time: 0.026 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "indexed",
+   "unique",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "Give me some explain example selection on indexed unique attribute with actual cost ?",
+  "answer": "Example: Select on indexed, unique attribute\n uni=# explain analyze\n uni-# select * from Students where id=1216988;\n                        QUERY PLAN\n -------------------------------------------------------\n  Index Scan using students_pkey on students\n                   (cost=0.29..8.30 rows=1 width=9)\n                   (actual time=0.011..0.012 rows=1 loops=1)\n    Index Cond: (id = 1216988)\n  Planning time: 0.066 ms\n  Execution time: 0.026 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "indexed",
+   "unique",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "Do you have some explain example selection on indexed unique attribute with actual cost ?",
+  "answer": "Example: Select on indexed, unique attribute\n uni=# explain analyze\n uni-# select * from Students where id=1216988;\n                        QUERY PLAN\n -------------------------------------------------------\n  Index Scan using students_pkey on students\n                   (cost=0.29..8.30 rows=1 width=9)\n                   (actual time=0.011..0.012 rows=1 loops=1)\n    Index Cond: (id = 1216988)\n  Planning time: 0.066 ms\n  Execution time: 0.026 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "indexed",
+   "unique",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "Can i have some explain example selection on indexed unique attribute with actual cost ?",
+  "answer": "Example: Select on indexed, unique attribute\n uni=# explain analyze\n uni-# select * from Students where id=1216988;\n                        QUERY PLAN\n -------------------------------------------------------\n  Index Scan using students_pkey on students\n                   (cost=0.29..8.30 rows=1 width=9)\n                   (actual time=0.011..0.012 rows=1 loops=1)\n    Index Cond: (id = 1216988)\n  Planning time: 0.066 ms\n  Execution time: 0.026 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "selection",
+   "on",
+   "indexed",
+   "unique",
+   "attribute",
+   "with",
+   "actual",
+   "cost"
+  ]
+ },
+ {
+  "question": "May i have explain example join on indexed attribute 2016 ?",
+  "answer": "Example: Join on a primary key (indexed) attribute  (2016)\n uni=# explain analyze\n uni-# select s.id,p.name\n uni-# from Students s, People p where s.id=p.id;\n                       QUERY PLAN\n ----------------------------------------------------------\n Hash Join (cost=988.58..3112.76 rows=31048 width=19)\n           (actual time=11.504..39.478 rows=31048 loops=1)\n   Hash Cond: (p.id = s.id)\n   -> Seq Scan on people p\n          (cost=0.00..989.97 rows=36497 width=19)\n          (actual time=0.016..8.312 rows=36497 loops=1)\n   -> Hash (cost=478.48..478.48 rows=31048 width=4)\n           (actual time=10.532..10.532 rows=31048 loops=1)\n           Buckets: 4096  Batches: 2  Memory Usage: 548kB\n       ->  Seq Scan on students s               (cost=0.00..478.48 rows=31048 width=4)\n               (actual time=0.005..4.630 rows=31048 loops=1)\n Total runtime: 41.0 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "indexed",
+   "attribute",
+   "2016"
+  ]
+ },
+ {
+  "question": "List some explain example join on indexed attribute 2016 ?",
+  "answer": "Example: Join on a primary key (indexed) attribute  (2016)\n uni=# explain analyze\n uni-# select s.id,p.name\n uni-# from Students s, People p where s.id=p.id;\n                       QUERY PLAN\n ----------------------------------------------------------\n Hash Join (cost=988.58..3112.76 rows=31048 width=19)\n           (actual time=11.504..39.478 rows=31048 loops=1)\n   Hash Cond: (p.id = s.id)\n   -> Seq Scan on people p\n          (cost=0.00..989.97 rows=36497 width=19)\n          (actual time=0.016..8.312 rows=36497 loops=1)\n   -> Hash (cost=478.48..478.48 rows=31048 width=4)\n           (actual time=10.532..10.532 rows=31048 loops=1)\n           Buckets: 4096  Batches: 2  Memory Usage: 548kB\n       ->  Seq Scan on students s               (cost=0.00..478.48 rows=31048 width=4)\n               (actual time=0.005..4.630 rows=31048 loops=1)\n Total runtime: 41.0 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "indexed",
+   "attribute",
+   "2016"
+  ]
+ },
+ {
+  "question": "explain example join on indexed attribute 2016",
+  "answer": "Example: Join on a primary key (indexed) attribute  (2016)\n uni=# explain analyze\n uni-# select s.id,p.name\n uni-# from Students s, People p where s.id=p.id;\n                       QUERY PLAN\n ----------------------------------------------------------\n Hash Join (cost=988.58..3112.76 rows=31048 width=19)\n           (actual time=11.504..39.478 rows=31048 loops=1)\n   Hash Cond: (p.id = s.id)\n   -> Seq Scan on people p\n          (cost=0.00..989.97 rows=36497 width=19)\n          (actual time=0.016..8.312 rows=36497 loops=1)\n   -> Hash (cost=478.48..478.48 rows=31048 width=4)\n           (actual time=10.532..10.532 rows=31048 loops=1)\n           Buckets: 4096  Batches: 2  Memory Usage: 548kB\n       ->  Seq Scan on students s               (cost=0.00..478.48 rows=31048 width=4)\n               (actual time=0.005..4.630 rows=31048 loops=1)\n Total runtime: 41.0 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "indexed",
+   "attribute",
+   "2016"
+  ]
+ },
+ {
+  "question": "Give me some explain example join on indexed attribute 2016 ?",
+  "answer": "Example: Join on a primary key (indexed) attribute  (2016)\n uni=# explain analyze\n uni-# select s.id,p.name\n uni-# from Students s, People p where s.id=p.id;\n                       QUERY PLAN\n ----------------------------------------------------------\n Hash Join (cost=988.58..3112.76 rows=31048 width=19)\n           (actual time=11.504..39.478 rows=31048 loops=1)\n   Hash Cond: (p.id = s.id)\n   -> Seq Scan on people p\n          (cost=0.00..989.97 rows=36497 width=19)\n          (actual time=0.016..8.312 rows=36497 loops=1)\n   -> Hash (cost=478.48..478.48 rows=31048 width=4)\n           (actual time=10.532..10.532 rows=31048 loops=1)\n           Buckets: 4096  Batches: 2  Memory Usage: 548kB\n       ->  Seq Scan on students s               (cost=0.00..478.48 rows=31048 width=4)\n               (actual time=0.005..4.630 rows=31048 loops=1)\n Total runtime: 41.0 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "indexed",
+   "attribute",
+   "2016"
+  ]
+ },
+ {
+  "question": "Do you have some explain example join on indexed attribute 2016 ?",
+  "answer": "Example: Join on a primary key (indexed) attribute  (2016)\n uni=# explain analyze\n uni-# select s.id,p.name\n uni-# from Students s, People p where s.id=p.id;\n                       QUERY PLAN\n ----------------------------------------------------------\n Hash Join (cost=988.58..3112.76 rows=31048 width=19)\n           (actual time=11.504..39.478 rows=31048 loops=1)\n   Hash Cond: (p.id = s.id)\n   -> Seq Scan on people p\n          (cost=0.00..989.97 rows=36497 width=19)\n          (actual time=0.016..8.312 rows=36497 loops=1)\n   -> Hash (cost=478.48..478.48 rows=31048 width=4)\n           (actual time=10.532..10.532 rows=31048 loops=1)\n           Buckets: 4096  Batches: 2  Memory Usage: 548kB\n       ->  Seq Scan on students s               (cost=0.00..478.48 rows=31048 width=4)\n               (actual time=0.005..4.630 rows=31048 loops=1)\n Total runtime: 41.0 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "indexed",
+   "attribute",
+   "2016"
+  ]
+ },
+ {
+  "question": "Can i have some explain example join on indexed attribute 2016 ?",
+  "answer": "Example: Join on a primary key (indexed) attribute  (2016)\n uni=# explain analyze\n uni-# select s.id,p.name\n uni-# from Students s, People p where s.id=p.id;\n                       QUERY PLAN\n ----------------------------------------------------------\n Hash Join (cost=988.58..3112.76 rows=31048 width=19)\n           (actual time=11.504..39.478 rows=31048 loops=1)\n   Hash Cond: (p.id = s.id)\n   -> Seq Scan on people p\n          (cost=0.00..989.97 rows=36497 width=19)\n          (actual time=0.016..8.312 rows=36497 loops=1)\n   -> Hash (cost=478.48..478.48 rows=31048 width=4)\n           (actual time=10.532..10.532 rows=31048 loops=1)\n           Buckets: 4096  Batches: 2  Memory Usage: 548kB\n       ->  Seq Scan on students s               (cost=0.00..478.48 rows=31048 width=4)\n               (actual time=0.005..4.630 rows=31048 loops=1)\n Total runtime: 41.0 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "indexed",
+   "attribute",
+   "2016"
+  ]
+ },
+ {
+  "question": "May i have explain example join on indexed attribute 2018 ?",
+  "answer": "Example: Join on a primary key (indexed) attribute  (2018)\n uni=# explain analyze\n uni-# select s.id,p.name\n uni-# from Students s, People p where s.id=p.id;\n                       QUERY PLAN\n ----------------------------------------------------------\n Merge Join  (cost=0.58..2829.25 rows=31361 width=18)\n             (actual time=0.044..25.883 rows=31361 loops=1)\n   Merge Cond: (s.id = p.id)\n   ->  Index Only Scan using students_pkey on students s\n             (cost=0.29..995.70 rows=31361 width=4)\n             (actual time=0.033..6.195 rows=31361 loops=1)\n         Heap Fetches: 31361\n   ->  Index Scan using people_pkey on people p\n             (cost=0.29..2434.49 rows=55767 width=18)\n             (actual time=0.006..6.662 rows=31361 loops=1)\n Planning time: 0.259 ms\n Execution time: 27.327 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "List some explain example join on indexed attribute 2018 ?",
+  "answer": "Example: Join on a primary key (indexed) attribute  (2018)\n uni=# explain analyze\n uni-# select s.id,p.name\n uni-# from Students s, People p where s.id=p.id;\n                       QUERY PLAN\n ----------------------------------------------------------\n Merge Join  (cost=0.58..2829.25 rows=31361 width=18)\n             (actual time=0.044..25.883 rows=31361 loops=1)\n   Merge Cond: (s.id = p.id)\n   ->  Index Only Scan using students_pkey on students s\n             (cost=0.29..995.70 rows=31361 width=4)\n             (actual time=0.033..6.195 rows=31361 loops=1)\n         Heap Fetches: 31361\n   ->  Index Scan using people_pkey on people p\n             (cost=0.29..2434.49 rows=55767 width=18)\n             (actual time=0.006..6.662 rows=31361 loops=1)\n Planning time: 0.259 ms\n Execution time: 27.327 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "explain example join on indexed attribute 2018",
+  "answer": "Example: Join on a primary key (indexed) attribute  (2018)\n uni=# explain analyze\n uni-# select s.id,p.name\n uni-# from Students s, People p where s.id=p.id;\n                       QUERY PLAN\n ----------------------------------------------------------\n Merge Join  (cost=0.58..2829.25 rows=31361 width=18)\n             (actual time=0.044..25.883 rows=31361 loops=1)\n   Merge Cond: (s.id = p.id)\n   ->  Index Only Scan using students_pkey on students s\n             (cost=0.29..995.70 rows=31361 width=4)\n             (actual time=0.033..6.195 rows=31361 loops=1)\n         Heap Fetches: 31361\n   ->  Index Scan using people_pkey on people p\n             (cost=0.29..2434.49 rows=55767 width=18)\n             (actual time=0.006..6.662 rows=31361 loops=1)\n Planning time: 0.259 ms\n Execution time: 27.327 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "Give me some explain example join on indexed attribute 2018 ?",
+  "answer": "Example: Join on a primary key (indexed) attribute  (2018)\n uni=# explain analyze\n uni-# select s.id,p.name\n uni-# from Students s, People p where s.id=p.id;\n                       QUERY PLAN\n ----------------------------------------------------------\n Merge Join  (cost=0.58..2829.25 rows=31361 width=18)\n             (actual time=0.044..25.883 rows=31361 loops=1)\n   Merge Cond: (s.id = p.id)\n   ->  Index Only Scan using students_pkey on students s\n             (cost=0.29..995.70 rows=31361 width=4)\n             (actual time=0.033..6.195 rows=31361 loops=1)\n         Heap Fetches: 31361\n   ->  Index Scan using people_pkey on people p\n             (cost=0.29..2434.49 rows=55767 width=18)\n             (actual time=0.006..6.662 rows=31361 loops=1)\n Planning time: 0.259 ms\n Execution time: 27.327 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "Do you have some explain example join on indexed attribute 2018 ?",
+  "answer": "Example: Join on a primary key (indexed) attribute  (2018)\n uni=# explain analyze\n uni-# select s.id,p.name\n uni-# from Students s, People p where s.id=p.id;\n                       QUERY PLAN\n ----------------------------------------------------------\n Merge Join  (cost=0.58..2829.25 rows=31361 width=18)\n             (actual time=0.044..25.883 rows=31361 loops=1)\n   Merge Cond: (s.id = p.id)\n   ->  Index Only Scan using students_pkey on students s\n             (cost=0.29..995.70 rows=31361 width=4)\n             (actual time=0.033..6.195 rows=31361 loops=1)\n         Heap Fetches: 31361\n   ->  Index Scan using people_pkey on people p\n             (cost=0.29..2434.49 rows=55767 width=18)\n             (actual time=0.006..6.662 rows=31361 loops=1)\n Planning time: 0.259 ms\n Execution time: 27.327 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "Can i have some explain example join on indexed attribute 2018 ?",
+  "answer": "Example: Join on a primary key (indexed) attribute  (2018)\n uni=# explain analyze\n uni-# select s.id,p.name\n uni-# from Students s, People p where s.id=p.id;\n                       QUERY PLAN\n ----------------------------------------------------------\n Merge Join  (cost=0.58..2829.25 rows=31361 width=18)\n             (actual time=0.044..25.883 rows=31361 loops=1)\n   Merge Cond: (s.id = p.id)\n   ->  Index Only Scan using students_pkey on students s\n             (cost=0.29..995.70 rows=31361 width=4)\n             (actual time=0.033..6.195 rows=31361 loops=1)\n         Heap Fetches: 31361\n   ->  Index Scan using people_pkey on people p\n             (cost=0.29..2434.49 rows=55767 width=18)\n             (actual time=0.006..6.662 rows=31361 loops=1)\n Planning time: 0.259 ms\n Execution time: 27.327 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "May i have explain example join on non-indexed attribute 2016 ?",
+  "answer": "Example: Join on a non-indexed attribute  (2016)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni=# where s1.offeredBy=s2.offeredBy;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Merge Join (cost=4449.13..121322.06 rows=7785262 width=18)\n            (actual time=29.787..2377.707 rows=8039979 loops=1)\n  Merge Cond: (s1.offeredby = s2.offeredby)\n  ->  Sort (cost=2224.57..2271.56 rows=18799 width=13)\n           (actual time=14.251..18.703 rows=18570 loops=1)\n      Sort Key: s1.offeredby\n      Sort Method: external merge  Disk: 472kB\n      ->  Seq Scan on subjects s1\n              (cost=0.00..889.99 rows=18799 width=13)\n              (actual time=0.005..4.542 rows=18799 loops=1)\n  ->  Sort (cost=2224.57..2271.56 rows=18799 width=13)\n           (actual time=15.532..1100.396 rows=8039980 loops=1)\n      Sort Key: s2.offeredby\n      Sort Method: external sort  Disk: 552kB\n      ->  Seq Scan on subjects s2\n              (cost=0.00..889.99 rows=18799 width=13)\n              (actual time=0.002..3.579 rows=18799 loops=1)\n Total runtime: 2767.1 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2016"
+  ]
+ },
+ {
+  "question": "List some explain example join on non-indexed attribute 2016 ?",
+  "answer": "Example: Join on a non-indexed attribute  (2016)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni=# where s1.offeredBy=s2.offeredBy;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Merge Join (cost=4449.13..121322.06 rows=7785262 width=18)\n            (actual time=29.787..2377.707 rows=8039979 loops=1)\n  Merge Cond: (s1.offeredby = s2.offeredby)\n  ->  Sort (cost=2224.57..2271.56 rows=18799 width=13)\n           (actual time=14.251..18.703 rows=18570 loops=1)\n      Sort Key: s1.offeredby\n      Sort Method: external merge  Disk: 472kB\n      ->  Seq Scan on subjects s1\n              (cost=0.00..889.99 rows=18799 width=13)\n              (actual time=0.005..4.542 rows=18799 loops=1)\n  ->  Sort (cost=2224.57..2271.56 rows=18799 width=13)\n           (actual time=15.532..1100.396 rows=8039980 loops=1)\n      Sort Key: s2.offeredby\n      Sort Method: external sort  Disk: 552kB\n      ->  Seq Scan on subjects s2\n              (cost=0.00..889.99 rows=18799 width=13)\n              (actual time=0.002..3.579 rows=18799 loops=1)\n Total runtime: 2767.1 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2016"
+  ]
+ },
+ {
+  "question": "explain example join on non-indexed attribute 2016",
+  "answer": "Example: Join on a non-indexed attribute  (2016)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni=# where s1.offeredBy=s2.offeredBy;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Merge Join (cost=4449.13..121322.06 rows=7785262 width=18)\n            (actual time=29.787..2377.707 rows=8039979 loops=1)\n  Merge Cond: (s1.offeredby = s2.offeredby)\n  ->  Sort (cost=2224.57..2271.56 rows=18799 width=13)\n           (actual time=14.251..18.703 rows=18570 loops=1)\n      Sort Key: s1.offeredby\n      Sort Method: external merge  Disk: 472kB\n      ->  Seq Scan on subjects s1\n              (cost=0.00..889.99 rows=18799 width=13)\n              (actual time=0.005..4.542 rows=18799 loops=1)\n  ->  Sort (cost=2224.57..2271.56 rows=18799 width=13)\n           (actual time=15.532..1100.396 rows=8039980 loops=1)\n      Sort Key: s2.offeredby\n      Sort Method: external sort  Disk: 552kB\n      ->  Seq Scan on subjects s2\n              (cost=0.00..889.99 rows=18799 width=13)\n              (actual time=0.002..3.579 rows=18799 loops=1)\n Total runtime: 2767.1 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2016"
+  ]
+ },
+ {
+  "question": "Give me some explain example join on non-indexed attribute 2016 ?",
+  "answer": "Example: Join on a non-indexed attribute  (2016)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni=# where s1.offeredBy=s2.offeredBy;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Merge Join (cost=4449.13..121322.06 rows=7785262 width=18)\n            (actual time=29.787..2377.707 rows=8039979 loops=1)\n  Merge Cond: (s1.offeredby = s2.offeredby)\n  ->  Sort (cost=2224.57..2271.56 rows=18799 width=13)\n           (actual time=14.251..18.703 rows=18570 loops=1)\n      Sort Key: s1.offeredby\n      Sort Method: external merge  Disk: 472kB\n      ->  Seq Scan on subjects s1\n              (cost=0.00..889.99 rows=18799 width=13)\n              (actual time=0.005..4.542 rows=18799 loops=1)\n  ->  Sort (cost=2224.57..2271.56 rows=18799 width=13)\n           (actual time=15.532..1100.396 rows=8039980 loops=1)\n      Sort Key: s2.offeredby\n      Sort Method: external sort  Disk: 552kB\n      ->  Seq Scan on subjects s2\n              (cost=0.00..889.99 rows=18799 width=13)\n              (actual time=0.002..3.579 rows=18799 loops=1)\n Total runtime: 2767.1 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2016"
+  ]
+ },
+ {
+  "question": "Do you have some explain example join on non-indexed attribute 2016 ?",
+  "answer": "Example: Join on a non-indexed attribute  (2016)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni=# where s1.offeredBy=s2.offeredBy;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Merge Join (cost=4449.13..121322.06 rows=7785262 width=18)\n            (actual time=29.787..2377.707 rows=8039979 loops=1)\n  Merge Cond: (s1.offeredby = s2.offeredby)\n  ->  Sort (cost=2224.57..2271.56 rows=18799 width=13)\n           (actual time=14.251..18.703 rows=18570 loops=1)\n      Sort Key: s1.offeredby\n      Sort Method: external merge  Disk: 472kB\n      ->  Seq Scan on subjects s1\n              (cost=0.00..889.99 rows=18799 width=13)\n              (actual time=0.005..4.542 rows=18799 loops=1)\n  ->  Sort (cost=2224.57..2271.56 rows=18799 width=13)\n           (actual time=15.532..1100.396 rows=8039980 loops=1)\n      Sort Key: s2.offeredby\n      Sort Method: external sort  Disk: 552kB\n      ->  Seq Scan on subjects s2\n              (cost=0.00..889.99 rows=18799 width=13)\n              (actual time=0.002..3.579 rows=18799 loops=1)\n Total runtime: 2767.1 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2016"
+  ]
+ },
+ {
+  "question": "Can i have some explain example join on non-indexed attribute 2016 ?",
+  "answer": "Example: Join on a non-indexed attribute  (2016)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni=# where s1.offeredBy=s2.offeredBy;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Merge Join (cost=4449.13..121322.06 rows=7785262 width=18)\n            (actual time=29.787..2377.707 rows=8039979 loops=1)\n  Merge Cond: (s1.offeredby = s2.offeredby)\n  ->  Sort (cost=2224.57..2271.56 rows=18799 width=13)\n           (actual time=14.251..18.703 rows=18570 loops=1)\n      Sort Key: s1.offeredby\n      Sort Method: external merge  Disk: 472kB\n      ->  Seq Scan on subjects s1\n              (cost=0.00..889.99 rows=18799 width=13)\n              (actual time=0.005..4.542 rows=18799 loops=1)\n  ->  Sort (cost=2224.57..2271.56 rows=18799 width=13)\n           (actual time=15.532..1100.396 rows=8039980 loops=1)\n      Sort Key: s2.offeredby\n      Sort Method: external sort  Disk: 552kB\n      ->  Seq Scan on subjects s2\n              (cost=0.00..889.99 rows=18799 width=13)\n              (actual time=0.002..3.579 rows=18799 loops=1)\n Total runtime: 2767.1 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2016"
+  ]
+ },
+ {
+  "question": "May i have explain example join on non-indexed attribute 2018 ?",
+  "answer": "Example: Join on a non-indexed attribute  (2018)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni-# where s1.offeredBy = s2.offeredBy;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Hash Join  (cost=1286.03..108351.87 rows=7113299 width=18)\n            (actual time=8.966..903.441 rows=7328594 loops=1)\n   Hash Cond: (s1.offeredby = s2.offeredby)\n   ->  Seq Scan on subjects s1\n           (cost=0.00..1063.79 rows=17779 width=13)\n           (actual time=0.013..2.861 rows=17779 loops=1)\n   ->  Hash  (cost=1063.79..1063.79 rows=17779 width=13)\n             (actual time=8.667..8.667 rows=17720 loops=1)\n         Buckets: 32768  Batches: 1  Memory Usage: 1087kB\n         ->  Seq Scan on subjects s2\n                 (cost=0.00..1063.79 rows=17779 width=13)\n                 (actual time=0.009..4.677 rows=17779 loops=1)\n Planning time: 0.255 ms\n Execution time: 1191.023 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "List some explain example join on non-indexed attribute 2018 ?",
+  "answer": "Example: Join on a non-indexed attribute  (2018)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni-# where s1.offeredBy = s2.offeredBy;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Hash Join  (cost=1286.03..108351.87 rows=7113299 width=18)\n            (actual time=8.966..903.441 rows=7328594 loops=1)\n   Hash Cond: (s1.offeredby = s2.offeredby)\n   ->  Seq Scan on subjects s1\n           (cost=0.00..1063.79 rows=17779 width=13)\n           (actual time=0.013..2.861 rows=17779 loops=1)\n   ->  Hash  (cost=1063.79..1063.79 rows=17779 width=13)\n             (actual time=8.667..8.667 rows=17720 loops=1)\n         Buckets: 32768  Batches: 1  Memory Usage: 1087kB\n         ->  Seq Scan on subjects s2\n                 (cost=0.00..1063.79 rows=17779 width=13)\n                 (actual time=0.009..4.677 rows=17779 loops=1)\n Planning time: 0.255 ms\n Execution time: 1191.023 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "explain example join on non-indexed attribute 2018",
+  "answer": "Example: Join on a non-indexed attribute  (2018)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni-# where s1.offeredBy = s2.offeredBy;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Hash Join  (cost=1286.03..108351.87 rows=7113299 width=18)\n            (actual time=8.966..903.441 rows=7328594 loops=1)\n   Hash Cond: (s1.offeredby = s2.offeredby)\n   ->  Seq Scan on subjects s1\n           (cost=0.00..1063.79 rows=17779 width=13)\n           (actual time=0.013..2.861 rows=17779 loops=1)\n   ->  Hash  (cost=1063.79..1063.79 rows=17779 width=13)\n             (actual time=8.667..8.667 rows=17720 loops=1)\n         Buckets: 32768  Batches: 1  Memory Usage: 1087kB\n         ->  Seq Scan on subjects s2\n                 (cost=0.00..1063.79 rows=17779 width=13)\n                 (actual time=0.009..4.677 rows=17779 loops=1)\n Planning time: 0.255 ms\n Execution time: 1191.023 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "Give me some explain example join on non-indexed attribute 2018 ?",
+  "answer": "Example: Join on a non-indexed attribute  (2018)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni-# where s1.offeredBy = s2.offeredBy;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Hash Join  (cost=1286.03..108351.87 rows=7113299 width=18)\n            (actual time=8.966..903.441 rows=7328594 loops=1)\n   Hash Cond: (s1.offeredby = s2.offeredby)\n   ->  Seq Scan on subjects s1\n           (cost=0.00..1063.79 rows=17779 width=13)\n           (actual time=0.013..2.861 rows=17779 loops=1)\n   ->  Hash  (cost=1063.79..1063.79 rows=17779 width=13)\n             (actual time=8.667..8.667 rows=17720 loops=1)\n         Buckets: 32768  Batches: 1  Memory Usage: 1087kB\n         ->  Seq Scan on subjects s2\n                 (cost=0.00..1063.79 rows=17779 width=13)\n                 (actual time=0.009..4.677 rows=17779 loops=1)\n Planning time: 0.255 ms\n Execution time: 1191.023 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "Do you have some explain example join on non-indexed attribute 2018 ?",
+  "answer": "Example: Join on a non-indexed attribute  (2018)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni-# where s1.offeredBy = s2.offeredBy;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Hash Join  (cost=1286.03..108351.87 rows=7113299 width=18)\n            (actual time=8.966..903.441 rows=7328594 loops=1)\n   Hash Cond: (s1.offeredby = s2.offeredby)\n   ->  Seq Scan on subjects s1\n           (cost=0.00..1063.79 rows=17779 width=13)\n           (actual time=0.013..2.861 rows=17779 loops=1)\n   ->  Hash  (cost=1063.79..1063.79 rows=17779 width=13)\n             (actual time=8.667..8.667 rows=17720 loops=1)\n         Buckets: 32768  Batches: 1  Memory Usage: 1087kB\n         ->  Seq Scan on subjects s2\n                 (cost=0.00..1063.79 rows=17779 width=13)\n                 (actual time=0.009..4.677 rows=17779 loops=1)\n Planning time: 0.255 ms\n Execution time: 1191.023 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "Can i have some explain example join on non-indexed attribute 2018 ?",
+  "answer": "Example: Join on a non-indexed attribute  (2018)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni-# where s1.offeredBy = s2.offeredBy;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Hash Join  (cost=1286.03..108351.87 rows=7113299 width=18)\n            (actual time=8.966..903.441 rows=7328594 loops=1)\n   Hash Cond: (s1.offeredby = s2.offeredby)\n   ->  Seq Scan on subjects s1\n           (cost=0.00..1063.79 rows=17779 width=13)\n           (actual time=0.013..2.861 rows=17779 loops=1)\n   ->  Hash  (cost=1063.79..1063.79 rows=17779 width=13)\n             (actual time=8.667..8.667 rows=17720 loops=1)\n         Buckets: 32768  Batches: 1  Memory Usage: 1087kB\n         ->  Seq Scan on subjects s2\n                 (cost=0.00..1063.79 rows=17779 width=13)\n                 (actual time=0.009..4.677 rows=17779 loops=1)\n Planning time: 0.255 ms\n Execution time: 1191.023 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "May i have explain example join on non-indexed attribute 2018 ?",
+  "answer": "Example: Join on a non-indexed attribute  (2018)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni-# where s1.offeredBy = s2.offeredBy and s1.code < s2.code;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Hash Join  (cost=1286.03..126135.12 rows=2371100 width=18)\n            (actual time=7.356..6806.042 rows=3655437 loops=1)\n   Hash Cond: (s1.offeredby = s2.offeredby)\n   Join Filter: (s1.code < s2.code)\n   Rows Removed by Join Filter: 3673157\n   ->  Seq Scan on subjects s1           (cost=0.00..1063.79 rows=17779 width=13)\n           (actual time=0.009..4.602 rows=17779 loops=1)\n   ->  Hash  (cost=1063.79..1063.79 rows=17779 width=13)\n             (actual time=7.301..7.301 rows=17720 loops=1)\n         Buckets: 32768  Batches: 1  Memory Usage: 1087kB\n         ->  Seq Scan on subjects s2\n                 (cost=0.00..1063.79 rows=17779 width=13)\n                 (actual time=0.005..4.452 rows=17779 loops=1)\n Planning time: 0.159 ms\n Execution time: 6949.167 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "List some explain example join on non-indexed attribute 2018 ?",
+  "answer": "Example: Join on a non-indexed attribute  (2018)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni-# where s1.offeredBy = s2.offeredBy and s1.code < s2.code;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Hash Join  (cost=1286.03..126135.12 rows=2371100 width=18)\n            (actual time=7.356..6806.042 rows=3655437 loops=1)\n   Hash Cond: (s1.offeredby = s2.offeredby)\n   Join Filter: (s1.code < s2.code)\n   Rows Removed by Join Filter: 3673157\n   ->  Seq Scan on subjects s1           (cost=0.00..1063.79 rows=17779 width=13)\n           (actual time=0.009..4.602 rows=17779 loops=1)\n   ->  Hash  (cost=1063.79..1063.79 rows=17779 width=13)\n             (actual time=7.301..7.301 rows=17720 loops=1)\n         Buckets: 32768  Batches: 1  Memory Usage: 1087kB\n         ->  Seq Scan on subjects s2\n                 (cost=0.00..1063.79 rows=17779 width=13)\n                 (actual time=0.005..4.452 rows=17779 loops=1)\n Planning time: 0.159 ms\n Execution time: 6949.167 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "explain example join on non-indexed attribute 2018",
+  "answer": "Example: Join on a non-indexed attribute  (2018)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni-# where s1.offeredBy = s2.offeredBy and s1.code < s2.code;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Hash Join  (cost=1286.03..126135.12 rows=2371100 width=18)\n            (actual time=7.356..6806.042 rows=3655437 loops=1)\n   Hash Cond: (s1.offeredby = s2.offeredby)\n   Join Filter: (s1.code < s2.code)\n   Rows Removed by Join Filter: 3673157\n   ->  Seq Scan on subjects s1           (cost=0.00..1063.79 rows=17779 width=13)\n           (actual time=0.009..4.602 rows=17779 loops=1)\n   ->  Hash  (cost=1063.79..1063.79 rows=17779 width=13)\n             (actual time=7.301..7.301 rows=17720 loops=1)\n         Buckets: 32768  Batches: 1  Memory Usage: 1087kB\n         ->  Seq Scan on subjects s2\n                 (cost=0.00..1063.79 rows=17779 width=13)\n                 (actual time=0.005..4.452 rows=17779 loops=1)\n Planning time: 0.159 ms\n Execution time: 6949.167 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "Give me some explain example join on non-indexed attribute 2018 ?",
+  "answer": "Example: Join on a non-indexed attribute  (2018)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni-# where s1.offeredBy = s2.offeredBy and s1.code < s2.code;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Hash Join  (cost=1286.03..126135.12 rows=2371100 width=18)\n            (actual time=7.356..6806.042 rows=3655437 loops=1)\n   Hash Cond: (s1.offeredby = s2.offeredby)\n   Join Filter: (s1.code < s2.code)\n   Rows Removed by Join Filter: 3673157\n   ->  Seq Scan on subjects s1           (cost=0.00..1063.79 rows=17779 width=13)\n           (actual time=0.009..4.602 rows=17779 loops=1)\n   ->  Hash  (cost=1063.79..1063.79 rows=17779 width=13)\n             (actual time=7.301..7.301 rows=17720 loops=1)\n         Buckets: 32768  Batches: 1  Memory Usage: 1087kB\n         ->  Seq Scan on subjects s2\n                 (cost=0.00..1063.79 rows=17779 width=13)\n                 (actual time=0.005..4.452 rows=17779 loops=1)\n Planning time: 0.159 ms\n Execution time: 6949.167 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "Do you have some explain example join on non-indexed attribute 2018 ?",
+  "answer": "Example: Join on a non-indexed attribute  (2018)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni-# where s1.offeredBy = s2.offeredBy and s1.code < s2.code;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Hash Join  (cost=1286.03..126135.12 rows=2371100 width=18)\n            (actual time=7.356..6806.042 rows=3655437 loops=1)\n   Hash Cond: (s1.offeredby = s2.offeredby)\n   Join Filter: (s1.code < s2.code)\n   Rows Removed by Join Filter: 3673157\n   ->  Seq Scan on subjects s1           (cost=0.00..1063.79 rows=17779 width=13)\n           (actual time=0.009..4.602 rows=17779 loops=1)\n   ->  Hash  (cost=1063.79..1063.79 rows=17779 width=13)\n             (actual time=7.301..7.301 rows=17720 loops=1)\n         Buckets: 32768  Batches: 1  Memory Usage: 1087kB\n         ->  Seq Scan on subjects s2\n                 (cost=0.00..1063.79 rows=17779 width=13)\n                 (actual time=0.005..4.452 rows=17779 loops=1)\n Planning time: 0.159 ms\n Execution time: 6949.167 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "Can i have some explain example join on non-indexed attribute 2018 ?",
+  "answer": "Example: Join on a non-indexed attribute  (2018)\n uni=# explain analyze\n uni=# select s1.code, s2.code\n uni-# from Subjects s1, Subjects s2\n uni-# where s1.offeredBy = s2.offeredBy and s1.code < s2.code;\n                         QUERY PLAN\n ---------------------------------------------------------------\n Hash Join  (cost=1286.03..126135.12 rows=2371100 width=18)\n            (actual time=7.356..6806.042 rows=3655437 loops=1)\n   Hash Cond: (s1.offeredby = s2.offeredby)\n   Join Filter: (s1.code < s2.code)\n   Rows Removed by Join Filter: 3673157\n   ->  Seq Scan on subjects s1           (cost=0.00..1063.79 rows=17779 width=13)\n           (actual time=0.009..4.602 rows=17779 loops=1)\n   ->  Hash  (cost=1063.79..1063.79 rows=17779 width=13)\n             (actual time=7.301..7.301 rows=17720 loops=1)\n         Buckets: 32768  Batches: 1  Memory Usage: 1087kB\n         ->  Seq Scan on subjects s2\n                 (cost=0.00..1063.79 rows=17779 width=13)\n                 (actual time=0.005..4.452 rows=17779 loops=1)\n Planning time: 0.159 ms\n Execution time: 6949.167 ms\n",
+  "intent": "example",
+  "key_words": [
+   "explain",
+   "example",
+   "join",
+   "on",
+   "non-indexed",
+   "attribute",
+   "2018"
+  ]
+ },
+ {
+  "question": "May i have example of transaction failure ?",
+  "answer": "Above examples assumed that all transactions commit.\n Additional problems can arise when transactions abort.\n Consider the following schedule where transaction T1 fails:\n T1: R(X) W(X) A\n T2:             R(X) W(X) C\n Abort will rollback the changes to X, but ...\n Consider three places where rollback might occur:\n T1: R(X) W(X) A [1]     [2]        [3]\n T2:                 R(X)    W(X) C\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "of",
+   "transaction",
+   "failure"
+  ]
+ },
+ {
+  "question": "List some example of transaction failure ?",
+  "answer": "Above examples assumed that all transactions commit.\n Additional problems can arise when transactions abort.\n Consider the following schedule where transaction T1 fails:\n T1: R(X) W(X) A\n T2:             R(X) W(X) C\n Abort will rollback the changes to X, but ...\n Consider three places where rollback might occur:\n T1: R(X) W(X) A [1]     [2]        [3]\n T2:                 R(X)    W(X) C\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "of",
+   "transaction",
+   "failure"
+  ]
+ },
+ {
+  "question": "example of transaction failure",
+  "answer": "Above examples assumed that all transactions commit.\n Additional problems can arise when transactions abort.\n Consider the following schedule where transaction T1 fails:\n T1: R(X) W(X) A\n T2:             R(X) W(X) C\n Abort will rollback the changes to X, but ...\n Consider three places where rollback might occur:\n T1: R(X) W(X) A [1]     [2]        [3]\n T2:                 R(X)    W(X) C\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "of",
+   "transaction",
+   "failure"
+  ]
+ },
+ {
+  "question": "Give me some example of transaction failure ?",
+  "answer": "Above examples assumed that all transactions commit.\n Additional problems can arise when transactions abort.\n Consider the following schedule where transaction T1 fails:\n T1: R(X) W(X) A\n T2:             R(X) W(X) C\n Abort will rollback the changes to X, but ...\n Consider three places where rollback might occur:\n T1: R(X) W(X) A [1]     [2]        [3]\n T2:                 R(X)    W(X) C\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "of",
+   "transaction",
+   "failure"
+  ]
+ },
+ {
+  "question": "Do you have some example of transaction failure ?",
+  "answer": "Above examples assumed that all transactions commit.\n Additional problems can arise when transactions abort.\n Consider the following schedule where transaction T1 fails:\n T1: R(X) W(X) A\n T2:             R(X) W(X) C\n Abort will rollback the changes to X, but ...\n Consider three places where rollback might occur:\n T1: R(X) W(X) A [1]     [2]        [3]\n T2:                 R(X)    W(X) C\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "of",
+   "transaction",
+   "failure"
+  ]
+ },
+ {
+  "question": "Can i have some example of transaction failure ?",
+  "answer": "Above examples assumed that all transactions commit.\n Additional problems can arise when transactions abort.\n Consider the following schedule where transaction T1 fails:\n T1: R(X) W(X) A\n T2:             R(X) W(X) C\n Abort will rollback the changes to X, but ...\n Consider three places where rollback might occur:\n T1: R(X) W(X) A [1]     [2]        [3]\n T2:                 R(X)    W(X) C\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "of",
+   "transaction",
+   "failure"
+  ]
+ },
+ {
+  "question": "May i have example of transaction failure ?",
+  "answer": "Abort / rollback scenarios:\n T1: R(X) W(X) A [1]     [2]        [3]\n T2:                 R(X)    W(X) C\n Case [1] is ok\n all effects of T1 vanish; final effect is simply from T2\n Case [2] is problematic\n some of T1's effects persist, even though T1 aborted\n Case [3] is also problematic\n T2's effects are lost, even though T2 committed\n Transaction Isolation\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "of",
+   "transaction",
+   "failure"
+  ]
+ },
+ {
+  "question": "List some example of transaction failure ?",
+  "answer": "Abort / rollback scenarios:\n T1: R(X) W(X) A [1]     [2]        [3]\n T2:                 R(X)    W(X) C\n Case [1] is ok\n all effects of T1 vanish; final effect is simply from T2\n Case [2] is problematic\n some of T1's effects persist, even though T1 aborted\n Case [3] is also problematic\n T2's effects are lost, even though T2 committed\n Transaction Isolation\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "of",
+   "transaction",
+   "failure"
+  ]
+ },
+ {
+  "question": "example of transaction failure",
+  "answer": "Abort / rollback scenarios:\n T1: R(X) W(X) A [1]     [2]        [3]\n T2:                 R(X)    W(X) C\n Case [1] is ok\n all effects of T1 vanish; final effect is simply from T2\n Case [2] is problematic\n some of T1's effects persist, even though T1 aborted\n Case [3] is also problematic\n T2's effects are lost, even though T2 committed\n Transaction Isolation\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "of",
+   "transaction",
+   "failure"
+  ]
+ },
+ {
+  "question": "Give me some example of transaction failure ?",
+  "answer": "Abort / rollback scenarios:\n T1: R(X) W(X) A [1]     [2]        [3]\n T2:                 R(X)    W(X) C\n Case [1] is ok\n all effects of T1 vanish; final effect is simply from T2\n Case [2] is problematic\n some of T1's effects persist, even though T1 aborted\n Case [3] is also problematic\n T2's effects are lost, even though T2 committed\n Transaction Isolation\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "of",
+   "transaction",
+   "failure"
+  ]
+ },
+ {
+  "question": "Do you have some example of transaction failure ?",
+  "answer": "Abort / rollback scenarios:\n T1: R(X) W(X) A [1]     [2]        [3]\n T2:                 R(X)    W(X) C\n Case [1] is ok\n all effects of T1 vanish; final effect is simply from T2\n Case [2] is problematic\n some of T1's effects persist, even though T1 aborted\n Case [3] is also problematic\n T2's effects are lost, even though T2 committed\n Transaction Isolation\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "of",
+   "transaction",
+   "failure"
+  ]
+ },
+ {
+  "question": "Can i have some example of transaction failure ?",
+  "answer": "Abort / rollback scenarios:\n T1: R(X) W(X) A [1]     [2]        [3]\n T2:                 R(X)    W(X) C\n Case [1] is ok\n all effects of T1 vanish; final effect is simply from T2\n Case [2] is problematic\n some of T1's effects persist, even though T1 aborted\n Case [3] is also problematic\n T2's effects are lost, even though T2 committed\n Transaction Isolation\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "of",
+   "transaction",
+   "failure"
+  ]
+ }
+]

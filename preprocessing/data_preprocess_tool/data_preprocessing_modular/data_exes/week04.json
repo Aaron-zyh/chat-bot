@@ -1,0 +1,127 @@
+[
+ {
+  "question": "Give me some exercises about cost of deletion in heap ?",
+  "answer": "Consider the following queries ...\n delete from Employees where id = 12345  -- one\n delete from Employees where dept = 'Marketing'  -- pmr\n delete from Employees where 40 <= age and age < 50  -- range\n Show how each will be executed and estimate the cost, assuming:\n b = 100,  bq2 = 3,  bq3 = 20\n State any other assumptions.\n Generalise the cost models for each query type.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "cost",
+   "of",
+   "deletion",
+   "in",
+   "heap"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about cost of deletion in heap ?",
+  "answer": "Consider the following queries ...\n delete from Employees where id = 12345  -- one\n delete from Employees where dept = 'Marketing'  -- pmr\n delete from Employees where 40 <= age and age < 50  -- range\n Show how each will be executed and estimate the cost, assuming:\n b = 100,  bq2 = 3,  bq3 = 20\n State any other assumptions.\n Generalise the cost models for each query type.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "cost",
+   "of",
+   "deletion",
+   "in",
+   "heap"
+  ]
+ },
+ {
+  "question": "exercises for cost of deletion in heap",
+  "answer": "Consider the following queries ...\n delete from Employees where id = 12345  -- one\n delete from Employees where dept = 'Marketing'  -- pmr\n delete from Employees where 40 <= age and age < 50  -- range\n Show how each will be executed and estimate the cost, assuming:\n b = 100,  bq2 = 3,  bq3 = 20\n State any other assumptions.\n Generalise the cost models for each query type.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "cost",
+   "of",
+   "deletion",
+   "in",
+   "heap"
+  ]
+ },
+ {
+  "question": "week 4 exercises cost of deletion in heap",
+  "answer": "Consider the following queries ...\n delete from Employees where id = 12345  -- one\n delete from Employees where dept = 'Marketing'  -- pmr\n delete from Employees where 40 <= age and age < 50  -- range\n Show how each will be executed and estimate the cost, assuming:\n b = 100,  bq2 = 3,  bq3 = 20\n State any other assumptions.\n Generalise the cost models for each query type.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "cost",
+   "of",
+   "deletion",
+   "in",
+   "heap"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 4",
+  "answer": "Consider the following queries ...\n delete from Employees where id = 12345  -- one\n delete from Employees where dept = 'Marketing'  -- pmr\n delete from Employees where 40 <= age and age < 50  -- range\n Show how each will be executed and estimate the cost, assuming:\n b = 100,  bq2 = 3,  bq3 = 20\n State any other assumptions.\n Generalise the cost models for each query type.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "cost",
+   "of",
+   "deletion",
+   "in",
+   "heap"
+  ]
+ },
+ {
+  "question": "Give me some exercises about bit manipulation ?",
+  "answer": "1. Write a function to display uint32 values as 01010110...\n char *showBits(uint32 val, char *buf);\n Analogous to gets()   (assumes supplied buffer large enough)\n 2. Write a function to extract the d bits of a uint32\n uint32 bits(int d, uint32 val);\n If d > 0, gives low-order bits; if d < 0, gives high-order bits\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "10",
+   "bit",
+   "manipulation"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about bit manipulation ?",
+  "answer": "1. Write a function to display uint32 values as 01010110...\n char *showBits(uint32 val, char *buf);\n Analogous to gets()   (assumes supplied buffer large enough)\n 2. Write a function to extract the d bits of a uint32\n uint32 bits(int d, uint32 val);\n If d > 0, gives low-order bits; if d < 0, gives high-order bits\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "10",
+   "bit",
+   "manipulation"
+  ]
+ },
+ {
+  "question": "exercises for bit manipulation",
+  "answer": "1. Write a function to display uint32 values as 01010110...\n char *showBits(uint32 val, char *buf);\n Analogous to gets()   (assumes supplied buffer large enough)\n 2. Write a function to extract the d bits of a uint32\n uint32 bits(int d, uint32 val);\n If d > 0, gives low-order bits; if d < 0, gives high-order bits\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "10",
+   "bit",
+   "manipulation"
+  ]
+ },
+ {
+  "question": "week 4 exercises bit manipulation",
+  "answer": "1. Write a function to display uint32 values as 01010110...\n char *showBits(uint32 val, char *buf);\n Analogous to gets()   (assumes supplied buffer large enough)\n 2. Write a function to extract the d bits of a uint32\n uint32 bits(int d, uint32 val);\n If d > 0, gives low-order bits; if d < 0, gives high-order bits\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "10",
+   "bit",
+   "manipulation"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 4",
+  "answer": "1. Write a function to display uint32 values as 01010110...\n char *showBits(uint32 val, char *buf);\n Analogous to gets()   (assumes supplied buffer large enough)\n 2. Write a function to extract the d bits of a uint32\n uint32 bits(int d, uint32 val);\n If d > 0, gives low-order bits; if d < 0, gives high-order bits\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "10",
+   "bit",
+   "manipulation"
+  ]
+ }
+]

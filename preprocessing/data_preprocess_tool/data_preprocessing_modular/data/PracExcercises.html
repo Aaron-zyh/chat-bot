@@ -1,0 +1,2939 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'> <title>C:\Users\admin\Desktop\新建文件夹 (3)\PracExcercises(1).html</title> </head><body><div><h3 >字段1</h3><p>COMP9315 18s2
+
+
+  Prac Exercise 01Setting up your PostgreSQL Server
+
+
+  DBMS Implementation
+
+
+
+Aims
+
+This exercise aims to get you to:
+
+ set up your directories on the /srvr file system
+ install a PostgreSQL database server on /srvr
+
+You ought to get it done before the end of Week 2.
+
+
+Background
+
+
+Notation:
+In the examples below, we have used the $ sign to represent
+the prompt from the Unix/Linux shell. The actual prompt may
+look quite different on your computer (e.g. it may contain the computer's
+hostname, or your username, or the current directory name).
+In the example interactions, all of the things that the computer
+displays are in this font.
+The commands that you are supposed to type are in
+this bold font.
+Comments in the examples are introduced by '...' and are written in
+this grey font;
+comments do not appear on the computer screen, they simply aim to explain what
+is happening.
+Whenever we use the word edit, this means that you should
+use your favourite text editor (e.g. vi, emacs, gedit,
+etc.)
+Finally, all references to YOU should be replaced by your
+CSE username, (e.g. I would use jas everywhere that
+YOU is used).
+
+
+PostgreSQL has three major components:
+
+
+ the source code (and the compiled *.o files) (approx 150MB)
+ the installed executables (like pg_ctl and psql) (approx 20MB)
+ the data (including configuration files and databases) (at least 35MB)
+
+
+You will not be able to fit the above components under your CSE home
+directory (insufficient disk quota), so what we have arranged is for
+you to have an additional directory (folder) called
+/srvr/YOU with enough space to hold all of the above.
+You can access this directory via the command:
+
+cd /srvr/YOU
+
+
+You must put your PostgreSQL source code and installed
+executables under /srvr/YOU.
+The data can be located either under /srvr/YOU or under
+the /tmp filesystem on the machine where you're working.
+You can edit, compile and execute PostgreSQL
+on any workstation within CSE.
+You can also use the server grieg;
+you must not use any of the other
+general-purpose servers (such as wagner, weill,
+etc.) for running PostgreSQL servers. You will need to configure
+things slightly differently depending on where you run PostgreSQL;
+how to do this is described below.
+
+
+If you're doing all of this work on a laptop
+or PC at home, then you can configure things however you like.
+You will still need folders for the same three components
+(source code, executables, and data),
+but you can place them wherever you like.
+PostgreSQL doesn't require any special privileges to run
+(at least on Unix-based systems like Linux and Mac OS X),
+so you do not need to create a special privileged
+PostgreSQL user; you can run the server as yourself.
+
+
+
+
+Setting Up your /srvr Directory (optional)
+
+
+You should have a directory on /srvr already. If not, the
+way to create one is to run the following commands from any CSE
+workstation:
+
+ssh grieg
+... you are now logged into the computer called "grieg"
+priv srvr
+... create the directory /srvr/YOU
+exit
+... you are now logged off the computer called "grieg"
+
+
+You should only need to do this once. Once your /srvr/YOU
+directory exists, repeating the above achieves nothing.
+
+
+
+Setting up your PostgreSQL Server
+
+
+Reminder:
+all of the commands related to compiling and running and using your
+PostgreSQL server run fastest on the computer called grieg.
+The times below are approximate; they could double or triples depending
+on which machine you use.
+
+
+Quick summary (for experts only):
+
+Non-experts should go straight to the detailed instructions
+below.
+
+cd /srvr/YOU
+tar xf /web/cs9315/18s2/postgresql/src.tar.bz2
+... creates and populates a directory called postgresql-10.4 ...
+cd postgresql-10.4
+./configure --prefix=/srvr/YOU/pgsql
+... produces lots of output ...
+make
+... produces lots of output; takes approx 3-5 minutes ...
+make install
+... produces lots of output ...
+cp /web/cs9315/18s2/postgresql/env /srvr/YOU/env
+source /srvr/YOU/env
+which initdb
+/srvr/YOU/pgsql/bin/initdb
+initdb
+... produces some output; takes approx 1 minute ...
+ls $PGDATA
+... gives a listing of newly-created PostgreSQL data directory ...
+... including PG_VERSION, base, global ..., postgresql.conf ...
+edit $PGDATA/postgresql.conf
+... set listen_addresses = '' ...
+... set max_connections = 8 ...
+... set max_wal_senders = 4 ...
+... set unix_socket_directories = 'name of PGDATA directory' ...
+... if any of the above lines begins with '#', remove the '#'
+which pg_ctl
+/srvr/YOU/pgsql/bin/pg_ctl
+pg_ctl start -l $PGDATA/log
+server starting
+psql -l
+                           List of databases
+   Name    | Owner | Encoding  | Collation | Ctype | Access privileges
+-----------+-------+-----------+-----------+-------+-------------------
+ postgres  | YOU   | LATIN1    | C         | C     |
+ template0 | YOU   | LATIN1    | C         | C     | =c/YOU
+                                                   : YOU=CTc/YOU
+ template1 | YOU   | LATIN1    | C         | C     | =c/YOU
+                                                   : YOU=CTc/YOU
+(3 rows)
+... use your PostgreSQL server e.g. create example database ...
+pg_ctl stop
+waiting for server to shut down.... done
+server stopped
+
+
+Note that the above times may be less
+on a home computer where you are accessing its local disk.
+
+
+
+Installation Details (for non-experts):
+
+Setting up directories
+
+The first step is to make sure that the directory /srvr/YOU
+exists. You can check this via the command:
+
+ls -l /srvr/YOU
+
+
+If the above command says something like "No such file or directory", then
+you should create it using the instructions above.
+
+Once you have a directory on the /srvr filesystem, the next step
+is to place a copy of the PostgreSQL source code under this directory.
+The following commands will do this:
+
+cd /srvr/YOU
+tar xf /web/cs9315/18s2/postgresql/src.tar.bz2
+
+
+This creates a subdirectory called postgresql-10.4 under your
+/srvr/YOU directory and unpacks all of the source code there.
+This produces no output and will take a few moments to complete.
+If you want to watch as tar unpacks the files, use
+xvf instead of xf as the first argument to
+tar.
+
+
+Initial compilation
+
+Once you've unpacked the source code, you should change into the
+newly created postgresql-10.4 directory and configure
+the system so that it uses the directory /srvr/YOU/pgsql
+to hold the executables for your PostgreSQL server.
+(Note that /srvr/YOU/pgsql does not exist yet;
+it will be created in the make install step).
+The following commands will do the source code configuration:
+
+cd /srvr/YOU/postgresql-10.4
+./configure --prefix=/srvr/YOU/pgsql
+
+
+The configure command will print lots of messages about
+checking for various libraries/modules/etc.
+This process will take a minute, and should produce no errors.
+
+
+Once you have configured the source code,
+the next step is to build all of the programs:
+
+make
+
+
+This compiles all of the PostgreSQL source code,
+and takes around 3-5 minutes (depending on the load on grieg).
+It will produce lots of output,
+but should compile everything OK,
+and end with the message:
+
+All of PostgreSQL successfully made. Ready to install.
+
+Installing executables
+
+Once the PostgreSQL programs are compiled, you need to install them.
+The following command does this:
+
+make install
+
+
+This creates the directory /srvr/YOU/pgsql,
+and copies all of the executables
+(such as pg_ctl and psql) under that directory.
+It will take a minute to do this,
+and will produce quite a bit of output while it's doing it.
+Ultimately, it should end with the message:
+
+PostgreSQL installation complete.
+
+
+Data directories
+
+You're not finished yet, however, since PostgreSQL has no directory
+in which to store all of its data.
+There are two possibilities in how to proceed at this stage:
+
+
+
+you could install the data directories under /srvr/YOU/pgsql,
+which has the advantage that you can leave them there permanently,
+but has the disadvantage that building databases will be relatively
+slow
+ you could install the data directories under /tmp,
+which has the advantage that it's much faster to manipulate databases,
+but has the disadvantage that you'll:
+(a) need to re-create the data directories
+    each time you want to use PostgreSQL, and
+(b) ensure that you stop the server,
+    and remove the data before you log out.
+
+
+We discuss both possibilities below.
+
+
+Before doing anything with the database, however,
+you need to ensure that your Unix environment is set up correctly.
+We have written a small script called env that will do this.
+In this set up stage, you should copy this script to your /srvr
+directory:
+
+cp /web/cs9315/18s2/postgresql/env /srvr/YOU
+
+
+The env script contains the following:
+
+PGHOME=/srvr/$USER/pgsql
+export PGDATA=/tmp/pgsql.$USER
+export PGDATA=$PGHOME/data
+export PGHOST=$PGDATA
+export PGPORT=5432
+export LD_LIBRARY_PATH=$PGHOME/lib
+export PATH=$PGHOME/bin:/home/cs9315/bin:$PATH
+
+
+This script sets up a number of environment variables.
+The critical ones are:
+
+
+PGDATA
+which tells the PostgreSQL server where it's data directories are located
+PGHOST
+which tells PostgreSQL clients where are the socket files to connect to the server
+
+
+Note that there are two definitions for PGDATA.
+The second one is the default and will use data directories under
+/srvr/YOU/pgsql. If you want to put the data
+directories under /tmp instead, simply swap the two
+export PGDATA=... lines.
+
+
+What's the difference between the two ways of setting up the data
+directory? ...
+
+
+If you use /tmp for the data, you will need to create
+the data directories and edit the PostgreSQL configuration file
+each time you have a session with PostgreSQL.
+It is also essential that you stop the server and remove
+the data directories at the end of your session in this case.
+If you use /srvr for the data, it will persist between
+your login sessions, so you have less setup each time but
+all of your interaction with the database will be slower.
+
+
+Note that in the discussion below, we will use the string YOUR_PGDATA
+to refer to that value that you assigned to PGDATA in your env
+file and which has been set by source'ing the env file  in your shell.
+
+
+The precise combination of values in the env file depends on
+where you are running the server. Here are the suggested configurations:
+
+
+Running server on grieg
+
+You can put the data directories on either /srvr or /tmp.
+However, you may need to change the PGPORT value, since the
+port-space is shared and someone else might already be using port 5432.
+You will detect this when you try to run the server and it fails to start
+(check the /srvr/YOU/pgsql/log file if your server
+will not start).
+
+
+Running server on CSE lab workstation
+
+You will need to put the data directories under /tmp.
+You may need to change the PGPORT value, if some anti-social
+COMP9315 student had left their PostgreSQL server running on your
+workstation and was using port 5432.
+
+
+Initialising data directories and running server
+
+Once you have a copy of the env script and have set the values
+appropriately,
+you need to invoke it in every shell window where you plan to interact
+with the database.
+You can do this by explicitly running the following command in each
+window:
+
+source /srvr/YOU/env
+
+
+If that gets tedious, you might consider adding the above command
+to your shell's startup script (e.g., ~/.bash_profile).
+
+
+Once you've set up the environment, check that it's ok via the following
+commands:
+
+echo $PGHOME
+/srvr/YOU/pgsql
+echo $PGDATA
+YOUR_PGDATA ... i.e. whatever value you set it to ...
+which initdb
+/srvr/YOU/pgsql/bin/initdb
+which pg_ctl
+/srvr/YOU/pgsql/bin/pg_ctl
+
+
+If the system gives you different path names to the above,
+then your environment is not yet set up properly.
+Are you sure that you source'd your env file?
+
+
+If all of the above went as expected,
+you are now ready to create the
+data directories and run the server.
+You can do this via the command:
+
+initdb
+... some output eventually finishing with something like ...
+Success. You can now start the database server using:
+
+    pg_ctl -D YOUR_PGDATA -l logfile start
+
+
+If you look at your data directory now, you should see something like:
+
+ls $PGDATA
+base          pg_ident.conf  pg_serial     pg_tblspc    postgresql.auto.conf
+global        pg_logical     pg_snapshots  pg_twophase  postgresql.conf
+pg_commit_ts  pg_multixact   pg_stat       PG_VERSION
+pg_dynshmem   pg_notify      pg_stat_tmp   pg_wal
+pg_hba.conf   pg_replslot    pg_subtrans   pg_xact
+
+
+You shouldn't start the server straight away, however, since there's one
+more bit of configuration needed.
+You need to edit the postgresql.conf file in the $PGDATA
+directory and change the values of the following:
+
+
+ change the value of the listen_addresses parameter to '':
+     this means that only Unix-domain sockets
+     can be used to connect to the server
+     (saving you fighting over TCP ports);
+ reduce the value of max_connections from 100 to 8:
+     this reduces the resources tied up by the server
+     to support those connections potentially occurring; and
+ set the value of max_wal_senders to e.g. 4 (or
+	 any value less than whatever value you use for max_connections); and
+ set the value of the unix_socket_directories parameter to your $PGDATA:
+     this specifies where PostgreSQL keeps its connection sockets,
+     and should be the same as your $PGDATA
+     so psql and other clients can connect.
+
+
+Once you're done, the modified part of the postgresql.conf file
+should look like (with the changes highlighted in red):
+
+#------------------------------------------------------------------------------
+# CONNECTIONS AND AUTHENTICATION
+#------------------------------------------------------------------------------
+
+# - Connection Settings -
+
+listen_addresses = ''                   # what IP address(es) to listen on;
+                                        # comma-separated list of addresses;
+                                        # defaults to 'localhost'; use '*' for all
+                                        # (change requires restart)
+#port = 5432                            # (change requires restart)
+max_connections = 8                     # (change requires restart)
+max_wal_senders = 4                     # (change requires restart)
+#superuser_reserved_connections = 3     # (change requires restart)
+unix_socket_directories = 'YOUR_PGDATA' # comma-separated list of directories
+                                        # (change requires restart)
+#unix_socket_group = ''                 # (change requires restart)
+#unix_socket_permissions = 0777         # begin with 0 to use octal notation
+                                        # (change requires restart)
+
+
+Note that it doesn't matter
+that the file says port = 5432:
+this value will be overridden
+by whatever you set your
+PGPORT environment variable to.
+
+
+Note also that the 5432 also doesn't matter
+because the # at the start of the line
+means that it's a comment.
+In the case of the lines that you are supposed to change,
+make sure that you remove the #
+from the start of those lines.
+
+Everything is now ready to start your PostgreSQL server,
+which you can do via the command:
+
+pg_ctl start -l $PGDATA/log
+
+
+Note that PostgreSQL says "server starting", whereas it should probably say
+"attempting to start server". It is possible that the server may not start
+correctly. If the server does not appear to have started, you can check why
+by looking at the tail of the server log:
+
+tail -20 $PGDATA/log
+... information about what happened at server start-time ...
+
+
+Note that you'll get error messages about not being able to run the
+statistics collector, and a warning that autovacuum was not started.
+These are not an issue at this stage.
+
+
+If you're on grieg and see many errors like
+epoll_create1 failed: Function not implemented
+in your server log file, your PostgreSQL will not work.
+Contact us if this happens!
+
+
+A quick way to check whether the server is working is to run the command:
+psql -l
+                           List of databases
+   Name    | Owner | Encoding  | Collate | Ctype | Access privileges
+-----------+-------+-----------+-----------+-------+-------------------
+ postgres  | YOU   | LATIN1    | C       | en_AU |
+ template0 | YOU   | LATIN1    | C       | en_AU | =c/YOU
+                                                 | YOU=CTc/YOU
+ template1 | YOU   | LATIN1    | C       | en_AU | =c/YOU
+                                                 | YOU=CTc/YOU
+(3 rows)
+
+
+which will give you a list of databases like the above if the server is running.
+If the server is not running, you'll get a message something like:
+
+psql: could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "YOUR_PGDATA/.s.PGSQL.5432"?
+
+
+If this happens, you should check the log file to find out what went wrong.
+(Other things to check in case of problems are described below).
+
+
+Assuming that the server is running ok, you can now use it to create and
+manipulate databases (see the example below).
+Once you've finished your session using PostgreSQL, you need to stop the
+server.
+
+pg_ctl stop
+waiting for server to shut down.... done
+
+
+If you still have a process that's using the database (e.g. a psql
+process in another window), then the server won't be able to shut down.
+You'll need to quit all of the processes that are accessing the database
+before the above command will work.
+
+
+If you put your data under /tmp, you must also remove
+the data directories. You can do this via the command:
+
+rm -r /tmp/pgsql.YOU
+
+
+The pgs script
+
+Since the above process is rather fiddly, we have provided a script
+that provides a single command to setup your data directory (if needed)
+and start your server.
+It still requires you to set the values in your env file
+appropriately, however.
+The script is called pgs and is located in the directory
+/home/cs9315/bin.
+
+
+The pgs script is designed to help you manage your
+PostgreSQL servers and do a bit of error checking along the way
+to see if everything is ok.
+It has four possible arguments:
+
+
+setup
+create a new PGDATA directory
+    (complains if one already exists)
+cleanup
+remove the PGDATA directory
+    (make sure you backup anything important before doing this)
+start
+start your PostgreSQL server
+    (waiting until it actually starts ok)
+stop
+stop your PostgreSQL server
+    (waiting until it actually stops ok)
+
+
+The pgs script is just a wrapper around two of the
+PostgreSQL commands mentioned above:
+
+
+initdb
+sets up the PGDATA directory
+pg_ctl
+controls the operation of the PostgreSQL server
+
+
+As noted above, the pgs script has four modes of operation:
+
+
+ setting up the data directory:
+
+If you leave your data under /srvr/YOU/pgsql, then
+you only need to do this once. If your data is on /tmp, you
+will need to do this each time you want to have a session using PostgreSQL.
+
+pgs setup
+Using PostgreSQL with data directory /your/PGDATA/directory
+The files belonging to this database system will be owned by user "YOU".
+This user must also own the server process.
+
+Running this command should eventually produce the output:
+Success. You can now start the database server using:
+
+    pg_ctl -D YOUR_PGDATA -l logfile start
+
+
+After doing the above, your PostgreSQL server is ready to start and use.
+
+
+ starting the PostgreSQL server:
+pgs start
+Using PostgreSQL with data directory YOUR_PGDATA
+waiting for server to start...... done
+server started
+Check whether the server started ok via the command 'psql -l'.
+If it's not working, check YOUR_PGDATA/log for details.
+
+
+If the "waiting for server to start" is followed by an ever-growing sequence
+of dots, it means that the server is not starting properly.
+You'll need to do some additional debugging (see below)
+for such cases.
+
+
+ stopping the PostgreSQL server:
+
+The following command stops the PostgreSQL server:
+
+pgs stop
+Using PostgreSQL with data directory YOUR_PGDATA
+waiting for server to shut down.... done
+
+
+If you get an ever-growing sequence of dots, it means that the server cannot
+shut down. This is typically caused by some other process being connected to
+your PostgreSQL server (e.g. a psql process running in another
+window).
+
+
+ cleaning (removing) the data directory:
+
+You only need to do this if you are not keeping your databases between
+sessions with PostgreSQL, i.e. because you have put the data directory
+under /tmp.
+pgs cleanup
+Using PostgreSQL with data directory YOUR_PGDATA
+This will remove all files under YOUR_PGDATA
+Do you want to continue? y
+
+
+If you decide that you really don't want to remove the data directories,
+typing anything other than y or yes will not do the
+cleanup.
+If you accidentally remove your data directory, it is easy enough to restore
+using pgs setup.
+
+
+
+
+A Typical session with PostgreSQL
+
+Once you've got your PostgreSQL server installed, this is what you'd
+normally do to use it:
+
+source /srvr/YOU/env
+pgs setup
+... BUT ONLY if your PGDATA directory is on /tmp ...
+pgs start
+... hopefully concluding with the message ...
+server started
+psql -l
+... hopefully giving a list of databases ...
+createdb myNewDB
+psql myNewDB
+... do stuff with your database ... 
+pgs stop
+... hopefully concluding with the message ...
+server stopped
+pgs cleanup
+... BUT ONLY if your PGDATA directory is on /tmp ...
+
+
+Reminder
+
+
+You must shut down your server at the end of each
+session with PostgreSQL if you're working on the CSE workstations.
+Failure to do this means that the next student who uses that
+workstation may need to adjust their configuration (after first
+working out what the problem is) in order
+to start their server.
+
+
+A Sample Database
+
+
+Once your server is up-and-running, you ought to load up the small
+sample database (on beers) and try a few queries on its data.
+This is especially important if you haven't used PostgreSQL before;
+you need to get used to its interactive interface.
+
+
+You can set up the beer database as follows:
+
+createdb beer
+psql beer -f /web/cs9315/18s2/pracs/p01/beer.dump
+... around 20 lines include SET, CREATE TABLE, ALTER TABLE...
+psql beer
+psql (10.4)
+Type "help" for help.
+
+select count(*) from beers;
+ count
+-------
+    24
+(1 row)
+
+\d
+... gives a list of tables in the database ...
+
+... explore/manipulate the database ...
+\q
+
+
+
+For exploring the database with psql, there are a
+collection of \d commands. You can find out more about
+these via psql's \? command or by reading
+the PostgreSQL manual chapter on psql.
+
+
+To help with your explorations of the database, here is an
+diagram of the schema.
+Table/relation names are in bold; each box represents one
+attribute; primary keys are underlined.
+Note that all primary keys are symbolic (not numeric) in
+this database.
+You can look at the SQL schema from within psql.
+
+
+
+
+Sorting out Problems
+
+
+It is very difficult to diagnose problems with software over email,
+unless you give sufficient details about the problem.
+An email that's as vague as My PostgreSQL server isn't
+working. What should I do?, is basically useless.
+Any email about problems with software should contain details of
+
+
+ what you were attempting to do
+ precisely what commands you used
+ precisely what output you got
+
+
+One way to achieve this is to copy-and-paste the last few commands
+and responses into your email.
+
+
+But even with all of that information, there's a whole host of other
+environment information that's needed to be able to seriously work out
+why your server isn't running, that you can't put in an email.
+That's why it's better to come to a consultation, where we can work
+through the problem on a workstation (which is usually very quick).
+
+
+Can't start server?
+
+When you use pgs start to try to start your PostgreSQL server,
+you observe something like:
+
+pgs start
+Using PostgreSQL with data directory YOUR_PGDATA
+waiting for server to start.................................................pg_ctl: could not start server
+Examine the log output.
+Check whether the server started ok via the command 'psql -l'.
+If it's not working, check /srvr/YOU/pgsql/log for details.
+
+
+Take the advice given to you by the command and look at the end of the log
+file to see if there are any clues there. You can do this via the command:
+
+tail -20 /srvr/YOU/pgsql/log
+
+
+Sometimes you may need to look at more than the last 20 lines of the log
+file to find the relevant error message.
+Most of the error messages are self-explanatory, and you should learn what
+to do if any of them occurs.
+Some examples:
+
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 31265) running in data directory "YOUR_PGDATA"?
+
+# You may already have another PostgreSQL server running
+# Or, the previous server may have quit without cleaning up the postmaster.pid file
+# Note that the server process may be running on another machine if you run your
+#  server on the local machine rather than grieg
+# If the server is running on another machine, log in there and run "pgs stop"
+
+LOG:  could not bind IPv4 socket: Address already in use
+HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+WARNING:  could not create listen socket for "localhost"
+FATAL:  could not create any TCP/IP sockets
+
+# Another user is running a PostgreSQL server on this machine
+# Change the PGPORT value in /srvr/YOU/env
+#  and then reset your environment and try starting the server again
+
+FATAL:  could not open relation mapping file "global/pg_filenode.map": No such file or directory
+FATAL:  could not open relation mapping file "global/pg_filenode.map": No such file or directory
+FATAL:  could not open relation mapping file "global/pg_filenode.map": No such file or directory
+FATAL:  could not open relation mapping file "global/pg_filenode.map": No such file or directory
+
+# This means that there is another PostgreSQL server of yours still running
+# You'll need to find it e.g. using the command "pgs status"
+# Note that the process could be running on any CSE machine where you ever
+#  ran a PostgreSQL server, so you may need to check on multiple machines
+# Once you've found it, stop the server using the Unix kill command
+# and then reset your environment and try starting the server again
+
+
+
+Sometimes the pg_ctl command will give a message that the server
+has failed to start but you'll get no error messages at the end of the log
+file, which will look something like:
+
+LOG:  database system was shut down at 2011-08-03 11:38:26 EST
+LOG:  database system is ready to accept connections
+
+
+One cause of this is having different directories for PGHOST in
+the /srvr/YOU/env file and for unix_socket_directory
+in the YOUR_PGDATA/postgresql.conf file. It is critical that
+these two both refer to the same directory. You can check this by running
+the command:
+
+psql -l
+psql: could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/srvr/YOU/pgsql/.s.PGSQL.5432"?
+
+
+You should then check the YOUR_PGDATA/postgresql.conf file to
+see whether unix_socket_directories has been set to
+/srvr/YOU/pgsql.
+Note that the directory name may not be exactly the same as this; the critical
+thing is that the directory be the same in both places.
+
+
+Can't shut server down?
+
+When you use pgs stop to try to shut down your PostgreSQL server,
+you observe something like:
+
+pgs stop
+Using PostgreSQL with data directory YOUR_PGDATA
+waiting for server to shut down........................
+
+
+and no done ever appears.
+
+
+This is typically because you have an psql
+session running in some other window (the PostgreSQL server won't shut
+down until all clients have disconnected from the server).
+The way to fix this is to find the psql session and end it.
+If you can find the window where it's running, simply use \q
+to quit from psql.
+If you can't find the window, or it's running from a different machine
+(e.g. you're in the lab and find that you left a psql running
+at home), then use ps to find the process id of the
+psql session and stop it using the Linux kill
+command.
+
+
+Can't restart server?
+
+Occasionally, you'll find that
+your PostgreSQL server was not shut down cleanly the last time you
+used it and you cannot re-start it next time you try to use it.
+The symptoms are:
+
+Using PostgreSQL with data directory YOUR_PGDATA
+pg_ctl: another server might be running; trying to start server anyway
+pg_ctl: could not start server
+Examine the log output.
+Check whether the server started ok via the command 'psql -l'.
+If it's not working, check /srvr/YOU/pgsql/log for details.
+
+
+If you actually go and check the log file, you'll probably find,
+right at the end, something like:
+
+tail -2 /srvr/YOU/pgsql/log
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID NNNN) running in data directory "YOUR_PGDATA"?
+
+
+where NNNN is a process number.
+
+
+There are two possible causes for this: the server is already running
+or the server did not terminate properly after the last time you used it.
+You can check whether the server is currently running by the command
+psql -l. If that gives you a list of your databases, then
+you simply forgot to shut the server down last time you used it and it's
+ready for you to use again. If psql -l tells you that
+there's no server running, then you'll need to do some cleaning up
+before you can restart the server ...
+
+
+When the PostgreSQL server is run, it keeps a record of the Unix process
+that it's running as in a file called:
+
+YOUR_PGDATA/postmaster.pid
+
+
+Normally when your PostgreSQL server process terminates (e.g. via
+pgs stop), this file will be removed. If your PostgreSQL
+server stops, and this file persists, then pgs becomes
+confused and thinks that there is still a PostgreSQL server running
+even though there isn't.
+
+The first step in cleaning up is to remove this file:
+rm YOUR_PGDATA/postmaster.pid
+
+
+You should also clean up the socket files used by the PostgreSQL
+server. You can do this via the command:
+
+rm YOUR_PGDATA/.s.PGSQL.*
+
+
+Once you've cleaned all of this up, then the pgs
+command ought to allow you to start your PostgreSQL server ok.
+
+
+
+Following up on problems ...
+
+
+Let me know via the forums,
+or come to a consultation
+if you have any problems with setting up your servers
+... jas</p><h3 >字段2</h3><p>COMP9315 18s2
+
+
+  Prac Exercise 02The PostgreSQL Catalog
+
+
+  DBMS Implementation
+
+
+
+Aims
+
+
+This simple exercise aims to get you to:
+
+
+ become familiar with the PostgreSQL catalog 
+ understand what data is available to the query evaluator and storage manager 
+
+
+It would be useful to do it during Week 02 (after installing your PostgreSQL server).
+
+
+Background
+
+
+PostgreSQL uses its catalog tables to maintain a large amount of information
+that is used by the various components of the DB engine.
+As well as defining the user-level meta-data (names, types, constraints),
+the catalog tables also include
+information to assist the storage manager (e.g., size of attribute values),
+information to assist the query optimiser (e.g. size of table in tuples and pages),
+and so on.
+Some tables are global — shared by all databases on a PostgreSQL server —
+while others contain values local to a particular database.
+
+
+Some of the more important tables (and some of their parameters are given below).
+Details on the other tables, and complete details of the given tables, are
+available in the PostgreSQL documentation
+
+pg_authid(rolname, rolsuper, rolinherit, rolcreaterole, rolcreatedb, rolcatupdate,
+        rolcanlogin, rolreplication, rolconnlimit, rolpassword, rolvaliduntil)
+
+pg_database(datname, datdba, encoding, datcollate, datctype, datistemplate,
+        datallowconn, datconnlimit, datlastsysoid, datfrozenxid, datminmxid,
+        dattablespace, datacl)
+
+pg_namespace(nspname, nspowner, nspacl)
+
+pg_class(relname, relnamespace, reltype, reloftype, relowner, relam,
+        relfilenode, reltablespace, relpages, reltuples, relallvisible,
+        reltoastrelid, reltoastidxid, relhasindex, relisshared, relpersistence,
+        relkind, relnatts, relchecks, relhasoids, relhaspkey, relhasrules,
+        relhastriggers, relhassubclass, relfrozenxid, relminmxid, relacl, reloptions)
+
+pg_attribute(attrelid, attname, atttypid, attstattarget, attlen, attnum, attndims,
+        attcacheoff, atttypmod, attbyval, attstorage, attalign, attnotnull,
+        atthasdef, attisdropped, attislocal, attinhcount, attcollation, attacl,
+        attoptions, attfdwoptions)
+
+pg_type(typname, typnamespace, typowner, typlen, typbyval, typtype, typcategory,
+        typispreferred, typisdefined, typdelim, typrelid, typelem, typarray,
+        typinput, typoutput, typreceive, typsend, typmodin, typmodout, typanalyze,
+        typalign, typstorage, typnotnull, typbasetype, typtypmod, typndims,
+        typcollation, typdefaultbin, typdefault, typacl)
+
+
+Exercise
+
+
+In the Week 02 lectures, I mentioned a PL/pgSQL function schema()
+that could use the PostgreSQL catalog tables to produce a list of
+tables/attributes for the public schema, in a format similar
+to that shown above.
+In fact, the above format was actually produced by an extension to the
+schema() function, which wraps lines before they become too
+long and hard to read.
+
+
+The first thing to do is to make a copy of the schema() function:
+
+mkdir some/directory/for/prac/p02
+cd some/directory/for/prac/p02
+cp /web/cs9315/18s2/pracs/p02/schema.sql .
+# don't forget the dot, which means "current directory"
+
+
+Create the beer database from Prac P01 (if it's not still there), and then
+do the following:
+
+psql beer
+psql (10.4)
+Type "help" for help.
+
+\i schema.sql ... loads contents of the file schema.sql ...
+CREATE FUNCTION
+select * from schema(); ... invokes the schema() function ...
+           schema
+-----------------------------
+ bars(name, addr, license)
+ beers(name, manf)
+ drinkers(name, addr, phone)
+ frequents(drinker, bar)
+ likes(drinker, beer)
+ sells(bar, beer, price)
+(6 rows)
+
+
+
+
+Read the code for the function and make sure you understand how it works.
+You will most likely need to look at the documentation on
+PL/pgSQL for this.
+Once you understand how it works, make the following changes:
+
+
+ change the name of the function to schema1
+ make it return a set of tuples, rather than a set of text values
+create type SchemaTuple as ("table" text, "attributes" text)
+
+
+the value of the attributes field should still be a comma-separated string
+
+ for each attribute in the list of attributes, add a description of its data type
+ where required (e.g. varchar types), indicate the size of the value
+ change the internal type names (e.g. int4) into more user-friendly names (e.g. integer)
+
+
+Your new schema1 function should produce output something like the following:
+
+select * from schema1();
+   table   |                     attributes
+-----------+----------------------------------------------------
+ bars      | name:barname, addr:varchar(20), license:integer
+ beers     | name:barname, manf:varchar(20)
+ drinkers  | name:drinkername, addr:varchar(30), phone:char(10)
+ frequents | drinker:drinkername, bar:barname
+ likes     | drinker:drinkername, beer:beername
+ sells     | bar:barname, beer:beername, price:float
+
+
+if tested on the beer database from Prac P01.
+
+
+Hint: you'll need to look at the PostgreSQL manual, especially the chapters on
+PL/pgSQL and
+System Catalog.
+
+
+
+End of Prac
+
+
+Let me know via the forums,
+or come to a consultation
+if you have any problems with this exercise
+... jas</p><h3 >字段3</h3><p>COMP9315 18s2
+
+
+  Prac Exercise 03PostgreSQL Server Config and File Structures
+
+
+  DBMS Implementation
+
+
+[Show with no answers]   [Show with all answers]
+
+Aims
+
+This simple exercise aims to get you to:
+
+ examine the configuration of your PostgreSQL servers 
+ start to understand the filesystem layout of PostgreSQL files 
+ start to understand the internal structure of PostgreSQL data files 
+
+You ought to get it done before the middle of week 3.
+
+Exercise
+
+PostgreSQL has a wide range of configuration parameters which
+are described in
+Chapter 18
+of the PostgreSQL documentation.
+For the purposes of this lab, we are most interested in the
+configuration parameters related to resource usage
+(described in
+Section 18.4).
+
+
+Most configuration parameters can be set by modifying the
+$PGDATA/postgresql.conf file and restarting the server.
+Many configuration parameters can also be set via command-line
+arguments to the postgres server when it is initially
+invoked.
+Note that you cannot set parameters if you invoke the server
+via the pgs script; pgs aims to simplify
+things by allowing few options and starting the server with the
+configuration specified in postgresql.conf.
+The standard PostgreSQL mechanism for starting the server is yet
+another script, called pg_ctl (see the
+pg_ctl
+section of the PostgreSQL documentation).
+The simplest way to invoke pg_ctl is one of:
+
+pg_ctl start
+server starting
+pg_ctl stop
+waiting for server to shut down.... done
+server stopped
+pg_ctl status
+pg_ctl: server is running (PID: nnnnnn)
+/srvr/YOU/pgsql/bin/postgres
+
+
+The pgs script simply invokes pg_ctl to
+start a server, with some extra options:
+
+pg_ctl -w start -l /srvr/YOU/pgsql/log
+waiting for server to start...... done
+server started
+
+
+The -l option tells the PostgreSQL server which file to use
+to write its log messages.
+The log file is important, not only because it is where PostgreSQL
+writes error messages so that you can work out e.g. why your server
+wouldn't start, but also because it is where PostgreSQL writes
+statistical information about its performance (if requested).
+
+
+The -w option tells pg_ctl to wait until the server
+has actually started properly before returning. If the server does not
+start properly, you will eventually receive a message like:
+
+pg_ctl: could not start server
+Examine the log output.
+
+
+If the server fails to start, you should check your environment
+and the server setup (e.g. $PGDATA/postgresql.conf).
+Note that there are two aspects to consider for the environment:
+the contents of /srvr/YOU/env and
+the settings of the shell variables in your current window;
+the two should be consistent.
+A trouble-shooting guide for setting up your server appears at the bottom of
+Prac Exercise P01.
+
+
+The primary function of the pg_ctl command is to invoke
+the postgres server.
+It can perform additional functions such as specifying the location
+of the log file (as we saw above)
+or passing configuration parameters to the server.
+To pass configuration parameters, you use the -o option
+and a single string containing all the server parameters.
+For example, the -B parameter to postgres
+lets you say how many shared memory buffers the server should use,
+and you could start postgres and get it to use just 16
+buffers as follows:
+
+pg_ctl start -o '-B 16' -l /srvr/YOU/pgsql/log
+server starting
+
+
+As a warm-up exercise, work out how many shared buffers the PostgreSQL
+server uses by default. (Hint: this is given in the
+postgresql.conf file in units of MB (not number of
+buffers); each buffer is 8KB long).
+
+[show answer]
+
+
+The shared_buffers parameter controls this. The default
+value for this is 32MB (according to the PostgreSQL documentation).
+However, the value in the postgresql.conf file produced by
+pgs seems to be 128MB.
+If the value of shared_buffers in NMB,
+and the size of each buffer is 8KB,
+then the total number of buffers is given by
+the formula (N*1024*1024)/8192.
+For 128MB, this gives 16384 buffers;
+for 32MB, this gives 4096 buffers.
+
+
+
+Exercises
+
+Start your PostgreSQL server as normal (i.e. don't change any
+configuration parameters) before getting started with the exercises.
+
+
+Ex0: Load a new Test Database
+
+Under the COMP9315 Pracs directory you'll find a new testing
+database. Create a new database to hold it, and load it up.
+There are two representations of the database available:
+
+
+ as a PostgreSQL dump file
+ as a pair of SQL files, one containing the schema and the other the data
+
+
+The dump file is quicker to load, but not as "user-friendly" (i.e. not
+as readable) as the SQL files.
+
+You create the database in the usual way:
+createdb uni
+
+
+I called the database uni because it contains (fake)
+data about a University. You can find out the database schema from
+the
+schema.sql
+file.
+
+
+To load the database, use the following commands:
+
+(psql uni -f /web/cs9315/18s2/pracs/p03/db.dump 2>&1) > load.out
+grep ERR load.out
+
+
+The first command loads the dump file and ensures that all output is
+written to a file called load.out.
+The second command checks for any error messages produced during the
+load. There may be an error message like
+
+psql:/web/cs9315/18s2/pracs/p03/db.dump:16: ERROR:  language "plpgsql" already exists
+
+
+You can ignore this. All it means is that your database already knew
+about the PL/pgSQL language.
+If there are any other errors, you should not ignore those,
+but instead try to work out what the problem is and fix it.
+
+
+Ex1: Devise some Queries on the Test DB
+
+The first thing to do with any database is to ensure that you understand
+what data is in it. Use psql (or some GUI tool, if you're
+using one) to explore the database. I've added a function that will give
+you counts of the number of tuples in each table:
+
+select * from pop();
+    table    | ntuples
+-------------+---------
+ assessments |   14098
+ courses     |     980
+ enrolments  |    3506
+ items       |    3931
+ people      |    1980
+(5 rows)
+
+
+You can look at the definition of the pop() (short for
+"population") either in the
+pop.sql
+file, or via psql's \df+ command.
+
+
+Once you think you're familiar enough with the database, devise SQL
+queries to answer the following:
+
+
+ what is the largest staff/student id? (People.id)
+[show answer]
+
+select max(id) from People;
+ max
+------
+ 5936
+
+
+ what is the earliest birthday of any person in the database? (People.birthday)
+[show answer]
+
+select min(birthday) from People;
+    min
+------------
+ 1970-01-17
+
+
+ what is the maximum mark available for any assessment item? (Items.maxmark)
+[show answer]
+
+select max(maxmark) from items;
+ max
+-----
+  90
+
+
+ what assessment items are in each course and how many marks does each have?
+  (Courses.code,Items.name,Items.maxmarks))
+[show answer]
+
+select c.code, i.name, i.maxmark
+from   Courses c, Items i
+where  c.id = i.course;
+   code   |     name     | maxmark
+----------+--------------+---------
+ ACCT1501 | Assignment 1 |      10
+ ACCT1501 | Assignment 2 |      10
+ ACCT1501 | Project      |      25
+ ACCT1501 | Exam         |      55
+ ACCT1511 | Assignment 1 |      15
+ ACCT1511 | Assignment 2 |       5
+ ACCT1511 | Assignment 3 |      15
+ ACCT1511 | Exam         |      65
+etc. etc., for 3931 items
+
+
+ how many students are enrolled in each course? (Courses.code,count(Enrolments.student))
+[show answer]
+
+select c.code, count(e.student)
+from   Courses c, Enrolments e
+where  c.id = e.course
+group  by c.code
+order  by c.code;
+   code   | count
+----------+-------
+ ACCT1501 |     7
+ ACCT1511 |     2
+ ACCT2522 |     2
+ ACCT3563 |     3
+etc. etc., for 913 courses
+
+
+If you leave out the order by you should get the same
+set of results, but not necessarily in the same order.
+
+
+ check that each student's assessment marks add up to the final mark for each course
+ (Course.code,People.name,Enrolments.mark,sum(Assessment.marks))
+[show answer]
+
+select c.code, p.family||', '||p.given as name, e.mark, sum(a.mark)
+from   People p, Courses c, Enrolments e, Items i, Assessments a
+where  p.id = e.student and e.course = c.id and i.course = c.id
+       and a.student = p.id and a.item = i.id
+group  by c.code, p.family, p.given, e.mark
+order  by c.code, p.family;
+   code   |                    name                     | mark | sum
+----------+---------------------------------------------+------+-----
+ ACCT1501 | Agster, Yvan Marie                          |   68 |  68
+ ACCT1501 | Bland, Daryl Robert                         |   56 |  56
+ ACCT1501 | Fadaghi, Mundeep Singh                      |   47 |  47
+ ACCT1501 | Gafen, Andrei                               |   56 |  56
+ ACCT1501 | Mcnulty, Abu Rifat                          |   77 |  77
+ ACCT1501 | Nugent, Daina                               |   55 |  55
+etc. etc., for 3506 tuples
+
+
+
+
+For the first four queries above, think about and describe the patterns of access
+to the data in the tables that would be required to answer them.
+[show answer]
+
+
+ Requires all People.id values to be accessed; potentially
+	this would need a scan over all tuples in the relation, hence all pages
+	would need to be read. However, there's an index on the People.id
+	attribute (PostgreSQL makes a B-tree index on all primary keys) which
+	contains all of the People.id values. In theory, the system
+	could determine the largest value simply by looking at the index.
+    How could we work out whether it was doing a full table scan or simply
+    reading the index?
+ Requires all People.birthday values to be accessed. Since
+	there is no index on birthdays, this will definitely require PostgreSQL
+	to read all of the tuples/pages in the People table.
+ Requires all Items.maxmark values to be accessed;
+	since this is not a key attribute, there are no indexes on it and
+	all tuples/pages from the Items will need to be read.
+ Requires a join on the Courses and Items
+	table; each tuple in each table will need to be accessed, possibly
+	multiple times; in the worst-case scenario, we would read the
+	Courses table once and read the entire Items
+	table for each page in the Courses table.
+
+
+Ex2: Explore the Files of the Test DB
+
+Now that you've used the database, let's take a look at how the data
+is stored in the file system.
+All data is for a given database is stored under the directory (folder):
+
+$PGDATA/base/OID
+
+
+where $PGDATA is the location of the PostgreSQL data directory
+as set in your env file, and theOID is the unique
+internal id of the database from the pg_database table.
+Work out, using the PostgreSQL catalog, which directory corresponds to
+your newly-created database.
+(Hint: the pg_database table will help here. Also,
+psql's \dS command will tell you the
+names of all catalog tables).
+[show answer]
+
+
+The following SQL query will help you work out what is the
+OID for your database:
+
+select oid, datname from pg_database
+
+
+This will give you a list of databases, including template1,
+template0 and postgres, each with an associated
+OID.
+There should also be a tuple for your uni database; the OID
+value should also appear as the name of a directory in pgsql/data/base/.
+
+
+
+Change into the relevant directory and run the ls command.
+This will show dozens of files. Most of these files contain local
+data from system catalog tables, while others contain your uni
+data.
+Recall from lectures that data files associated with a table are
+named after the OID of that table.
+Use the PostgreSQL catalog to work out which files
+correspond to your tables.
+[show answer]
+
+
+The following SQL query will do it:
+
+select c.oid,c.relname
+from   pg_class c, pg_namespace n
+where  c.relkind='r' and c.relnamespace=n.oid and n.nspname='public';
+
+
+If you omit the last condition in the query, you'll get all of the
+system tables as well, which will help you work out what all of the
+other files in the directory are.
+
+
+
+All of the data files in this directory are in binary format, so you can't
+read them with a text editor or the standard Unix file pagers (like more
+and less). Sometime, however, you can get some information from a
+binary file via the strings command, which prints any text-strings
+that it finds in the file. Try this on the file corresponding to the Courses
+table and you should get a list of course codes and course titles, with a few
+"junk" characters. Since this generates a lot of output, you might want to
+use something like the following command:
+
+strings OID_of_Courses_data_file | less
+BENV2254;Theories of Colour and Light
+BENV2228?C20 Arch:Modernity-Deconstruc.
+BENV22241Architectural Studies 3
+etc. etc. etc.
+
+
+Note that you won't necessarily see exactly the output shown above.
+The order that tuples are inserted into a page depends on many factors that
+vary from system to system.
+What you are guaranteed to see are some strings containing data relevant to
+courses.
+
+
+An alternative way to examine binary data files is via the Unix od
+command (read the man entry if you don't know what it does).
+Examine the files corresponding to the People table
+and the Assessments table
+to see if you can observe the data they contain
+and also to see if you can work out
+how the data is laid out within the pages of the file.
+You can can get assistance with
+understanding the intra-page data layout
+from the source code files:
+
+/srvr/YOU/postgresql-10.4/src/include/storage/bufpage.h
+/srvr/YOU/postgresql-10.4/src/backend/storage/page/bufpage.c
+
+
+You'll probably notice some other files with similar OIDs
+to the data files, and other files with the same OIDs
+but with added suffixes. Suggest what might be contained in these
+files. (Searching for suffixes in the source code might help for those
+files with suffixes).
+
+[show answer]
+
+
+The files with _fsm suffixes contain free space maps which
+indicate where space is available in the data file (see
+Section 53.3
+of the PostgreSQL documentation).
+
+
+The files with _vm suffixes contain visibility maps which
+indicate pages that contain tuples visible to all active transactions;
+this allows vacuuming to be optimised (see Section 53.4
+of the PostgreSQL documentation).
+
+
+The files with OIDs close to those of the table data files, but without
+any free space maps are index files (each table has an index on its
+defined primary key).
+
+
+
+While you're examining the data files, return to psql and
+write a query to print the number of data pages in each relation.
+This is a simple modification of the query above to get the table OIDs.
+
+[show answer]
+
+select c.relname,c.relpages
+from   pg_class c, pg_namespace n
+where  c.relkind='r' and c.relnamespace=n.oid and n.nspname='public';
+   relname   | relpages
+-------------+----------
+ assessments |       70
+ people      |       27
+ courses     |        9
+ enrolments  |       19
+ items       |       26
+
+
+
+Once you've got the page counts in the catalog, check that they're consistent
+with the file sizes in the directory for the uni database
+(assuming an 8KB page size).
+
+[show answer]
+
+A quick example of how to do this:
+psql uni
+psql (10.4)
+Type "help" for help.
+
+select oid,relpages from pg_class where relname='Courses';
+ oid | relpages
+-----+----------        # Ooops ... PostgreSQL uses all-lower-case table names internally
+(0 rows)
+
+select oid,relpages from pg_class where relname='courses';
+  oid  | relpages
+-------+----------
+ NNNNN |        9       # NNNNN is the oid of the Courses table
+(1 row)                 # and is also the name of its data file
+                        # This also tells us that the table has 9 * 8KB pages
+\q
+ls -l NNNNN
+-rw------- 1 YOU YOU 73728 2011-08-03 14:04 NNNN
+# 73728 is the number of bytes in the file NNNNN
+bc -l
+bc 1.06.94
+Copyright 1991-1994, 1997, 1998, 2000, 2004, 2006 Free Software Foundation, Inc.
+This is free software with ABSOLUTELY NO WARRANTY.
+For details type `warranty'.
+9 * 8192
+73728
+# type control-d to exit the bc command
+
+
+Try this on some other tables. Try to explain any anomalies you find.
+
+
+
+End of Prac
+
+
+Let me know via the forums,
+or come to a consultation
+if you have any problems with this exercise
+... jas</p><h3 >字段4</h3><p>COMP9315 18s2
+
+
+  Prac Exercise 04Adding New Data Types to PostgreSQL
+
+
+  DBMS Implementation
+
+
+
+Aims
+
+This exercise aims to get you to:
+
+ explore the mechanisms provided by PostgreSQL for adding user-defined types
+ add a domain, an enumerated type, and a new base type
+
+You ought to get it done before the end of week 3.
+
+Background
+
+One thing that PostgreSQL does better than many other DBMSs, is to provide
+well-defined and relatively easy-to-use mechanisms for adding new data types.
+There are several possible ways to add new types, depending on the requirements
+of the type.
+PostgreSQL's view of data types is the standard abstract data type view;
+a type is a domain of values and a collection of operators
+on those values.
+In addition, the existence of an ordering on the values of a data type
+and operations that use the ordering allow indexes to be built on attributes
+of that type.
+PostgreSQL has several distinct kinds of types:
+
+
+ base types
+  ... defined via C functions,
+  and providing genuine new data types;
+  built-in types such as integer,
+  date and varchar(n) are base types;
+  users can also define new base types;
+ domains
+  ... data types based on
+  a constrained version of an existing data type;
+ enumerated types
+  ... defined by enumerating the values of the type;
+  values are specified as a list of strings,
+  and an ordering is defined on the values
+  based on the order they appear in the list;
+ composite types
+  ... these are essentially tuple types;
+  a composite type is composed of a collection of named fields,
+  where the fields can have different types;
+  a composite type is created implicitly whenever a table is defined,
+  but composite types can also be defined without the need for a table;
+ polymorphic types
+  ... define classes of types (e.g. anyarray),
+  and are used primarily in the definition of polymorphic functions;
+ pseudo-types
+  ... special types (such as trigger)
+  used internally by the system;
+  polymorphic types are also considered to be pseudo-types.
+
+
+In this exercise, we'll look at domains, enumerated types and base types.
+Assignment 1, which this exercise leads into, is concerned only with base
+types.
+
+
+Setup
+
+Re-install your PostgreSQL server (after first removing the old one)
+as described in Prac Exercise 01.
+Once the server is installed, initialised and running (don't forget
+to source the env file), access the server and
+create an empty database called test.
+
+
+Exercises
+
+In the first exercise, we will create a domain and an
+enumerated type for a similar purpose, and examine the
+differences. In the second exercise we will look at the process
+of creating a new base type.
+
+
+Exercise #1
+
+Consider the problem of defining a data type for the days of the
+week. We will generally want to represent the days by their names, e.g.
+
+Monday  Tuesday  Wednesday  Thursday  Friday  Saturday  Sunday
+
+
+We also normally want some kind of ordering to indicate the order in
+which days occur, although it is an open question (application specific)
+which day starts the week. Let's assume that, as above, we start with
+Monday and we will use the above ordering of day names.
+
+
+The day names are best represented in SQL as strings, so we need a
+new type that can be represented by a set of strings. There are two
+ways to produce a type like this in PostgreSQL:
+
+create domain Days1 as varchar(9)
+       check (value in ('Monday','Tuesday','Wednesday',
+                        'Thursday','Friday','Saturday','Sunday'));
+
+create type Days2 as enum
+       ('Monday','Tuesday','Wednesday',
+        'Thursday','Friday','Saturday','Sunday');
+
+
+Now define a pair of tables that are identical, except that one
+uses the domain and the other uses the enumerated type:
+
+create table Log1 ( name text, day Days1, starting time, ending time );
+create table Log2 ( name text, day Days2, starting time, ending time );
+
+
+Populate the tables via the following two commands:
+
+copy Log1 (name, day, starting, ending) from '/web/cs9315/18s2/pracs/p04/LogData';
+copy Log2 (name, day, starting, ending) from '/web/cs9315/18s2/pracs/p04/LogData';
+
+
+Examine the contents of the tables via select statements and
+then run the following two commands:
+
+select * from Log1 where name='John' order by day;
+select * from Log2 where name='John' order by day;
+
+
+Explain why they are different.
+Comment on which kind of data type definition is more appropriate
+in this context.
+
+
+Exercise #2
+
+In order to define a new base data type, a user needs to provide:
+
+
+ input and output functions (in C) for values of the type
+ C data structure definitions to represent type values internally
+ an SQL definition for the type, giving its length, alignment and i/o functions
+ SQL definitions for operators on the type
+ C functions to implement the operators
+
+
+The methods for defining the various aspects of a new base type are
+given in the following sections of the PostgreSQL manual:
+
+
+ 35.11 User-defined Types
+ 35.9 C-Language Functions
+ 35.12 User-defined Operators
+ SQL: CREATE TYPE
+ SQL: CREATE OPERATOR
+
+
+Section 35.11 uses an example of a complex number type, and you would
+be well advised to at least take a quick look at it before proceeding.
+This example is available in the directory /srvr/YOU/postgresql-10.4/src/tutorial.
+You should change into that directory now.
+You will find two files relevant to the definition of the complex number
+type: complex.c and complex.source.
+The complex.source file is actually a template that will be
+converted to an SQL file when you run make in the
+tutorial directory.
+Run the make command now:
+
+cd /srvr/YOU/postgresql-10.4/src/tutorial
+make
+rm -f advanced.sql; \
+	C=`pwd`; \
+	sed -e "s:_OBJWD_:$C:g" < advanced.source > advanced.sql
+rm -f basics.sql; \
+	C=`pwd`; \
+	sed -e "s:_OBJWD_:$C:g" < basics.source > basics.sql
+rm -f complex.sql; \
+	C=`pwd`; \
+	sed -e "s:_OBJWD_:$C:g" < complex.source > complex.sql
+rm -f funcs.sql; \
+	C=`pwd`; \
+	sed -e "s:_OBJWD_:$C:g" < funcs.source > funcs.sql
+rm -f syscat.sql; \
+	C=`pwd`; \
+	sed -e "s:_OBJWD_:$C:g" < syscat.source > syscat.sql
+gcc -O2 -Wall ...lots of compiler options... -c -o complex.o complex.c
+gcc -O2 -Wall ...lots of compiler options... -o complex.so complex.o
+gcc -O2 -Wall ...lots of compiler options... -c -o funcs.o funcs.c
+gcc -O2 -Wall ...lots of compiler options... -o funcs.so funcs.o
+rm complex.o funcs.o
+
+
+If make produces errors ... are you logged in to grieg?
+... have you set your environment (env)?
+
+
+The relevant lines above are the ones that mention complex (in red).
+Make sure that you read and understand exactly what is being done here.
+The first red command creates the complex.sql file from
+the complex.source file by filling in the appropriate directory
+name so that PostgreSQL knows where to find the libraries.
+The second and third red commands create a library file called
+complex.so containing all the C functions which implement
+the low-level operations on the Complex data type.
+
+
+Once you have made the complex number library, and
+while still in the src/tutorial
+directory, start a psql session on your test database
+and run the complex.sql file as follows:
+
+psql test
+psql (10.4)
+Type "help" for help.
+
+\i complex.sql
+psql:complex.sql:39: NOTICE:  type "complex" is not yet defined
+DETAIL:  Creating a shell type definition.
+CREATE FUNCTION
+psql:complex.sql:47: NOTICE:  argument type complex is only a shell
+CREATE FUNCTION
+psql:complex.sql:55: NOTICE:  return type complex is only a shell
+CREATE FUNCTION
+psql:complex.sql:63: NOTICE:  argument type complex is only a shell
+CREATE FUNCTION
+CREATE TYPE
+CREATE TABLE
+INSERT 0 1
+INSERT 0 1
+     a     |       b
+-----------+----------------
+ (1,2.5)   | (4.2,3.55)
+ (33,51.4) | (100.42,93.55)
+(2 rows)
+
+CREATE FUNCTION
+CREATE OPERATOR
+        c
+-----------------
+ (5.2,6.05)
+ (133.42,144.95)
+(2 rows)
+
+    aa     |       bb
+-----------+----------------
+ (2,3.5)   | (5.2,4.55)
+ (34,52.4) | (101.42,94.55)
+(2 rows)
+... etc etc etc ...
+... etc etc etc ...
+... etc etc etc ...
+drop cascades to operator >(complex,complex)
+drop cascades to function complex_abs_cmp(complex,complex)
+drop cascades to operator class complex_abs_ops for access method btree
+DROP TYPE
+
+
+
+The complex.sql file sets up the Complex type,
+creates a table that uses the type and then runs some operations
+to check that it's working.
+After the testing, it removes the Complex type.
+You should edit complex.sql file and remove the following
+lines at the end of the file (or simply comment them out).
+
+DROP TABLE test_complex;
+DROP TYPE complex CASCADE;
+
+
+and then re-enter the test database and re-run the
+complex.sql script. This will leave you with a
+database containing a Complex number type and
+table containing values of that type.
+You can explore the various operations on the type.
+Note that you can also create other databases and use the new
+Complex number type in them.
+The Complex type is now included in your PostgreSQL
+server in much the same way as built-in types like date,
+integer and text.
+
+
+Once you have a feel for how the Complex type behaves
+from the SQL level, it's time to take a look at the code that
+implements it.
+Read the files complex.sql and complex.c in
+conjunction with the PostgreSQL manual sections mentioned above.
+Once you feel confident that you understand how it all fits
+together, perhaps you could try making some changes to the
+Complex type (e.g. use [...] rather than
+(...) to enclose values of type complex)
+and installing them.
+
+
+If you do plan to change the type (or implement a new type),
+I would suggest making copies of the original complex.c
+and complex.source (e.g. to mytype.c and
+mytype.source), and then editing mytype.c
+and mytype.source. You will also need to add lines
+to the Makefile to create mytype.sql and
+mytype.so.
+Once you've modified the code, do the following:
+
+
+ re-run the make command to create mytype.sql and mytype.so
+ create a new database (or simply use the test database)
+ if the new type is called Complex, you'll need to drop the old Complex type first
+ load up the new data type via \i mytype.sql 
+ experiment with values of the new type
+
+
+End of Prac
+
+
+Let me know via the forums,
+or come to a consultation
+if you have any problems with this exercise
+... jas</p><h3 >字段5</h3><p>COMP9315 18s2
+
+
+  Prac Exercise 05Modifying a PostgreSQL Client Program
+
+
+  DBMS Implementation
+
+
+
+Aims
+
+This simple exercise aims to get you to:
+
+ become more familiar with the PostgreSQL source code
+ practice the edit-make-install-test cycle for modifying PostgreSQL
+
+You ought to get it done by the end of Week 7.
+
+Exercise
+
+
+The psql client in earlier versions of PostgreSQL used to
+have a much friendlier introductory message than the current version.
+Nowadays, all that greets you when you start an interactive psql
+session is:
+
+psql mydb
+psql (10.4)
+Type "help" for help.
+
+
+
+
+Your task for this lab is simply to make the introductory message more
+friendly. You must change the code for psql so that it now
+behaves as follows:
+
+psql mydb
+Welcome to the PostgreSQL 10.4 version of psql
+Type "help" for help.
+
+
+
+
+You should display this behaviour only when the user successfully
+connects to a database. All other invocations of psql should
+appear the same as before.
+
+
+Simple, eh? It would be if you were familiar with the PostgreSQL code-base.
+However, you'll need to work a few things out to accomplish this:
+
+
+ where is the source code for psql?
+ where is the code that prints the introductory message?
+ how do I re-install the psql client once I've changed it?
+ what kind of testing should I do to make sure I haven't broken something else?
+
+
+Here are a few small hints to get you started. Since this is an exploratory
+lab, the idea is for you to work it our for yourself.
+
+
+ the source code for clients lives under postgresql-10.4/src/bin
+ change into the directory where the psql source code is located
+ find the source code file containing the main function (use grep)
+ look for the string containing the help message
+ you only need to change a single line of code
+ run make and make install from within that directory
+ since you're recompiling a client, there's no need to stop the server when you re-make psql
+
+
+Some things not to do:
+
+
+ don't run make from the top-level postgresql-10.4 directory
+     (it's too slow and reinstalls a whole bunch of stuff that hasn't actually changed; sloppy Makefile, I'd say)
+ don't spend more than an hour on this exercise ... unless you start to find the source code exciting
+
+
+End of Prac
+
+
+Let me know via the forums,
+or come to a consultation
+if you have any problems with this exercise
+... jas</p><h3 >字段6</h3><p>COMP9315 18s2
+
+
+  Prac Exercise 06Buffer Pool Join Simulation
+
+
+  DBMS Implementation
+
+
+
+Aims
+
+This exercise aims to get you to:
+
+ implement a C program to simulate a range of buffer replacement policies
+ evaluate experimentally how replacement policies and buffer pool size interact
+
+
+Background
+
+Database management systems rely heavily on
+the presence of numerous in-memory buffers
+to avoid excessive disk reads and writes.
+A point noted by Michael Stonebraker and others is
+that DBMSs know better than (e.g.) the underlying operating systems,
+the patterns of access to data on disk,
+and should be able to manage the use of in-memory buffers very effectively.
+Despite this, DBMSs still tend to rely on generic buffer replacement
+strategies such as "least recently used" (LRU)
+and "most recently used" (MRU).
+
+
+In this exercise, we'll implement a simulator that allows us to look
+at a range of buffer pool settings and policies, to determine the
+best setting for dealing with one particular database operation:
+nested-loop join.
+
+
+The nested-loop join is a particular method for executing the
+following SQL query:
+
+select * from R join S
+
+
+It can be described algorithmically as
+
+for each page P in R {
+   for each page Q in S {
+      for each tuple A in page P {
+         for each tuple B in page Q {
+            if (A,B) satisfies the join condition {
+               append (A,B) to the Result
+            }
+         }
+      }
+   }
+}
+
+
+When using a buffer pool, each page is obtained via a call to the
+request_page() function. If the page is already in the
+pool, it can be used from there. If the page is not in the pool,
+it will need to be read from disk, most likely replacing some
+page that is currently in the pool if there are no free slots.
+
+
+If no buffer pool is used (i.e. one input buffer per table),
+the number of pages that will need
+to be read from disk is bR + bRbS,
+where bR and bS are the
+number of pages in tables R and S respectively.
+Hopefully, accessing pages via a buffer pool will result in
+considerably less page reads.
+
+
+Setup
+
+For this exercise, you won't need PostgreSQL at all.
+However, there is a partly-completed version of the simulator
+available in the archive
+
+/web/cs9315/18s2/pracs/p06/p06.tar
+
+
+Un-tar this archive into a directory (folder) for this lab,
+and examine the files:
+
+mkdir /my/directory/for/p06
+cd /my/directory/for/p06
+tar xf /web/cs9315/18s2/pracs/p06/p06.tar
+ls
+Makefile	bufpool.c	bufpool.h	joinsim.c
+
+
+The file joinsim.c contains the main program which
+collects the simulation parameters, sets up the buffer pool,
+"runs" the nested-loop query and then displays statistics on
+the performance of the system.
+The bufpool.* files implement an ADT for the buffer pool.
+The Makefile produces an executable called jsim
+which works as follows:
+
+./jsim OuterPages InnerPages Slots Strategy
+
+
+where
+
+
+ OuterPages is the number of pages in the
+"outer" relation (R in the example above) 
+ InnerPages is the number of pages in the
+"inner" relation (S in the example above) 
+ Slots is the number of page slots in the
+buffer pool
+ Strategy is the buffer replacement strategy,
+and can be one of
+
+ L ... least-recently used (page which was released earliest)
+ M ... most-recently used (page which was last released)
+ C ... cycling (cycles through the slots and picks the next available)
+
+
+
+You can compile the program as supplied, but since part of the code
+is missing, you won't get sensible results. In some cases, you will
+even trigger one of the assert() tests.
+
+
+To assist with testing, there is a compiled version of my
+solution available as:
+
+/web/cs9315/18s2/pracs/p06/jsim0
+
+
+Of course, being a pre-compiled binary, this will only work on a
+system compatible with those in the CSE labs.
+
+
+What you should do now is read the code in bufpool.c.
+Start with the data structures, then look at the
+initBufPool() function to see how the data structures
+are set up.
+The following diagram may help with this:
+
+
+
+The nbufs counter holds the total number of buffers in
+the system. This is set at initialisation time and determines the
+length of the three arrays.
+The strategy field contains one character represeting
+the replacement strategy (either 'L', 'M' or
+'C').
+The next four fields (nrequests, nreleases,
+nreads and nwrites) are statistics counters
+to monitor the buffer pool performance; they are manipulated
+correctly by the supplied code.
+The freeList is initially set to hold all of the slot
+numbers, since all pages are free.
+As pages are allocated, the free list becomes smaller and is
+eventually empty and stays empty; at this point, all of the
+slots are either in use or are in the usedList.
+The usedList holds slot numbers for buffers which
+have been used in the past, but which currently have a pin
+count of zero.
+These are the slots to be considered for removal if a new page,
+Finally, nfree and nused count the number
+of elements in the freeList and usedList
+respectively.
+
+Next, look at the request_page() and release_page()
+functions
+(which capture the methods pretty much as described in lectures).
+Finally, look at the other functions used by request_page()
+and release_page().
+
+
+
+Exercise
+
+Your task for this exercise is to complete the following functions
+in bufpool.c
+
+
+ getNextSlot(pool) 
+
+
+This function aims to find the "best" unused buffer pool slot
+for a request_page() call.
+It is called once it has been determined that (a) the requested
+page is not in the buffer pool, and (b) there are no free pages
+available. Thus, it needs to choose a slot from the used list;
+the "best" slot is determined by the replacement strategy for the
+buffer pool. If the used list is empty or if all slots have a pin
+count greater than zero, then getNextSlot()
+should return -1 (which will trigger errors higher up in the system).
+If a suitable slot is found, and if the page currently occupying that
+slot has been modified, the the page should be written out (note
+that we don't actually write anything, simply increment the
+nwrites counter for the buffer pool).
+Finally, getNextSlot() should clean out the chosen buffer,
+and return the index of the buffer slot to the caller.
+For the 'C' strategy, set the "next available buffer" to
+the one immediately following the chosen buffer.
+
+
+ makeAvailable(pool,slot) 
+
+
+This function is called whenever the pin count on a slot reaches
+zero (meaning that this slot is now available for reuse).
+The function adds the slot number to the used list; where in the
+list it should be added is determined by the replacement strategy.
+
+
+ removeFromUsedList(pool,slot) 
+
+
+This function will be called when a previously occupied page has
+been chosen for use.
+It should search for the specified slot number in the used list
+and remove it from this list.
+Since the method depends on how the used list is managed, it is
+dependent on the replacement strategy.
+
+
+
+
+Modify the above functions to achieve the specified behaviour.
+If you want to change other parts of the BufPool ADT (e.g.
+because you think my implementation is no good), feel free.
+If you come up with a much better solution than mine, let me know.
+
+
+Once you've implemented the functions, test that they are
+behaving correctly, either by comparing the output to the
+output from jsim0 or by thinking about the expected
+behaviour of the buffer pool.
+
+
+Once you're satisfied that the functions are correct,
+investigate the behaviour of the buffer pool under
+various conditions.
+Consider variations on each of the following scenarios,
+where N is the number of buffers:
+
+
+ N = 2
+ bR + bS < N
+ bR + bS = N
+ bR + bS > N
+
+
+Consider each case using each of the buffer replacement strategies.
+For each scenario, try to determine what will happen and then check
+your prediction by running jsim.
+
+
+Challenge: PostgreSQL Clock-sweep Strategy
+
+Modify the data structures to support the PostgreSQL clock-sweep buffer
+replacement strategy.
+Note that clock-sweep is not quite the same as the Cycle strategy used
+above.
+Once you've got it working, run the same set of tests that you ran for
+the other strategies and compare its performance.
+
+
+End of Prac
+
+
+Let me know via the forums,
+or come to a consultation
+if you have any problems with this exercise
+... jas</p><h3 >字段7</h3><p>COMP9315 18s2
+
+
+  Prac Exercise 07PostgreSQL Buffer Pool Analysis
+
+
+  DBMS Implementation
+
+
+[Show with no answers]   [Show with all answers]
+
+Aims
+
+This exercise aims to get you to:
+
+ use the PostgreSQL query monitoring facilities
+ start thinking about how queries are executed
+ do some coarse-grained monitoring of the usage of the buffer pool
+ start thinking about analysing the behaviour of the buffer pool
+
+
+Background
+
+PostgreSQL has a very useful mechanism for monitoring query execution.
+The EXPLAIN
+statement is an extended SQL statement that is typically run from the
+SQL prompt in psql.
+EXPLAIN can be used to provide information about any SQL query
+that you run.
+Its simplest usage is:
+
+explain SQL_query
+
+
+which prints the query execution plan that the PostgreSQL query optimiser
+has developed for the SQL_query.
+This plan contains estimates of the cost of query execution, including
+estimates of how many result tuples there will be, but does not actually
+run the query.
+To get EXPLAIN to run the query and produce execution statistics,
+you include the ANALYZE option:
+
+explain (analyze) SQL_query
+
+
+This prints the same information about the query execution plan as above,
+but also runs the query and displays extra statistics, such as the count
+of actual result tuples and the total execution time.
+
+
+The output of EXPLAIN can be produced in a number of different
+formats. The default format is plain TEXT, which is quite compact,
+but also somewhat difficult to read. An alternative format (YAML)
+produces output which is longer (needs scrolling) but is somewhat clearer.
+You change EXPLAIN's output format using (surprise!) the
+FORMAT option:
+
+explain (analyze, format yaml) SQL_query
+
+
+For this lab, we are not so much interested in the query plan as we are
+in the effectiveness of the buffer pool. By default, EXPLAIN
+does not produce buffer pool usage statistics,
+but you can turn them on with the BUFFERS option:
+
+explain (analyze, buffers, format yaml) SQL_query
+
+
+This produces output with the same information as ANALYZE,
+but with additional output describing the usage of the buffer pool, e.g.
+
+Shared Hit Blocks: 8      +
+Shared Read Blocks: 19    +
+Shared Written Blocks: 0  +
+Local Hit Blocks: 0       +
+Local Read Blocks: 0      +
+Local Written Blocks: 0   +
+Temp Read Blocks: 0       +
+Temp Written Blocks: 0    +
+
+
+For this exercise, we are not going to be concerned about writing, and
+will focus on analysing buffer usage by queries.
+Also, we will not be concerned about each the local buffer pool managed
+by each query process.
+Neither will we be concerned about the amount of reading and writing
+that queries do to temporary files.
+In reality, of course, all of the above make a contribution to overall
+query cost and so are important.
+However, in assessing the effectiveness of buffering (our task in this
+lab), only the following measures are important:
+
+
+ Shared Hit Blocks:
+a count of the number of requests that were answered by a page already
+in the buffer pool
+ Shared Read Blocks
+a count of the number of requests that were answered by reading a
+page from disk into the buffer pool
+
+
+In a query-only environment, the sum of these two is the total number
+of page requests, since every request is answered either by returning
+a reference to a page in the pool, or by reading it into the pool and
+returning a reference to the newly loaded page.
+
+
+Exercises
+
+For this exercise, we'll use the university database from
+Prac P03.
+If you haven't loaded it into your PostgreSQL server, do it now:
+
+createdb uni
+psql uni -f /web/cs9315/18s2/pracs/p03/db.dump
+
+
+Now, stop and restart your server:
+
+pgs stop
+Using PostgreSQL with data directory /srvr/YOU/pgsql/data
+waiting for server to shut down.... done
+server stopped
+pgs start
+Using PostgreSQL with data directory /srvr/YOU/pgsql/data
+waiting for server to start..... done
+server started
+...
+psql uni
+psql (10.4)
+Type "help" for help.
+
+
+
+
+Whenever you start the server, the buffer pool is initialised
+and will be completely empty. Consider the following query, but
+do not run it yet:
+
+select min(birthday) from people;
+
+
+If you ran the query by mistake, stop your server and restart it,
+to ensure that the buffer pool is empty.
+
+
+Think about what's going to happen when this query is executed,
+recalling that every data page examined in a query must first be
+loaded into the buffer pool.
+Which pages of the people table will it fetch? How many
+of these will need to be read into the buffer pool?
+
+[show answer]
+
+
+In order to find the minimum birthday, all of the tuples of the
+people relation must be examined. This means that every
+page of data for the people relation must be examined.
+Since none of these pages are in the buffer pool (the buffer pool
+is initially empty), every page needs to be read.
+
+
+
+Now, run the query using EXPLAIN and see whether the
+results agree with your answer above.
+
+explain (analyze, buffers, format yaml) select min(birthday) from people;
+           QUERY PLAN
+--------------------------------
+ - Plan:                       +
+...
+     Actual Rows: 1980         +
+     Actual Loops: 1           +
+     Shared Hit Blocks: 0      +
+     Shared Read Blocks: 27    +
+     Shared Written Blocks: 0  +
+...
+(1 row)
+
+
+Think about these numbers. "Actual rows" tells us that 1980 tuples
+from People were examined in answering this query. We
+said that this should be all of the People tuples. Think
+of an SQL query to check this.
+
+[show answer]
+
+E.g. select count(*) from people;
+
+
+"Shared Read Blocks" tells us that 27 pages from the People
+table were read in answering the query, and this should be all of
+the pages in the table. Think of an SQL query to check this.
+
+[show answer]
+
+E.g. select relpages from pg_class where relname='people';
+
+
+"Shared Hit Blocks" tells us that there were no buffer hits during
+our sequential scan of the table. This should make sense based on
+the fact that the buffer pool was initially empty.
+
+
+Now run the same query again. This time you should observe something
+like:
+
+explain (analyze,buffers,format yaml) select min(birthday) from people;
+           QUERY PLAN
+--------------------------------
+ - Plan:                       +
+...
+     Actual Rows: 1980         +
+     Actual Loops: 1           +
+     Shared Hit Blocks: 27     +
+     Shared Read Blocks: 0     +
+     Shared Written Blocks: 0  +
+...
+(1 row)
+
+
+Because the buffer pool is so large (more than 3500 pages, as we determined
+in the warm-up exercise for
+Prac P03), we can
+fit the entire People table into the buffer pool.
+Thus any subsequent queries on People will find all of its
+pages already in the buffer pool.
+
+
+In fact, the buffer pool is large enough to hold the entire uni
+database.
+Think of an SQL query to compute the total number of pages in all
+of the tables in the uni database and compare this against the
+number of buffers (3584).
+
+[show answer]
+
+-- this will give us each table and its #pages
+select c.relname, c.relpages
+from   pg_class c join pg_namespace n on (c.relnamespace=n.oid)
+where  c.relkind = 'r' and n.nspname = 'public';
+-- this will give us the total #pages
+select sum(c.relpages) as totalpages
+from   pg_class c join pg_namespace n on (c.relnamespace=n.oid)
+where  c.relkind = 'r' and n.nspname = 'public';
+
+
+
+Since there are no other processes competing for use of the shared
+buffer pool (unless you're running several psql sessions)
+you should observe, if you run a query repeatedly, that the second
+and later runs typically require 0 reads and have a 100% hit rate.
+
+
+Repeat the above process for queries on the other tables and
+check that (a) the number of pages read is consistent with the
+size of each table, (b) the buffer pool is indeed holding pages
+in memory for use with subsequent runs of the same query in the
+same invocation of the server.
+
+
+Now try the following query:
+
+explain (analyze,buffers,format yaml) select min(id) from people;
+
+
+The output is much longer than for the previous example, but you only
+need to worry about the first "Shared Hit Blocks" and "Shared Read Blocks".
+Try to explain the results (3 reads, no hits).
+Hints: look at the rest of the plan,
+and maybe also do \d people in psql.
+
+[show answer]
+
+
+We asked to find the minimum value of the People.id attribute.
+Looking at the \d description of People, we can see
+that there is a B-tree index on this attribute. The index will contain
+all of the id values from the table, and the index is much more
+compact than the table. The query planner thus decides that it can more
+efficiently find the minimum value by traversing the index (to the
+leftmost index node) and so it reads in 3 pages from the index file
+(root node, first level node, leaf node containing min value).
+Since the index had not been previously accessed, the pages will not
+be in the buffer and thus need to be read in.
+
+
+Of course, a smarter solution would be for the query planner to know
+that all of the pages of the People table were already in
+the buffer pool (i.e. in memory) and count the tuples there. This would
+require no disk reads at all. Unfortunately(?), the query planner is
+completely separate from the buffer pool and so doesn't know this.
+
+
+
+Now consider the query:
+
+select count(*) from people;
+
+
+This returns a simple count of the number of tuples in the People
+table. Now, we know that table sizes are stored in the pg_class
+catalog table, so this query could be answered by the following
+simple query on the pg_class table:
+
+select reltuples from pg_class where relname='people';
+
+
+Use EXPLAIN to work out how the above select count(*)
+query is actually executed.
+
+[show answer]
+
+
+The trace of page requests shows that it reads all of the data pages
+in the table. It does not use the reltuples value from the
+pg_class table.
+Why not? Because the reltuples value is only an approximation
+to the number of tuples. It is maintained for use by the query optimizer,
+which does not need an exact count of tuples. For query optimization,
+a "ball-park" figure is good enough (e.g. is it 100 or 100,000?).
+
+
+Now, why does it need to read the whole table? ...
+Because of MVCC, a PostgreSQL data page contains a mixture of current
+and deleted tuples. Deleted tuples are removed sometime after the last
+transaction that had access to them has completed (by the periodic
+vacuum process). Even while deleted tuples are still in the page, new
+transactions cannot see them because the xmax system attribute
+which tells them that the tuple was deleted before they started.
+
+
+Now, a select count(*) statement is a transaction and needs
+to know precisely which tuples existed when it started. The only way
+it can do this is to scan the table and check the visiblity of each
+tuple, counting only the ones with an xmax which is either
+null or which refers to a more recent transaction (i.e. the tuple
+was deleted by a transaction which happened after the count started).
+
+
+
+All of the above queries involved just one table. Now let's look at
+some queries involving multiple tables. Consider first the following
+query which generates a list of student ids and the marks/grades
+they scored in each course:
+
+select e.student,c.code,e.mark,e.grade
+from   Courses c join Enrolments e on (c.id=e.course);
+ student |   code   | mark | grade
+---------+----------+------+-------
+    3470 | MINE1010 |   60 | PS
+    3470 | PHYS1111 |   60 | PS
+    3470 | ARTS1090 |   63 | PS
+    3470 | SOMA1651 |   60 | PS
+    3472 | FINS2624 |   85 | HD
+    3472 | CRIM2020 |   78 | DN
+    3472 | SAHT2214 |   82 | DN
+    3472 | CVEN2301 |   88 | HD
+    3474 | SOCW3001 |   45 | FL
+    3474 | WOMS3005 |   54 | PS
+    3474 | AVEN3430 |   43 | FL
+etc. etc. etc. (3506 rows)
+
+
+If you run this query, you may see the tuples in a different order
+to the above, but you will (if you can be bothered scrolling through
+them) see 3506 tuples, which would include the ones above.
+
+
+If you use EXPLAIN to examine the execution costs of this
+query, you will see out that includes the following (where I have
+used TEXT format and greatly simplied the output for clarity):
+
+explain (analyze,buffers)
+select e.student,c.code,e.mark,e.grade
+from   Courses c join Enrolments e on (c.id=e.course);
+
+                               QUERY PLAN
+---------------------------------------------------------------------
+ Hash Join (e.course = c.id)
+   Buffers: shared hit=28
+   ->  Seq Scan on enrolments e
+         Buffers: shared hit=19
+   ->  Hash
+         Buffers: shared hit=9
+         ->  Seq Scan on courses c
+               Buffers: shared hit=9
+...
+
+
+What this effectively shows us is the relational algebra expression
+that the PostgreSQL engine uses to solve the query, which is simply:
+
+Proj[student,code,mark,grade](Enrolments Join[course=id] Courses)
+
+
+However, since it a query execution plan, it includes additional
+information on how the operations such as join should be carried out.
+Also, it does not include details of the final projection operation.
+This could be displayed as a "query expression tree" as follows:
+
+  
+
+Hash join is a particular join algorithm that we'll talk about in a
+few weeks.
+It requires at least one of the relations being joined to be in a hash
+file. The first step in the above query plan is to make a hashed copy
+of the Courses table, which requires a complete scan of this
+table. The hash join then performs a scan of the Enrolment
+table and uses the hashed version of Courses in order to
+carry out the join operation efficiently.
+
+
+More importantly for our purposes in this Prac Exercise are the
+requests on the buffer pool.
+You can see that the sequential scan on Courses visits
+all 9 pages from that table, and finds all of them already in the
+buffer pool. (Note that in TEXT format, EXPLAIN
+only reports the non-zero counts for the buffer pool).
+Similarly, the sequential scan on Enrolments visits all
+19 pages of that table.
+The 28 pages reported for the hash join is simply a sum of the
+counts for the sequential scans.
+Since there is no mention of buffer activity for the hash table,
+it appears as if this is being built in memory (which is clear
+from the full output for the above command if you run it in your
+own psql session).
+So, once again, all of the required pages are already in the buffer
+pool and no disk reads are required.
+
+
+Let's try a more complex query, which includes the person's name
+as well as their id in the course/mark/grade information:
+
+select p.id,p.family,c.code,e.mark,e.grade
+from   People p
+  join Enrolments e on (p.id=e.student)
+  join Courses c on (c.id=e.course);
+  id  |         family          |   code   | mark | grade
+------+-------------------------+----------+------+-------
+ 3470 | Ang                     | MINE1010 |   60 | PS
+ 3470 | Ang                     | PHYS1111 |   60 | PS
+ 3470 | Ang                     | ARTS1090 |   63 | PS
+ 3470 | Ang                     | SOMA1651 |   60 | PS
+ 3472 | Bickmore                | FINS2624 |   85 | HD
+ 3472 | Bickmore                | CRIM2020 |   78 | DN
+ 3472 | Bickmore                | SAHT2214 |   82 | DN
+ 3472 | Bickmore                | CVEN2301 |   88 | HD
+etc. etc. etc. (3506 rows)
+
+
+If run this query uing EXPLAIN we observe (once again,
+the output is greatly simplified):
+
+explain (analyze,buffers)
+select p.id,p.family,c.code,e.mark,e.grade
+from   People p
+  join Enrolments e on (p.id=e.student)
+  join Courses c on (c.id=e.course);
+
+                               QUERY PLAN
+---------------------------------------------------------------------
+ Hash Join  (e.course = c.id)
+   Buffers: shared hit=55
+   ->  Hash Join  (e.student = p.id)
+         Buffers: shared hit=46
+         ->  Seq Scan on enrolments e
+               Buffers: shared hit=19
+         ->  Hash
+               Buffers: shared hit=27
+               ->  Seq Scan on people p
+                     Buffers: shared hit=27
+   ->  Hash
+         Buffers: shared hit=9
+         ->  Seq Scan on courses c
+               Buffers: shared hit=9
+...
+
+
+The query plan involves two hash joins and can be represented by the
+following query tree:
+
+  
+
+From the EXPLAIN output, we can see each table is scanned once
+in executing this query: scan 9 pages from the Courses table to
+build an in-memory hash-table, scan 27 pages of the People table
+to build another in-memory hash table, scan 19 pages from the
+Enrolments table to join with People and then join
+the result of that with the Courses hash table.
+This gives a total of 55 disk page requests, all of which can be
+resolved from the buffer pool, because all tables are stored in the
+buffer pool (assuming that you asked queries on all tables earlier).
+
+
+Smaller Buffer Pool
+
+The above results show that DBMSs tend to use a very large buffer pool to
+keep as much data as possible in memory. With a small database such as ours,
+the whole DB eventually ends up in the buffer pool. Of course, we know that
+for a realistic sized database, the buffer pool will eventually fill up and
+further page requests will require pages already in the pool to be removed.
+In order to observe such effects, we need a much smaller buffer pool.
+
+
+The pg_ctl command allows us to send configuration options to the
+PostgreSQL server, as we saw in
+Prac P03.
+This involves the use of the -o option to pg_ctl and an
+argument containing the options to be sent to the backend, e.g.
+
+pg_ctl start -o '-B 100' -l /srvr/YOU/pgsql/log
+server starting
+
+
+The above command starts the PostgreSQL server with a much smaller buffer
+pool than usual (100 pages, rather than 3584).
+The complete set of options for configuring the server is described in
+Chapter 18
+of the PostgreSQL documentation.
+
+
+Stop your PostgreSQL server and restart it with a very small buffer pool:
+
+pg_ctl stop
+waiting for server to shut down.... done
+server stopped
+pg_ctl start -o '-B 32' -l /srvr/YOU/pgsql/log
+server starting
+psql uni
+...
+
+
+Run the following query, with EXPLAIN output:
+
+explain (analyze,buffers,format yaml) select * from courses;
+           QUERY PLAN
+--------------------------------
+ - Plan:                       +
+...
+     Actual Rows: 980          +
+     Actual Loops: 1           +
+     Shared Hit Blocks: 0      +
+     Shared Read Blocks: 9     +
+     Shared Written Blocks: 0  +
+...
+(1 row)
+
+
+As we'd expect, the buffer pool starts empty (we just restarted the server)
+and we need to read every page from the Courses table into the buffer
+pool in order to answer the query.
+Now try the same query again. What would expect to happen? As above, we might
+expect "Shared Hit Blocks" to be 9 and "Shared Read Blocks" to be 0, since all
+of the pages from Courses are already in the pool.
+In fact, what you might observe is the following:
+
+explain (analyze,buffers,format yaml) select * from courses;
+           QUERY PLAN
+--------------------------------
+ - Plan:                       +
+...
+     Actual Rows: 980          +
+     Actual Loops: 1           +
+     Shared Hit Blocks: 4      +
+     Shared Read Blocks: 5     +
+     Shared Written Blocks: 0  +
+...
+(1 row)
+
+
+Or, you might see the same as the original query (9 reads, zero hits).
+What's going on here? The Courses pages were read into the pool,
+but now at least some of them seem to have been removed. Try to think of
+an explanation for this.
+
+[show answer]
+
+
+The pages for the tables in the query are not the only thing in the buffer
+pool. The server also needs to also examine data from the system catalogs
+(e.g. to work out how to format the output tuples, or to find the file
+names of the query tables). The system catalogs are themselves tables
+and so their pages also need to be loaded. When the buffer pool is so
+small, loading the catalog pages may cause some of the query table
+pages to be replaced. So, even though they are all loaded into the
+buffer pool during the query, subsequent activity on the buffer pool
+due to catalog and other system tables might replace them before the
+query is asked again.
+
+
+
+Now ask the same query again several more times in quick succession
+to see what the results are.
+You may see something like:
+
+explain (analyze,buffers,format yaml) select * from courses;
+...
+     Shared Hit Blocks: 4      +
+     Shared Read Blocks: 5     +
+...
+explain (analyze,buffers,format yaml) select * from courses;
+...
+     Shared Hit Blocks: 8      +
+     Shared Read Blocks: 1     +
+...
+explain (analyze,buffers,format yaml) select * from courses;
+...
+     Shared Hit Blocks: 9      +
+     Shared Read Blocks: 0     +
+...
+
+
+Can you explain this behaviour? If you know the details of the PostgreSQL
+buffer pool management code, you should be able explain it. But given that
+you probably don't at this stage, it would help if we had access to more
+detailed information about buffer pool usage than a simple summary at the
+end of each query. Obtaining this detailed information is the topic of the
+next Prac Exercise.
+
+
+In the meantime, you should try running each of the queries from the
+first part of this Exercise on your new server instance. Compare the
+results from earlier with the results you get with the much smaller
+buffer pool.
+
+
+Postscript
+
+Throughout this exercise, we have considered only the shared
+buffer pool. This pool is used by all processes running on the PostgreSQL
+server to hold any data read in from the database.
+However, the shared buffer pool is not the only place where data
+is manipulated. Each server has its own private buffer pool for
+holding intermediate results during query execution. These would
+need to be considered to build a up a complete picture of the
+disk access patterns for one query execution.
+
+
+End of Prac
+
+
+Let me know via the forums,
+or come to a consultation
+if you have any problems with this exercise
+... jas</p></div></body></html>

@@ -1,0 +1,68 @@
+[
+ {
+  "question": "May i have example scanning a relation ?",
+  "answer": "With the above disk manager, the query:\n select name from Employee\n might be implemented as something like\n DB db = openDatabase(\"myDB\");\n Reln r = openRelation(db,\"Employee\");\n Page buffer = malloc(PAGESIZE*sizeof(char));\n for (int i = 0; i < nPages(r); i++) {\n    PageID pid = makePageID(r,i);\n    get_page(db, pid, buffer);\n    foreach tuple in buffer {\n       get tuple data and extract name\n    }\n }\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "scanning",
+   "a",
+   "relation"
+  ]
+ },
+ {
+  "question": "List some example scanning a relation ?",
+  "answer": "With the above disk manager, the query:\n select name from Employee\n might be implemented as something like\n DB db = openDatabase(\"myDB\");\n Reln r = openRelation(db,\"Employee\");\n Page buffer = malloc(PAGESIZE*sizeof(char));\n for (int i = 0; i < nPages(r); i++) {\n    PageID pid = makePageID(r,i);\n    get_page(db, pid, buffer);\n    foreach tuple in buffer {\n       get tuple data and extract name\n    }\n }\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "scanning",
+   "a",
+   "relation"
+  ]
+ },
+ {
+  "question": "example scanning a relation",
+  "answer": "With the above disk manager, the query:\n select name from Employee\n might be implemented as something like\n DB db = openDatabase(\"myDB\");\n Reln r = openRelation(db,\"Employee\");\n Page buffer = malloc(PAGESIZE*sizeof(char));\n for (int i = 0; i < nPages(r); i++) {\n    PageID pid = makePageID(r,i);\n    get_page(db, pid, buffer);\n    foreach tuple in buffer {\n       get tuple data and extract name\n    }\n }\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "scanning",
+   "a",
+   "relation"
+  ]
+ },
+ {
+  "question": "Give me some example scanning a relation ?",
+  "answer": "With the above disk manager, the query:\n select name from Employee\n might be implemented as something like\n DB db = openDatabase(\"myDB\");\n Reln r = openRelation(db,\"Employee\");\n Page buffer = malloc(PAGESIZE*sizeof(char));\n for (int i = 0; i < nPages(r); i++) {\n    PageID pid = makePageID(r,i);\n    get_page(db, pid, buffer);\n    foreach tuple in buffer {\n       get tuple data and extract name\n    }\n }\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "scanning",
+   "a",
+   "relation"
+  ]
+ },
+ {
+  "question": "Do you have some example scanning a relation ?",
+  "answer": "With the above disk manager, the query:\n select name from Employee\n might be implemented as something like\n DB db = openDatabase(\"myDB\");\n Reln r = openRelation(db,\"Employee\");\n Page buffer = malloc(PAGESIZE*sizeof(char));\n for (int i = 0; i < nPages(r); i++) {\n    PageID pid = makePageID(r,i);\n    get_page(db, pid, buffer);\n    foreach tuple in buffer {\n       get tuple data and extract name\n    }\n }\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "scanning",
+   "a",
+   "relation"
+  ]
+ },
+ {
+  "question": "Can i have some example scanning a relation ?",
+  "answer": "With the above disk manager, the query:\n select name from Employee\n might be implemented as something like\n DB db = openDatabase(\"myDB\");\n Reln r = openRelation(db,\"Employee\");\n Page buffer = malloc(PAGESIZE*sizeof(char));\n for (int i = 0; i < nPages(r); i++) {\n    PageID pid = makePageID(r,i);\n    get_page(db, pid, buffer);\n    foreach tuple in buffer {\n       get tuple data and extract name\n    }\n }\n",
+  "intent": "example",
+  "key_words": [
+   "example",
+   "scanning",
+   "a",
+   "relation"
+  ]
+ }
+]

@@ -1,0 +1,9 @@
+rasa_core==0.13.7
+rasa_core_sdk==0.12.2
+rasa_nlu==0.14.6
+spacy==2.1.3
+sklearn-crfsuite==0.3.6
+nltk
+sklearn
+pymongo
+flask

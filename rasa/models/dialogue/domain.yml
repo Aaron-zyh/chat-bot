@@ -1,0 +1,78 @@
+%YAML 1.1
+---
+actions:
+- utter_greet
+- utter_goodbye
+- utter_ask_course
+- utter_default
+- utter_ask_time
+- utter_thanks
+- utter_sorry
+- action_description
+- action_solution
+- action_exercise
+- action_example
+config:
+  store_entities_as_slots: true
+entities:
+- knowledge
+- course
+- time
+- example
+- exercise
+forms: []
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- inform:
+    use_entities: true
+- description:
+    use_entities: true
+- solution:
+    use_entities: true
+- exercise:
+    use_entities: true
+- example:
+    use_entities: true
+- thanks:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+slots:
+  course:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  knowledges:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.ListSlot
+  time:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+templates:
+  utter_ask_course:
+  - text: Which course?
+  utter_ask_time:
+  - text: which week?
+  utter_default:
+  - text: Sorry, I didn’t understand that. Can you make your question longer?
+  utter_goodbye:
+  - text: Bye
+  - text: See you next time :)
+  utter_greet:
+  - text: Hey! How are you?
+  - text: How you doing mate!
+  - text: what can i do for you?
+  utter_sorry:
+  - text: Sorry for that...
+  utter_thanks:
+  - text: Glad to help:)
+  - text: You are welcome:)
+  utter_welcome:
+  - text: you are welcome.

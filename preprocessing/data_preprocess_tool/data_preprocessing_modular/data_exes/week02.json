@@ -1,0 +1,372 @@
+[
+ {
+  "question": "Give me some exercises about table statistic ?",
+  "answer": "Using the PostgreSQL catalog, write a PLpgSQL function\n to return table name and #tuples in table\n for all tables in the public schema\n create type TableInfo as (table text, ntuples int);\n create function pop() returns setof TableInfo ...\n Hints:\n table is a reserved word\n you will need to use dynamically-generated queries.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "table",
+   "statistic"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about table statistic ?",
+  "answer": "Using the PostgreSQL catalog, write a PLpgSQL function\n to return table name and #tuples in table\n for all tables in the public schema\n create type TableInfo as (table text, ntuples int);\n create function pop() returns setof TableInfo ...\n Hints:\n table is a reserved word\n you will need to use dynamically-generated queries.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "table",
+   "statistic"
+  ]
+ },
+ {
+  "question": "exercises for table statistic",
+  "answer": "Using the PostgreSQL catalog, write a PLpgSQL function\n to return table name and #tuples in table\n for all tables in the public schema\n create type TableInfo as (table text, ntuples int);\n create function pop() returns setof TableInfo ...\n Hints:\n table is a reserved word\n you will need to use dynamically-generated queries.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "table",
+   "statistic"
+  ]
+ },
+ {
+  "question": "week 2 exercises table statistic",
+  "answer": "Using the PostgreSQL catalog, write a PLpgSQL function\n to return table name and #tuples in table\n for all tables in the public schema\n create type TableInfo as (table text, ntuples int);\n create function pop() returns setof TableInfo ...\n Hints:\n table is a reserved word\n you will need to use dynamically-generated queries.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "table",
+   "statistic"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 2",
+  "answer": "Using the PostgreSQL catalog, write a PLpgSQL function\n to return table name and #tuples in table\n for all tables in the public schema\n create type TableInfo as (table text, ntuples int);\n create function pop() returns setof TableInfo ...\n Hints:\n table is a reserved word\n you will need to use dynamically-generated queries.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "1",
+   "table",
+   "statistic"
+  ]
+ },
+ {
+  "question": "Give me some exercises about extracting a schema ?",
+  "answer": "Write a PLpgSQL function:\n function schema() returns setof text\n giving a list of table schemas in the public schema\n It should behave as follows:\n db=# select * from schema();\n             tables\n ---------------------------\n  table1(x, y, z)\n  table2(a, b)\n  table3(id, name, address)\n ...\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "extracting",
+   "a",
+   "schema"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about extracting a schema ?",
+  "answer": "Write a PLpgSQL function:\n function schema() returns setof text\n giving a list of table schemas in the public schema\n It should behave as follows:\n db=# select * from schema();\n             tables\n ---------------------------\n  table1(x, y, z)\n  table2(a, b)\n  table3(id, name, address)\n ...\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "extracting",
+   "a",
+   "schema"
+  ]
+ },
+ {
+  "question": "exercises for extracting a schema",
+  "answer": "Write a PLpgSQL function:\n function schema() returns setof text\n giving a list of table schemas in the public schema\n It should behave as follows:\n db=# select * from schema();\n             tables\n ---------------------------\n  table1(x, y, z)\n  table2(a, b)\n  table3(id, name, address)\n ...\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "extracting",
+   "a",
+   "schema"
+  ]
+ },
+ {
+  "question": "week 2 exercises extracting a schema",
+  "answer": "Write a PLpgSQL function:\n function schema() returns setof text\n giving a list of table schemas in the public schema\n It should behave as follows:\n db=# select * from schema();\n             tables\n ---------------------------\n  table1(x, y, z)\n  table2(a, b)\n  table3(id, name, address)\n ...\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "extracting",
+   "a",
+   "schema"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 2",
+  "answer": "Write a PLpgSQL function:\n function schema() returns setof text\n giving a list of table schemas in the public schema\n It should behave as follows:\n db=# select * from schema();\n             tables\n ---------------------------\n  table1(x, y, z)\n  table2(a, b)\n  table3(id, name, address)\n ...\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "2",
+   "extracting",
+   "a",
+   "schema"
+  ]
+ },
+ {
+  "question": "Give me some exercises about enumerated type ?",
+  "answer": "PostgreSQL allows you to define enumerated types, e.g.\n create type Mood as enum ('sad', 'happy');\n Creates a type with two ordered values 'sad' < 'happy'\n What is created in the catalog for the above definition?\n Hint:\n pg_type(oid, typname, typelen, typetype, ...)\n pg_enum(oid, enumtypid, enumlabel)\n Storage Manager\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "enumerated",
+   "type"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about enumerated type ?",
+  "answer": "PostgreSQL allows you to define enumerated types, e.g.\n create type Mood as enum ('sad', 'happy');\n Creates a type with two ordered values 'sad' < 'happy'\n What is created in the catalog for the above definition?\n Hint:\n pg_type(oid, typname, typelen, typetype, ...)\n pg_enum(oid, enumtypid, enumlabel)\n Storage Manager\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "enumerated",
+   "type"
+  ]
+ },
+ {
+  "question": "exercises for enumerated type",
+  "answer": "PostgreSQL allows you to define enumerated types, e.g.\n create type Mood as enum ('sad', 'happy');\n Creates a type with two ordered values 'sad' < 'happy'\n What is created in the catalog for the above definition?\n Hint:\n pg_type(oid, typname, typelen, typetype, ...)\n pg_enum(oid, enumtypid, enumlabel)\n Storage Manager\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "enumerated",
+   "type"
+  ]
+ },
+ {
+  "question": "week 2 exercises enumerated type",
+  "answer": "PostgreSQL allows you to define enumerated types, e.g.\n create type Mood as enum ('sad', 'happy');\n Creates a type with two ordered values 'sad' < 'happy'\n What is created in the catalog for the above definition?\n Hint:\n pg_type(oid, typname, typelen, typetype, ...)\n pg_enum(oid, enumtypid, enumlabel)\n Storage Manager\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "enumerated",
+   "type"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 2",
+  "answer": "PostgreSQL allows you to define enumerated types, e.g.\n create type Mood as enum ('sad', 'happy');\n Creates a type with two ordered values 'sad' < 'happy'\n What is created in the catalog for the above definition?\n Hint:\n pg_type(oid, typname, typelen, typetype, ...)\n pg_enum(oid, enumtypid, enumlabel)\n Storage Manager\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "3",
+   "enumerated",
+   "type"
+  ]
+ },
+ {
+  "question": "Give me some exercises about relation scan cost ?",
+  "answer": "Consider a table R(x,y,z) with 105 tuples, implemented as\n number of tuples r = 100,000\n average size of tuples R = 200 bytes\n size of data pages B = 4096 bytes\n time to read one data page Tr = 10msec\n time to check one tuple 1 usec\n time to form one result tuple 1 usec\n time to write one result page Tr = 10msec\n Calculate the total time-cost for answering the query:\n select * from R where x > 10;\n if 50% of the tuples satisfy the condition.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "relation",
+   "scan",
+   "cost"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about relation scan cost ?",
+  "answer": "Consider a table R(x,y,z) with 105 tuples, implemented as\n number of tuples r = 100,000\n average size of tuples R = 200 bytes\n size of data pages B = 4096 bytes\n time to read one data page Tr = 10msec\n time to check one tuple 1 usec\n time to form one result tuple 1 usec\n time to write one result page Tr = 10msec\n Calculate the total time-cost for answering the query:\n select * from R where x > 10;\n if 50% of the tuples satisfy the condition.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "relation",
+   "scan",
+   "cost"
+  ]
+ },
+ {
+  "question": "exercises for relation scan cost",
+  "answer": "Consider a table R(x,y,z) with 105 tuples, implemented as\n number of tuples r = 100,000\n average size of tuples R = 200 bytes\n size of data pages B = 4096 bytes\n time to read one data page Tr = 10msec\n time to check one tuple 1 usec\n time to form one result tuple 1 usec\n time to write one result page Tr = 10msec\n Calculate the total time-cost for answering the query:\n select * from R where x > 10;\n if 50% of the tuples satisfy the condition.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "relation",
+   "scan",
+   "cost"
+  ]
+ },
+ {
+  "question": "week 2 exercises relation scan cost",
+  "answer": "Consider a table R(x,y,z) with 105 tuples, implemented as\n number of tuples r = 100,000\n average size of tuples R = 200 bytes\n size of data pages B = 4096 bytes\n time to read one data page Tr = 10msec\n time to check one tuple 1 usec\n time to form one result tuple 1 usec\n time to write one result page Tr = 10msec\n Calculate the total time-cost for answering the query:\n select * from R where x > 10;\n if 50% of the tuples satisfy the condition.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "relation",
+   "scan",
+   "cost"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 2",
+  "answer": "Consider a table R(x,y,z) with 105 tuples, implemented as\n number of tuples r = 100,000\n average size of tuples R = 200 bytes\n size of data pages B = 4096 bytes\n time to read one data page Tr = 10msec\n time to check one tuple 1 usec\n time to form one result tuple 1 usec\n time to write one result page Tr = 10msec\n Calculate the total time-cost for answering the query:\n select * from R where x > 10;\n if 50% of the tuples satisfy the condition.\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "4",
+   "relation",
+   "scan",
+   "cost"
+  ]
+ },
+ {
+  "question": "Give me some exercises about buffer management cost benefit (i) ?",
+  "answer": "Assume that:\n the Customer relation has bC pages (e.g. 5)\n the Employee relation has bE pages (e.g. 4)\n Compute how many page reads occur ...\n if we have only 2 buffers (i.e. effectively no buffer pool)\n when a buffer pool with MRU replacement strategy is used\n when a buffer pool with LRU replacement strategy is used\n For the last two, buffer pool has n=3 slots (n < bC and n < bE)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "buffer",
+   "management",
+   "cost",
+   "benefit",
+   "(i)"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about buffer management cost benefit (i) ?",
+  "answer": "Assume that:\n the Customer relation has bC pages (e.g. 5)\n the Employee relation has bE pages (e.g. 4)\n Compute how many page reads occur ...\n if we have only 2 buffers (i.e. effectively no buffer pool)\n when a buffer pool with MRU replacement strategy is used\n when a buffer pool with LRU replacement strategy is used\n For the last two, buffer pool has n=3 slots (n < bC and n < bE)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "buffer",
+   "management",
+   "cost",
+   "benefit",
+   "(i)"
+  ]
+ },
+ {
+  "question": "exercises for buffer management cost benefit (i)",
+  "answer": "Assume that:\n the Customer relation has bC pages (e.g. 5)\n the Employee relation has bE pages (e.g. 4)\n Compute how many page reads occur ...\n if we have only 2 buffers (i.e. effectively no buffer pool)\n when a buffer pool with MRU replacement strategy is used\n when a buffer pool with LRU replacement strategy is used\n For the last two, buffer pool has n=3 slots (n < bC and n < bE)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "buffer",
+   "management",
+   "cost",
+   "benefit",
+   "(i)"
+  ]
+ },
+ {
+  "question": "week 2 exercises buffer management cost benefit (i)",
+  "answer": "Assume that:\n the Customer relation has bC pages (e.g. 5)\n the Employee relation has bE pages (e.g. 4)\n Compute how many page reads occur ...\n if we have only 2 buffers (i.e. effectively no buffer pool)\n when a buffer pool with MRU replacement strategy is used\n when a buffer pool with LRU replacement strategy is used\n For the last two, buffer pool has n=3 slots (n < bC and n < bE)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "buffer",
+   "management",
+   "cost",
+   "benefit",
+   "(i)"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 2",
+  "answer": "Assume that:\n the Customer relation has bC pages (e.g. 5)\n the Employee relation has bE pages (e.g. 4)\n Compute how many page reads occur ...\n if we have only 2 buffers (i.e. effectively no buffer pool)\n when a buffer pool with MRU replacement strategy is used\n when a buffer pool with LRU replacement strategy is used\n For the last two, buffer pool has n=3 slots (n < bC and n < bE)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "5",
+   "buffer",
+   "management",
+   "cost",
+   "benefit",
+   "(i)"
+  ]
+ },
+ {
+  "question": "Give me some exercises about buffer management cost benefit (ii) ?",
+  "answer": "If the tables were larger, the above analysis would be tedious.\n Write a C program to simulate buffer pool usage\n assuming a nested loop join as above\n argv[1] gives number of pages in \"outer\" table\n argv[2] gives number of pages in \"inner\" table\n argv[3] gives number of slots in buffer pool\n argv[4] gives replacement strategy (LRU,MRU,FIFO-Q)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "buffer",
+   "management",
+   "cost",
+   "benefit",
+   "(ii)"
+  ]
+ },
+ {
+  "question": "Do you have some exercises about buffer management cost benefit (ii) ?",
+  "answer": "If the tables were larger, the above analysis would be tedious.\n Write a C program to simulate buffer pool usage\n assuming a nested loop join as above\n argv[1] gives number of pages in \"outer\" table\n argv[2] gives number of pages in \"inner\" table\n argv[3] gives number of slots in buffer pool\n argv[4] gives replacement strategy (LRU,MRU,FIFO-Q)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "buffer",
+   "management",
+   "cost",
+   "benefit",
+   "(ii)"
+  ]
+ },
+ {
+  "question": "exercises for buffer management cost benefit (ii)",
+  "answer": "If the tables were larger, the above analysis would be tedious.\n Write a C program to simulate buffer pool usage\n assuming a nested loop join as above\n argv[1] gives number of pages in \"outer\" table\n argv[2] gives number of pages in \"inner\" table\n argv[3] gives number of slots in buffer pool\n argv[4] gives replacement strategy (LRU,MRU,FIFO-Q)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "buffer",
+   "management",
+   "cost",
+   "benefit",
+   "(ii)"
+  ]
+ },
+ {
+  "question": "week 2 exercises buffer management cost benefit (ii)",
+  "answer": "If the tables were larger, the above analysis would be tedious.\n Write a C program to simulate buffer pool usage\n assuming a nested loop join as above\n argv[1] gives number of pages in \"outer\" table\n argv[2] gives number of pages in \"inner\" table\n argv[3] gives number of slots in buffer pool\n argv[4] gives replacement strategy (LRU,MRU,FIFO-Q)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "buffer",
+   "management",
+   "cost",
+   "benefit",
+   "(ii)"
+  ]
+ },
+ {
+  "question": "I want a exercise about week 2",
+  "answer": "If the tables were larger, the above analysis would be tedious.\n Write a C program to simulate buffer pool usage\n assuming a nested loop join as above\n argv[1] gives number of pages in \"outer\" table\n argv[2] gives number of pages in \"inner\" table\n argv[3] gives number of slots in buffer pool\n argv[4] gives replacement strategy (LRU,MRU,FIFO-Q)\n",
+  "intent": "exercise",
+  "key_words": [
+   "exercise",
+   "6",
+   "buffer",
+   "management",
+   "cost",
+   "benefit",
+   "(ii)"
+  ]
+ }
+]

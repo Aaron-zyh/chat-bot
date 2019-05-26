@@ -1,0 +1,1004 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'> <title>C:\Users\admin\Desktop\新建文件夹 (3)\CourseOutline(1).html</title> </head><body><div><h3 >标题</h3><p>Course Outline</p><h3 >标题1</h3><p>Course Outline</p><h3 >字段1</h3><p>Contents
+ 
+ 
+  
+   
+    Course Details
+   
+  
+  
+   
+    Course Summary
+   
+  
+  
+   
+    Course Aims
+   
+  
+  
+   
+    Student Learning Outcomes
+   
+  
+  
+   
+    Assumed Knowledge
+   
+  
+  
+   
+    Teaching Rationale
+   
+  
+  
+   
+    Teaching Strategies
+   
+  
+  
+   
+    Assessment
+   
+  
+  
+   
+    Academic Honesty and Plagiarism
+   
+  
+  
+   
+    Course Schedule
+   
+  
+  
+   
+    Resources for Students
+   
+  
+  
+   
+    Course Evaluation and Development
+   
+  
+ 
+ 
+  Course Details
+ 
+ 
+  
+   
+    
+     
+      Course Code
+     
+    
+    
+     COMP9315
+    
+   
+   
+    
+     
+      Course Title
+     
+    
+    
+     DBMS Implementation
+    
+   
+   
+    
+     
+      Course Convenor
+     
+    
+    
+     John Shepherd  (jas@cse.unsw.edu.au)
+    
+   
+   
+    
+     
+      Course Admin
+     
+    
+    
+     Jashank Jeremy
+    
+   
+   
+    
+     
+      Course Email
+     
+    
+    
+     cs9315@cse.unsw.edu.au
+    
+   
+   
+    
+     
+      Lectures
+     
+    
+    
+     Tuesday 4-6 Mathews B, Thursday 12-2 Colombo B (
+     
+      campus map
+     
+     )
+    
+   
+   
+    
+     
+      Consultations
+     
+    
+    
+     Monday 2-3, Wednesday 11-12, both in K17-410
+    
+   
+   
+    
+     
+      Units of Credit
+     
+    
+    
+     6
+    
+   
+   
+    
+     
+      Course Website
+     
+    
+    
+     
+      http://cse.unsw.edu.au/~cs9315
+     
+     
+     
+    
+   
+   
+    
+     
+      Handbook Entry
+     
+    
+    
+     
+      http://www.handbook.unsw.edu.au/postgraduate/courses/current/COMP9315.html
+     
+     
+     
+    
+   
+  
+ 
+ 
+  Course Summary
+ 
+ 
+  This course aims to introduce students to the detailed internal structure of  database management systems (DBMSs) such as Oracle or SQL Server. DBMSs contain a variety of interesting data structures and algorithms that are also potentially useful outside the DBMS context; knowing about them is a useful way of extending your general programming background.  While the focus is on relational DBMSs, given that they have the best-developed technological foundation, we will also consider more recent developments in the management of large data repositories.
+ 
+ 
+  Relational DBMSs need to deal with a variety of issues: storage structures and management, implementation of relational operations, query optimisation, transactions, concurrency, recovery, security. The course will address most of these, along with a look at emerging database systems trends. The level of detail on individual topics will vary; some will be covered in significant detail, others will be covered relatively briefly.
+ 
+ 
+  An important aim of this course is to give you a chance to undertake an in-depth exploration of the internals of a
+  
+   real
+  
+  DBMS: PostgreSQL. Lectures will discuss the general principles of how DBMSs are implemented, and will also illustrate them with extensive examples from PostgreSQL where possible.
+ 
+ 
+  Student Learning Outcomes
+ 
+ 
+  After completing this course, students will:
+ 
+ 
+  
+   understand the internal architecture of data management systems (primarily relational DBMSs)
+  
+  
+   be familiar with a variety of data-structures and algorithms for large-scale data manipulation
+  
+  
+   be able to analyse and tune the performance of data-intensive systems
+  
+  
+   be familiar with techniques for implementing transactional behaviour and reliable storage
+  
+  
+   be able to install and administer the PostgreSQL database management system
+  
+  
+   be familiar with some modern trends in database technology (e.g. noSQL, graphs)
+  
+ 
+ 
+  At the end of this course, you should be in a position where you could make contributions to the further development of PostgreSQL. Some of you might even be at the stage where you could build a database management system "from scratch".
+ 
+ 
+  This course contributes to the development of the following graduate capabilities:
+ 
+ 
+  
+   
+    
+     
+      Graduate Capability
+     
+    
+    
+     
+      Acquired in
+     
+    
+   
+   
+    
+     scholarship: rigorous in their analysis, critique, and reflection
+    
+    
+     doing quizzes and writing assignment reports
+    
+   
+   
+    
+     scholarship: able to apply their knowledge and skills to solving problems
+    
+    
+     carrying out assignment and prac work
+    
+   
+   
+    
+     scholarship: capable of effective communication
+    
+    
+     writing reports for assignments
+    
+   
+   
+    
+     leadership: enterprising, innovative and creative
+    
+    
+     solving assignment problems
+    
+   
+   
+    
+     leadership: collaborative team workers
+    
+    
+     assignments are group-based
+    
+   
+   
+    
+     professionalism: capable of independent, self-directed practice
+    
+    
+     understanding PostgreSQL for assignments
+    
+   
+  
+ 
+ 
+  Assumed Knowledge
+ 
+ 
+  This course assumes that you have a solid understanding of the following topics:
+ 
+ 
+  
+   the C language and programming in C (or C++)
+   
+    (e.g. completed COMP9021 or COMP1927)
+   
+  
+  
+   developing applications on RDBMSs
+   
+    (SQL, relational algebra e.g. COMP9311 or COMP3311)
+   
+  
+  
+   file organisation/manipulation
+   
+    (Unix open,close,lseek,flock)
+   
+  
+  
+   sorting/searching techniques
+   
+    (quick/merge sorts, binary trees, hash tables e.g. COMP9024 or COMP2521)
+   
+  
+ 
+ 
+  If you do not have this prerequisite knowledge, you should reconsider your enrolment in the course, or else quickly set about developing your knowledge on these topics.
+ 
+ 
+  Teaching Rationale
+ 
+ 
+  Since this course is about understanding the detailed implementation of a specific technology (relational database management systems), practical experience with the technology is critical to the learning outcomes of the course. Thus, I will spend a lot of time in lectures working through exercises, to illustrate various database techniques and technologies. However, the primary learning focus in this course is the assignment work.
+ 
+ 
+  There are no tutorial or laboratory classes in this course, because I recognise that students already have significant demands on their time, and formal classes are not necessarily the best way to force people to learn. However, don't make the mistake of thinking that "no classes" means that you can get by with "no work". I will be providing a exercises and prac work that I expect you will do in your own time. In other words, all of the material that would have been in tutes and labs is still available, but you can interact with it when you like.
+ 
+ 
+  In order to provide some motivation to work each week, and to help you review how well you're understanding the course, there'll be a number of on-line quizzes which will contribute 10% of your final mark.
+ 
+ 
+  Natually, sometimes people will "get stuck" on understanding various aspects of the material; use the Webcms  comment facility to ask questions. One of the course staff will try to respond promptly if we're near a computer at the time. I also run face-to-face consultations each week where you can come if you have a problem that can't be handled easily on the Forum. Many debugging problems fall into this category, because it is often much easier to show me the whole environment where the bug occurs, rather than trying to explain it to me and giving me only partial information.
+ 
+ 
+  Teaching Strategies
+ 
+ 
+  There are three primary modes of learning for this course: lectures, exercises, assignments.
+ 
+ 
+  Lectures/Exercises
+ 
+ 
+  Each week there will be three hours of lectures during which theory, exercises and case-studies will be presented. There are two sources of material for lectures: Course Notes and Lecture Slides. The Course Notes are a detailed account of the various topics (although not as detailed as a textbook), and will generally be released before the topic is discussed in lectures. The Lecture Slides will contain a summary of the Course Notes, along with exercises, and I will not make them available until after the lecture, in order to keep the exercises "fresh". You will get maximum benefit from lectures if you read the relevant course notes (or textbook chapters) before attending each lecture.
+ 
+ 
+  There will be no tutorials or lab classes in this course, but tutorial-type questions and practical exercises will be made available. You are expected to work through these yourself. Note: the questions and pracs are not assessable, but I am assuming that you will be interested enough in the topics to actually do them without the need for assessment-based incentives. It is definitely in your own best interest to keep up-to-date with the theory/prac exercises. The quizzes will provide some assessment-based motivation to work consistently.
+ 
+ 
+  Given the absence of tutorials and labs, you
+  
+   must
+  
+  make use of (a) the WebCMS MessageBoard, (b) consultations, (c) email direct to me, in order to get your questions answered.
+ 
+ 
+  Assignments
+ 
+ 
+  In the assignments, you will implement modifications/enhancments to the PostgreSQL DBMS and perform experiments to analyse your implementation. The assignments contribute 25% of the overall mark for this course.
+ 
+ 
+  
+   
+    
+     
+      
+       #
+      
+     
+     
+      
+       Description
+      
+     
+     
+      
+       Due
+      
+     
+     
+      
+       Marks
+      
+     
+    
+    
+     
+      1
+     
+     
+      Storage Management
+     
+     
+      week 5
+     
+     
+      10%
+     
+    
+    
+     
+      2
+     
+     
+      Query Processing
+     
+     
+      week 10
+     
+     
+      15%
+     
+    
+   
+  
+ 
+ 
+  Assignments are important,
+  
+   not
+  
+  for the marks they provide, but for the understanding they give you about the details of DBMS internals. Assignments will be completed in small groups (size 1 or 2) which you will form via the Groups component of WebCMS once it's activated. If you insist on doing the assignment alone, you won't get any benefit (e.g. no more time to do it, same expectation on the standard, no "kinder" marking).
+ 
+ 
+  As noted above, assignments are an important vehicle for learning the material in this course. If you don't do them (e.g. by not contributing to your group, or by the whole group copying and submitting someone else's work), you have wasted a valuable learning opportunity. As well as group interviews on assignment submissions, there will be exam questions directly related to the assignment work to test your individual knowledge of assignment work.
+ 
+ 
+  Assignments are to be submitted on-line (via WebCMS or Give) before midnight on the due date. Assessment of assignments will be based on how accurately they satisfy the requirements and how good your analysis is. Late submissions will have marks deducted from the maximum achievable mark at the rate of roughly 0.8% of the total mark per hour that they are late (this is equivalent to around 20% per day late).
+ 
+ 
+ 
+ 
+  Assessment
+ 
+ 
+  Your final mark in this course will be based on components from the assignment work and the exam. Note that the exam is a hurdle, so that if you fail the exam badly enough, you cannot pass the course. The following formula describes precisely how the mark will be computed and how the hurdle will be enforced:
+ 
+ ass1   = mark for assignment 1 (out of 10)
+ass2   = mark for assignment 2 (out of 15)
+quiz   = mark for quizzes (out of 15)
+exam   = mark for exam (out of 60)
+okExam = exam > 24/60 (after scaling) 
+mark   = ass1 + ass2 + quiz + exam
+grade  = HD|DN|CR|PS if mark >= 50 && okExam
+       = FL if mark < 50 && okExam
+       = UF if !okExam
+
+ 
+  The Final Exam will be conducted in the CSE laboratories, and will involve some multiple-choice questions, some long-answer questions and some small implementation questions (C programming).
+ 
+ 
+  There is a hurdle requirement on the final exam. If you do not score at least 40% (24/60) on the exam (after scaling), you cannot pass this course. If your overall course score exceeds 50%, despite scoring very poorly (<40%) on the exam, the hurdle will be enforced via a grade of UF.
+ 
+ 
+  If you cannot attend the Final Exam because of illness or misadventure, then you must submit a Special Consideration request, with documentation, through MyUNSW within 48 hours of the exam. If your request is reasonable, then you will be awarded a
+  
+   Supplementary Exam
+  
+  .
+ 
+ 
+  Student Conduct
+  
+  
+ 
+ 
+  !!  Important  !!
+ 
+ 
+  The
+  
+   Student Code of Conduct
+  
+  (
+  
+   Information
+  
+  ,
+  
+   Policy
+  
+  ) sets out what the University expects from students as members of the UNSW community. As well as the learning, teaching and research environment, the University aims to provide an environment that enables students to achieve their full potential and to provide an experience consistent with the University’s values and guiding principles. A condition of enrolment is that students
+  
+   inform themselves
+  
+  of the University’s rules and policies affecting them, and conduct themselves accordingly.
+ 
+ 
+  In particular, students have the responsibility to observe standards of equity and respect in dealing with every member of the University community. This applies to all activities on UNSW premises and all external activities related to study and research. This includes behaviour in person as well as behaviour on social media, for example Facebook groups set up for the purpose of discussing UNSW courses or course work. Behaviour that is considered in breach of the Student Code Policy as discriminatory, sexually inappropriate, bullying, harassing, invading another’s privacy or causing any person to fear for their personal safety is serious misconduct and can lead to severe penalties, including suspension or exclusion from UNSW.
+ 
+ 
+  If you have any concerns, you may raise them with your lecturer, or approach the
+  
+   School Ethics Officer
+  
+  ,
+  
+   Grievance Officer
+  
+  , or one of the
+  
+   student representatives
+  
+  .
+ 
+ 
+  
+   Plagiarism
+  
+  is
+  
+   defined as
+  
+  using the words or ideas of others and presenting them as your own. UNSW and CSE treat plagiarism as academic misconduct, which means that it carries penalties as severe as being excluded from further study at UNSW. There are several on-line sources to help you understand what plagiarism is and how it is dealt with at UNSW:
+ 
+ 
+  
+   
+    Plagiarism and Academic Integrity
+   
+  
+  
+   
+    UNSW Plagiarism Procedure
+   
+  
+ 
+ 
+  Make sure that you read and understand these. Ignorance is not accepted as an excuse for plagiarism. In particular, you are also responsible that your assignment files are not accessible by anyone but you by setting the correct permissions in your CSE directory and code repository, if using. Note also that plagiarism includes paying or asking another person to do a piece of work for you and then submitting it as your own work.
+ 
+ 
+  UNSW has an ongoing commitment to fostering a culture of learning informed by 
+  academic integrity. All UNSW staff and students have a responsibility to adhere 
+  to this principle of academic integrity. Plagiarism undermines academic 
+  integrity and is not tolerated at UNSW. Plagiarism at UNSW is defined as using
+  the words or ideas of others and passing them off as your own.
+ 
+ 
+  If you haven't done so yet, please take the time to read the full text of
+ 
+ 
+  
+   
+    UNSW's policy regarding academic honesty and plagiarism
+   
+  
+ 
+ 
+  The pages below describe the policies and procedures in more detail:
+ 
+ 
+  
+   
+    Student Code Policy
+   
+  
+  
+   
+    Student Misconduct Procedure
+   
+  
+  
+   
+    Plagiarism Policy Statement
+   
+  
+  
+   
+    Plagiarism Procedure
+   
+  
+ 
+ 
+  You should also read the following page which describes your rights and responsibilities in the CSE context:
+ 
+ 
+  
+   
+    Essential Advice for CSE Students
+   
+  
+ 
+ 
+  Special Consideration
+ 
+ 
+  If your work in this course is affected by unforseen adverse circumstances, you should apply for Special Consideration through MyUNSW, including documentation on how your have been affected. If your request is reasonable and your work has clearly been impacted, then
+ 
+ 
+  
+   for an assignment, you may be granted an extension
+  
+  
+   for the Final Exam, you may be offered a Supplementary Exam
+  
+ 
+ 
+  Note the use of the word "may". None of the above is guaranteed. It depends on you making a convincing case that the circumstances have clearly impacted your ability to work.
+ 
+ 
+  If you are registered with Disability Services, please forward your documentation to
+  
+   John Shepherd
+  
+  within the first two weeks of semester.
+ 
+ 
+  Course Schedule
+ 
+ 
+  This semester, in preparation for UNSW3+ next year, we will be trialling a 2x2-hour lecture format over 10 weeks.
+ 
+ 
+  The following provides a
+  
+   
+    tentative
+   
+  
+  schedule for how the course will run:
+ 
+ 
+  
+   
+    
+     
+      
+       Week
+      
+     
+     
+      
+       Lectures
+      
+     
+     
+      
+       Quiz
+      
+     
+     
+      
+       Assignments
+      
+     
+    
+    
+     
+      1
+     
+     
+      Course Intro, DBMS review, Rel Alg (RA), PostgreSQL, Catalogs
+     
+     
+      -
+     
+     
+      -
+     
+    
+    
+     
+      2
+     
+     
+      Storage: Disks, Files, Buffers, Pages, Tuples; Cost Models
+     
+     
+      Quiz 1
+     
+     
+      -
+     
+    
+    
+     
+      3
+     
+     
+      Relational Algebra Operations: Scanning, Sorting, Projection
+     
+     
+      -
+      
+     
+     
+      -
+     
+    
+    
+     
+      4
+     
+     
+      Selection: Heaps, Sorted Files, Hashed Files, Indexes, Btrees
+     
+     
+      Quiz 2
+      
+     
+     
+      -
+     
+    
+    
+     
+      5
+     
+     
+      No Lectures
+     
+     
+      -
+     
+     
+      -
+     
+    
+    
+     
+      6
+     
+     
+      Selection: N-d Hashing, N-d Trees, Signatures, Similarity Matching
+     
+     
+      Quiz 3
+     
+     
+      Ass 1 due
+     
+    
+    
+     
+      7
+     
+     
+      Joins: Nested Loop, Sort-Merge, Hash Join
+     
+     
+      Quiz 4
+      
+     
+     
+      -
+     
+    
+    
+     
+      8
+     
+     
+      Query Processing, Optimization, Execution
+     
+     
+      -
+      
+     
+     
+      -
+     
+    
+    
+     
+      9
+     
+     
+      Transactions: Isolation, Concurrency Control, Durability, Recovery
+     
+     
+      Quiz 5
+      
+     
+     
+      -
+     
+    
+    
+     
+      Mid-sem
+     
+     
+      No lectures
+     
+     
+      -
+     
+     
+      -
+     
+    
+    
+     
+      10
+     
+     
+      Nouvelle Databases (column-oriented,  graph-oriented, ...)
+      
+     
+     
+      Quiz 6
+      
+     
+     
+      Ass 2 due
+     
+    
+    
+     
+      11
+     
+     
+      Spare
+     
+     
+      -
+     
+     
+      -
+     
+    
+    
+     
+      12
+     
+     
+      Spare
+     
+     
+      -
+     
+     
+      -
+     
+    
+   
+  
+ 
+ 
+  The assignment deadlines are firm, but I reserve the right to change the lecture topics depending on your/my interest as the semester progresses.
+ 
+ 
+  Resources for Students
+  
+ 
+ 
+  The course web site will provide access to a large range of material for this course:
+ 
+ 
+  
+   all course notes, along with slides and examples from lectures
+  
+  
+   a collection of exercises, both theoretical and practical
+  
+  
+   PostgreSQL source code and documentation
+  
+  
+   a collection of research/survey papers discussing aspects of the syllabus
+  
+ 
+ 
+  All of the following books contain useful material for this course:
+ 
+ 
+  
+   
+    Database System Concepts
+   
+   , Silberschatz, Korth, Sudarshan,
+   
+    5th edition, 2005, McGraw-Hill
+   
+  
+  
+   
+    Database Management Systems
+   
+   , Ramakrishnan and Gehrke,
+   
+    3rd edition, 2003, McGraw-Hill
+   
+  
+  
+   
+    Fundamentals of Database Systems
+   
+   , Elmasri and Navathe,
+   
+    5th edition, 2006, Addison-Wesley
+   
+  
+  
+   
+    Database Systems: The Complete Book
+   
+   , Garcia-Molina, Ullman, Widom,
+   
+    2nd edition, 2009, Prentice-Hall
+   
+  
+  
+   
+    Database Systems: An Application-Oriented Approach
+   
+   Kifer, Berstein, Lewis,
+   
+    2nd edition (Complete Version), 2006, Addison-Wesley
+   
+  
+ 
+ 
+  There's no need to buy any of them, but if you plan to be seriously involved with databases in the future, any of them would be a useful addition to your professional bookshelf.
+ 
+ 
+  These books do not have much information on some of the topics later in the course, and especially if you get an older edition than the one noted above. There will be material in the Readings that covers the later topics.
+ 
+ 
+  All of the lecture examples and assignment work will be done using the PostgreSQL relational database management system. PostgreSQL is a typical example of a full-featured DBMS, and has the added bonuses that (a) it has a powerful extensibility model, and (b) has the source code available.
+ 
+ 
+  An inevitable question, when it comes to open-source DBMSs is "Why aren't you using MySQL, since everyone uses it?". The primary reason for not using it is that its source code is built from a collection of disparate components gleaned from a variety of existing open-source systems, thus making its code base somewhat "haphazard". Also annoying is the fact that MySQL often flaunts SQL standards in its default behaviour. The PostgreSQL code base, on the other hand, is the result of coherent development by a relatively small team, and PostgreSQL is, IMHO, technically superior to MySQL.
+ 
+ 
+  
+   Note:
+  
+  you will be required to
+  
+   compile
+  
+  your own PostgreSQL server from source code to carry out the assignment work. This is easy to do on Linux and Max OSX, but not so straightforward on Windows (as far as I know). Since I have no access to a Windows system, I will not be able to assist students who insist on trying to do their development on that system. If you are working on the assignments at UNSW, you have Linux access by default. If you want to work at home, and currently run Windows, your best option would be to add a Linux partition to your system and run it dual-boot, or run a virtual Linux on top of Windows.
+ 
+ 
+  PostgreSQL documentation is attached to the course web site, and also available as a downloadable tar-ball. The PostgreSQL manual is actually very good (comprehensive, well-structured) so you don't need to buy a PostgreSQL text. However, if you feel more comfortable with a book, there are references to a range of books on the
+  
+   PostgreSQL web site
+  
+  .
+ 
+ 
+  We will be using PostgreSQL 10.4 for this course. If you insist on downloading your PostgreSQL source code from the
+  
+   PostgreSQL web site
+  
+  (rather than the course web site), make sure you get
+  
+   this
+  
+  version.
+ 
+ 
+  And, yes, PostgreSQL version 11 has recently been released, but I'd rather not inflict the latest bleeding-edge bugs on you.
+ 
+ 
+  A variety of books cover PostgreSQL, but a general problem with technology textbooks is that they go out-of-date very quickly. Another problem is that many of them provide a brief introduction with some examples, and then simply give a summary of the documentation. In general, I've found that O'Reilly books tend to be better than most. However, you should consider the longevity of any technology book before outlaying the typically high cost for it.
+ 
+ 
+  Course Evaluation and Development
+ 
+ 
+  This course is evaluated each session using the MyExperience system.
+ 
+ 
+  In the previous offering of this courses, students were reasonably satisfied with the course, but did mention that assignment marking had taken too long. We plan to mark the assignments more quickly this time.
+ 
+ 
+  Also, the course has been somewhat "modernised" by adding recent examples of special-purpose, but widely used, DBMS styles.
+ 
+ 
+  Other Matters
+ 
+ 
+  By the end of this course, we want you to have a deep understanding of how database management systems work. This should help you in a number of ways: (a) make you better database application developers, (b) able to implement non-DBMS code for manipulating large amounts of data. Some of you might also make contributions to open-source DBMS projects, or even develop your own DBMSs.
+ 
+ 
+  Enjoy the course! ...
+  
+   John Shepherd
+  
+  , July 2018
+ 
+            
+              Resource created 8 months ago, last modified 8 months ago.
+            
+
+
+    
+      Comments
+                Loading...</p></div></body></html>
